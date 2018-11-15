@@ -95,7 +95,8 @@ To depend on a git project hosted project you can use the method #baseline:with:
 
 ```Smalltalk
 	spec
-		baseline: '{BaselineName}' with: [ spec repository: '{prefix}://{owner}/{projectName}:{version}/{subfolder}' ]
+		baseline: '{BaselineName}'
+		with: [ spec repository: '{prefix}://{owner}/{projectName}:{version}/{subfolder}' ]
 ```
 
 This snippet should be configured with:
@@ -113,19 +114,17 @@ This snippet should be configured with:
 Example:
 
 ```Smalltalk
-    spec
-    	baseline: 'MaterialDesignLite' 
-		with: [ 
-			spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
-		]
+	spec
+		baseline: 'MaterialDesignLite' 
+		with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src']
 ```
 
 This snippet can also be personalized to load only a specific group of the dependency like this:
 
 ```Smalltalk
-    spec
-    	baseline: 'MaterialDesignLite'
-    	with: [ 
+	spec
+		baseline: 'MaterialDesignLite'
+		with: [ 
 			spec 
 				loads: #('Extensions');
 				repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
@@ -158,9 +157,9 @@ baseline: spec
 ```Smalltalk
 materialDesignLite: spec
 
-    spec
-    	baseline: 'MaterialDesignLite'
-    	with: [
+	spec
+		baseline: 'MaterialDesignLite'
+		with: [
 			spec  
 				loads: #('Extensions');
 				repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
@@ -177,7 +176,7 @@ For that case you can use the message #project:copyFrom:with: to create a new de
 ```Smalltalk
 materialDesignLite: spec
 
-    spec
+	spec
 		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
 		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
 ```
@@ -207,7 +206,7 @@ baseline: spec
 ===================================================
 materialDesignLite: spec
 
-    spec
+	spec
 		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
 		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
 
@@ -220,11 +219,9 @@ Sometime we do not have access to internet and we want to define dependencies to
 Those works like in the previous section but with this repository format:
 
 ```Smalltalk
-    spec
-    	baseline: 'MaterialDesignLite'
-		with: [
-			spec repository: 'gitlocal://full/path/to/repository'
-		]
+	spec
+		baseline: 'MaterialDesignLite'
+		with: [ spec repository: 'gitlocal://full/path/to/repository' ]
 ```
 
 #### To smalltalkhub projects
