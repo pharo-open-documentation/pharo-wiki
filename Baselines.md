@@ -4,7 +4,9 @@
   * [How to define Baselines](#how-to-define-baselines)
     + [Define packages forming your project](#define-packages-forming-your-project)
     + [Define external dependencies](#define-external-dependencies)
-      - [To other github projects](#to-other-github-projects)
+      - [To other remote git projects](#to-other-remote-git-projects)
+        * [Depends on the same project with different groups](#depends-on-the-same-project-with-different-groups)
+      - [To a local git project](#to-a-local-git-project)
       - [To smalltalkhub projects](#to-smalltalkhub-projects)
     + [Groups](#groups)
     + [Pre/post load actions](#pre-post-load-actions)
@@ -14,7 +16,6 @@
   * [How to load a git project using its baseline](#how-to-load-a-git-project-using-its-baseline)
     + [From Iceberg](#from-iceberg)
     + [From the playground](#from-the-playground)
-
 
 ## How to define Baselines
 To be done, but a page like this would be really nice.
@@ -113,7 +114,10 @@ Example:
 
 ```Smalltalk
     spec
-    	baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ]
+    	baseline: 'MaterialDesignLite' 
+		with: [ 
+			spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
+		]
 ```
 
 This snippet can also be personalized to load only a specific group of the dependency like this:
@@ -121,9 +125,11 @@ This snippet can also be personalized to load only a specific group of the depen
 ```Smalltalk
     spec
     	baseline: 'MaterialDesignLite'
-    	with: [ spec 
-					loads: #('Extensions');
-					repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ]
+    	with: [ 
+			spec 
+				loads: #('Extensions');
+				repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
+		]
 ```
 
 Once the dependency is defined, you just need to add the `BaselineName` to the list of the required dependencies of the package depending on it. 
@@ -147,15 +153,18 @@ baseline: spec
 				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLite') ];
 				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
 				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+```
 
-===================================================
+```Smalltalk
 materialDesignLite: spec
 
     spec
     	baseline: 'MaterialDesignLite'
-    	with: [ spec  
-					loads: #('Extensions');
-					repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ]
+    	with: [
+			spec  
+				loads: #('Extensions');
+				repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
+		]
 
 ```
 
@@ -212,7 +221,10 @@ Those works like in the previous section but with this repository format:
 
 ```Smalltalk
     spec
-    	baseline: 'MaterialDesignLite' with: [ spec repository: 'gitlocal://full/path/to/repository' ]
+    	baseline: 'MaterialDesignLite'
+		with: [
+			spec repository: 'gitlocal://full/path/to/repository'
+		]
 ```
 
 #### To smalltalkhub projects
