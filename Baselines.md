@@ -156,7 +156,6 @@ baseline: spec
 
 ```Smalltalk
 materialDesignLite: spec
-
 	spec
 		baseline: 'MaterialDesignLite'
 		with: [
@@ -175,7 +174,6 @@ For that case you can use the message #project:copyFrom:with: to create a new de
 
 ```Smalltalk
 materialDesignLite: spec
-
 	spec
 		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
 		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
@@ -202,10 +200,10 @@ baseline: spec
 				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
 				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
 				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+```
 
-===================================================
+```Smalltalk
 materialDesignLite: spec
-
 	spec
 		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
 		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
