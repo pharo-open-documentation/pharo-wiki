@@ -4,7 +4,7 @@
 
 Here is short example showing how it works basically:
 
-```
+```Smalltalk
 text := 'Hello World!' asText.
 text
  addAttribute: TextEmphasis bold from: 1 to: 5;
