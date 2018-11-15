@@ -8,3 +8,5 @@ Sections:
 - [Some cool snippets in Pharo](CoolSnippets.md)
 - [Rich text](RichText.md)
 - [How to deal with baselines](Baselines.md)
+- [XML support](XML.md)
+- [JSON support](JSON.md)
