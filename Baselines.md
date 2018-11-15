@@ -223,10 +223,158 @@ Those works like in the previous section but with this repository format:
 ```
 
 #### To smalltalkhub projects
-**TODO**
+
+Depending on a Smalltalkhub project is done via #project:with.
+
+```Smalltalk
+	spec
+		project: '{DependencyName}'
+		with: [ spec
+				className: #ConfigurationOf{ConfigurationName};
+				versionString: #'{Version}';
+				repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main/' ]
+```
+
+The snippet should be configured with:
+
+* The DependencyName: It can be anything different from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
+* The ConfigurationName: It is the name of the configuration you wish to reference
+* The Version: Name of the version you wish to reference. It can be something like 'development', 'stable', 'release1', '1.2.6', '1.0-baseline', etc
+* The owner: Name of the team or user hosting the project
+* The repositoryName: Name of the repository on SmalltalkHub
+
+Example:
+
+```Smalltalk
+	spec
+		project: 'Magritte3'
+		with: [ spec
+				className: #ConfigurationOfMagritte3;
+				versionString: #'release3';
+				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+```
+
+Like for git hosted repositories you can reference a specific group:
+
+```Smalltalk
+	spec
+		project: 'Magritte3'
+		with: [ spec
+				className: #ConfigurationOfMagritte3;
+				versionString: #'release3';
+				loads: #('Seaside');
+				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+```
+
+You can now use the dependencies names to add the project as dependency of your packages.
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Dependencies"
+			self magritte3: spec.
+
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'Magritte3') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+```
+
+```Smalltalk
+magritte3: spec
+	spec
+		project: 'Magritte3'
+		with: [ spec
+				className: #ConfigurationOfMagritte3;
+				versionString: #'release3';
+				loads: #('Seaside');
+				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+
+```
 
 ### Groups
-**TODO**
+
+We do not want to load the full project all the time. In some case we might want to loads a sub part of the project for different reasons:
+* We might want to load only the model of a project without the UI to build an alternative UI
+* We might want to be able to load it without the tests and examples
+* The project might have some optional modules
+* Etc
+
+To manage this, baselines have a concept called `Groups`. A group is a loadable spec containing only a sub part of the project.
+
+They can be declared with the #group:with: message. The second parameter will define the content of the group. The content can either be a package name, a dependency name or even another group name.
+
+Example:
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Dependencies"
+			self materialDesignLite: spec.
+
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+
+			"Groups"
+			spec
+				group: 'Model' with: #('MyProject');
+				group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
+				group: 'Gui' with: #('MyProject-Gui');
+				group: 'Example' with: #('MyProject-Examples');
+				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
+```
+
+#### The default group
+
+By default, each baseline has a group named 'default'. This group includes all the packages and the dependencies declared in the baseline.
+
+When using the message #load with Metacello, or when you do not specify the group of a dependency, it will load the "default" group.
+
+This group can be redefined by the user to change what will be loaded by default in a project.
+
+Example:
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Dependencies"
+			self materialDesignLite: spec.
+
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+
+			"Groups"
+			spec
+				group: 'default' with: #('Model' 'Gui');
+				group: 'Model' with: #('MyProject');
+				group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
+				group: 'Gui' with: #('MyProject-Gui');
+				group: 'Example' with: #('MyProject-Examples');
+				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
+```
+
 ### Pre/post load actions
 **TODO**
 ### Loads different packages depending on the Pharo version
