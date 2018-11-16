@@ -676,3 +676,7 @@ project
 **TODO**
 ### From the playground
 **TODO**
+### Metacello lock feature
+**TODO**
+### Metacello record feature
+**TODO**
