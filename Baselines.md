@@ -9,13 +9,19 @@
       - [To a local git project](#to-a-local-git-project)
       - [To smalltalkhub projects](#to-smalltalkhub-projects)
     + [Groups](#groups)
+      - [The default group](#the-default-group)
     + [Pre/post load actions](#pre-post-load-actions)
     + [Loads different packages depending on the Pharo version](#loads-different-packages-depending-on-the-pharo-version)
     + [Define custom attributes](#define-custom-attributes)
-    + [Different loading kinds](#different-loading-kinds)
+    + [Loading types](#loading-types)
+      - [Linear loading](#linear-loading)
+      - [Atomic loading](#atomic-loading)
+    + [Full example](#full-example)
   * [How to load a git project using its baseline](#how-to-load-a-git-project-using-its-baseline)
     + [From Iceberg](#from-iceberg)
     + [From the playground](#from-the-playground)
+
+**TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
 
 ## How to define Baselines
 To be done, but a page like this would be really nice.
@@ -163,7 +169,6 @@ materialDesignLite: spec
 				loads: #('Extensions');
 				repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
 		]
-
 ```
 
 ##### Depends on the same project with different groups
@@ -207,7 +212,6 @@ materialDesignLite: spec
 	spec
 		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
 		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
-
 ```
 
 #### To a local git project
@@ -318,15 +322,12 @@ baseline: spec
 	spec
 		for: #common
 		do: [
-			"Dependencies"
-			self materialDesignLite: spec.
-
 			"Packages"
 			spec
 				package: 'MyProject';
 				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
 				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 
 			"Groups"
@@ -354,15 +355,12 @@ baseline: spec
 	spec
 		for: #common
 		do: [
-			"Dependencies"
-			self materialDesignLite: spec.
-
 			"Packages"
 			spec
 				package: 'MyProject';
 				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
 				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 
 			"Groups"
@@ -376,13 +374,302 @@ baseline: spec
 ```
 
 ### Pre/post load actions
-**TODO**
+
+Baselines allow to have some hooks to execute some code when loading a project. 
+
+Those hooks are:
+
+* `#preLoadDoIt:` : This hook is executed after the code and dependencies are resolved and fetched and before the code is loaded.
+* `#postLoadDoIt:` : This hook is executed when the project finished to load.
+
+Those methods take a symbol as parameter. This symbol should be the name of a method of the baseline that should be executed by the hook. 
+
+Those methods take two optional parameters:
+
+* A Metacello loader containing informations on the current project to load
+* A Metacello spec containing the informations on the project spec
+
+Example:
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			spec preLoadDoIt: #'preload:package:'.
+			spec postLoadDoIt: #'postload:package:'.
+
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ]
+```
+```Smalltalk
+preload: loader package: packageSpec
+
+	Trascript crLog: 'The fetch was finished. Now let's load the project'
+
+```
+```Smalltalk
+postload: loader package: packageSpec
+
+	Trascript crLog: 'Project loaded!'
+
+```
+
 ### Loads different packages depending on the Pharo version
-**TODO**
+
+Sometimes to might be useful to load some packages only in specific Pharo versions. For example if we have a compatibility package for Pharo 6, we do not want to load it in pharo 7.
+
+This is possible with the different spec attributes. 
+
+Until here we defined everything in a spec for #common. This spec will impact every pharo versions. But it's possible to define spec only for some Pharo versions or even other Smalltalks. 
+
+In order to do that we can add in the baseline a special #for:do: command taking as parameter a specific attribute.
+
+Every Pharo version contains some default attributes. For a Pharo version X.Y we have:
+* `#pharo`
+* `#pharoX.x`
+* `#pharoX.Y.x`
+
+For example for Pharo 6.1:
+* `#pharo`
+* `#pharo6.x`
+* `#pharo6.1.x`
+
+Those attributes can be used to define a spec that will be executed only in the images containing the corresponding tags.
+
+Example: 
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+
+	spec
+		for: #'pharo6.x'
+		do: [ spec
+				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo6') ];
+				package: 'MyProject-Pharo6' ].
+	spec
+		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
+		do: [ spec
+				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo3To6') ];
+				package: 'MyProject-Pharo3To6' ] ]
+```
+
 ### Define custom attributes
-**TODO**
-### Different loading kinds
-**TODO**
+
+In top of attributes from Pharo it is also possible to define our own attributes. 
+
+To do that we can override the method #customProjectAttributes to return the custom attributes depending on the environment.
+
+For example:
+
+```Smalltalk
+customProjectAttributes
+	Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
+	Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
+	Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
+```
+
+Then they can be used in the baseline.
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+
+	spec
+		for: #(#'MacOS' #'Unix') do: [ 
+			self osSubprocess: spec.
+			spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ];
+		for: #'Windows' do: [ 
+			self processWrapper: spec.
+			spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
+```
+```Smalltalk
+osSubprocess: spec
+	spec 
+		baseline: 'OSSubprocess' 
+		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
+```
+```Smalltalk
+processWrapper: spec
+	spec 
+		configuration: 'ProcessWrapper' 
+		with: [ 
+			spec
+				versionString: '1.2';
+				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]				
+```
+
+### Loading types
+
+Baselines support different loading types. The loading types will define how Metacello will load the project. 
+
+#### Linear loading
+
+This type is the default one. If you change nothing to the baseline, it will use it.
+
+When the load type is linear, the packages will be loaded one by one with their requirement loaded before them.
+
+#### Atomic loading 
+
+This load type will force Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be cut. For example it's useful to load Pharo Kernel and Collections since they depends on each other.
+
+To define the loading type as atomic you need to override the method #project:
+
+```Smalltalk
+project
+	^ super project
+		loadType: #atomic;
+		youself
+```
+
+### Full example
+
+Here is an example with everything presented:
+
+
+```Smalltalk
+"baseline"
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			spec preLoadDoIt: #'preload:package:'.
+			spec postLoadDoIt: #'postload:package:'.
+
+			"Dependencies"
+			self materialDesignLite: spec.
+
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions' 'Magritte3') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ].
+
+			"Groups"
+			spec
+				group: 'Model' with: #('MyProject');
+				group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
+				group: 'Gui' with: #('MyProject-Gui');
+				group: 'Example' with: #('MyProject-Examples');
+				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example') ].
+
+	spec
+		for: #'pharo6.x'
+		do: [ spec
+				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo6') ];
+				package: 'MyProject-Pharo6' ].
+
+	spec
+		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
+		do: [ spec
+				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo3To6') ];
+				package: 'MyProject-Pharo3To6' ] ].
+
+	spec
+		for: #(#'MacOS' #'Unix') do: [ 
+			self osSubprocess: spec.
+			spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ].
+
+	spec
+		for: #'Windows' do: [ 
+			self processWrapper: spec.
+			spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
+```
+```Smalltalk
+"dependencies"
+materialDesignLite: spec
+	spec
+		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
+		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
+```
+```Smalltalk
+"dependencies"
+magritte3: spec
+	spec
+		project: 'Magritte3'
+		with: [ spec
+				className: #ConfigurationOfMagritte3;
+				versionString: #'release3';
+				loads: #('Seaside');
+				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+
+```
+```Smalltalk
+"dependencies"
+osSubprocess: spec
+	spec 
+		baseline: 'OSSubprocess' 
+		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
+```
+```Smalltalk
+"dependencies"
+processWrapper: spec
+	spec 
+		configuration: 'ProcessWrapper' 
+		with: [ 
+			spec
+				versionString: '1.2';
+				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]				
+```
+```Smalltalk
+"accessing"
+customProjectAttributes
+	Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
+	Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
+	Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
+```
+```Smalltalk
+"actions"
+preload: loader package: packageSpec
+
+	Trascript crLog: 'The fetch was finished. Now let's load the project'
+
+```
+```Smalltalk
+"actions"
+postload: loader package: packageSpec
+
+	Trascript crLog: 'Project loaded!'
+
+```
+```Smalltalk
+"accessing"
+project
+	^ super project
+		loadType: #atomic;
+		youself
+```
+
 ## How to load a git project using its baseline
 **TODO**
 ### From Iceberg
