@@ -1,5 +1,24 @@
 # Must know for beginners
 
+## Navigate into the code
+
+Pharo offers a lot of way to navigate into the code, and most of those are used daily by Pharo developers. This section will highlight the most important ones.
+
+### Browse/Senders/Implementors
+
+When reading code we often need to open an entity or to check who is using an entity. To do that, Pharo has different commands:
+* **Browse** (`CMD/CTRL + b`): This command will open a new system browser on the class you are currently focusing
+* **Senders** (`CMD/CTRL + n`): This command will open a message browser with all the methods calling the method/symbol you are currently focusing. 
+* **Implementors** (`CMD/CTRL + b`):  This command will open a message browser with all the methods whose name is the name of the method/symbol you are currently focusing. 
+
+### Method source with it
+
+It often happens that we want to see how a feature is done, or we want to edit something but we do not know *where* is the implementation. If we have the name of a menu for example we can use it to find every places in the image were the name of the menu is written. 
+
+To do that we need to open a playground and type the text (or select some text in an editor) then select on a right click `Code search...` then `Method source with it`.
+
+This will open a message browser with all the methods/class comments containing the string of code we are looking for.
+
 ## Debuging facilities
 
 Pharo includes multiple way to help with debugging. This section will explains some of them.
