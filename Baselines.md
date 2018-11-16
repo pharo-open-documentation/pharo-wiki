@@ -24,11 +24,9 @@
 **TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
 
 ## How to define Baselines
-To be done, but a page like this would be really nice.
-
 Baseline are a way to manage projects in Pharo. A baseline defines the packages of the project, their dependencies and independant sub-groups that can be loaded.
 
-The first step to create a baseline is to create a new subclass of `BaselineOf`:
+The first step to create a baseline is to create a new subclass of `BaselineOf` (in the following code snippet, `{MyProject}` is to be substituted by the name of your project):
 
 ```Smalltalk
 BaselineOf subclass: #BaselineOf{MyProject}
@@ -37,7 +35,7 @@ BaselineOf subclass: #BaselineOf{MyProject}
 	package: 'BaselineOf{MyProject}'
 ``` 
 
-Then, you will need to create a method that will define the spec of the project for the commit it will be included in. 
+Then, you will need to create a method that will define the spec of the project for the commit it will be included in.
 
 ```Smalltalk
 baseline: spec
@@ -49,9 +47,11 @@ baseline: spec
 		 ]
 ```
 
+> The name of this method is not constrained to be `#baseline:`, it is the `<baseline>` pragma which specify that the method defines the spec of the project. However, it is common place to name this method `#baseline:`.
+
 ### Define packages forming your project
 
-To define packages of the project, just send the message #package: to the spec with the name of the package as argument.
+To define packages of the project, just send the message `#package:` to the spec with the name of the package as argument.
 
 ```Smalltalk
 baseline: spec
@@ -70,9 +70,9 @@ baseline: spec
 
 Defining packages is not enough to load them because some of them might depend on other packages/projects. For example, `MyProject-Tests` needs to be loaded after `MyProject`.
 
-To manage dependencies inside a project, see section [Define external dependencies](#define-external-dependencies).
+To manage dependencies external to a project, see section [Define external dependencies](#define-external-dependencies).
 
-To manage dependencies between the packages of your project, you can use the message #package:with: to give more informations to the spec.
+To manage dependencies between the packages of your project, you can use the message `#package:with:` to give more informations to the spec.
 
 ```Smalltalk
 baseline: spec
@@ -93,7 +93,7 @@ baseline: spec
 
 Defining external dependencies can be done in different ways depending on where the dependency is hosted. 
 
-*Note: For lisibility I recommand to extract the definition of dependencies to external methods.*
+> For lisibility I recommand to extract the definition of dependencies to external methods.
 
 #### To other remote git projects
 
@@ -107,15 +107,15 @@ To depend on a git project hosted project you can use the method #baseline:with:
 
 This snippet should be configured with:
 
-* The BaselineName: The name of the baseline to load (For example it would be 'MaterialDesignLite' to load the BaselineOfMaterialDesignLite)
-* The prefix: This one will be specific to the host. It can be:
+* The `{BaselineName}`: The name of the baseline to load (For example it would be `'MaterialDesignLite'` to load the `BaselineOfMaterialDesignLite`)
+* The `{prefix}`: This one will be specific to the host. It can be:
 	* `github` for github
 	* `bitbucket` for bitbucket
 	* `gitlab` for gitlab
-* The owner: Name of the user or organisation hosting the project
-* The projectName: Name of the project
-* The version: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like v1.2.0 or v1.x.x, or a the SHA of a commit
-* The subfolder: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+* The `{owner}`: Name of the user or organisation hosting the project
+* The `{projectName}`: Name of the project
+* The `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
+* The `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
 
 Example:
 
@@ -173,9 +173,9 @@ materialDesignLite: spec
 
 ##### Depends on the same project with different groups
 
-Some time you might want to depend on a project, but two packages will depend on different groups of this external project. 
+Sometimes, you might want to depend on a project, but two packages will depend on different groups of this external project. 
 
-For that case you can use the message #project:copyFrom:with: to create a new dependency spec.
+For that case you can use the message `#project:copyFrom:with:` to create a new dependency spec.
 
 ```Smalltalk
 materialDesignLite: spec
@@ -216,7 +216,7 @@ materialDesignLite: spec
 
 #### To a local git project
 
-Sometime we do not have access to internet and we want to define dependencies to local git repositories. 
+Sometimes, we do not have access to internet and we want to define dependencies to local git repositories. 
 
 Those works like in the previous section but with this repository format:
 
@@ -228,7 +228,7 @@ Those works like in the previous section but with this repository format:
 
 #### To smalltalkhub projects
 
-Depending on a Smalltalkhub project is done via #project:with.
+Depending on a [Smalltalkhub](http://smalltalkhub.com) project is done via `#project:with`.
 
 ```Smalltalk
 	spec
@@ -241,11 +241,11 @@ Depending on a Smalltalkhub project is done via #project:with.
 
 The snippet should be configured with:
 
-* The DependencyName: It can be anything different from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
-* The ConfigurationName: It is the name of the configuration you wish to reference
-* The Version: Name of the version you wish to reference. It can be something like 'development', 'stable', 'release1', '1.2.6', '1.0-baseline', etc
-* The owner: Name of the team or user hosting the project
-* The repositoryName: Name of the repository on SmalltalkHub
+* The `{DependencyName}`: It can be anything different from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
+* The `{ConfigurationName}`: It is the name of the configuration you wish to reference
+* The `{Version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+* The `{owner}`: Name of the team or user hosting the project
+* The `{repositoryName}`: Name of the repository on SmalltalkHub
 
 Example:
 
@@ -258,7 +258,7 @@ Example:
 				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 ```
 
-Like for git hosted repositories you can reference a specific group:
+As for git hosted repositories, you can reference a specific group:
 
 ```Smalltalk
 	spec
@@ -308,11 +308,11 @@ We do not want to load the full project all the time. In some case we might want
 * We might want to load only the model of a project without the UI to build an alternative UI
 * We might want to be able to load it without the tests and examples
 * The project might have some optional modules
-* Etc
+* Etc.
 
-To manage this, baselines have a concept called `Groups`. A group is a loadable spec containing only a sub part of the project.
+To manage this, baselines have the concept of `Group`. A group is a loadable spec containing only a sub part of the project.
 
-They can be declared with the #group:with: message. The second parameter will define the content of the group. The content can either be a package name, a dependency name or even another group name.
+They can be declared with the `#group:with:` message. The second parameter will define the content of the group. The content can either be a package name, a dependency name or even another group name.
 
 Example:
 
@@ -341,9 +341,9 @@ baseline: spec
 
 #### The default group
 
-By default, each baseline has a group named 'default'. This group includes all the packages and the dependencies declared in the baseline.
+By default, each baseline has a group named `'default'`. This group includes all the packages and the dependencies declared in the baseline.
 
-When using the message #load with Metacello, or when you do not specify the group of a dependency, it will load the "default" group.
+When using the message `#load` with Metacello, or when you do not specify the group of a dependency, it will load the "default" group.
 
 This group can be redefined by the user to change what will be loaded by default in a project.
 
@@ -423,11 +423,11 @@ postload: loader package: packageSpec
 
 ### Loads different packages depending on the Pharo version
 
-Sometimes to might be useful to load some packages only in specific Pharo versions. For example if we have a compatibility package for Pharo 6, we do not want to load it in pharo 7.
+It might be useful to load some packages only in specific Pharo versions. For example if we have a compatibility package for Pharo 6, we do not want to load it in pharo 7.
 
 This is possible with the different spec attributes. 
 
-Until here we defined everything in a spec for #common. This spec will impact every pharo versions. But it's possible to define spec only for some Pharo versions or even other Smalltalks. 
+Until here we defined everything in a spec for `#common`. This spec will impact every pharo versions. But it's possible to define spec only for some Pharo versions or even other Smalltalks. 
 
 In order to do that we can add in the baseline a special #for:do: command taking as parameter a specific attribute.
 
@@ -473,9 +473,9 @@ baseline: spec
 
 ### Define custom attributes
 
-In top of attributes from Pharo it is also possible to define our own attributes. 
+On top of attributes from Pharo, it is also possible to define our own attributes. 
 
-To do that we can override the method #customProjectAttributes to return the custom attributes depending on the environment.
+To do that we can override the method `#customProjectAttributes` to return the custom attributes depending on the environment.
 
 For example:
 
@@ -538,7 +538,7 @@ When the load type is linear, the packages will be loaded one by one with their 
 
 #### Atomic loading 
 
-This load type will force Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be cut. For example it's useful to load Pharo Kernel and Collections since they depends on each other.
+This load type will force Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be cut. For example it's useful to load Pharo's Kernel and Collections since they depends on each other.
 
 To define the loading type as atomic you need to override the method #project:
 
