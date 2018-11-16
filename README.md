@@ -13,15 +13,16 @@ Tips and tricks related to Pharo.
 ### General
 
 - [Things beginners must learn](MustKnowForBeginners.md)
-- [How to deal with baselines](Baselines.md)
+- [How to deal with baselines](Baselines.md) [In Progress]
 - [Some cool snippets in Pharo](CoolSnippets.md)
 
 ### Pharo projects
 
-- [How to deal with files](Files.md)
+- [How to deal with files](Files.md) [TODO]
 - [Rich text](RichText.md)
+- [Metalinks](Metalinks.md) [TODO]
 
 ### External projects
 
-- [XML support](XML.md)
-- [JSON support](JSON.md)
+- [XML support](XML.md) [TODO]
+- [JSON support](JSON.md) [TODO]
