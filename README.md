@@ -2,7 +2,7 @@
 
 Tips and tricks related to Pharo.
 
-- [pharo-wiki](#pharo-wiki)
+- [Pharo tips and tricks](#pharo-tips-and-tricks)
   * [Sections:](#sections)
     + [General](#general)
     + [Pharo projects](#pharo-projects)
