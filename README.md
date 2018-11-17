@@ -20,6 +20,7 @@ Tips and tricks related to Pharo.
 
 - [How to deal with files](Files.md) [TODO]
 - [Rich text](RichText.md)
+- [WebBrowser](WebBrowser.md) - A project to open a link in the default web browser
 - [Metalinks](Metalinks.md) [TODO]
 
 ### External projects
