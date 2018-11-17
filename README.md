@@ -1,4 +1,4 @@
-# pharo-wiki
+# Pharo tips and tricks
 
 Tips and tricks related to Pharo.
 
