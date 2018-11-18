@@ -26,4 +26,4 @@ Tips and tricks related to Pharo.
 ### External projects
 
 - [XML support](XML.md) [TODO]
-- [JSON support](JSON.md) [In Progress]
+- [JSON support](JSON.md)
