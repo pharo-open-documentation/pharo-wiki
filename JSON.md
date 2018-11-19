@@ -3,6 +3,15 @@ Currently, Pharo provides two main frameworks to handle the [JSON format](https:
 
 This page briefly present these two frameworks and expose their differences to help users to choose the one fitting their needs.
 
+- [JSON support in Pharo](#json-support-in-pharo)
+  * [STONJSON](#stonjson)
+    + [Parse JSON](#parse-json)
+    + [Generate JSON](#generate-json)
+  * [NeoJSON](#neojson)
+    + [Parse JSON](#parse-json-1)
+    + [Generate JSON](#generate-json-1)
+  * [STONJSON v.s. NeoJSON](#stonjson-vs-neojson)
+
 ## STONJSON
 STONJSON is the built-in JSON parser available in default Pharo images. It is part of the STON package and its development takes place in Pharo's [github repository](https://github.com/pharo-project/pharo).
 
@@ -18,7 +27,7 @@ readStream := '{ "foo" : 42.0 }' readStream.
 STONJSON fromStream: readStream "a Dictionary('foo'->42.0 )"
 ```
 
-### Generate JSON:
+### Generate JSON
 Let `jsonObject` be defined as:
 ```Smalltalk
 jsonObject := Dictionary new
@@ -43,7 +52,7 @@ To pretty print JSON, either use `STONJSON>>#toStringPretty:` or `STONJSON>>#put
 NeoJSON is actually maintained by Sven Van Caekenberghe on [github](https://github.com/svenvc/NeoJSON). 
 This section shows some quick examples but there is a great [documentation made by Sven](https://github.com/svenvc/docs/blob/master/neo/neo-json-paper.md) and a chapter in [Enterprise Pharo (chapter 8)](http://books.pharo.org/enterprise-pharo/).
 
-### Parse JSON:
+### Parse JSON
 
 From `String`:
 ```Smalltalk
@@ -56,7 +65,7 @@ readStream := '{ "foo" : 42.0 }' readStream.
 (NeoJSONReader on: readStream) next
 ```
 
-### Generate JSON:
+### Generate JSON
 Let `jsonObject` be defined as:
 ```Smalltalk
 jsonObject := Dictionary new
