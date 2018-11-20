@@ -25,5 +25,6 @@ Tips and tricks related to Pharo.
 
 ### External projects
 
-- [XML support](XML.md) [TODO]
 - [JSON support](JSON.md)
+- [XML support](XML.md) [TODO]
+- [CSV support](CSV.md) [TODO]
