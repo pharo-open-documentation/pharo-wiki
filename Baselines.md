@@ -93,7 +93,7 @@ baseline: spec
 
 Defining external dependencies can be done in different ways depending on where the dependency is hosted. 
 
-> For lisibility I recommand to extract the definition of dependencies to external methods.
+> For improved readability I recommand to extract the definition of dependencies to external methods.
 
 #### To other remote git projects
 
