@@ -16,34 +16,47 @@ This page briefly present these two frameworks and expose their differences to h
 STONJSON is the built-in JSON parser available in default Pharo images. It is part of the STON package and its development takes place in Pharo's [github repository](https://github.com/pharo-project/pharo).
 
 ### Parse JSON
-From `String`:
+- From `String`:
 ```Smalltalk
 STONJSON fromString: '{ "foo" : 42.0 }' "a Dictionary('foo'->42.0 )"
 ```
 
-From `Stream`:
+- From `Stream`:
 ```Smalltalk
 readStream := '{ "foo" : 42.0 }' readStream.
 STONJSON fromStream: readStream "a Dictionary('foo'->42.0 )"
 ```
 
+- Read from JSON file:
+```Smalltalk
+(FileReference home / 'path' / 'to' / 'myfile.json')
+	readStreamDo: [ :readStream |
+		STONJSON fromStream: readStream ] "a Dictionary('foo'->42.0 )"
+```
+
 ### Generate JSON
-Let `jsonObject` be defined as:
+- Let `jsonObject` be defined as:
 ```Smalltalk
 jsonObject := Dictionary new
 		at: 'foo' put: 42.0;
 		yourself.
 ```
 
-To generate a JSON `String`:
+- To generate a JSON `String`:
 ```Smalltalk
 STONJSON toString: jsonObject "'{""foo"":42.0}'"
 ```
 
-To generate JSON on a `Stream`:
+- To generate JSON on a `Stream`:
 ```Smalltalk
-String streamContents: [ :writeStream  |
-	STONJSON put: jsonObject onStream: writeStream ]
+STONJSON put: jsonObject onStream: writeStream
+```
+
+- To write a JSON file:
+```Smalltalk
+(FileReference home / 'path' / 'to' / 'myfile.json')
+	writeStreamDo: [ :writeStream |
+		STONJSON put: jsonObject onStream: writeStream ]
 ```
 
 To pretty print JSON, either use `STONJSON>>#toStringPretty:` or `STONJSON>>#put:onStreamPretty:`.
@@ -54,15 +67,22 @@ This section shows some quick examples but there is a great [documentation made 
 
 ### Parse JSON
 
-From `String`:
+- From `String`:
 ```Smalltalk
 NeoJSONReader fromString: '{ "foo" : 42.0 }' "a Dictionary('foo'->42.0 )"
 ```
 
-From `Stream`:
+- From `Stream`:
 ```Smalltalk
 readStream := '{ "foo" : 42.0 }' readStream.
 (NeoJSONReader on: readStream) next
+```
+
+- Read from JSON file:
+```Smalltalk
+(FileReference home / 'path' / 'to' / 'myfile.json')
+	readStreamDo: [ :readStream |
+		(NeoJSONReader on: readStream) next ] "a Dictionary('foo'->42.0 )"
 ```
 
 ### Generate JSON
@@ -73,7 +93,7 @@ jsonObject := Dictionary new
 		yourself.
 ```
 
-To generate a JSON `String`:
+- To generate a JSON `String`:
 ```Smalltalk
 NeoJSONWriter toString: jsonObject "'{""foo"":42.0}'"
 ```
@@ -83,19 +103,34 @@ Pretty:
 NeoJSONWriter toStringPretty: jsonObject
 ```
 
-To generate JSON on a `Stream`:
+- To generate JSON on a `Stream`:
 ```Smalltalk
-String streamContents: [ :writeStream  |
-	(NeoJSONWriter on: writeStream)
-		nextPut: jsonObject ].
+(NeoJSONWriter on: writeStream)
+	nextPut: jsonObject
 ```
 
 Pretty:
 ```Smalltalk
-String streamContents: [ :writeStream  |
-	(NeoJSONWriter on: writeStream)
-		prettyPrint: true;
-		nextPut: jsonObject ].
+(NeoJSONWriter on: writeStream)
+	prettyPrint: true;
+	nextPut: jsonObject.
+```
+
+- To write a JSON file:
+```Smalltalk
+(FileReference home / 'path' / 'to' / 'myfile.json')
+	writeStreamDo: [ :writeStream |
+		(NeoJSONWriter on: writeStream)
+			nextPut: jsonObject ]
+```
+
+Pretty:
+```Smalltalk
+(FileReference home / 'path' / 'to' / 'myfile.json')
+	writeStreamDo: [ :writeStream |
+		(NeoJSONWriter on: writeStream)
+			prettyPrint: true;
+			nextPut: jsonObject ]
 ```
 
 ## STONJSON v.s. NeoJSON
