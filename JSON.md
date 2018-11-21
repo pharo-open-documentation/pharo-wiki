@@ -8,6 +8,7 @@ This page briefly present these two frameworks and expose their differences to h
     + [Parse JSON](#parse-json)
     + [Generate JSON](#generate-json)
   * [NeoJSON](#neojson)
+    + [Install](#install)
     + [Parse JSON](#parse-json-1)
     + [Generate JSON](#generate-json-1)
   * [STONJSON v.s. NeoJSON](#stonjson-vs-neojson)
@@ -64,6 +65,15 @@ To pretty print JSON, either use `STONJSON>>#toStringPretty:` or `STONJSON>>#put
 ## NeoJSON
 NeoJSON is actually maintained by Sven Van Caekenberghe on [github](https://github.com/svenvc/NeoJSON). 
 This section shows some quick examples but there is a great [documentation made by Sven](https://github.com/svenvc/docs/blob/master/neo/neo-json-paper.md) and a chapter in [Enterprise Pharo (chapter 8)](http://books.pharo.org/enterprise-pharo/).
+
+### Install
+To install NeoJSON, simply execute the following code snippet in a playground:
+```
+Metacello new
+    repository: 'github://svenvc/NeoJSON/repository';
+    baseline: 'NeoJSON';
+    load
+```
 
 ### Parse JSON
 
@@ -134,10 +144,11 @@ Pretty:
 ```
 
 ## STONJSON v.s. NeoJSON
-|Property  |STONJSON|NeoJSON|
-|----------|--------|-------|
-|Parse JSON| :white_check_mark: | :white_check_mark: |
-|Generate JSON| :white_check_mark: | :white_check_mark: |
-|Pretty-printing | :white_check_mark: | :white_check_mark: |
-|Built-in| :white_check_mark: | :x: |
-|Facilities to map JSON objects to Pharo objects | :x: | :white_check_mark: |
+
+|Property                                        |STONJSON            |NeoJSON             |
+|------------------------------------------------|--------------------|--------------------|
+|Parse JSON                                      | :white_check_mark: | :white_check_mark: |
+|Generate JSON                                   | :white_check_mark: | :white_check_mark: |
+|Pretty-printing                                 | :white_check_mark: | :white_check_mark: |
+|Built-in                                        | :white_check_mark: | :x:                |
+|Facilities to map JSON objects to Pharo objects | :x:                | :white_check_mark: |
