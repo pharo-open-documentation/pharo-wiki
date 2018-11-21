@@ -5,6 +5,8 @@ Currently, Pharo provides one main framework to handle the [CSV format](https://
 NeoJSON is actually maintained by Sven Van Caekenberghe on [github](https://github.com/svenvc/NeoCSV).
 This section shows some quick examples but there is a great [documentation made by Sven](https://github.com/svenvc/docs/blob/master/neo/neo-csv-paper.md) and a chapter in [Enterprise Pharo (chapter 7)](http://books.pharo.org/enterprise-pharo/).
 
+> NeoCSV provides utilities to map Smalltalk objects to CSV lines, this page does not cover this topic to avoid duplication with the great documentation available in [Sven's documentation](https://github.com/svenvc/docs/blob/master/neo/neo-csv-paper.md) and [Enterprise Pharo (chapter 7)](http://books.pharo.org/enterprise-pharo/). Check it out if you need to use such feature!
+
 ### Install
 To install NeoCSV, simply execute the following code snippet in a playground:
 ```Smalltalk
