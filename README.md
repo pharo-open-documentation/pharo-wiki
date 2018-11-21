@@ -26,9 +26,9 @@ Tips and tricks related to Pharo.
 
 ### External projects
 #### Data exchange
+- [CSV support](CSV.md)
 - [JSON support](JSON.md)
 - [XML support](XML.md) [TODO]
 - [HTML support](HTML.md) [TODO]
-- [CSV support](CSV.md) [TODO]
 - [Arff support](Arff.md) - Arff is a format defined by [Weka](http://www.cs.waikato.ac.nz/ml/weka/) to be used for data importation. [TODO]
 - [ESC/P support](ESCP.md) - ESC/P is a binary format understood by a lot of receipt printers. [TODO]
