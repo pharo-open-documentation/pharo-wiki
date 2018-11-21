@@ -3,10 +3,11 @@
 Tips and tricks related to Pharo.
 
 - [Pharo tips and tricks](#pharo-tips-and-tricks)
-  * [Sections:](#sections)
+  * [Sections](#sections)
     + [General](#general)
     + [Pharo projects](#pharo-projects)
     + [External projects](#external-projects)
+      - [Data exchange](#data-exchange)
 
 ## Sections
 
@@ -24,7 +25,10 @@ Tips and tricks related to Pharo.
 - [Metalinks](Metalinks.md) [TODO]
 
 ### External projects
-
+#### Data exchange
 - [JSON support](JSON.md)
 - [XML support](XML.md) [TODO]
+- [HTML support](HTML.md) [TODO]
 - [CSV support](CSV.md) [TODO]
+- [Arff support](Arff.md) [TODO]
+- [ESCP support](ESCP.md) [TODO]
