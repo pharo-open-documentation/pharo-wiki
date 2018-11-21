@@ -1,4 +1,5 @@
 # CSV support in Pharo
+Currently, Pharo provides two main frameworks to handle the [CSV format](https://fr.wikipedia.org/wiki/Comma-separated_values).
 
 ## NeoCSV
 NeoJSON is actually maintained by Sven Van Caekenberghe on [github](https://github.com/svenvc/NeoCSV).
@@ -14,5 +15,27 @@ Metacello new
 ```
 
 ### Parse CSV
+- From `String`:
+```
+```
+
+- From `Stream`:
+```
+```
+
+- Read from CSV file:
+```
+```
 
 ### Generate CSV
+- To generate a CSV `String`:
+```
+```
+
+- To generate CSV on a `Stream`:
+```
+```
+
+- To write a CSV file:
+```
+```
