@@ -30,7 +30,7 @@ STONJSON fromStream: readStream "a Dictionary('foo'->42.0 )"
 
 - Read from JSON file:
 ```Smalltalk
-(FileReference home / 'path' / 'to' / 'myfile.json')
+'/path/to/file.json' asFileReference
 	readStreamDo: [ :readStream |
 		STONJSON fromStream: readStream ] "a Dictionary('foo'->42.0 )"
 ```
@@ -55,7 +55,7 @@ STONJSON put: jsonObject onStream: writeStream
 
 - To write a JSON file:
 ```Smalltalk
-(FileReference home / 'path' / 'to' / 'myfile.json')
+'/path/to/file.json' asFileReference
 	writeStreamDo: [ :writeStream |
 		STONJSON put: jsonObject onStream: writeStream ]
 ```
@@ -90,7 +90,7 @@ readStream := '{ "foo" : 42.0 }' readStream.
 
 - Read from JSON file:
 ```Smalltalk
-(FileReference home / 'path' / 'to' / 'myfile.json')
+'/path/to/file.json' asFileReference
 	readStreamDo: [ :readStream |
 		(NeoJSONReader on: readStream) next ] "a Dictionary('foo'->42.0 )"
 ```
@@ -128,7 +128,7 @@ Pretty:
 
 - To write a JSON file:
 ```Smalltalk
-(FileReference home / 'path' / 'to' / 'myfile.json')
+'/path/to/file.json' asFileReference
 	writeStreamDo: [ :writeStream |
 		(NeoJSONWriter on: writeStream)
 			nextPut: jsonObject ]
@@ -136,7 +136,7 @@ Pretty:
 
 Pretty:
 ```Smalltalk
-(FileReference home / 'path' / 'to' / 'myfile.json')
+'/path/to/file.json' asFileReference
 	writeStreamDo: [ :writeStream |
 		(NeoJSONWriter on: writeStream)
 			prettyPrint: true;
