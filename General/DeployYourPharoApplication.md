@@ -26,6 +26,10 @@
 
 > TODO
 
+### Disable creation of STDio files on Windows
+
+> TODO
+
 ### Remove tests and example packages
 
 > TODO
