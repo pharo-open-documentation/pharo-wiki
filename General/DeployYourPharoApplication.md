@@ -1,6 +1,13 @@
 # How to deploy a Pharo application
 
->TODO
+>TODO - Introduction
+
+- [How to deploy a Pharo application](#how-to-deploy-a-pharo-application)
+  * [Clean your image before deployment](#clean-your-image-before-deployment)
+  * [Sources obfuscation](#sources-obfuscation)
+  * [Change the logo and window title of the application](#change-the-logo-and-window-title-of-the-application)
+  * [Sign your application on Windows and OSX](#sign-your-application-on-windows-and-osx)
+  * [Deploy a Seaside application with Nginx](#deploy-a-seaside-application-with-nginx)
 
 ## Clean your image before deployment
 
@@ -85,8 +92,7 @@ Deprecation
 
 > TODO
 
-## Block access to the sources
-
+## Sources obfuscation
 > TODO
 
 ### Force omission of startup preferences
