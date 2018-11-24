@@ -1,6 +1,6 @@
 # How to deploy a Pharo application
 
->TODO - Introduction
+>TODO - Introduction - Explain that this guide was written from Pharo 7
 
 - [How to deploy a Pharo application](#how-to-deploy-a-pharo-application)
   * [Clean your image before deployment](#clean-your-image-before-deployment)
@@ -70,27 +70,74 @@ Deprecation
 
 ### Enable the run without sources and changes files
 
-> TODO
+It is possible to run a Pharo image without `.changes` or `.sources` files.
+
+To do that you can execute:
+
+```Smalltalk
+NoChangesLog install.
+NoPharoFilesOpener install
+```
+
+Note that FFI needs the sources to work properly. In Pharo 7 a pluggin to remove this need was introduced.
+If your application uses FFI calls you will need to execute:
+
+```Smalltalk
+FFICompilerPlugin install
+```
 
 ### Disable creation of STDio files on Windows
 
-> TODO
+On Windows there is two way to launch a Pharo image. The first uses the `Pharo.exe` executable and the second `PharoConsole.exe`. The difference between those two methods is that the former will be launched without a terminal and will create files to write STDio outputs. The second will open a terminal with Pharo to manage STDio.
+
+It is possible to disable the writing of the STDio files on Windows with this code:
+
+```Smalltalk
+Stdio useNullStreams
+```
 
 ### Remove tests and example packages
 
-> TODO
+In production examples and tests packages are useless. You can find bellow a script to unload them. 
+
+> Be careful, this script is based on a heuristic. If the naming convensions or dependencies are not well managed this might break your application. Please test you application after using such a script.
+
+```Smalltalk
+| substrings |
+substrings := #('Test' 'Example' 'Mock' 'Demo').
+
+RPackageOrganizer default packages
+		select: [ :p | substrings anySatisfy: [ :aString | p name includesSubstring: aString ] ]
+		thenDo: #removeFromSystem
+```
 
 ### Disable Monticello cache
 
-> TODO
+Monticello uses by default a cache when it is used. It is possible to disable this cache with this script:
+
+```Smalltalk
+MCCacheRepository uniqueInstance disable
+```
 
 ### Disable Epicea
 
-> TODO
+Pharo contains a record system to recover changes: *Epicea*. This system log a lot of events on disk.
+
+It is possible to disable Epicea like this:
+
+```Smalltalk
+EpMonitor reset
+```
 
 ### Garbage collect
 
-> TODO
+As last step of the deployment I would recommand the user to launch a full garbage collection of the system to clean all dead instances from the image:
+
+```Smalltalk
+5 timesRepeat: [ Smalltalk garbageCollect ]
+```
+
+### Delete pharo-local folder
 
 ## Sources obfuscation
 > TODO
