@@ -3,15 +3,15 @@ Currently, Pharo provides two main frameworks to handle the [JSON format](https:
 
 This page briefly present these two frameworks and expose their differences to help users to choose the one fitting their needs.
 
-- [JSON support in Pharo](#json-support-in-pharo)
-  * [STONJSON](#stonjson)
-    + [Parse JSON](#parse-json)
-    + [Generate JSON](#generate-json)
-  * [NeoJSON](#neojson)
-    + [Install](#install)
-    + [Parse JSON](#parse-json-1)
-    + [Generate JSON](#generate-json-1)
-  * [STONJSON v.s. NeoJSON](#stonjson-vs-neojson)
+- [STONJSON](#stonjson)
+  * [Parse JSON](#parse-json)
+  * [Generate JSON](#generate-json)
+- [NeoJSON](#neojson)
+  * [Install](#install)
+  * [Parse JSON](#parse-json-1)
+  * [Generate JSON](#generate-json-1)
+- [STONJSON v.s. NeoJSON](#stonjson-vs-neojson)
+- [JSON Schema](#json-schema)
 
 ## STONJSON
 STONJSON is the built-in JSON parser available in default Pharo images. It is part of the STON package and its development takes place in Pharo's [github repository](https://github.com/pharo-project/pharo).
@@ -145,13 +145,16 @@ Pretty:
 
 ## STONJSON v.s. NeoJSON
 
-|Property                                        |STONJSON            |NeoJSON             |
-|------------------------------------------------|--------------------|--------------------|
-|Parse JSON                                      | :white_check_mark: | :white_check_mark: |
-|Generate JSON                                   | :white_check_mark: | :white_check_mark: |
-|Pretty-printing                                 | :white_check_mark: | :white_check_mark: |
-|Built-in                                        | :white_check_mark: | :x:                |
-|Facilities to map JSON objects to Pharo objects | :x:                | :white_check_mark: |
+|Property                                        |STONJSON            |NeoJSON               |
+|------------------------------------------------|--------------------|----------------------|
+|Parse JSON                                      | :white_check_mark: | :white_check_mark:   |
+|Generate JSON                                   | :white_check_mark: | :white_check_mark:   |
+|Pretty-printing                                 | :white_check_mark: | :white_check_mark:   |
+|Built-in                                        | :white_check_mark: | :x:                  |
+|Facilities to map JSON objects to Pharo objects | :x:                | :white_check_mark:   |
+|Facilities to query JSON objects                | :x:                | :white_check_mark: * |
+
+> *See [this post](http://forum.world.st/How-to-query-a-JSON-tp4948175p4948177.html) from Sven on the mailing list to know how to use this feature implemented in `NeoJSONObject`.
 
 ## JSON Schema
 JSON Schema allows to describes the structure of JSON objects. It is similar to [XML Schema](https://en.wikipedia.org/wiki/XML_Schema_(W3C)) but for JSON.
