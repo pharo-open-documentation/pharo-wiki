@@ -152,3 +152,8 @@ Pretty:
 |Pretty-printing                                 | :white_check_mark: | :white_check_mark: |
 |Built-in                                        | :white_check_mark: | :x:                |
 |Facilities to map JSON objects to Pharo objects | :x:                | :white_check_mark: |
+
+## JSON Schema
+JSON Schema allows to describes the structure of JSON objects. It is similar to [XML Schema](https://en.wikipedia.org/wiki/XML_Schema_(W3C)) but for JSON.
+
+A yet incomplete (but working in its scope) implementation of JSON Schema is provided by Zweidenker [on github](https://github.com/zweidenker/JSONSchema).
