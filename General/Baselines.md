@@ -33,9 +33,9 @@ In this documentation we will first explain how to write a baseline, then we wil
   * [Other features](#other-features)
     + [Metacello lock feature](#metacello-lock-feature)
     + [Metacello get feature](#metacello-get-feature)
+    + [Metacello fetch feature](#metacello-fetch-feature)
     + [Metacello record feature](#metacello-record-feature)
     + [Metacello listing feature](#metacello-listing-feature)
-    + [Metacello fetch feature](#metacello-fetch-feature)
 
 ## How to define Baselines
 
@@ -940,7 +940,7 @@ This example will lock the project MateralDesignLite to version v1.1.0.
 
 You can check the list of locked project via those snippets:
 
-```
+```Smalltalk
 Metacello registry locked. "Return the list of locked projects from the Metacello registry"
 
 Metacello image locked. "Return the list of locked projects loaded in the image."
@@ -969,10 +969,75 @@ Metacello new
 ```
 
 ### Metacello get feature
-**TODO**
-### Metacello record feature
-**TODO**
-### Metacello listing feature
-**TODO**
+
+Metacello includes a command to load the Baseline of a project into the image. This is useful in two cases:
+* You want to load only the Baseline of the project
+* You already have an obsolete baseline in your image and you want to update it before loading the project
+
+To do that you can use the `get` command.
+
+Example:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+	baseline: 'MaterialDesignLite';
+	get
+```
+
 ### Metacello fetch feature
-**TODO**
+
+The fetch command downloads all of the packages without loading them. This includes the packages of the project but also their dependencies.
+
+Example:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+	baseline: 'MaterialDesignLite';
+	fetch
+```
+
+You can also specify a group:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+	baseline: 'MaterialDesignLite';
+	fetch: #('Extensions' 'Widgets')
+```
+
+The fetch command duplicates what the load command would do, which means if a package is alrady loaded in the image, it will not be fetched. To fetch packages regardless of what is loaded in the image, use the ignoreImage option:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+	baseline: 'MaterialDesignLite';
+	ignoreImage;
+	fetch
+```
+
+### Metacello record feature
+
+The `record` command performs the same function as the `fetch` command, without actually downloading any files. As a consequence, it can give you a quick report of what packages will be loaded into your image. The record will be produced in the `Transcript` (cmd + o + t).
+
+Example:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+	baseline: 'MaterialDesignLite';
+	record
+```
+
+### Metacello listing feature
+
+The `list` command may be used to list projects in the image or Metacello registry:
+
+```Smalltalk
+Metacello image
+	baseline: [ :spec | true "spec name beginsWith: 'Seaside'" ];
+	list
+```
+
+This command needs to be inspected.
