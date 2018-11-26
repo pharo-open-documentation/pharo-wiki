@@ -905,7 +905,9 @@ Metacello new
 ```
 
 ### From Iceberg
-**TODO**
+
+In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This tool all to load a project via an interface.
+
 ### Metacello lock feature
 **TODO**
 ### Metacello get feature
