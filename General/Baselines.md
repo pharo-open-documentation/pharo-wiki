@@ -11,7 +11,6 @@ In this documentation we will first explain how to write a baseline, then we wil
     + [Define packages forming your project](#define-packages-forming-your-project)
     + [Define external dependencies](#define-external-dependencies)
       - [To other remote git projects](#to-other-remote-git-projects)
-        * [Depends on the same project with different groups](#depends-on-the-same-project-with-different-groups)
       - [To a local git project](#to-a-local-git-project)
       - [To smalltalkhub projects](#to-smalltalkhub-projects)
     + [Groups](#groups)
@@ -24,8 +23,17 @@ In this documentation we will first explain how to write a baseline, then we wil
       - [Atomic loading](#atomic-loading)
     + [Full example](#full-example)
   * [How to load a git project using its baseline](#how-to-load-a-git-project-using-its-baseline)
-    + [From Iceberg](#from-iceberg)
     + [From the playground](#from-the-playground)
+      - [Project managed with Git](#project-managed-with-git)
+      - [Project managed with Smalltalkhub](#project-managed-with-smalltalkhub)
+      - [Loading groups](#loading-groups)
+      - [Conflict and Upgrade resolution](#conflict-and-upgrade-resolution)
+      - [Log warnings](#log-warnings)
+    + [From Iceberg](#from-iceberg)
+    + [Metacello lock feature](#metacello-lock-feature)
+    + [Metacello get feature](#metacello-get-feature)
+    + [Metacello record feature](#metacello-record-feature)
+    + [Metacello fetch feature](#metacello-fetch-feature)
 
 ## How to define Baselines
 
@@ -750,7 +758,6 @@ Example:
 Metacello new
 	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
 	baseline: 'MaterialDesignLite';
-	onWarningLog;
 	load
 ```
 
@@ -777,10 +784,66 @@ Metacello new
 	load
 ```
 
-#### Project managed with Monticello
-**TODO**
+#### Project managed with Smalltalkhub
+
+To load a project from Smalltalkhub you need to execute an expression like this:
+
+```Smalltalk
+Metacello new
+	repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main';
+	configuration: {configurationName};
+	version: {version};
+	load
+```
+
+This command has two parameter:
+* The `owner`: Name of the team or user hosting the project
+* The `repositoryName`: Name of the repository on SmalltalkHub
+- `configurationName` is the name of the configuration to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
+* The `{version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+
+Example:
+
+```Smalltalk
+Metacello new
+  repository: 'http://smalltalkhub.com/mc/Seaside/Seaside31/main';
+  configuration: 'Seaside3';
+  version: #stable;
+  load.
+```
+
+You can also use `Metacello>>smalltalkhubUser:project:`:
+
+```Smalltalk
+Metacello new
+  smalltalkhubUser: 'Seaside' project: 'Seaside31';
+  configuration: 'Seaside3';
+  version: #stable;
+  load.
+```
+
 #### Loading groups
-**TODO**
+
+Sometimes we want to load only specific groups of a project. This can be done be replacing the `load` selector by `load:`.
+
+The `load:` selector can take a string or a collection of strings as parameter. Each string represent a group name from the baseline.
+
+Examples:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	load: 'Extensions'
+```
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	load: #('Extensions' 'Widgets')
+```
+
 #### Conflict and Upgrade resolution
 **TODO**
 #### Log warnings
@@ -793,4 +856,6 @@ Metacello new
 ### Metacello get feature
 **TODO**
 ### Metacello record feature
+**TODO**
+### Metacello fetch feature
 **TODO**
