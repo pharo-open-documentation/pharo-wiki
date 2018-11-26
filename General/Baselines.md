@@ -674,12 +674,123 @@ project
 ```
 
 ## How to load a git project using its baseline
+
+When you have a project with a *Baseline*, it is possible to load it in a Pharo image if the project is compatible with the Pharo version.
+
+This section will explain how to load a project via its baseline.
+
+### From the playground
+
+The first way to load a project is to create a *Metacello* request programmaticaly and to execute it. This request looks like this:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+	baseline: 'MaterialDesignLite';
+	load
+```
+
+We can note three steps to load a project this way:
+1. Create a new Metacello request
+2. Parametrize it (declare the repository of the project, specify the version, the baseline, optional options...)
+3. Launch the loading
+
+To parametrize the request some options are necessary and some are optional. We will cover in the next two sub sections how to parametrize the loading of a project hosted via Monticello and Git, then we will detail optional options.
+
+#### Project managed with Git
+
+To load a project from git you need to execute an expression like this:
+
+```Smalltalk
+Metacello new
+	repository: {repository};
+	baseline: {baselineName};
+	load
+```
+
+This command has two parameter:
+- `repository` defining the location of the git project, the version of the project to load and the subdirectory in which the project is stored.
+- `baselineName` is the name of the baseline to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
+
+The repository parameter is a string that can takes different form in case we have a local project or a project hosted remotely.
+
+##### Project from github/gitlab/bitbucket
+
+The repository parameter to load a project from github/gitlab/bitbucket takes this form:
+
+`{prefix}://{owner}/{projectName}:{version}/{subFolder}`
+
+This snippet should be configured with:
+
+* The `{prefix}`: This one will be specific to the host. It can be:
+	* `github` for github
+	* `bitbucket` for bitbucket
+	* `gitlab` for gitlab
+* The `{owner}`: Name of the user or organisation hosting the project
+* The `{projectName}`: Name of the project
+* The `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
+* The `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+
+Examples:
+
+```Smalltalk
+Metacello new
+	repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src';
+	baseline: 'MaterialDesignLite';
+	load
+```
+
+Metacello also comes with some sytaxic suggar to define the repository to github or bitbucket:
+* *Github*: `Metacello>>githubUser:project:commitish:path:`
+* *Bitbucket*: `Metacello>>bitbucketUser:project:commitish:path:`
+
+Example: 
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onWarningLog;
+	load
+```
+
+##### Project from local repository
+
+To load a project from a local repository you can this form to declare the repository:
+
+`'{prefix}://{full/path/to/repository}/{subFolder}'`
+
+This snippet should be configured with:
+
+* The `{prefix}`: This one will be specific to the file format:
+	* `filetree` for a Filetree project
+	* `tonel` for a Tonel project
+* The `{full/path/to/repository}`: is the path to the project on the file system
+* The `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+
+Example:
+
+```Smalltalk
+Metacello new
+	repository: 'tonel://C:\Users\Cyril\GitRepositories\Native-Browser\src';
+	baseline: 'NativeBrowser';
+	load
+```
+
+#### Project managed with Monticello
 **TODO**
+#### Loading groups
+**TODO**
+#### Conflict and Upgrade resolution
+**TODO**
+#### Log warnings
+**TODO**
+
 ### From Iceberg
 **TODO**
-### From the playground
-**TODO**
 ### Metacello lock feature
+**TODO**
+### Metacello get feature
 **TODO**
 ### Metacello record feature
 **TODO**
