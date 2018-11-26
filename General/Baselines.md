@@ -30,6 +30,7 @@ In this documentation we will first explain how to write a baseline, then we wil
       - [Conflict, Upgrade and Downgrade resolution](#conflict-upgrade-and-downgrade-resolution)
       - [Manage warnings](#manage-warnings)
     + [From Iceberg](#from-iceberg)
+  * [Other features](#other-features)
     + [Metacello lock feature](#metacello-lock-feature)
     + [Metacello get feature](#metacello-get-feature)
     + [Metacello record feature](#metacello-record-feature)
@@ -911,6 +912,10 @@ In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This
 The first step is to add your git project to Iceberg. Then with a right click on the project name you can access a `Metacello` submenu to load the project.
 
 ![Interface of Iceberg to load a project](loadBaselineViaIceberg.png?raw=true "Interface of Iceberg to load a project")
+
+## Other features 
+
+This section will cover other features of the baselines and Metacello.
 
 ### Metacello lock feature
 **TODO**
