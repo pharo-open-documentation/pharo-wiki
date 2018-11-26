@@ -1,5 +1,11 @@
 # Baselines
 
+Pharo projects often requires a configuration to declare the how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to extermal projects and independant sub-groups that can be loaded.
+
+In this documentation we will first explain how to write a baseline, then we will explain how to load a project from its baseline.
+
+> **TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
+
 - [Baselines](#baselines)
   * [How to define Baselines](#how-to-define-baselines)
     + [Define packages forming your project](#define-packages-forming-your-project)
@@ -21,10 +27,7 @@
     + [From Iceberg](#from-iceberg)
     + [From the playground](#from-the-playground)
 
-**TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
-
 ## How to define Baselines
-Baseline are a way to manage projects in Pharo. A baseline defines the packages of the project, their dependencies and independant sub-groups that can be loaded.
 
 The first step to create a baseline is to create a new subclass of `BaselineOf` (in the following code snippet, `{MyProject}` is to be substituted by the name of your project):
 
