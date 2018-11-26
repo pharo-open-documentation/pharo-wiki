@@ -918,7 +918,56 @@ The first step is to add your git project to Iceberg. Then with a right click on
 This section will cover other features of the baselines and Metacello.
 
 ### Metacello lock feature
-**TODO**
+
+Automatically upgrading projects is not always desirable. Of course, in the normal course of loading and upgrading, you want the correct version of dependent projects loaded. However under the following conditions:
+
+* You may be actively developing a particular version of a project and you don't want the project upgraded (or downgraded) out from under you.
+* You may be working with a git checkout of a project and you want to continue using the git checkout.
+* You may not want to have particular projects upgraded automatically.
+
+The `lock` command gives you this possibility. You can lock a project to a particular version.
+
+Example:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
+	baseline: 'MaterialDesignLite';
+	lock
+```
+
+This example will lock the project MateralDesignLite to version v1.1.0.
+
+You can check the list of locked project via those snippets:
+
+```
+Metacello registry locked. "Return the list of locked projects from the Metacello registry"
+
+Metacello image locked. "Return the list of locked projects loaded in the image."
+```
+
+If you wish to unlock a project, you can use the `unlock` message.
+
+Example:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
+	baseline: 'MaterialDesignLite';
+	unlock
+```
+
+During the loading of a project you can also do some specific actions when you encounter a lock. For this you can use the `onLock:` message.
+
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onLoad: [ :ex :loaded :incoming | loaded baseName = 'myProject' ifTrue: [ ex break ] ifFalse: [ ex honor ] ];
+	load
+```
+
 ### Metacello get feature
 **TODO**
 ### Metacello record feature
