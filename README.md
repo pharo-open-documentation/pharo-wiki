@@ -14,8 +14,8 @@ Tips and tricks related to Pharo.
 ### General
 
 - [Things beginners must learn](General/MustKnowForBeginners.md)
-- [How to deal with baselines](General/Baselines.md) [In Progress]
-- [How to deploy a pharo application](General/DeployYourPharoApplication.md) [Finished - Needs review]
+- [How to deal with baselines](General/Baselines.md) [Finished - Needs review]
+- [How to deploy a pharo application](General/DeployYourPharoApplication.md) [In Progress]
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
 
 ### Pharo projects
