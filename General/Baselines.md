@@ -906,7 +906,11 @@ Metacello new
 
 ### From Iceberg
 
-In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This tool all to load a project via an interface.
+In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This tool allow the developer to load a project via an interface.
+
+The first step is to add your git project to Iceberg. Then with a right click on the project name you can access a `Metacello` submenu to load the project.
+
+![Interface of Iceberg to load a project](loadBaselineViaIceberg.png?raw=true "Interface of Iceberg to load a project")
 
 ### Metacello lock feature
 **TODO**
