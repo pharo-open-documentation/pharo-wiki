@@ -1037,6 +1037,10 @@ The `list` command may be used to list projects in the image or Metacello regist
 ```Smalltalk
 Metacello image
 	baseline: [ :spec | true "spec name beginsWith: 'Seaside'" ];
+	list.
+	
+Metacello registry
+	baseline: [ :spec | true "spec name beginsWith: 'Seaside'" ];
 	list
 ```
 
