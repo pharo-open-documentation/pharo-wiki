@@ -27,12 +27,13 @@ In this documentation we will first explain how to write a baseline, then we wil
       - [Project managed with Git](#project-managed-with-git)
       - [Project managed with Smalltalkhub](#project-managed-with-smalltalkhub)
       - [Loading groups](#loading-groups)
-      - [Conflict and Upgrade resolution](#conflict-and-upgrade-resolution)
-      - [Log warnings](#log-warnings)
+      - [Conflict, Upgrade and Downgrade resolution](#conflict-upgrade-and-downgrade-resolution)
+      - [Manage warnings](#manage-warnings)
     + [From Iceberg](#from-iceberg)
     + [Metacello lock feature](#metacello-lock-feature)
     + [Metacello get feature](#metacello-get-feature)
     + [Metacello record feature](#metacello-record-feature)
+    + [Metacello listing feature](#metacello-listing-feature)
     + [Metacello fetch feature](#metacello-fetch-feature)
 
 ## How to define Baselines
@@ -844,10 +845,64 @@ Metacello new
 	load: #('Extensions' 'Widgets')
 ```
 
-#### Conflict and Upgrade resolution
-**TODO**
-#### Log warnings
-**TODO**
+#### Conflict, Upgrade and Downgrade resolution
+
+Sometime it happens that we can have conflicts, updates or downgrades while loading a project.
+
+For example we can imagine we have in our image a project `ProjA` version v1.0.0.. We want to load our project `ProjB` depending on `ProjA` version v2.0.0., `ProjC` version v1.0.0 and `ProjD` that loads also `ProjC` version v2.0.0.
+
+If we load `ProjB` in those conditions, we will have two problems:
+- The update of `ProjA` from v1.0.0 to v2.0.0
+- A conflict between `ProjC` v1.0.0 and v2.0.0
+
+To manage conflicts we can use the options `onConflict:`, `onUpgrade:` and `onDowngrade:`.
+
+Example:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onConflict: [ :ex | ex useIncoming ];
+	onUpgrade: [ :ex | ex useIncoming ];
+	onDowngrade: [ :ex | ex useLoaded ];
+	load
+```
+
+A last conflicting situation happens if Pharo includes a project in the default distribution and you want to load a new version. To manage this case you have the `ignoreImage` option.
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onConflict: [ :ex | ex useIncoming ];
+	onUpgrade: [ :ex | ex useIncoming ];
+	onDowngrade: [ :ex | ex useLoaded ];
+	ignoreImage;
+	load
+```
+
+#### Manage warnings
+
+In some cases a project has problems during the loading, for example if a package loaded miss a dependency. When this happen, Metacello will raise a warning. Most of the time the projects can still work, at least partially. If you de not want Metacello to open a warning, you can log them instead. To enable this option you can use the `onWarningLog` or `onWarning:` options.
+
+Examples:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onWarning: [ :ex | Transcript crShow: ex ];
+	load
+```
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onWarningLog;
+	load
+```
 
 ### From Iceberg
 **TODO**
@@ -856,6 +911,8 @@ Metacello new
 ### Metacello get feature
 **TODO**
 ### Metacello record feature
+**TODO**
+### Metacello listing feature
 **TODO**
 ### Metacello fetch feature
 **TODO**
