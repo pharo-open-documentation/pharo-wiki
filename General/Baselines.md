@@ -732,14 +732,14 @@ The repository parameter to load a project from github/gitlab/bitbucket takes th
 
 This snippet should be configured with:
 
-* The `{prefix}`: This one will be specific to the host. It can be:
+* `{prefix}`: This one will be specific to the host. It can be:
 	* `github` for github
 	* `bitbucket` for bitbucket
 	* `gitlab` for gitlab
-* The `{owner}`: Name of the user or organisation hosting the project
-* The `{projectName}`: Name of the project
-* The `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
-* The `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+* `{owner}`: Name of the user or organisation hosting the project
+* `{projectName}`: Name of the project
+* `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
+* `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
 
 Examples:
 
