@@ -1,8 +1,8 @@
 # Baselines
 
-Pharo projects often requires a configuration to declare the how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to extermal projects and independant sub-groups that can be loaded.
+Pharo projects often requires a configuration to declare the how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to external projects and independant sub-groups that can be loaded.
 
-In this documentation we will first explain how to write a baseline, then we will explain how to load a project from its baseline.
+This documentation explains how to write a baseline and how to load the project described by this baseline.
 
 > **TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
 
@@ -39,13 +39,13 @@ In this documentation we will first explain how to write a baseline, then we wil
 
 ## How to define Baselines
 
-The first step to create a baseline is to create a new subclass of `BaselineOf` (in the following code snippet, `{MyProject}` is to be substituted by the name of your project):
+The first step to create a baseline is to create a new subclass of `BaselineOf` (in the following code snippet, `MyProject` is to be substituted by the name of your project):
 
 ```Smalltalk
-BaselineOf subclass: #BaselineOf{MyProject}
+BaselineOf subclass: #BaselineOfMyProject
 	slots: {  }
 	classVariables: {  }
-	package: 'BaselineOf{MyProject}'
+	package: 'BaselineOfMyProject'
 ``` 
 
 Then, you will need to create a method that will define the spec of the project for the commit it will be included in.
@@ -64,7 +64,7 @@ baseline: spec
 
 ### Define packages forming your project
 
-To define packages of the project, just send the message `#package:` to the spec with the name of the package as argument.
+To define the packages of the project, just send the message `#package:` to the spec with the name of the package as argument.
 
 ```Smalltalk
 baseline: spec
@@ -106,11 +106,11 @@ baseline: spec
 
 Defining external dependencies can be done in different ways depending on where the dependency is hosted. 
 
-> For improved readability I recommand to extract the definition of dependencies to external methods.
+> To improve readability, I recommand to extract the definitions of dependencies into dedicated methods.
 
 #### To other remote git projects
 
-To depend on a git project hosted project you can use the method #baseline:with:.
+To depend on a git project, you can use the method `#baseline:with:`.
 
 ```Smalltalk
 	spec
@@ -120,15 +120,15 @@ To depend on a git project hosted project you can use the method #baseline:with:
 
 This snippet should be configured with:
 
-* The `{BaselineName}`: The name of the baseline to load (For example it would be `'MaterialDesignLite'` to load the `BaselineOfMaterialDesignLite`)
-* The `{prefix}`: This one will be specific to the host. It can be:
+* `{BaselineName}`: The name of the baseline to load (For example it would be `'MaterialDesignLite'` to load the `BaselineOfMaterialDesignLite`)
+* `{prefix}`: This one will be specific to the host. It can be:
 	* `github` for github
 	* `bitbucket` for bitbucket
 	* `gitlab` for gitlab
-* The `{owner}`: Name of the user or organisation hosting the project
-* The `{projectName}`: Name of the project
-* The `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
-* The `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+* `{owner}`: Name of the user or organisation hosting the project
+* `{projectName}`: Name of the project
+* `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
+* `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
 
 Example:
 
@@ -138,7 +138,7 @@ Example:
 		with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src']
 ```
 
-This snippet can also be personalized to load only a specific group of the dependency like this:
+This snippet can also be customized to load only a specific group of the dependency like this:
 
 ```Smalltalk
 	spec
@@ -186,9 +186,9 @@ materialDesignLite: spec
 
 ##### Depends on the same project with different groups
 
-Sometimes, you might want to depend on a project, but two packages will depend on different groups of this external project. 
+You might need to depend on an external project, but two packages of your project depend on different groups of this external project. 
 
-For that case you can use the message `#project:copyFrom:with:` to create a new dependency spec.
+In that case, you can use the message `#project:copyFrom:with:` to create a new dependency spec.
 
 ```Smalltalk
 materialDesignLite: spec
@@ -254,11 +254,11 @@ Depending on a [Smalltalkhub](http://smalltalkhub.com) project is done via `#pro
 
 The snippet should be configured with:
 
-* The `{DependencyName}`: It can be anything different from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
-* The `{ConfigurationName}`: It is the name of the configuration you wish to reference
-* The `{Version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
-* The `{owner}`: Name of the team or user hosting the project
-* The `{repositoryName}`: Name of the repository on SmalltalkHub
+* `{DependencyName}`: It can be anything different from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
+* `{ConfigurationName}`: It is the name of the configuration you wish to reference
+* `{Version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+* `{owner}`: Name of the team or user hosting the project
+* `{repositoryName}`: Name of the repository on SmalltalkHub
 
 Example:
 
@@ -271,7 +271,7 @@ Example:
 				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 ```
 
-As for git hosted repositories, you can reference a specific group:
+As for git hosted repositories, you can ask for a specific group:
 
 ```Smalltalk
 	spec
@@ -318,9 +318,9 @@ magritte3: spec
 ### Groups
 
 We do not want to load the full project all the time. In some case we might want to loads a sub part of the project for different reasons:
-* We might want to load only the model of a project without the UI to build an alternative UI
-* We might want to be able to load it without the tests and examples
-* The project might have some optional modules
+* Only the model of a project is needed without the UI (for example to build an alternative UI)
+* Only the core of the project is needed without the tests and examples
+* The project have some optional modules
 * Etc.
 
 To manage this, baselines have the concept of `Group`. A group is a loadable spec containing only a sub part of the project.
@@ -388,12 +388,12 @@ baseline: spec
 
 ### Pre/post load actions
 
-Baselines allow to have some hooks to execute some code when loading a project. 
+Baselines provide some hooks to execute some code when loading a project. 
 
 Those hooks are:
 
-* `#preLoadDoIt:` : This hook is executed after the code and dependencies are resolved and fetched and before the code is loaded.
-* `#postLoadDoIt:` : This hook is executed when the project finished to load.
+* `#preLoadDoIt:` which is executed after the code and dependencies are resolved and fetched and before the code is loaded.
+* `#postLoadDoIt:` which is executed when the project finished to load.
 
 Those methods take a symbol as parameter. This symbol should be the name of a method of the baseline that should be executed by the hook. 
 
@@ -424,23 +424,23 @@ baseline: spec
 ```Smalltalk
 preload: loader package: packageSpec
 
-	Trascript crLog: 'The fetch was finished. Now let's load the project'
+	Transcript crLog: 'The fetch was finished. Now let's load the project'
 
 ```
 ```Smalltalk
 postload: loader package: packageSpec
 
-	Trascript crLog: 'Project loaded!'
+	Transcript crLog: 'Project loaded!'
 
 ```
 
 ### Loads different packages depending on the Pharo version
 
-It might be useful to load some packages only in specific Pharo versions. For example if we have a compatibility package for Pharo 6, we do not want to load it in pharo 7.
+It might be useful to load some packages in specific Pharo versions only. For example if we have a compatibility package for Pharo 6, we do not want to load it in pharo 7.
 
 This is possible with the different spec attributes. 
 
-Until here we defined everything in a spec for `#common`. This spec will impact every pharo versions. But it's possible to define spec only for some Pharo versions or even other Smalltalks. 
+Until here we defined everything in a spec for `#common`. This spec will impact every pharo versions. But it's possible to define a spec for specific Pharo versions or even other Smalltalks. 
 
 In order to do that we can add in the baseline a special #for:do: command taking as parameter a specific attribute.
 
@@ -547,7 +547,7 @@ Baselines support different loading types. The loading types will define how Met
 
 This type is the default one. If you change nothing to the baseline, it will use it.
 
-When the load type is linear, the packages will be loaded one by one with their requirement loaded before them.
+When the load type is linear, packages will be loaded one by one with their requirements loaded before them.
 
 #### Atomic loading 
 
@@ -559,12 +559,12 @@ To define the loading type as atomic you need to override the method #project:
 project
 	^ super project
 		loadType: #atomic;
-		youself
+		yourself
 ```
 
 ### Full example
 
-Here is an example with everything presented:
+Here is an example with all previous features illustrated:
 
 
 ```Smalltalk
@@ -702,10 +702,10 @@ Metacello new
 
 We can note three steps to load a project this way:
 1. Create a new Metacello request
-2. Parametrize it (declare the repository of the project, specify the version, the baseline, optional options...)
+2. Configure it (declare the repository of the project, specify the version, the baseline, optional options...)
 3. Launch the loading
 
-To parametrize the request some options are necessary and some are optional. We will cover in the next two sub sections how to parametrize the loading of a project hosted via Monticello and Git, then we will detail optional options.
+To configure the request some options are necessary and some are optional. We will cover in the next two sub sections how to configure the loading of a project hosted via Monticello and Git, then we will detail optional options.
 
 #### Project managed with Git
 
@@ -771,11 +771,11 @@ To load a project from a local repository you can this form to declare the repos
 
 This snippet should be configured with:
 
-* The `{prefix}`: This one will be specific to the file format:
+* `{prefix}`: This one will be specific to the file format:
 	* `filetree` for a Filetree project
 	* `tonel` for a Tonel project
-* The `{full/path/to/repository}`: is the path to the project on the file system
-* The `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+* `{full/path/to/repository}`: is the path to the project on the file system
+* `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
 
 Example:
 
@@ -799,10 +799,10 @@ Metacello new
 ```
 
 This command has two parameter:
-* The `owner`: Name of the team or user hosting the project
-* The `repositoryName`: Name of the repository on SmalltalkHub
-- `configurationName` is the name of the configuration to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
-* The `{version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+* `owner`: Name of the team or user hosting the project
+* `repositoryName`: Name of the repository on SmalltalkHub
+* `configurationName` is the name of the configuration to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
+* `{version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
 
 Example:
 
