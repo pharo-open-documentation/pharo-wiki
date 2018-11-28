@@ -25,6 +25,7 @@ Tips and tricks related to Pharo.
 - [Rich text](PharoProjects/RichText.md)
 - [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.
 - [Metalinks](PharoProjects/Metalinks.md) [TODO]
+- [Basic interactions with OS](PharoProjects/OS.md) [In progress]
 
 ### External projects
 #### Data exchange
