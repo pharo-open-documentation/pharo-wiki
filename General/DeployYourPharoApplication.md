@@ -1,6 +1,8 @@
 # How to deploy a Pharo application
 
->TODO - Introduction - Explain that this guide was written from Pharo 7
+This guide has for vocation to help developpers deploying a Pharo application. If something is missing in your point of view, do not hesitate to open an issue.
+
+**This guide was first written for Pharo 7. Some part will not work in Pharo 6 and earlier.**
 
 - [How to deploy a Pharo application](#how-to-deploy-a-pharo-application)
   * [Clean your image before deployment](#clean-your-image-before-deployment)
@@ -20,7 +22,7 @@ A first step is to launch a cleanup of the image. Pharo already contains a syste
 It can be done with this snippet:
 
 ```Smalltalk
-  Smalltalk cleanUp: true except: {} confirming: false
+Smalltalk cleanUp: true except: {} confirming: false
 ```
 
 The first parameter should be a boolean. If it's value is `true` it will launch a more aggresive cleanup and this will destroy resources, change sets, etc.
@@ -64,8 +66,8 @@ You can do that via:
 
 ```Smalltalk
 Deprecation
-		raiseWarning: false;
-		showWarning: false
+	raiseWarning: false;
+	showWarning: false
 ```
 
 ### Enable the run without sources and changes files
@@ -139,46 +141,111 @@ As last step of the deployment I would recommand the user to launch a full garba
 
 ### Delete pharo-local folder
 
+Pharo works with a local folder containing caches. This folder is called `pharo-local` and is next to the image since Pharo 7. It is recommanded to delete this folder, or to not include this folder in the distribution.
+
 ## Sources obfuscation
-> TODO
+
+When deploying a commercial application on the customer's infrastructure, we might want to protect our code. This section will give some advice on how to protect the source code of your application.
+
+> WARNING: What will be describe here is not a perfect solution. We are aware it will still have some weakness, but at least it will make it much harder to get the source code of the application.
+
+This section works with the previous section aswell. We recommand to:
+* Run without the sources file
+* Run without the changes file
+* Disable Epicea
+* Remove the loggins of your image
 
 ### Force omission of startup preferences
 
-> TODO
+At launch Pharo try to load preferences. Since the user can execute Smalltalk code via those proferences, we recommand to disable the preference mechanism with this code:
+
+```Smalltalk
+PharoCommandLineHandler forcePreferencesOmission: true
+```
 
 ### Protect command lines by a password
 
-> TODO
+Since the user can intereact with Pharo via command line, we recommand to protect command lines with a password.
+
+The password is not be saved in clear. It is hashed using pepper and iterations.
+
+If you wish to define *application* command lines who does not need a password protection, implement the method `requireDeploymentPassword` on the class side of your command lines to return `false`.
+
+```Smalltalk
+"Enable password protection"
+CommandLinePasswordManager protectCommandLinesByPasswordWith: 'PharoPassword'.
+
+"You can also customize the pepper and number of iterations for the hashing of the password."
+CommandLinePasswordManager protectCommandLinesByPasswordWith: 'PharoPassword' pepper: 'SomePepper' numberOfHashIterations: 10.
+
+"Remove password protection"
+CommandLinePasswordManager removePasswordProtection.
+```
 
 ### Remove the decompiler
 
-> TODO
+Without the sources and changes files the user does not have the source code shipped with the application, but he still has the byte code of the application. To make it harder to exploit if he succeed to get a part of the byte code, you can unload the decompiler from the image with the piece of code:
+
+```Smalltalk
+RPackageOrganizer default packages
+	select: [ :p | p name includesSubstring: 'Flashback' ]
+	thenDo: #removeFromSystem
+```
 
 ### Disable global shortcuts
 
-> TODO
+If the customer has access to the Pharo image it is recommanded to disable global shortcuts that can help to open tools. 
 
-### Disable WorldMenu and MenuBar
+It is doable this way:
 
-> TODO
+```Smalltalk
+(KMRepository default globalCategories flatCollect: [ :each | each allEntries keymaps ]) do: #disable
+```
+
+### Disable WorldMenu, Menubar and Taskbar
+
+To block the access to the tools it is possible to disable the world menu, the taskbar and the menu bar from Pharo with this piece of code:
+
+```Smalltalk
+"Disable world menu"
+WorldState desktopMenuPragmaKeyword: ''.
+
+"Disable taskbar"
+TaskbarMorph showTaskbar: false.
+
+"Disable Menubar"
+MenubarMorph showMenubar: false.
+```
 
 ### Disable progress bar interrupt button
 
-> TODO
+If you show progresses in your application via a progress bar, the user can clic on the red cross to stop the action and open a debugger.
+
+For now there is no way to disable this in Pharo. We can still block this feature with this code:
+
+```Smalltalk
+Author
+	useAuthor: 'Deployment'
+	during: [ JobProgressMorph
+		compile:
+'debug
+	"Do nothing"
+	self inform: ''Stoping actions is disabled for customers''' ]
+```
 
 ### Disable process interruption button
 
-> TODO
+In Pharo, it is possible to disable the current process via the `cmd + .` shortcut. This feature can be disabled:
+
+```Smalltalk
+UserInterruptHandler cmdDotEnabled: false
+```
 
 ### Disable drag and drop in Pharo
 
 > TODO
 
 ### Disable Morph's Halos
-
-> TODO
-
-### Hide Taskbar
 
 > TODO
 
