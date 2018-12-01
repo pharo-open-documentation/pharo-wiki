@@ -243,11 +243,24 @@ UserInterruptHandler cmdDotEnabled: false
 
 ### Disable drag and drop in Pharo
 
-> TODO
+It is possible to drop files in Pharo to install code in it. It is recommanded to disable this feature to block users to inject code into the application. Since there is no setting to do that, you can recompile a part of the Pharo image to block it this way:
+
+```Smalltlak
+Author
+	useAuthor: 'Deployment'
+	during: [ WorldMorph
+			compile:
+				'wantsDropFiles: arg
+	^ false' ]
+```
 
 ### Disable Morph's Halos
 
-> TODO
+To remove the option to open Halos around the Morphs of Pharo you can execute:
+
+```Smalltalk
+Morph halosEnabled: false
+```
 
 ### Disable Debuggeur
 
