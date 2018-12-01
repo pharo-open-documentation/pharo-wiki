@@ -36,6 +36,7 @@ This documentation explains how to write a baseline and how to load the project 
     + [Metacello fetch feature](#metacello-fetch-feature)
     + [Metacello record feature](#metacello-record-feature)
     + [Metacello listing feature](#metacello-listing-feature)
+  * [See also](#see-also)
 
 ## How to define Baselines
 
@@ -1045,3 +1046,8 @@ Metacello registry
 ```
 
 This command needs to be inspected.
+
+# See also
+
+* Deep into pharo: [Chapter 9, Managing Projects with Metacello](http://files.pharo.org/books-pdfs/deep-into-pharo/2013-DeepIntoPharo-EN.pdf)
+* [Metacello documentation](https://github.com/Metacello/metacello/tree/master/docs)
