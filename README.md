@@ -26,6 +26,7 @@ Tips and tricks related to Pharo.
 - [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.
 - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
 - [Basic interactions with OS](PharoProjects/OS.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Dynamic variables](PharoProjects/DynamicVariables.md) ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 
 ### External projects
 #### Data exchange
