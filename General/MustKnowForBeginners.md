@@ -1,10 +1,19 @@
 # Must know for beginners
 
+This page includes knowledge about thing the Pharo community think important to know as a Pharo beginner.
+
+
+- [Navigate into the code](#navigate-into-the-code)
+  * [Browse, Senders and Implementors](#browse-senders-and-implementors)
+  * [Method source with it](#method-source-with-it)
+- [Interupt the Pharo process](#interupt-the-pharo-process)
+- [Debuging facilities](#debuging-facilities)
+
 ## Navigate into the code
 
 Pharo offers a lot of way to navigate into the code, and most of those are used daily by Pharo developers. This section will highlight the most important ones.
 
-### Browse/Senders/Implementors
+### Browse, Senders and Implementors
 
 When reading code we often need to open an entity or to check who is using an entity. To do that, Pharo has different commands:
 * **Browse** (`CMD/CTRL + b`): This command will open a new system browser on the class you are currently focusing
@@ -18,6 +27,14 @@ It often happens that we want to see how a feature is done, or we want to edit s
 To do that we need to open a playground and type the text (or select some text in an editor) then select on a right click `Code search...` then `Method source with it`.
 
 This will open a message browser with all the methods/class comments containing the string of code we are looking for.
+
+## Interupt the Pharo process
+
+Pharo currently run in one thread. If you launch a method taking a lot of time to run, or if you have an infinite loop in your code, you might want to interupt the process. 
+
+It is possible to do that in Pharo with the shortcut `cmd/ctrl + .`.
+
+> This feature will work in most cases but sometime it might not work because a faulty code will have fill up too much the memory.
 
 ## Debuging facilities
 
