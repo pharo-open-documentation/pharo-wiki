@@ -884,6 +884,18 @@ Metacello new
 	load
 ```
 
+Here is a last example of conflict management. The Pharo community was previously on a VCS called Monticello. Now most of the community migrated on Github. Some of the projects exists on Smalltalkhub (managed with Monticello) and on Github. It's not rare to have conflict between the two. 
+
+Here is a little script that will load the version managed with git when the project name is the same:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onConflict: [ :ex :a :b | a projectName = b projectName ifTrue: [ a projectSpec isBaselineOfProjectSpec ifTrue: [ ex useLoaded ] ifFalse: [ ex useIncoming ] ] ifFalse: [ ex resume ] ];
+	load
+```
+
 #### Manage warnings
 
 In some cases a project has problems during the loading, for example if a package loaded miss a dependency. When this happen, Metacello will raise a warning. Most of the time the projects can still work, at least partially. If you de not want Metacello to open a warning, you can log them instead. To enable this option you can use the `onWarningLog` or `onWarning:` options.
