@@ -16,7 +16,7 @@ Tips and tricks related to Pharo.
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages
-- [Traits](General/Traits.md) - Structure to build classes via composition ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
+- [Traits](General/Traits.md) - Structure to build classes via composition ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
 
