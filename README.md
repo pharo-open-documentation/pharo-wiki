@@ -15,6 +15,7 @@ Tips and tricks related to Pharo.
 
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [How to deal with baselines](General/Baselines.md) ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
+- [Extension methods](General/Extensions.md) ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
 
