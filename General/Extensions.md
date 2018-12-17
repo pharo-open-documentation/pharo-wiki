@@ -82,4 +82,4 @@ To find extension methods programmatically you can do something like:
 
 One thing developers should take into account when using extensions is to have clean dependencies between its packages. A package extending classes from another package should be loaded *after* this package.
 
-For example, if my package `MyProject-GUI` extends `MyProject-Model`, `MyProject-Model` should always be loaded *before* `MyProject-GUI` is. For more details, see the dependencies sections in the [baseline guide](General/Baselines.md).
+For example, if my package `MyProject-GUI` extends `MyProject-Model`, `MyProject-Model` should always be loaded *before* `MyProject-GUI` is. For more details, see the dependencies sections in the [baseline guide](Baselines.md).
