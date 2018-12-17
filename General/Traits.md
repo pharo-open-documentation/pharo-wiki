@@ -18,26 +18,74 @@ Trait named: #TNameOfMyTrait
 
 This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`
 
+### Add a new variable or slot
+
+Since Pharo 7, it is possible to add instance variables or a slot to Traits. This will make you trait a stateful trait. 
+
+Examples:
+
+```Smalltalk
+Trait named: #MDLWithConfigurableRightPanel
+	 uses: {}
+	 slots: { #panelComponent. #toolbar }
+	 category: 'MaterialDesignLite-Extensions'
+```
+
+```Smalltalk
+Trait named: #FamixTWithEnumValues
+	 uses: {}
+	 slots: { #enumValues => FMMany type: #FamixTEnumValue opposite: #parentEnum }
+	 category: 'Famix-Traits-EnumValue'
+```
+
 ### Add a new method
 
-> TODO
+To add a new method to the Trait you just need to implement the method as if you were implementing a method on a class.
 
 ### Explicit requirement
 
-> TODO
+Sometime we want to call a methods that should not be implemented on a Trait but on the method using the Trait. To manage this a Trait can declare method that users should define by calling sending the message #explicitRequirement. 
 
-### Add a new variable
+```Smalltalk
+TMyTrait>>addButton: aButton
+	self buttons add: aButton
+```
 
-> TODO
+```Smalltalk
+TMyTrait>>buttons
+	^ self explicitRequirement
+```
 
 ## Use a Trait
 
-> TODO
+Tu use a Trait you just need to declare it in the class declaration as parameter of the #uses: keyword. 
 
-### Reject some methods
+```Smalltalk
+FAMIXType subclass: #FAMIXEnum
+	uses: FamixTWithEnumValues
+	slots: {  }
+	classVariables: {  }
+	package: 'Famix-Compatibility-Entities'
+```
 
-> TODO
+### Reject some method
+
+In some case it is needed to reject a method of a Trait. For example if a Trait uses a cache but you know you don't need it, you can remove this method using `-`.
+
+```Smalltalk
+TestCase subclass: #StackTest
+	uses: TEmptyTest - {#testIfNotEmptyifEmpty. #testIfEmpty. #testNotEmpty} + (TCloneTest - {#testCopyNonEmpty})
+	slots: { #empty. #nonEmpty }
+	classVariables: {  }
+	package: 'Collections-Tests-Stack'
+```
 
 ### Trait using Traits
 
-> TODO
+Itis possible to use Traits to compose a new Trait:
+
+```Smalltalk
+Trait named: #EpTEventVisitor
+	 uses: EpTCodeChangeVisitor
+	 category: 'Epicea-Visitors'
+```
