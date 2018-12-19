@@ -143,7 +143,7 @@ Trait named: #EpTEventVisitor
 
 ## Conflicts
 
-Two kind of *conflicts* can happen with methods implemented on Traits.
+Two kinds of *conflicts* can happen with methods implemented on Traits.
 
 The first case is the case where a method is present on a used Trait, but the class using this Trait also implements this method. In that case, the method lookup will select the method from the class> It is an equivalent of an override of method.
 
