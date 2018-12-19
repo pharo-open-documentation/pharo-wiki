@@ -105,7 +105,7 @@ Trait named: #FamixTWithEnumValues
 
 ## Traits initialization
 
-Traits do not includes a way to initialize classes using them, it rely more on conventions.
+Traits do not include a way to initialize classes using them, it relies more on conventions.
 
 One way to manage this might be to implement a method named `initializeTMyTraitName` on each traits needing an initialization and to call all those methods on the class using them.
 
