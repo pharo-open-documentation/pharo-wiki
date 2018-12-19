@@ -105,7 +105,11 @@ Trait named: #FamixTWithEnumValues
 
 ## Traits initialization
 
-> TODO
+Traits do not includes a way to initialize classes using them, it rely more on conventions.
+
+One way to manage this might be to implement a method named `initializeTMyTraitName` on each traits needing an initialization and to call all those methods on the class using them.
+
+In case of trait composition (See [Trait composition](#trait-composition)), a trait composed of other traits can also implement a initialize method calling the one of the Traits it includes.
 
 ## Customize method received from a Trait
 
@@ -139,4 +143,8 @@ Trait named: #EpTEventVisitor
 
 ## Conflicts
 
-> TODO Explain what happens if we use two traits with the same mehtod or if we implement a method in the class
+Two kind of *conflicts* can happen with methods implemented on Traits.
+
+The first case is the case where a method is present on a used Trait, but the class using this Trait also implements this method. In that case, the method lookup will select the method from the class> It is an equivalent of an override of method.
+
+The second case happens if we use two traits implementing the same method. In that case, if the method is called it will raise an error `traitConflict`. The developer will need to implement himself a method on his user class to chose the behavior he wants in that case.
