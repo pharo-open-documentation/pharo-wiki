@@ -1,14 +1,15 @@
 # Traits
 
-- [Traits](#traits)
-  * [Description](#description)
-  * [Create and use a new Trait](#create-and-use-a-new-trait)
-  * [Abstract methods](#abstract-methods)
-  * [Stateful traits](#stateful-traits)
-  * [Traits initialization](#traits-initialization)
-  * [Customize method received from a Trait](#customize-method-received-from-a-trait)
-  * [Trait composition](#trait-composition)
-  * [Conflicts](#conflicts)
+- [Description](#description)
+- [Create and use a new Trait](#create-and-use-a-new-trait)
+- [Abstract methods](#abstract-methods)
+- [Stateful traits](#stateful-traits)
+- [Traits initialization](#traits-initialization)
+- [Customize method received from a Trait](#customize-method-received-from-a-trait)
+  * [Reject some methods received from the trait](#reject-some-methods-received-from-the-trait)
+  * [Alias some methods received from the trait](#alias-some-methods-received-from-the-trait)
+- [Trait composition](#trait-composition)
+- [Conflicts](#conflicts)
 
 ## Description
 
