@@ -113,6 +113,7 @@ In case of trait composition (See [Trait composition](#trait-composition)), a tr
 
 ## Customize method received from a Trait
 
+### Reject some methods received from the trait
 In some case it is needed to reject a method of a Trait. For example if a Trait uses a cache but you know you don't need it, you can remove this method using `-`.
 
 ```Smalltalk
@@ -121,6 +122,17 @@ TestCase subclass: #StackTest
 	slots: { #empty. #nonEmpty }
 	classVariables: {  }
 	package: 'Collections-Tests-Stack'
+```
+
+### Alias some methods received from the trait
+It is possible to alias some methods received from a trait. If, for example you alias `#aliasedMethod` with `#methodAlias` as shown below, your class will hold both `#methodAlias` and `#aliasedMethod`.
+
+```
+Object subclass: #MyObjectUsingTraitByAliasingMethod
+	uses: TTraitToBeUsed @ { #methodAlias -> #aliasedMethod }
+	slots: {  }
+	classVariables: {  }
+	package: 'TestTraitAliasing'
 ```
 
 ## Trait composition
@@ -145,6 +157,17 @@ Trait named: #EpTEventVisitor
 
 Two kinds of *conflicts* can happen with methods implemented on Traits.
 
-The first case is the case where a method is present on a used Trait, but the class using this Trait also implements this method. In that case, the method lookup will select the method from the class> It is an equivalent of an override of method.
+1. A method is present on a used Trait, but the class using this Trait also implements this method. In that case, the method lookup will select the method from the class. It is an equivalent of an override of method.
 
-The second case happens if we use two traits implementing the same method. In that case, if the method is called it will raise an error `traitConflict`. The developer will need to implement himself a method on his user class to chose the behavior he wants in that case.
+2. Two traits implementing the same method are used. In that case, if the method is called it will raise an error `traitConflict`.
+
+A way to solve both cases is to use method aliasing and to remove the conflicting method:
+```
+Object subclass: #MyObjectUsingTraitByAliasingMethod
+	uses: TTraitToBeUsed @ { #methodAlias -> #conflictingMethod } - { #conflictingMethod }
+	slots: {  }
+	classVariables: {  }
+	package: 'TestTraitAliasing'
+```
+
+Another way to solve case 2 is to implement a method on the class using the trait in order to chose the behavior wanted.
