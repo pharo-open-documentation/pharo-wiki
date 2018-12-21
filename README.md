@@ -20,6 +20,7 @@ Tips and tricks related to Pharo.
 - [Traits](General/Traits.md) - Structure to build classes via composition ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
+- [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 
 ### Pharo projects
 
