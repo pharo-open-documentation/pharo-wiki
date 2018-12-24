@@ -977,7 +977,7 @@ During the loading of a project you can also do some specific actions when you e
 Metacello new
 	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
 	baseline: 'MaterialDesignLite';
-	onLoad: [ :ex :loaded :incoming | loaded baseName = 'myProject' ifTrue: [ ex break ] ifFalse: [ ex honor ] ];
+	onLock: [ :ex :loaded :incoming | loaded baseName = 'myProject' ifTrue: [ ex break ] ifFalse: [ ex honor ] ];
 	load
 ```
 
