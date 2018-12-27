@@ -1,6 +1,6 @@
 # Pharo wiki
 
-Wiki for the Pharo programming language and development environement. 
+Wiki for the Pharo programming language and development environment. 
 
 - [Pharo tips and tricks](#pharo-tips-and-tricks)
   * [Sections](#sections)
