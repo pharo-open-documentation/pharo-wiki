@@ -1,6 +1,6 @@
-# Pharo tips and tricks
+# Pharo wiki
 
-Tips and tricks related to Pharo.
+Wiki for the Pharo programming language and development environement. 
 
 - [Pharo tips and tricks](#pharo-tips-and-tricks)
   * [Sections](#sections)
