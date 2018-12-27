@@ -26,6 +26,7 @@ This documentation explains how to write a baseline and how to load the project 
     + [From the playground](#from-the-playground)
       - [Project managed with Git](#project-managed-with-git)
       - [Project managed with Smalltalkhub](#project-managed-with-smalltalkhub)
+      - [Project without repository](#project-without-repository)
       - [Loading groups](#loading-groups)
       - [Conflict, Upgrade and Downgrade resolution](#conflict-upgrade-and-downgrade-resolution)
       - [Manage warnings](#manage-warnings)
@@ -822,6 +823,16 @@ Metacello new
   smalltalkhubUser: 'Seaside' project: 'Seaside31';
   configuration: 'Seaside3';
   version: #stable;
+  load.
+```
+
+#### Project without repository
+
+It is possible to use Metacello without specifying any repository. This can be useful for defining all project dependencies in a baseline and then loading them with Metacello.
+
+```Smalltalk
+Metacello new
+  baseline: #TinyBlog;
   load.
 ```
 
