@@ -2,16 +2,14 @@
 
 Wiki for the Pharo programming language and development environment. 
 
-- [Pharo tips and tricks](#pharo-tips-and-tricks)
-  * [Sections](#sections)
-    + [General](#general)
-    + [Pharo projects](#pharo-projects)
-    + [External projects](#external-projects)
+## Contents
+- [General](#general)
+- [Pharo projects](#pharo-projects)
+- [External projects](#external-projects)
       - [Data exchange](#data-exchange)
+      - [Data structures](#data-structures)
 
-## Sections
-
-### General
+## General
 
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
@@ -22,7 +20,7 @@ Wiki for the Pharo programming language and development environment.
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
 - [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 
-### Pharo projects
+## Pharo projects
 
 - [How to deal with files](PharoProjects/Files.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
 - [Objects serialization](PharoProjects/ObjectsSerialization.md) - Lists possibilities to serialize your objects on disk. ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
@@ -33,8 +31,8 @@ Wiki for the Pharo programming language and development environment.
 - [Dynamic variables](PharoProjects/DynamicVariables.md) ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 - [Cursor](PharoProjects/Cursor.md) ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 
-### External projects
-#### Data exchange
+## External projects
+### Data exchange
 - [CSV support](ExternalProjects/Export/CSV.md)
 - [JSON support](ExternalProjects/Export/JSON.md)
 - [XML support](ExternalProjects/Export/XML.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
@@ -42,7 +40,7 @@ Wiki for the Pharo programming language and development environment.
 - [Arff support](ExternalProjects/Export/Arff.md) - Arff is a format defined by [Weka](http://www.cs.waikato.ac.nz/ml/weka/) to be used for data importation. ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
 - [ESC/P support](ExternalProjects/Export/ESCP.md) - ESC/P is a binary format understood by a lot of receipt printers. ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
 
-#### Data structures
+### Data structures
 - [DataFrame](ExternalProjects/DataStructures/DataFrame.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
 
 <!---
