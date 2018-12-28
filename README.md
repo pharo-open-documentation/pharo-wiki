@@ -6,8 +6,8 @@ Wiki for the Pharo programming language and development environment.
 - [General](#general)
 - [Pharo projects](#pharo-projects)
 - [External projects](#external-projects)
-      - [Data exchange](#data-exchange)
-      - [Data structures](#data-structures)
+  - [Data exchange](#data-exchange)
+  - [Data structures](#data-structures)
 
 ## General
 
