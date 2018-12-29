@@ -20,6 +20,12 @@ To answer to the goal, the project is divided on three sections.
 * A second section contains documentation about subprojects contained in Pharo general distribution.
 * A third section contains informations about external projects. Most of the pages gives some examples to give an idea on how those project works and offer comparisons between multiple project around the same theme.
 
+As long as it fits the goal of the wiki, the entries of this project can be:
+- Documentations
+- Tutorials
+- Guides
+- Tips and tricks
+
 If you want to contribute but you are not sure your contribution fits the goals of the project, do not hesitate to open an issue to ask the mainteners advices.
 
 If you wish to contribute, you should read the [contribution guide](CONTRIBUTION.md).
