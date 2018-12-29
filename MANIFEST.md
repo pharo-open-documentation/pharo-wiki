@@ -26,6 +26,6 @@ As long as it fits the goal of the wiki, the entries of this project can be:
 - Guides
 - Tips and tricks
 
-If you want to contribute but you are not sure your contribution fits the goals of the project, do not hesitate to open an issue to ask the mainteners advices.
+If you want to contribute but you are not sure your contribution fits the goals of the project, do not hesitate to open an issue to ask the maintainers advices.
 
 If you wish to contribute, you should read the [contribution guide](CONTRIBUTION.md).
