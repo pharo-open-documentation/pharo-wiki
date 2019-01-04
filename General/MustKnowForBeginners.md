@@ -30,7 +30,7 @@ This will open a message browser with all the methods/class comments containing 
 
 ## Interupt the Pharo process
 
-Pharo currently run in one thread. If you launch a method taking a lot of time to run, or if you have an infinite loop in your code, you might want to interupt the process. 
+Pharo currently run in one native thread. If you launch a method taking a lot of time to run, or if you have an infinite loop in your code, you might want to interupt the process. 
 
 It is possible to do that in Pharo with the shortcut `cmd/ctrl + .`.
 
