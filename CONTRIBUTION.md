@@ -16,6 +16,8 @@ To suggest pages that could fit the wiki, the recommanded may is to open an issu
 
 On the language and environment part of the wiki we accept to document a part of the system that is already documented outside the wiki at the condition that we reference in a *See also* section those documentation. The goal is to have a centralized information and to provide alternative ways of explaining.
 
+If you wish to add the new entry yourself, see section [Add a new page](#add-a-new-page).
+
 ## Entries structure
 
 The entries structure is free but we still have some conventions. 
