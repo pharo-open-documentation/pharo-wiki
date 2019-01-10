@@ -4,7 +4,7 @@ Pharo contains a system of dynamic varibales which are global variables whose va
 
 > Be careful when you use these variables. You should carefuly think about there usefulness. They should not be used just as a global variable to make access to it easier in the code.
 
-An example of use of a dynamic variable can be for a logger system. In such a system we can imagine that we have a default logger thaht will be used to record logs, but in some specific cases we might prefer to use a custom logger. In that case a Dynamic variable might do the work. If you wish to see it at work you can check this [logger project using it](https://github.com/jecisc/TinyLogger)
+An example of use of a dynamic variable can be for a logger system. In such a system we can imagine that we have a default logger that will be used to record logs, but in some specific cases we might prefer to use a custom logger. In that case a dynamic variable might do the work. If you wish to see it at work you can check this [logger project using it](https://github.com/jecisc/TinyLogger)
 
 ## Create a new Dynamic variable
 
