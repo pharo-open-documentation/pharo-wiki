@@ -1,6 +1,6 @@
 # Dynamic variables
 
-Pharo contains a system of dynamic varibales which are global variables whose value can be changed during the execution of a process.
+Pharo contains a system of dynamic variables which are global variables whose value can be changed during the execution of a process.
 
 > Be careful when you use these variables. You should carefuly think about there usefulness. They should not be used just as a global variable to make access to it easier in the code.
 
