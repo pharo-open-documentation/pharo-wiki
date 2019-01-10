@@ -5,12 +5,12 @@ This file will explain the goals of this project and define it's perimeter.
 Pharo-wiki is a user maintained wiki around the programming language and development environment Pharo but also it's echosystem.
 
 Here is a list of the goals of the project:
-- The project should be easy to contribute to (with a github account the user should just have to edit a file on the github interface to contribute)
 - Provide documentation on parts of Pharo that are not yet or poorly documented
 - Provide a centralized source of informations on Pharo
-- Provide pointers to decentralized documentation
+- Provide pointers to existing documentation
 - Provide tips on possible workflow on Pharo using all the strengh of the environment
-- Provide pointers on external libraries
+- Provide references to external libraries
+- The project should be easy to contribute to (with a github account the user should just have to edit a file on the github interface to contribute)
 
 To be easy to contribute, this project is written in Markdow and hosted on github. Anyone with a github account can easily provide a Pull Request. (See [Contribution guide](CONTRIBUTION.md))
 
