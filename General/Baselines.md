@@ -50,6 +50,8 @@ BaselineOf subclass: #BaselineOfMyProject
   package: 'BaselineOfMyProject'
 ``` 
 
+This class should be in a package separated from other package's projects. This package holding the baseline **must** have the same name as the baseline. To summarize, `BaselineOfMyProject` class is in `BaselineOfMyProject` package.
+
 Then, you will need to create a method that will define the spec of the project for the commit it will be included in.
 
 ```Smalltalk
