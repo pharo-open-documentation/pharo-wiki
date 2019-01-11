@@ -46,6 +46,8 @@ In order to add a page you can just go into the folder of the section where the 
 
 ![Gif showing how to add a new page](Resources/CreatePage.gif)
 
+If you need to integrate images in your entry, add them next to the Markdown file with an explicit name.
+
 Once the page is created you need to add it to the [README.md](README.md) in the right section.
 
 You can add a badge to indicate the progress of the page. 
