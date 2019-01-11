@@ -937,7 +937,7 @@ In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This
 
 The first step is to add your git project to Iceberg. Then with a right click on the project name you can access a `Metacello` submenu to load the project.
 
-![Interface of Iceberg to load a project](loadBaselineViaIceberg.png?raw=true "Interface of Iceberg to load a project")
+![Interface of Iceberg to load a project](Baselines_Image_LoadBaselineViaIceberg.png?raw=true "Interface of Iceberg to load a project")
 
 ## Other features 
 
