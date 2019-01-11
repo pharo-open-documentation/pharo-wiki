@@ -39,7 +39,7 @@ MyVariable value doSomething
 If you need to change the value of the variable for the execution of a specific process, just use the `value:during:` message.
 
 ```Smalltalk
-MyVarible value: MyNewObject during: [
+MyVariable value: MyNewObject during: [
   self doAnActionS=UsingTheVariable.
 ]
 ```
