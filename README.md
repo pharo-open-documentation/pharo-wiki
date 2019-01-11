@@ -21,6 +21,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
 - [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
+- [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 
 ## Pharo projects
 
