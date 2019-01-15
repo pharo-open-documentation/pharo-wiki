@@ -46,6 +46,10 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 ### Data structures
 - [DataFrame](ExternalProjects/DataStructures/DataFrame.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
 
+## Migration guidelines
+- [Migration from Pharo 6.1 to Pharo 7.0](Migration/MigrationToPharo7.md)
+
+
 <!---
 Badges:
 * ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
