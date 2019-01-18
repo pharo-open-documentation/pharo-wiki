@@ -1,6 +1,6 @@
 # Baselines
 
-Pharo projects often requires a configuration to declare the how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to external projects and independant sub-groups that can be loaded.
+Pharo projects often requires a configuration to declare the how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to external projects and independent sub-groups that can be loaded.
 
 This documentation explains how to write a baseline and how to load the project described by this baseline.
 
@@ -47,24 +47,24 @@ The first step to create a baseline is to create a new subclass of `BaselineOf`.
 
 ```Smalltalk
 BaselineOf subclass: #BaselineOfMyProject
-	slots: {  }
-	classVariables: {  }
-	package: 'BaselineOfMyProject'
-``` 
+    slots: {  }
+    classVariables: {  }
+    package: 'BaselineOfMyProject'
+```
 
 Then, create a method that will define the spec of the project for the commit it will be included in.
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"The main code of the baseline will go here"
-		 ]
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "The main code of the baseline will go here"
+         ]
 ```
 
-> The name of this method does not have to be `#baseline:`; however, that is the name that is commonly used. In fact, it is the `<baseline>` pragma which specifies that the method defines the spec of the project. 
+> The name of this method does not have to be `#baseline:`; however, that is the name that is commonly used. In fact, it is the `<baseline>` pragma which specifies that the method defines the spec of the project.
 
 ### Define packages forming your project
 
@@ -72,17 +72,17 @@ To define the packages of the project, send the message `#package:` to the spec 
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests';
-				package: 'MyProject-Gui';
-				package: 'MyProject-Gui-Tests';
-				package: 'MyProject-Examples' ]
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests';
+                package: 'MyProject-Gui';
+                package: 'MyProject-Gui-Tests';
+                package: 'MyProject-Examples' ]
 ```
 
 Defining packages is not enough to load them, because some might depend on other packages/projects. For example, `MyProject-Tests` needs to be loaded after `MyProject`.
@@ -93,22 +93,22 @@ For dependencies between the packages of your project, you can use the message `
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ]
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ]
 ```
 
 ### Define external dependencies
 
-Defining external dependencies can be done in different ways depending on where the dependency is hosted. 
+Defining external dependencies can be done in different ways depending on where the dependency is hosted.
 
 > To improve readability, I recommend extracting the definitions of dependencies into separate methods.
 
@@ -117,130 +117,128 @@ Defining external dependencies can be done in different ways depending on where 
 To depend on a git project, you can use the method `#baseline:with:`.
 
 ```Smalltalk
-	spec
-		baseline: '{BaselineName}'
-		with: [ spec repository: '{prefix}://{owner}/{projectName}:{version}/{subfolder}' ]
+    spec
+        baseline: '{BaselineName}'
+        with: [ spec repository: '{prefix}://{owner}/{projectName}:{version}/{subfolder}' ]
 ```
 
 This snippet should be configured with:
 
-* `{BaselineName}`: The name of the baseline to load (e.g, `'MaterialDesignLite'` to load `BaselineOfMaterialDesignLite`)
-* `{prefix}`: This is host-specific:
-	* `github` for github
-	* `bitbucket` for bitbucket
-	* `gitlab` for gitlab
-* `{owner}`: Name of the user or organization hosting the project
-* `{projectName}`: Name of the project
-* `{version}`: This parameter is optional (defaults to master). It can be the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
-* `{subfolder}`: This parameter is optional in case the code is not at the root of the project. It should point to the subfolder containing the code.
+- `{BaselineName}`: The name of the baseline to load (e.g, `'MaterialDesignLite'` to load `BaselineOfMaterialDesignLite`)
+- `{prefix}`: This is host-specific:
+  - `github` for github
+  - `bitbucket` for bitbucket
+  - `gitlab` for gitlab
+- `{owner}`: Name of the user or organization hosting the project
+- `{projectName}`: Name of the project
+- `{version}`: This parameter is optional (defaults to master). It can be the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
+- `{subfolder}`: This parameter is optional in case the code is not at the root of the project. It should point to the sub-folder containing the code.
 
 Example:
 
 ```Smalltalk
-	spec
-		baseline: 'MaterialDesignLite' 
-		with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src']
+    spec
+        baseline: 'MaterialDesignLite'
+        with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src']
 ```
 
 This snippet can also be customized to load only a specific group of the dependency like this:
 
 ```Smalltalk
-	spec
-		baseline: 'MaterialDesignLite'
-		with: [ 
-			spec 
-				loads: #('Extensions');
-				repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
-		]
+    spec
+        baseline: 'MaterialDesignLite'
+        with: [
+            spec
+                loads: #('Extensions');
+                repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
+         ]
 ```
 
-Once the dependency is defined, add `BaselineName` to the list of the required dependencies of the package depending on it. 
+Once the dependency is defined, add `BaselineName` to the list of the required dependencies of the package depending on it.
 
 Example:
 
-
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Dependencies"
-			self materialDesignLite: spec.
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Dependencies"
+            self materialDesignLite: spec.
 
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLite') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLite') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 ```
 
 ```Smalltalk
 materialDesignLite: spec
-	spec
-		baseline: 'MaterialDesignLite'
-		with: [
-			spec  
-				loads: #('Extensions');
-				repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
-		]
+    spec
+        baseline: 'MaterialDesignLite'
+        with: [
+            spec  
+                loads: #('Extensions');
+                repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src'
+        ]
 ```
 
 ##### Depends on the same project with different groups
 
-In some cases your project might depend on an external project, but two packages of your project depend on different groups of this external project. 
+In some cases your project might depend on an external project, but two packages of your project depend on different groups of this external project.
 
 You can use the message `#project:copyFrom:with:` to create a new dependency spec.
 
 ```Smalltalk
 materialDesignLite: spec
-	spec
-		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
-		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
+    spec
+        baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
+        project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
 ```
 
 Then you can use the new project name in the specification of dependencies.
 
 Example:
 
-
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Dependencies"
-			self materialDesignLite: spec.
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Dependencies"
+            self materialDesignLite: spec.
 
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 ```
 
 ```Smalltalk
 materialDesignLite: spec
-	spec
-		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
-		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
+    spec
+        baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
+        project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
 ```
 
 #### To a local git project
 
-Sometimes, we do not have access to a network, so we want to define dependencies to local git repositories. 
+Sometimes, we do not have access to a network, so we want to define dependencies to local git repositories.
 
 This works like in the previous section but with this repository format:
 
 ```Smalltalk
-	spec
-		baseline: 'MaterialDesignLite'
-		with: [ spec repository: 'gitlocal://full/path/to/repository' ]
+    spec
+        baseline: 'MaterialDesignLite'
+        with: [ spec repository: 'gitlocal://full/path/to/repository' ]
 ```
 
 #### To smalltalkhub projects
@@ -248,84 +246,85 @@ This works like in the previous section but with this repository format:
 Depending on a [Smalltalkhub](http://smalltalkhub.com) project is done via `#project:with`.
 
 ```Smalltalk
-	spec
-		project: '{DependencyName}'
-		with: [ spec
-				className: #ConfigurationOf{ConfigurationName};
-				versionString: #'{Version}';
-				repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main/' ]
+    spec
+        project: '{DependencyName}'
+        with: [ spec
+                className: #ConfigurationOf{ConfigurationName};
+                versionString: #'{Version}';
+                repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main/' ]
 ```
 
 The snippet should be configured with:
 
-* `{DependencyName}`: It can be anything from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
-* `{ConfigurationName}`: It is the name of the configuration you wish to reference
-* `{Version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
-* `{owner}`: Name of the team or user hosting the project
-* `{repositoryName}`: Name of the repository on SmalltalkHub
+- `{DependencyName}`: It can be anything from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
+- `{ConfigurationName}`: It is the name of the configuration you wish to reference
+- `{Version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+- `{owner}`: Name of the team or user hosting the project
+- `{repositoryName}`: Name of the repository on SmalltalkHub
 
 Example:
 
 ```Smalltalk
-	spec
-		project: 'Magritte3'
-		with: [ spec
-				className: #ConfigurationOfMagritte3;
-				versionString: #'release3';
-				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+    spec
+        project: 'Magritte3'
+        with: [ spec
+                className: #ConfigurationOfMagritte3;
+                versionString: #'release3';
+                repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 ```
 
 As for git hosted repositories, you can ask for a specific group:
 
 ```Smalltalk
-	spec
-		project: 'Magritte3'
-		with: [ spec
-				className: #ConfigurationOfMagritte3;
-				versionString: #'release3';
-				loads: #('Seaside');
-				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+    spec
+        project: 'Magritte3'
+        with: [ spec
+                className: #ConfigurationOfMagritte3;
+                versionString: #'release3';
+                loads: #('Seaside');
+                repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 ```
 
 You can now use the dependencies names to add the project as dependency of your packages.
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Dependencies"
-			self magritte3: spec.
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Dependencies"
+            self magritte3: spec.
 
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'Magritte3') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'Magritte3') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 ```
 
 ```Smalltalk
 magritte3: spec
-	spec
-		project: 'Magritte3'
-		with: [ spec
-				className: #ConfigurationOfMagritte3;
-				versionString: #'release3';
-				loads: #('Seaside');
-				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+    spec
+        project: 'Magritte3'
+        with: [ spec
+                className: #ConfigurationOfMagritte3;
+                versionString: #'release3';
+                loads: #('Seaside');
+                repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 
 ```
 
 ### Groups
 
 Sometimes, we don't want to load the full project, but just a sub part, e.g.:
-* Only the model of a project is needed without the UI (for example to build an alternative UI)
-* Only the core of the project is needed without the tests and examples
-* The project has some optional modules
-* etc.
+
+- Only the model of a project is needed without the UI (for example to build an alternative UI)
+- Only the core of the project is needed without the tests and examples
+- The project has some optional modules
+- etc.
 
 To manage such cases, baselines have the concept of a `Group`. A group is a loadable spec containing only a sub part of the project.
 
@@ -335,25 +334,25 @@ Example:
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 
-			"Groups"
-			spec
-				group: 'Model' with: #('MyProject');
-				group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
-				group: 'Gui' with: #('MyProject-Gui');
-				group: 'Example' with: #('MyProject-Examples');
-				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
+            "Groups"
+            spec
+                group: 'Model' with: #('MyProject');
+                group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
+                group: 'Gui' with: #('MyProject-Gui');
+                group: 'Example' with: #('MyProject-Examples');
+                group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
 ```
 
 #### The default group
@@ -368,73 +367,75 @@ Example:
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 
-			"Groups"
-			spec
-				group: 'default' with: #('Model' 'Gui');
-				group: 'Model' with: #('MyProject');
-				group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
-				group: 'Gui' with: #('MyProject-Gui');
-				group: 'Example' with: #('MyProject-Examples');
-				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
+            "Groups"
+            spec
+                group: 'default' with: #('Model' 'Gui');
+                group: 'Model' with: #('MyProject');
+                group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
+                group: 'Gui' with: #('MyProject-Gui');
+                group: 'Example' with: #('MyProject-Examples');
+                group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
 ```
 
 ### Pre/post load actions
 
-Baselines provide some hooks to execute some code when loading a project. 
+Baselines provide some hooks to execute some code when loading a project.
 
 Those hooks are:
 
-* `#preLoadDoIt:` which is executed after the code and dependencies are resolved and fetched, but before the code is loaded.
-* `#postLoadDoIt:` which is executed when the project finishes loading.
+- `#preLoadDoIt:` which is executed after the code and dependencies are resolved and fetched, but before the code is loaded.
+- `#postLoadDoIt:` which is executed when the project finishes loading.
 
-Those methods take a symbol as parameter, which should be the name of a method of the baseline that should be executed by the hook. 
+Those methods take a symbol as parameter, which should be the name of a method of the baseline that should be executed by the hook.
 
 Those methods can take two optional parameters:
 
-* A Metacello loader containing information on the current project to load
-* A Metacello spec containing information on the project spec
+- A Metacello loader containing information on the current project to load
+- A Metacello spec containing information on the project spec
 
 Example:
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			spec preLoadDoIt: #'preload:package:'.
-			spec postLoadDoIt: #'postload:package:'.
+    <baseline>
+    spec
+        for: #common
+        do: [
+            spec preLoadDoIt: #'preload:package:'.
+            spec postLoadDoIt: #'postload:package:'.
 
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ]
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ]
 ```
+
 ```Smalltalk
 preload: loader package: packageSpec
 
-	Transcript crLog: 'The fetch was finished. Now let''s load the project'
+    Transcript crLog: 'The fetch was finished. Now let''s load the project'
 
 ```
+
 ```Smalltalk
 postload: loader package: packageSpec
 
-	Transcript crLog: 'Project loaded!'
+    Transcript crLog: 'Project loaded!'
 
 ```
 
@@ -444,19 +445,21 @@ It might be useful to load some packages in specific Pharo versions only. For ex
 
 This is possible with the different spec attributes.
 
-Up until now we defined everything in a spec for `#common`, which applies to all versions of Pharo. But it's possible to define a spec for specific Pharo versions or even other Smalltalks.
+Up until now we defined everything in a spec for `#common`, which applies to all versions of Pharo. But it's possible to define a spec for specific Pharo versions or even other Smalltalk environments.
 
 We can add in the baseline a special #for:do: command taking as parameter a specific attribute.
 
 Every Pharo version contains some default attributes. For a Pharo version X.Y we have:
-* `#pharo`
-* `#pharoX.x`
-* `#pharoX.Y.x`
+
+- `#pharo`
+- `#pharoX.x`
+- `#pharoX.Y.x`
 
 For example for Pharo 6.1:
-* `#pharo`
-* `#pharo6.x`
-* `#pharo6.1.x`
+
+- `#pharo`
+- `#pharo6.x`
+- `#pharo6.1.x`
 
 Those attributes can be used to define a spec that will be executed only in the images containing the corresponding tags.
 
@@ -464,28 +467,28 @@ Example:
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 
-	spec
-		for: #'pharo6.x'
-		do: [ spec
-				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo6') ];
-				package: 'MyProject-Pharo6' ].
-	spec
-		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
-		do: [ spec
-				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo3To6') ];
-				package: 'MyProject-Pharo3To6' ] ]
+    spec
+        for: #'pharo6.x'
+        do: [ spec
+                package: 'MyProject' with: [ spec requires: #('MyProject-Pharo6') ];
+                package: 'MyProject-Pharo6' ].
+    spec
+        for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
+        do: [ spec
+                package: 'MyProject' with: [ spec requires: #('MyProject-Pharo3To6') ];
+                package: 'MyProject-Pharo3To6' ] ]
 ```
 
 ### Define custom attributes
@@ -498,49 +501,51 @@ For example:
 
 ```Smalltalk
 customProjectAttributes
-	Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
-	Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
-	Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
+    Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
+    Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
+    Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
 ```
 
 Then they can be used in the baseline.
 
 ```Smalltalk
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+    <baseline>
+    spec
+        for: #common
+        do: [
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 
-	spec
-		for: #(#'MacOS' #'Unix') do: [ 
-			self osSubprocess: spec.
-			spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ];
-		for: #'Windows' do: [ 
-			self processWrapper: spec.
-			spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
+    spec
+        for: #(#'MacOS' #'Unix') do: [
+            self osSubprocess: spec.
+            spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ];
+        for: #'Windows' do: [
+            self processWrapper: spec.
+            spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
 ```
+
 ```Smalltalk
 osSubprocess: spec
-	spec 
-		baseline: 'OSSubprocess' 
-		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
+    spec
+        baseline: 'OSSubprocess'
+        with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
 ```
+
 ```Smalltalk
 processWrapper: spec
-	spec 
-		configuration: 'ProcessWrapper' 
-		with: [ 
-			spec
-				versionString: '1.2';
-				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
+    spec
+        configuration: 'ProcessWrapper'
+        with: [
+            spec
+                versionString: '1.2';
+                repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
 ```
 
 ### Loading types
@@ -559,130 +564,137 @@ To define atomic loading, override the method #project:
 
 ```Smalltalk
 project
-	^ super project
-		loadType: #atomic;
-		yourself
+    ^ super project
+        loadType: #atomic;
+        yourself
 ```
 
 ### Full example
 
 Here is an example with all previous features illustrated:
 
-
 ```Smalltalk
 "baseline"
 baseline: spec
-	<baseline>
-	spec
-		for: #common
-		do: [
-			spec preLoadDoIt: #'preload:package:'.
-			spec postLoadDoIt: #'postload:package:'.
+    <baseline>
+    spec
+        for: #common
+        do: [
+            spec preLoadDoIt: #'preload:package:'.
+            spec postLoadDoIt: #'postload:package:'.
 
-			"Dependencies"
-			self materialDesignLite: spec.
+            "Dependencies"
+            self materialDesignLite: spec.
 
-			"Packages"
-			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions' 'Magritte3') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ].
+            "Packages"
+            spec
+                package: 'MyProject';
+                package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+                package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions' 'Magritte3') ];
+                package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
+                package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ].
 
-			"Groups"
-			spec
-				group: 'Model' with: #('MyProject');
-				group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
-				group: 'Gui' with: #('MyProject-Gui');
-				group: 'Example' with: #('MyProject-Examples');
-				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example') ].
+            "Groups"
+            spec
+                group: 'Model' with: #('MyProject');
+                group: 'Tests' with: #('MyProject-Tests' 'MyProject-Gui-Tests');
+                group: 'Gui' with: #('MyProject-Gui');
+                group: 'Example' with: #('MyProject-Examples');
+                group: 'All' with: #('Model' 'Tests' 'Gui' 'Example') ].
 
-	spec
-		for: #'pharo6.x'
-		do: [ spec
-				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo6') ];
-				package: 'MyProject-Pharo6' ].
+    spec
+        for: #'pharo6.x'
+        do: [ spec
+                package: 'MyProject' with: [ spec requires: #('MyProject-Pharo6') ];
+                package: 'MyProject-Pharo6' ].
 
-	spec
-		for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
-		do: [ spec
-				package: 'MyProject' with: [ spec requires: #('MyProject-Pharo3To6') ];
-				package: 'MyProject-Pharo3To6' ] ].
+    spec
+        for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
+        do: [ spec
+                package: 'MyProject' with: [ spec requires: #('MyProject-Pharo3To6') ];
+                package: 'MyProject-Pharo3To6' ] ].
 
-	spec
-		for: #(#'MacOS' #'Unix') do: [ 
-			self osSubprocess: spec.
-			spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ].
+    spec
+        for: #(#'MacOS' #'Unix') do: [
+            self osSubprocess: spec.
+            spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ].
 
-	spec
-		for: #'Windows' do: [ 
-			self processWrapper: spec.
-			spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
+    spec
+        for: #'Windows' do: [
+            self processWrapper: spec.
+            spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
 ```
+
 ```Smalltalk
 "dependencies"
 materialDesignLite: spec
-	spec
-		baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
-		project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
+    spec
+        baseline: 'MaterialDesignLite' with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src' ];
+        project: 'MaterialDesignLiteExtensions' copyFrom: 'MaterialDesignLite' with: [ spec loads: #('Extensions') ]
 ```
+
 ```Smalltalk
 "dependencies"
 magritte3: spec
-	spec
-		project: 'Magritte3'
-		with: [ spec
-				className: #ConfigurationOfMagritte3;
-				versionString: #'release3';
-				loads: #('Seaside');
-				repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+    spec
+        project: 'Magritte3'
+        with: [ spec
+                className: #ConfigurationOfMagritte3;
+                versionString: #'release3';
+                loads: #('Seaside');
+                repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 
 ```
+
 ```Smalltalk
 "dependencies"
 osSubprocess: spec
-	spec 
-		baseline: 'OSSubprocess' 
-		with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
+    spec
+        baseline: 'OSSubprocess'
+        with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
 ```
+
 ```Smalltalk
 "dependencies"
 processWrapper: spec
-	spec 
-		configuration: 'ProcessWrapper' 
-		with: [ 
-			spec
-				versionString: '1.2';
-				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]				
+    spec
+        configuration: 'ProcessWrapper'
+        with: [
+            spec
+                versionString: '1.2';
+                repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
 ```
+
 ```Smalltalk
 "accessing"
 customProjectAttributes
-	Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
-	Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
-	Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
+    Smalltalk os isMacOS ifTrue: [ ^ #(#MacOS) ].
+    Smalltalk os isUnix ifTrue: [ ^ #(#Unix) ].
+    Smalltalk os isWindows ifTrue: [ ^ #(#Windows) ]
 ```
+
 ```Smalltalk
 "actions"
 preload: loader package: packageSpec
 
-	Trascript crLog: 'The fetch was finished. Now let's load the project'
+    Trascript crLog: 'The fetch was finished. Now let's load the project'
 
 ```
+
 ```Smalltalk
 "actions"
 postload: loader package: packageSpec
 
-	Trascript crLog: 'Project loaded!'
+    Trascript crLog: 'Project loaded!'
 
 ```
+
 ```Smalltalk
 "accessing"
 project
-	^ super project
-		loadType: #atomic;
-		youself
+    ^ super project
+        loadType: #atomic;
+        youself
 ```
 
 ## How to load a git project using its baseline
@@ -697,12 +709,13 @@ The first way to load a project is to create a *Metacello* request programmatica
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
-	baseline: 'MaterialDesignLite';
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+    baseline: 'MaterialDesignLite';
+    load
 ```
 
 Note the three steps:
+
 1. Create a new Metacello request
 2. Configure it (declare the repository of the project, specify the version, the baseline, optional options...)
 3. Launch the loading
@@ -715,12 +728,13 @@ To load a project from git you need to execute an expression like this:
 
 ```Smalltalk
 Metacello new
-	repository: {repository};
-	baseline: {baselineName};
-	load
+    repository: {repository};
+    baseline: {baselineName};
+    load
 ```
 
 This command has two parameter:
+
 - `repository` defining the location of the git project, the version of the project to load and the subdirectory in which the project is stored.
 - `baselineName` is the name of the baseline to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
 
@@ -734,35 +748,36 @@ The repository parameter to load a project from github/gitlab/bitbucket takes th
 
 This snippet should be configured with:
 
-* `{prefix}`: This is host-specific:
-	* `github` for github
-	* `bitbucket` for bitbucket
-	* `gitlab` for gitlab
-* `{owner}`: Name of the user or organisation hosting the project
-* `{projectName}`: Name of the project
-* `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
-* `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+- `{prefix}`: This is host-specific:
+  - `github` for github
+  - `bitbucket` for bitbucket
+  - `gitlab` for gitlab
+- `{owner}`: Name of the user or organisation hosting the project
+- `{projectName}`: Name of the project
+- `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
+- `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
 
 Examples:
 
 ```Smalltalk
 Metacello new
-	repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src';
-	baseline: 'MaterialDesignLite';
-	load
+    repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src';
+    baseline: 'MaterialDesignLite';
+    load
 ```
 
 Metacello also comes with some sytactic sugar to define the repository to github or bitbucket:
-* *Github*: `Metacello>>githubUser:project:commitish:path:`
-* *Bitbucket*: `Metacello>>bitbucketUser:project:commitish:path:`
+
+- *Github*: `Metacello>>githubUser:project:commitish:path:`
+- *Bitbucket*: `Metacello>>bitbucketUser:project:commitish:path:`
 
 Example:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    load
 ```
 
 ##### Project from local repository
@@ -773,19 +788,19 @@ To load a project from a local repository you can this form to declare the repos
 
 This snippet should be configured with:
 
-* `{prefix}`: This is specific to the file format:
-	* `filetree` for a Filetree project
-	* `tonel` for a Tonel project
-* `{full/path/to/repository}`: is the path to the project on the file system
-* `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+- `{prefix}`: This is specific to the file format:
+  - `filetree` for a Filetree project
+  - `tonel` for a Tonel project
+- `{full/path/to/repository}`: is the path to the project on the file system
+- `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
 
 Example:
 
 ```Smalltalk
 Metacello new
-	repository: 'tonel://C:\Users\Cyril\GitRepositories\Native-Browser\src';
-	baseline: 'NativeBrowser';
-	load
+    repository: 'tonel://C:\Users\Cyril\GitRepositories\Native-Browser\src';
+    baseline: 'NativeBrowser';
+    load
 ```
 
 #### Project managed with Smalltalkhub
@@ -794,36 +809,37 @@ To load a project from Smalltalkhub you need to execute an expression like this:
 
 ```Smalltalk
 Metacello new
-	repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main';
-	configuration: {configurationName};
-	version: {version};
-	load
+    repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main';
+    configuration: {configurationName};
+    version: {version};
+    load
 ```
 
 This command has two parameter:
-* `owner`: Name of the team or user hosting the project
-* `repositoryName`: Name of the repository on SmalltalkHub
-* `configurationName` is the name of the configuration to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
-* `{version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+
+- `owner`: Name of the team or user hosting the project
+- `repositoryName`: Name of the repository on SmalltalkHub
+- `configurationName` is the name of the configuration to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
+- `{version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
 
 Example:
 
 ```Smalltalk
 Metacello new
-  repository: 'http://smalltalkhub.com/mc/Seaside/Seaside31/main';
-  configuration: 'Seaside3';
-  version: #stable;
-  load.
+    repository: 'http://smalltalkhub.com/mc/Seaside/Seaside31/main';
+    configuration: 'Seaside3';
+    version: #stable;
+    load.
 ```
 
 You can also use `Metacello>>smalltalkhubUser:project:`:
 
 ```Smalltalk
 Metacello new
-  smalltalkhubUser: 'Seaside' project: 'Seaside31';
-  configuration: 'Seaside3';
-  version: #stable;
-  load.
+    smalltalkhubUser: 'Seaside' project: 'Seaside31';
+    configuration: 'Seaside3';
+    version: #stable;
+    load.
 ```
 
 #### Loading groups
@@ -836,16 +852,16 @@ Examples:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	load: 'Extensions'
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    load: 'Extensions'
 ```
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	load: #('Extensions' 'Widgets')
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    load: #('Extensions' 'Widgets')
 ```
 
 #### Conflict, Upgrade and Downgrade resolution
@@ -855,6 +871,7 @@ Sometimes there can be conflicts, updates or downgrades while loading a project.
 For example imagine in an image the project `ProjA` version v1.0.0. We want to load our project `ProjB` that depends on `ProjA` version v2.0.0., `ProjC` version v1.0.0, and `ProjD` that loads also `ProjC` version v2.0.0.
 
 If we load `ProjB` in those conditions, we will have two problems:
+
 - The update of `ProjA` from v1.0.0 to v2.0.0
 - A conflict between `ProjC` v1.0.0 and v2.0.0
 
@@ -864,25 +881,25 @@ Example:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	onConflict: [ :ex | ex useIncoming ];
-	onUpgrade: [ :ex | ex useIncoming ];
-	onDowngrade: [ :ex | ex useLoaded ];
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    onConflict: [ :ex | ex useIncoming ];
+    onUpgrade: [ :ex | ex useIncoming ];
+    onDowngrade: [ :ex | ex useLoaded ];
+    load
 ```
 
 A last conflicting situation happens if Pharo includes a project in the default distribution and you want to load a new version. To manage this case you have the `ignoreImage` option.
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	onConflict: [ :ex | ex useIncoming ];
-	onUpgrade: [ :ex | ex useIncoming ];
-	onDowngrade: [ :ex | ex useLoaded ];
-	ignoreImage;
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    onConflict: [ :ex | ex useIncoming ];
+    onUpgrade: [ :ex | ex useIncoming ];
+    onDowngrade: [ :ex | ex useLoaded ];
+    ignoreImage;
+    load
 ```
 
 Here is a last example of conflict management. The Pharo community was previously on a version control system called Monticello. Most of the community has now migrated to Github. Some of the projects exist on Smalltalkhub (managed with Monticello) and on Github. It's not unusual to have conflict between the two.
@@ -891,10 +908,10 @@ Here is a little script that loads the version managed with git when the project
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	onConflict: [ :ex :a :b | a projectName = b projectName ifTrue: [ a projectSpec isBaselineOfProjectSpec ifTrue: [ ex useLoaded ] ifFalse: [ ex useIncoming ] ] ifFalse: [ ex resume ] ];
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    onConflict: [ :ex :a :b | a projectName = b projectName ifTrue: [ a projectSpec isBaselineOfProjectSpec ifTrue: [ ex useLoaded ] ifFalse: [ ex useIncoming ] ] ifFalse: [ ex resume ] ];
+    load
 ```
 
 #### Manage warnings
@@ -905,54 +922,54 @@ Examples:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	onWarning: [ :ex | Transcript crShow: ex ];
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    onWarning: [ :ex | Transcript crShow: ex ];
+    load
 ```
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	onWarningLog;
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+    baseline: 'MaterialDesignLite';
+    onWarningLog;
+    load
 ```
 
 ### From Iceberg
 
-In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This tool allow the developer to load a project via an interface.
+In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This tool allow the developer to load a project via user interface.
 
-The first step is to add your git project to Iceberg. Then with a right click on the project name you can access a `Metacello` submenu to load the project.
+The first step is to add your git project to Iceberg. Then right click on the project name to access a `Metacello` sub-menu to load the project.
 
 ![Interface of Iceberg to load a project](loadBaselineViaIceberg.png?raw=true "Interface of Iceberg to load a project")
 
-## Other features 
+## Other features
 
-This section will cover other features of the baselines and Metacello.
+This section covers other features of baselines and Metacello.
 
 ### Metacello lock feature
 
-Automatically upgrading projects is not always desirable. Of course, in the normal course of loading and upgrading, you want the correct version of dependent projects loaded. However under the following conditions:
+In the normal course of loading and upgrading, you want the correct version of dependent projects loaded. However, there are some special cases where automatic upgrading isn't desirable:
 
-* You may be actively developing a particular version of a project and you don't want the project upgraded (or downgraded) out from under you.
-* You may be working with a git checkout of a project and you want to continue using the git checkout.
-* You may not want to have particular projects upgraded automatically.
+- You may be actively developing a particular version of a project and you don't want the project upgraded (or downgraded) out from under you.
+- You may be working with a git checkout of a project and you want to continue using the git checkout.
+- You may not want to have particular projects upgraded automatically.
 
-The `lock` command gives you this possibility. You can lock a project to a particular version.
+The `lock` command forces a particular version.
 
 Example:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
-	baseline: 'MaterialDesignLite';
-	lock
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
+    baseline: 'MaterialDesignLite';
+    lock
 ```
 
 This example will lock the project MateralDesignLite to version v1.1.0.
 
-You can check the list of locked project via those snippets:
+You can check the list of locked projects via those snippets:
 
 ```Smalltalk
 Metacello registry locked. "Return the list of locked projects from the Metacello registry"
@@ -966,27 +983,27 @@ Example:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
-	baseline: 'MaterialDesignLite';
-	unlock
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
+    baseline: 'MaterialDesignLite';
+    unlock
 ```
 
 During the loading of a project you can also do some specific actions when you encounter a lock. For this you can use the `onLock:` message.
 
-
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
-	baseline: 'MaterialDesignLite';
-	onLoad: [ :ex :loaded :incoming | loaded baseName = 'myProject' ifTrue: [ ex break ] ifFalse: [ ex honor ] ];
-	load
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.1.0' path: 'src';
+    baseline: 'MaterialDesignLite';
+    onLoad: [ :ex :loaded :incoming | loaded baseName = 'myProject' ifTrue: [ ex break ] ifFalse: [ ex honor ] ];
+    load
 ```
 
 ### Metacello get feature
 
-Metacello includes a command to load the Baseline of a project into the image. This is useful in two cases:
-* You want to load only the Baseline of the project
-* You already have an obsolete baseline in your image and you want to update it before loading the project
+Metacello includes a command to load the baseline of a project into the image. This is useful in two cases:
+
+- You want to load only the baseline of the project
+- You already have an obsolete baseline in your image and you want to update it before loading the project
 
 To do that you can use the `get` command.
 
@@ -994,9 +1011,9 @@ Example:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
-	baseline: 'MaterialDesignLite';
-	get
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+    baseline: 'MaterialDesignLite';
+    get
 ```
 
 ### Metacello fetch feature
@@ -1007,60 +1024,60 @@ Example:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
-	baseline: 'MaterialDesignLite';
-	fetch
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+    baseline: 'MaterialDesignLite';
+    fetch
 ```
 
 You can also specify a group:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
-	baseline: 'MaterialDesignLite';
-	fetch: #('Extensions' 'Widgets')
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+    baseline: 'MaterialDesignLite';
+    fetch: #('Extensions' 'Widgets')
 ```
 
 The fetch command duplicates what the load command would do, which means if a package is alrady loaded in the image, it will not be fetched. To fetch packages regardless of what is loaded in the image, use the ignoreImage option:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
-	baseline: 'MaterialDesignLite';
-	ignoreImage;
-	fetch
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+    baseline: 'MaterialDesignLite';
+    ignoreImage;
+    fetch
 ```
 
 ### Metacello record feature
 
-The `record` command performs the same function as the `fetch` command, without actually downloading any files. As a consequence, it can give you a quick report of what packages will be loaded into your image. The record will be produced in the `Transcript` (cmd + o + t).
+The `record` command performs the same function as the `fetch` command, without actually downloading any files. As a consequence, it can give you a quick report of what packages will be loaded into your image. The recording will be produced in the `Transcript` (cmd + o + t).
 
 Example:
 
 ```Smalltalk
 Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
-	baseline: 'MaterialDesignLite';
-	record
+    githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+    baseline: 'MaterialDesignLite';
+    record
 ```
 
 ### Metacello listing feature
 
-The `list` command may be used to list projects in the image or Metacello registry:
+The `list` command lists projects in the image or Metacello registry:
 
 ```Smalltalk
 Metacello image
-	baseline: [ :spec | true "spec name beginsWith: 'Seaside'" ];
-	list.
-	
+    baseline: [ :spec | true "spec name beginsWith: 'Seaside'" ];
+    list.
+
 Metacello registry
-	baseline: [ :spec | true "spec name beginsWith: 'Seaside'" ];
-	list
+    baseline: [ :spec | true "spec name beginsWith: 'Seaside'" ];
+    list
 ```
 
 This command needs to be inspected.
 
 # See also
 
-* Deep into pharo: [Chapter 9, Managing Projects with Metacello](http://files.pharo.org/books-pdfs/deep-into-pharo/2013-DeepIntoPharo-EN.pdf)
-* [Metacello documentation](https://github.com/Metacello/metacello/tree/master/docs)
+- Deep into pharo: [Chapter 9, Managing Projects with Metacello](http://files.pharo.org/books-pdfs/deep-into-pharo/2013-DeepIntoPharo-EN.pdf)
+- [Metacello documentation](https://github.com/Metacello/metacello/tree/master/docs)
