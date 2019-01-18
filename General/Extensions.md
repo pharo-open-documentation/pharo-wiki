@@ -32,15 +32,15 @@ Here is more detailed information about adding an extension method via Pharo's t
 
 In the Pharo versions based on Nautilus system browser, extension methods are created when we categorize methods on a protocol beginning by a `*`.
 
-![Add an extension method via Nautilus 1](ExtensionsNautilusAddExtension1.png?raw=true "Add an extension method via Nautilus 1")
+![Add an extension method via Nautilus 1](Extensions_Image_NautilusAddExtension1.png?raw=true "Add an extension method via Nautilus 1")
 
-![Add an extension method via Nautilus 2](ExtensionsNautilusAddExtension2.png?raw=true "Add an extension method via Nautilus 2")
+![Add an extension method via Nautilus 2](Extensions_Image_NautilusAddExtension2.png?raw=true "Add an extension method via Nautilus 2")
 
 ### Define an extension method since Pharo 7
 
 Since Pharo 7 the default system browser is Calypso. To add an extension method in Calypso you need to use the "Move to package" menu entry.
 
-![Add an extension method via Calypso](ExtensionsCalypsoAddExtension.png?raw=true "Add an extension method via Calypso")
+![Add an extension method via Calypso](Extensions_Image_CalypsoAddExtension.png?raw=true "Add an extension method via Calypso")
 
 If you already have extensions in this package, you can also select the package in the list of extending packages in the protocol pane before adding a method.
 
@@ -61,11 +61,11 @@ There are two ways to find which methods are extensions where they are located:
 
 ### In versions prior to Pharo 7
 
-![See an extension method via Nautilus](ExtensionsNautilusSeeExtensions.png?raw=true "See an extension method via Nautilus")
+![See an extension method via Nautilus](Extensions_Image_NautilusSeeExtensions.png?raw=true "See an extension method via Nautilus")
 
 ### Since Pharo 7
 
-![See an extension method via Calypso](ExtensionsCalypsoSeeExtensions.png?raw=true "See an extension method via Calypso")
+![See an extension method via Calypso](Extensions_Image_CalypsoSeeExtensions.png?raw=true "See an extension method via Calypso")
 
 ### Find extensions programmatically
 
@@ -82,4 +82,4 @@ To find extension methods programmatically you can do something like:
 
 One thing developers should take into account when using extensions is to have clean dependencies between its packages. A package extending classes from another package should be loaded *after* this package.
 
-For example, if my package `MyProject-GUI` extends `MyProject-Model`, `MyProject-Model` should always be loaded *before* `MyProject-GUI` is. For more details, see the dependencies sections in the [baseline guide](General/Baselines.md).
+For example, if my package `MyProject-GUI` extends `MyProject-Model`, `MyProject-Model` should always be loaded *before* `MyProject-GUI` is. For more details, see the dependencies sections in the [baseline guide](Baselines.md).

@@ -18,7 +18,7 @@ Pharo offers a lot of way to navigate into the code, and most of those are used 
 When reading code we often need to open an entity or to check who is using an entity. To do that, Pharo has different commands:
 * **Browse** (`CMD/CTRL + b`): This command will open a new system browser on the class you are currently focusing
 * **Senders** (`CMD/CTRL + n`): This command will open a message browser with all the methods calling the method/symbol you are currently focusing. 
-* **Implementors** (`CMD/CTRL + b`):  This command will open a message browser with all the methods whose name is the name of the method/symbol you are currently focusing. 
+* **Implementors** (`CMD/CTRL + m`):  This command will open a message browser with all the methods whose name is the name of the method/symbol you are currently focusing. 
 
 ### Method source with it
 
@@ -30,7 +30,7 @@ This will open a message browser with all the methods/class comments containing 
 
 ## Interupt the Pharo process
 
-Pharo currently run in one thread. If you launch a method taking a lot of time to run, or if you have an infinite loop in your code, you might want to interupt the process. 
+Pharo currently run in one native thread. If you launch a method taking a lot of time to run, or if you have an infinite loop in your code, you might want to interupt the process. 
 
 It is possible to do that in Pharo with the shortcut `cmd/ctrl + .`.
 

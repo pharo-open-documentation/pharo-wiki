@@ -221,16 +221,10 @@ MenubarMorph showMenubar: false.
 
 If you show progresses in your application via a progress bar, the user can clic on the red cross to stop the action and open a debugger.
 
-For now there is no way to disable this in Pharo. We can still block this feature with this code:
+It is possible to remove this possibility executing:
 
 ```Smalltalk
-Author
-	useAuthor: 'Deployment'
-	during: [ JobProgressMorph
-		compile:
-'debug
-	"Do nothing"
-	self inform: ''Stoping actions is disabled for customers''' ]
+JobProgressBarMorph isInterruptable: false
 ```
 
 ### Disable process interruption button
