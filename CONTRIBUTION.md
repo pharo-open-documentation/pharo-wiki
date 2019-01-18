@@ -87,7 +87,7 @@ If we want to rename a page, we can copy it with the new name and let the old pa
 
 ## Review content
 
-It is really helpful to get some review of the wiki's content. This can be done in multiple ways:
+It is really helpful to get reviews of the wiki's content. This can be achieved in multiple ways:
 - Review a Pull Request. Comments, approvals and changes request on pull request will help the intergation of new contents.
-- Open issues on existing entries
-- Create a Pull Request to propose enhancements to an existing entry
+- Open issues on existing entries.
+- Create a Pull Request to propose enhancements to an existing entry.
