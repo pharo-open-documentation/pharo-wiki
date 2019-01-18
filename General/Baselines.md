@@ -51,7 +51,7 @@ BaselineOf subclass: #BaselineOfMyProject
   slots: {  }
   classVariables: {  }
   package: 'BaselineOfMyProject'
-``` 
+```
 
 This class should be in a package separated from other packages' projects. The package holding the baseline **must** have the same name as the baseline. To summarize, `BaselineOfMyProject` class is in the `BaselineOfMyProject` package.
 
@@ -88,7 +88,9 @@ baseline: spec
         package: 'MyProject-Examples' ]
 ```
 
-Defining packages is not enough to load them, because some might depend on other packages/projects. For example, `MyProject-Tests` needs to be loaded after `MyProject`.
+> Note: Packages are the most atomic entities managed by the baseline. It is not possible to declare entities at the package tag granularity.
+
+Defining packages is not enough to load them, because some of them might depend on other packages/projects. For example, `MyProject-Tests` needs to be loaded after `MyProject`.
 
 To manage dependencies that are external to a project, see section [Define external dependencies](#define-external-dependencies).
 
@@ -141,7 +143,7 @@ Example:
 
 ```Smalltalk
   spec
-    baseline: 'MaterialDesignLite' 
+    baseline: 'MaterialDesignLite'
     with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src']
 ```
 
@@ -526,26 +528,26 @@ baseline: spec
         package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
 
   spec
-    for: #(#'MacOS' #'Unix') do: [ 
+    for: #(#'MacOS' #'Unix') do: [
       self osSubprocess: spec.
       spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ];
-    for: #'Windows' do: [ 
+    for: #'Windows' do: [
       self processWrapper: spec.
       spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
 ```
 
 ```Smalltalk
 osSubprocess: spec
-  spec 
-    baseline: 'OSSubprocess' 
+  spec
+    baseline: 'OSSubprocess'
     with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
 ```
 
 ```Smalltalk
 processWrapper: spec
   spec 
-    configuration: 'ProcessWrapper' 
-    with: [ 
+    configuration: 'ProcessWrapper'
+    with: [
       spec
         versionString: '1.2';
         repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
@@ -618,12 +620,12 @@ baseline: spec
         package: 'MyProject-Pharo3To6' ] ].
 
   spec
-    for: #(#'MacOS' #'Unix') do: [ 
+    for: #(#'MacOS' #'Unix') do: [
       self osSubprocess: spec.
       spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ].
 
   spec
-    for: #'Windows' do: [ 
+    for: #'Windows' do: [
       self processWrapper: spec.
       spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
 ```
@@ -653,19 +655,19 @@ magritte3: spec
 "dependencies"
 osSubprocess: spec
   spec
-    baseline: 'OSSubprocess' 
+    baseline: 'OSSubprocess'
     with: [ spec repository: 'github://pharo-contributions/OSSubprocess:v1.0.1/repository' ]
 ```
 
 ```Smalltalk
 "dependencies"
 processWrapper: spec
-  spec 
-    configuration: 'ProcessWrapper' 
-    with: [ 
+  spec
+    configuration: 'ProcessWrapper'
+    with: [
       spec
         versionString: '1.2';
-        repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]        
+        repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
 ```
 
 ```Smalltalk
