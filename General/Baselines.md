@@ -2,7 +2,14 @@
 
 Pharo projects often require a configuration to declare how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to external projects and independent sub-groups that can be loaded.
 
-This documentation explains how to create a baseline and how to load the project described by this baseline.
+Adding a baseline to a project has some advantages:
+- It makes it easier to load the project
+- It makes it easier for others to contribute to your project
+- It allows the users of the project to be unaware of the project's dependencies
+- It makes explicit the dependencies of the project
+- It ensures that packages and dependencies of the project are loaded in the right order
+
+This documentation explains how to write a baseline and how to load the project described by this baseline.
 
 > **TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
 
