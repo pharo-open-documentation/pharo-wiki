@@ -9,6 +9,7 @@
     + [If we want to move a page](#if-we-want-to-move-a-page)
     + [If we want to split a page](#if-we-want-to-split-a-page)
     + [If we want to rename a page](#if-we-want-to-rename-a-page)
+  * [Review content](#review-content)
 
 ## Suggest new pages
 
@@ -83,3 +84,10 @@ Sometimes a page is too big and would win to be splited. In that case the conten
 ### If we want to rename a page
 
 If we want to rename a page, we can copy it with the new name and let the old page at the original location with an explanation and a link to the new page.
+
+## Review content
+
+It is really helpful to get reviews of the wiki's content. This can be achieved in multiple ways:
+- Review a Pull Request. Comments, approvals and changes request on pull request will help the intergation of new contents.
+- Open issues on existing entries.
+- Create a Pull Request to propose enhancements to an existing entry.
