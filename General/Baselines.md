@@ -85,6 +85,8 @@ baseline: spec
         package: 'MyProject-Examples' ]
 ```
 
+> Note: Packages are the most atomic entities managed by the baseline. It is not possible to declare entities at the package tag granularity.
+
 Defining packages is not enough to load them because some of them might depend on other packages/projects. For example, `MyProject-Tests` needs to be loaded after `MyProject`.
 
 To manage dependencies external to a project, see section [Define external dependencies](#define-external-dependencies).
