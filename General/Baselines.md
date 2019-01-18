@@ -1,8 +1,8 @@
 # Baselines
 
-Pharo projects often requires a configuration to declare the how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to external projects and independent sub-groups that can be loaded.
+Pharo projects often require a configuration to declare how they should be loaded. This configuration is done via **Baselines**. A baseline defines the packages of the project, their dependencies to each other and to external projects and independent sub-groups that can be loaded.
 
-This documentation explains how to write a baseline and how to load the project described by this baseline.
+This documentation explains how to create a baseline and how to load the project described by this baseline.
 
 > **TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
 
@@ -53,9 +53,9 @@ BaselineOf subclass: #BaselineOfMyProject
   package: 'BaselineOfMyProject'
 ``` 
 
-This class should be in a package separated from other package's projects. This package holding the baseline **must** have the same name as the baseline. To summarize, `BaselineOfMyProject` class is in `BaselineOfMyProject` package.
+This class should be in a package separated from other packages' projects. The package holding the baseline **must** have the same name as the baseline. To summarize, `BaselineOfMyProject` class is in the `BaselineOfMyProject` package.
 
-Then, you will need to create a method that will define the spec of the project for the commit it will be included in.
+Then, create a method that defines the spec of the project for the commit it will be included in.
 
 ```Smalltalk
 baseline: spec
@@ -331,7 +331,7 @@ Sometimes, we don't want to load the full project, but just a sub part, e.g.:
 
 To manage such cases, baselines have the concept of a `Group`. A group is a loadable spec containing only a sub part of the project.
 
-They can be declared with the `#group:with:` message. The second parameter will define the content of the group. The content can either be a package name, a dependency name, or even another group name.
+They can be declared with the `#group:with:` message. The second parameter defines the content of the group. The content can either be a package name, a dependency name, or even another group name.
 
 Example:
 
@@ -450,7 +450,7 @@ This is possible with the different spec attributes.
 
 Up until now we defined everything in a spec for `#common`, which applies to all versions of Pharo. But it's possible to define a spec for specific Pharo versions or even other Smalltalk environments.
 
-We can add in the baseline a special #for:do: command taking as parameter a specific attribute.
+We can add in the baseline a special `#for:do:` command taking as parameter a specific attribute.
 
 Every Pharo version contains some default attributes. For a Pharo version X.Y we have:
 
@@ -548,22 +548,22 @@ processWrapper: spec
     with: [ 
       spec
         versionString: '1.2';
-        repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]        
+        repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
 ```
 
 ### Loading types
 
-Baselines support different loading types. The loading types will define how Metacello will load the project.
+Baselines support different loading types. The loading types define how Metacello loads the project.
 
 #### Linear loading
 
-By default, a baseline will use linear loading, which means packages are loaded one by one with their requirements loaded before them.
+By default, a baseline uses linear loading, which means packages are loaded one by one with their requirements loaded before them.
 
 #### Atomic loading
 
 This load type forces Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be cut. For example it's useful to load Pharo's Kernel and Collections since they depend on each other.
 
-To define atomic loading, override the method #project:
+To define atomic loading, override the method `#project`:
 
 ```Smalltalk
 project
@@ -708,7 +708,7 @@ Here we explain how to load a git project via its baseline.
 
 ### From the playground
 
-The first way to load a project is to create a *Metacello* request programmaticaly and to execute it. This request looks like this:
+The first way to load a project is to create a *Metacello* request programmatically and to execute it. This request looks like this:
 
 ```Smalltalk
 Metacello new
@@ -723,7 +723,7 @@ Note the three steps:
 2. Configure it (declare the repository of the project, specify the version, the baseline, optional options...)
 3. Launch the loading
 
-To configure the request some options are necessary and some are optional. We will cover in the next two sub sections how to configure the loading of a project hosted via Monticello and git, then we will detail optional options.
+To configure the request some options are necessary and some are optional. We cover in the next two sub sections how to configure the loading of a project hosted via Monticello and git, and then we detail optional parameters.
 
 #### Project managed with Git
 
@@ -757,8 +757,8 @@ This snippet should be configured with:
   - `gitlab` for gitlab
 - `{owner}`: Name of the user or organisation hosting the project
 - `{projectName}`: Name of the project
-- `{version}`: This parameter is optional (it will take master by default). It can be: the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
-- `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the subfolder containing the code.
+- `{version}`: This parameter is optional, and it defaults to master. It can be the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
+- `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the sub-folder containing the code.
 
 Examples:
 
@@ -980,7 +980,7 @@ Metacello new
   lock
 ```
 
-This example will lock the project MateralDesignLite to version v1.1.0.
+This example will lock the project MaterialDesignLite to version v1.1.0.
 
 You can check the list of locked projects via those snippets:
 
@@ -1051,7 +1051,7 @@ Metacello new
   fetch: #('Extensions' 'Widgets')
 ```
 
-The fetch command duplicates what the load command would do, which means if a package is alrady loaded in the image, it will not be fetched. To fetch packages regardless of what is loaded in the image, use the ignoreImage option:
+The fetch command duplicates what the load command would do, which means if a package is already loaded in the image, it will not be fetched. To fetch packages regardless of what is loaded in the image, use the ignoreImage option:
 
 ```Smalltalk
 Metacello new
