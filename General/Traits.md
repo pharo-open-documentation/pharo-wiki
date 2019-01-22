@@ -15,7 +15,7 @@
 
 Traits are pure units of behavior that can be composed to form classes or other traits. The trait composition mechanism is an alternative to multiple or mixin inheritance in which the composer has full control over the trait composition. The result enables more reuse than single inheritance without introducing the drawbacks of multiple or mixin inheritance.
 
-Since Pharo 7 Traits are modular and not tight the the Kernel. So it would be possible to have multiple implementations.
+Since Pharo 7 Traits are modular and not tied to the Kernel. So it would be possible to have multiple implementations.
 
 ## Create and use a new Trait
 
@@ -38,7 +38,7 @@ Trait named: #FamixTWithEnumValues
 
 This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`.
 
-Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits if the do not override it.
+Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits if they do not override it.
 
 Tu use your Trait you just need to declare it in the class declaration as parameter of the #uses: keyword. 
 
@@ -138,7 +138,7 @@ Object subclass: #MyObjectUsingTraitByAliasingMethod
 
 ## Trait composition
 
-Traits are composabls, this mean that you can have Traits using other traits. It is done in the same way than class using a Trait:
+Traits are composable, this mean that you can have Traits using other traits. It is done in the same way than class using a Trait:
 
 ```Smalltalk
 Trait named: TMyComposedTrait
