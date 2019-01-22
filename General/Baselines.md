@@ -76,7 +76,7 @@ baseline: spec
 
 > The name of this method does not have to be `#baseline:`; however, that is the name that is commonly used. In fact, it is the `<baseline>` pragma which specifies that the method defines the spec of the project.
 
-If your project is stored using a metadataless format (Tonel or FileTree metadataless), which is the default since Pharo 6, you also need to override the `projectClass` method of the baseline in that way:
+If your project is stored using a metadataless format (Tonel or FileTree metadataless), which is the default since Pharo 6, you also need to override the `projectClass` method of the baseline in the following way:
 
 ```Smalltalk
 projectClass
@@ -92,7 +92,7 @@ projectClass
     do: [ super projectClass ]
 ```
 
-This will allow Metacello to be able to update your project and is needed because the default project class of Metacello used metadatas to know if an update was needed. 
+This will allow Metacello to be able to update your project and is needed because the default project class of Metacello used metadata to know if an update was needed. 
 
 ### Define packages forming your project
 
