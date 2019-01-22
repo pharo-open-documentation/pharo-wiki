@@ -76,6 +76,24 @@ baseline: spec
 
 > The name of this method does not have to be `#baseline:`; however, that is the name that is commonly used. In fact, it is the `<baseline>` pragma which specifies that the method defines the spec of the project.
 
+If your project is stored using a metadataless format (Tonel or FileTree metadataless), which is the default since Pharo 6, you also need to override the `projectClass` method of the baseline in the following way:
+
+```Smalltalk
+projectClass
+  ^ MetacelloCypressBaselineProject
+```
+
+Or, if the project should be loadable in Pharo < 6, use this version:
+
+```Smalltalk
+projectClass
+  ^ [ self class environment at: #MetacelloCypressBaselineProject ]
+    on: NotFound
+    do: [ super projectClass ]
+```
+
+This will allow Metacello to be able to update your project and is needed because the default project class of Metacello used metadata to know if an update was needed. 
+
 ### Define packages forming your project
 
 To define the packages of the project, send the message `#package:` to the spec with the name of the package as argument.
@@ -635,6 +653,11 @@ baseline: spec
     for: #'Windows' do: [
       self processWrapper: spec.
       spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
+```
+
+```Smalltalk
+projectClass
+  ^ MetacelloCypressBaselineProject
 ```
 
 ```Smalltalk
