@@ -31,6 +31,8 @@ This page will present formats from the most recommanded for new projects to the
 | Works well on windows | :white_check_mark: | :x: | :x: |
 | Easy to merge two branches | :white_check_mark: | :white_check_mark: | :x: |
 | Takes a reasonable space on file system | :white_check_mark: | :x: | :x: |
+| Works with Iceberg | :white_check_mark: | :white_check_mark: | :x: |
+| Works with Monticello | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 ### Supported Pharo versions
 
@@ -117,6 +119,8 @@ This simplify the tooling because the tools can get some informations from the m
 
 Merges can be eased via this project: [https://github.com/ThierryGoubier/GitFileTree-MergeDriver](https://github.com/ThierryGoubier/GitFileTree-MergeDriver)
 
+This format can be used via Monticello but not via Iceberg. Iceberg will ignore the format and export in FileTree metadata less.
+
 ### FileTree metadata full Pros and Cons
 
 Pros
@@ -127,6 +131,7 @@ Cons
 - Cause trouble on Windows
 - Waste space on the file system
 - Hard to merge two branches because of metadata
+- Does not work with Iceberg, the default git tool in Pharo
 
 ### FileTree metadata full supported Pharo versions
 
