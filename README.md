@@ -15,7 +15,8 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
-- [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies 
+- [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies
+- [Pharo code export formats](General/ExportFormats.md) - Explanation of code formats used to export code for VCS such as git ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages
 - [Traits](General/Traits.md) - Structure to build classes via composition ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
