@@ -86,7 +86,7 @@ Metacello new
 
 ## FileTree metadata less 
 
-FileTree ([https://github.com/dalehenrich/filetree](https://github.com/dalehenrich/filetree)) is the first export format planned to use Pharo with Git that was integrated. It had a first version with a lot of metadata (see section Filetree metadata full) then a new version with a metadata less format. 
+FileTree ([https://github.com/dalehenrich/filetree](https://github.com/dalehenrich/filetree)) is the first export format planned to use Pharo with Git that was integrated. It had the first version with a lot of metadata (see section Filetree metadata full) then a new version with metadata less format. 
 
 This format exports one file per methods. This can cause trouble with Windows because Windows has a maximum path and file name length of 255 characters. This limit can easily be reached with FileTree. 
 
