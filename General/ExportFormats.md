@@ -90,7 +90,7 @@ FileTree ([https://github.com/dalehenrich/filetree](https://github.com/dalehenri
 
 This format exports one file per methods. This can cause trouble with Windows because Windows has a maximum path and file name length of 255 characters. This limit can easily be reached with FileTree. 
 
-Another problem of the FileTree format is that most Pharo's method are short and creating one file by method waste a lot of space because the physical representation of files on a drive have a minimal size (4Ko on NTFS file systems) that is reached by most of Pharo's method. 
+Another problem of the FileTree format is that most Pharo's methods are short and creating one file by method waste a lot of space because the physical representation of files on a drive has a minimal size (4 KiB on NTFS file systems) that is reached by most of Pharo's method. 
 
 Its advantage compared to FileTree metadata full is that there is no problem during merge because of metadata.
 
