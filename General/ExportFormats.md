@@ -62,7 +62,7 @@ Pros
 - No problem during merge because of metadata
 
 Cons
-- Work out of the box only since Pharo 6.1
+- Works out of the box since Pharo 6.1.
 - Since the format is more recent than the others, some edges cases might cause trouble. (It rarely happens)
 
 ### Tonel supported Pharo versions
