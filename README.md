@@ -34,7 +34,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
 - [Basic interactions with OS](PharoProjects/OS.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Dynamic variables](PharoProjects/DynamicVariables.md)
-- [Cursor](PharoProjects/Cursor.md) ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
+- [Cursor](PharoProjects/Cursor.md)
 
 ## External projects
 ### Data exchange
