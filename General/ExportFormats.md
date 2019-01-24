@@ -27,6 +27,7 @@ This page will present formats from the most recommended for new projects to the
 || Tonel | FileTree metadata less | FileTree metadata full |
 | ------------- | ------------- |------------- |------------- |
 | Work out of the box since Pharo | 6.1 | 4 | 3 |
+| Older version supported after update | 4 | 4 | 3 |
 | Export granularity | Class | Method | Method |
 | Works well on windows | :white_check_mark: | :x: | :x: |
 | Easy to merge two branches | :white_check_mark: | :white_check_mark: | :x: |
@@ -38,7 +39,7 @@ This page will present formats from the most recommended for new projects to the
 
 | Pharo Version | FileTree metadata full | FileTree metadata less | Tonel |
 | ------------- | ------------- |------------- |------------- |
-3 |  :white_check_mark: | Update Metacello? | :x: |
+3 |  :white_check_mark: | :x: | :x: |
 4 |  :white_check_mark: |  :white_check_mark: | Update Metacello + Install Tonel |
 5 |  :white_check_mark: |  :white_check_mark: | Update Metacello + Install Tonel |
 6.0 |  :white_check_mark: |  :white_check_mark: | Update Metacello + Install Tonel |
@@ -71,17 +72,17 @@ Tonel works out of the box in Pharo 6.1 and higher. But it is possible to make i
 ```Smalltalk
 Metacello new
   baseline: 'Metacello';
-  repository: 'github://Metacello/metacello:master/repository';
+  repository: 'github://Metacello/metacello:pharo-6.1_dev/repository';
   get.
 Metacello new
   baseline: 'Metacello';
-  repository: 'github://Metacello/metacello:master/repository';
+  repository: 'github://Metacello/metacello:pharo-6.1_dev/repository';
   onConflict: [:ex | ex allow];
   load.
 Metacello new 
-	repository: 'github://pharo-vcs/tonel';
-	baseline: 'Tonel';
-	load.
+  repository: 'github://pharo-vcs/tonel';
+  baseline: 'Tonel';
+  load.
 ```
 
 ## FileTree metadata less 
@@ -107,9 +108,7 @@ Cons
 
 ### FileTree metadata less supported Pharo versions
 
-FileTree metadata less is supported out of the box since Pharo 4.0. 
-
-It might be possible to use it in older Pharo version by updating Metacello.
+FileTree metadata less is supported out of the box since Pharo 4.0 and cannot easily be used in older Pharo versions. 
 
 ## FileTree metadata full
 
