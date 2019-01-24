@@ -50,7 +50,7 @@ This page will present formats from the most recommanded for new projects to the
 
 Tonel ([https://github.com/pharo-vcs/tonel](https://github.com/pharo-vcs/tonel)) is an export format introduced in Pharo 6.1. 
 
-It creates one file by class or extented class and works well on windows (compared to file tree).
+It creates one file by class or extended class and works well on windows (compared to file tree).
 
 ### Tonel Pros and Cons
 
