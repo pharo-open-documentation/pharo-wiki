@@ -113,7 +113,7 @@ It might be possible to use it in older Pharo version by updating Metacello.
 
 ## FileTree metadata full
 
-FileTree metadata full ([https://github.com/dalehenrich/filetree](https://github.com/dalehenrich/filetree))is the ancestor of FileTree metadata less and works in the same way but also export a lot of metadata relatif to the commits such has a commit message (different from the one of the VCS), timestamp of the method compilation, etc.
+FileTree metadata full ([https://github.com/dalehenrich/filetree](https://github.com/dalehenrich/filetree) )is the ancestor of FileTree metadata less and works in the same way but also export a lot of metadata relating to the commits such has a commit message (different from the one of the VCS), the timestamp of the method compilation, etc.
 
 This simplifies the tooling because the tools can get some information from the metadata instead of the VCS but it also creates a lot of trouble while merging two branches using this format.
 
