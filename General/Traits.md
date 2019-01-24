@@ -13,9 +13,9 @@
 
 ## Description
 
-Traits are pure units of behavior that can be composed to form classes or other traits. The trait composition mechanism is an alternative to multiple or mixin inheritance in which the composer has full control over the trait composition. The result enables more reuse than single inheritance without introducing the drawbacks of multiple or mixin inheritance.
+Traits are pure units of behavior that can be composed to form classes or other traits. The trait composition mechanism is an alternative to multiple or mixin inheritance in which the composer has full control over the trait composition. It enables more reuse than single inheritance without introducing the drawbacks of multiple or mixin inheritance.
 
-Since Pharo 7 Traits are modular and not tied to the Kernel. So it would be possible to have multiple implementations.
+Pharo 7's Traits are modular and not tied to the Kernel. So it would be possible to have multiple implementations.
 
 ## Create and use a new Trait
 
@@ -38,9 +38,11 @@ Trait named: #FamixTWithEnumValues
 
 This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`.
 
-Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits if they do not override it.
+> Calypso provides a menu entry to create traits. To access it, right-click on the classes list (with no class or trait selected) and select "New trait".
 
-Tu use your Trait you just need to declare it in the class declaration as parameter of the #uses: keyword. 
+Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits except if for methods overriden by the class.
+
+Tu use your Trait you just need to declare it in the class declaration as parameter of the `#uses:` keyword. 
 
 ```Smalltalk
 MySuperClass subclass: #MyClass
@@ -60,7 +62,7 @@ FAMIXType subclass: #FAMIXEnum
 	package: 'Famix-Compatibility-Entities'
 ```
 
-You can also use multiple Traits with your class with the #+ message.
+You can also use multiple Traits with your class with the `#+` message.
 
 ```Smalltalk
 MySuperClass subclass: #MyClass
@@ -72,7 +74,7 @@ MySuperClass subclass: #MyClass
 
 ## Abstract methods
 
-Sometime we want to call a methods that should not be implemented on a Trait but on the class using the Trait. To manage this a Trait can declare method that users should define by calling sending the message #explicitRequirement. 
+We might need to call a method for which the implementation will be specific to the class using the trait. To manage this case, a Trait can hold methods that explicitely declare that user should define it. These methods contain a call to `#explicitRequirement` message.
 
 ```Smalltalk
 TMyTrait>>addButton: aButton
@@ -83,6 +85,8 @@ TMyTrait>>addButton: aButton
 TMyTrait>>buttons
 	^ self explicitRequirement
 ```
+
+> Some Pharo developers create Traits with all their methods calling `#explicitRequirement` message. Doing this kind of simulate an interface (as Java's interfaces). Users of one of these traits thus declare that they support the interface it defines and override all methods defined by the trait.
 
 ## Stateful traits
 
@@ -106,16 +110,17 @@ Trait named: #FamixTWithEnumValues
 
 ## Traits initialization
 
-Traits do not include a way to initialize classes using them, it relies more on conventions.
+Traits do not include a way to initialize classes using them, it relies on conventions.
 
 One way to manage this might be to implement a method named `initializeTMyTraitName` on each traits needing an initialization and to call all those methods on the class using them.
 
 In case of trait composition (See [Trait composition](#trait-composition)), a trait composed of other traits can also implement a initialize method calling the one of the Traits it includes.
 
 ## Customize method received from a Trait
+When a class uses a trait, it is possible for it to reject or alias some methods.
 
 ### Reject some methods received from the trait
-In some case it is needed to reject a method of a Trait. For example if a Trait uses a cache but you know you don't need it, you can remove this method using `-`.
+In some case it is needed to reject a method of a Trait. It can be achieved using `#-` message.
 
 ```Smalltalk
 TestCase subclass: #StackTest
@@ -171,4 +176,4 @@ Object subclass: #MyObjectUsingTraitByAliasingMethod
 	package: 'TestTraitAliasing'
 ```
 
-Another way to solve case 2 is to implement a method on the class using the trait in order to chose the behavior wanted.
+Another way to solve case 2. is to implement a method on the class using the trait in order to chose the behavior wanted.
