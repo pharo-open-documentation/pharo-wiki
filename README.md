@@ -8,8 +8,9 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [General](#general)
 - [Pharo projects](#pharo-projects)
 - [External projects](#external-projects)
-  - [Data exchange](#data-exchange)
-  - [Data structures](#data-structures)
+  * [Data exchange](#data-exchange)
+  * [Data structures](#data-structures)
+- [Migration guidelines](#migration-guidelines)
 
 ## General
 
