@@ -4,7 +4,7 @@ Pharo store its code in memory by default or in a snapshot of the memory when we
 
 In order to be able to save some code in readable files, Pharo includes some textual export formats. This page will explain the main export formats used to save code in VCS such as git.
 
-This page will present formats from the most recommanded for new projects to the less recommanded.
+This page will present formats from the most recommended for new projects to the less recommended.
 
 - [Comparisons](#comparisons)
   * [Overview](#overview)
