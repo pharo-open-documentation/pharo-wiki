@@ -1,22 +1,20 @@
 # Progress bar
 
-This document will cover different ways in Pharo to display a progress bar when executing code.
+This document covers different ways to display a progress bar during code execution.
 
 ## Progress bar on iterators
 
-The easiest way to create a progress bar is to use the method `do:displayingProgress:`. This method is present on Collections and will add a progress bar updating during the iteration.
+The easiest way to create a progress bar is to use the method `do:displayingProgress:`. This method is available on Collections and adds a progress bar automatically updated during iterations.
 
 ```Smalltalk
 (1 to: 100) do: [ :each | each logCr. 100 milliSecond wait. ] displayingProgress:  [ :each | 'Iterating step ' , each asString ]
 ```
 
-You can also customize the refresh time if you want better performances:
+Refresh time can also be customized if better performances are needed. For example, the following code will update the progress bar every 2 seconds:
 
 ```Smalltalk
 (1 to: 100) do: [ :each | each logCr. 100 milliSecond wait. ] displayingProgress:  [ :each | 'Iterating step ' , each asString ] every: 2000
 ```
-
-This code will update the progress bar every 2 seconds.
 
 ## Use Jobs
 
@@ -48,9 +46,9 @@ UIManager default
 	]  ]
 ```
 
-While using this method be careful of performances when you have a lot a really fast steps.
+Be careful while using this method. It might cause performance issues when time between two steps is short.
 
-Here is a way to manage this:
+However, the following code shows a way to avoid these issues.
 
 ```Smalltalk
 UIManager default
@@ -70,4 +68,4 @@ UIManager default
 	]  ]
 ```
 
-This will update the progress bar every 500 milliseconds instead of updating the bar each time we call #value: or #title:
+The trick is to leave at least 500 milliseconds between two updates instead of updating the bar each time we call `value:` or `title:`.
