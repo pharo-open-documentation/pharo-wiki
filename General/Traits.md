@@ -160,7 +160,7 @@ It is possible to alias some instance variables received from a trait. If, for e
 
 ```
 Object subclass: #MyObjectUsingTraitByAliasingInstVar
-	uses: TTraitToBeUsed @ { #instVarAlias -> #aliasedInstVar }
+	uses: (TTraitToBeUsed aliasSelector: { #instVarAlias -> #aliasedInstVar })
 	slots: {  }
 	classVariables: {  }
 	package: 'TestTraitAliasing'
