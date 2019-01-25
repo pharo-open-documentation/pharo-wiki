@@ -8,6 +8,9 @@
 - [Customize method received from a Trait](#customize-method-received-from-a-trait)
   * [Reject some methods received from the trait](#reject-some-methods-received-from-the-trait)
   * [Alias some methods received from the trait](#alias-some-methods-received-from-the-trait)
+- [Customize instance variables received from a (stateful) Trait](#customize-instance-variables-received-from-a-stateful-trait)
+  * [Reject some instance variables received from the trait](#reject-some-instance-variables-received-from-the-trait)
+  * [Alias some instance variables received from the trait](#alias-some-instance-variables-received-from-the-trait)
 - [Trait composition](#trait-composition)
 - [Conflicts](#conflicts)
 
@@ -136,6 +139,31 @@ It is possible to alias some methods received from a trait. If, for example you 
 ```
 Object subclass: #MyObjectUsingTraitByAliasingMethod
 	uses: TTraitToBeUsed @ { #methodAlias -> #aliasedMethod }
+	slots: {  }
+	classVariables: {  }
+	package: 'TestTraitAliasing'
+```
+
+## Customize instance variables received from a (stateful) Trait
+When a class uses a trait, it is possible for it to reject or alias some instance variables.
+
+### Reject some instance variables received from the trait
+In some case it is needed to reject an instance variable of a Trait. It can be achieved using `#--` message. It works similarly to methods rejecting explaining in previous section.
+
+```
+Object subclass: #MyObjectUsingTraitByRejectingInstVar
+	uses: TTraitToBeUsed -- #instVarNameToRemove
+	slots: {  }
+	classVariables: {  }
+	package: 'TestTraitAliasing'
+```
+
+### Alias some instance variables received from the trait
+It is possible to alias some instance variables received from a trait. If, for example you alias `#aliasedInstVar` with `#instVarAlias` as shown below, your class will hold both `#instVarAlias` and `#aliasedInstVar`.
+
+```
+Object subclass: #MyObjectUsingTraitByAliasingInstVar
+	uses: (TTraitToBeUsed aliasSelector: { #instVarAlias -> #aliasedInstVar })
 	slots: {  }
 	classVariables: {  }
 	package: 'TestTraitAliasing'
