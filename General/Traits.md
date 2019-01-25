@@ -152,7 +152,7 @@ In some case it is needed to reject an instance variable of a Trait. It can be a
 
 ```
 Object subclass: #MyObjectUsingTraitByRejectingInstVar
-	uses: TTraitToBeUsed -- {#instVarNameToRemove}
+	uses: TTraitToBeUsed -- #instVarNameToRemove
 	slots: {  }
 	classVariables: {  }
 	package: 'TestTraitAliasing'
