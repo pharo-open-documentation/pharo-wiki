@@ -56,13 +56,16 @@ myUnfinishedMethod
 To retrieve methods for which you put flag(s), just search for senders of your flag. For example, to retrieve methods flagged with `#todo`, either inspect the result of the following script: `#todo senders` or just select the symbol and press Meta+N (shortcut for "Browse senders").
 
 ## Useful pragmas
-Pragmas allow to tag methods. They are similar to Java's annotations. Some pragmas allow the developer to modify the IDE or to influence execution of methods. This section present some of these useful pragmas.
+Pragmas allow one to tag methods. They are similar to Java's annotations. Some pragmas allow the developer to modify the IDE or to influence execution of methods. This section present some of these useful pragmas.
 
 ### Modify IDE
 
 - `<script>` for class-side methods, adds a button next to the method name in the IDE. This button, when clicked, executes the method.
 - `<script: 'Smalltalk code to run'>` is similar to `<script>` but the button executes the smalltalk code held by the String provided as parameter to the pragma.
 - `<sampleInstance>` for class-side methods, adds a button next to the method name in the IDE. When clicked, the method is executed and an inspector is opened on its result.
+- `<worldMenu>` for class-side methods, add a menu entry if the Pharo menu. The method with this pragma should take a builder as parameter. You can browse the senders of the `worldMenu` pragma to find the API.
+- `<systemsettings>` for class-side methods, add an entry if the Pharo settings. The method with this pragma should take a builder as parameter. You can browse the senders of the `systemsettings` pragma to find the API.
+- `<haltOrBreakpointForTesting>` should be used in methods using breakpoints that should not be listed in the Breakpoint browser. For example it can be used in examples using breakpoints to highlight a feature of the example.
 
 ### Influence execution of methods
 
