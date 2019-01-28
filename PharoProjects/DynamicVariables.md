@@ -6,9 +6,9 @@ Pharo contains a system of dynamic variables which are global variables whose va
 
 An example of use of a dynamic variable can be for a logger system. In such a system we can imagine that we have a default logger that will be used to record logs, but in some specific cases we might prefer to use a custom logger. In that case a dynamic variable might do the work. If you wish to see it at work you can check this [logger project using it](https://github.com/jecisc/TinyLogger)
 
-## Create a new Dynamic variable
+## Create a new dynamic variable
 
-To create a new Dynamic variable you just need to create a new subclass of `DynamicVariable`:
+To create a new dynamic variable you just need to create a new subclass of `DynamicVariable`:
 
 ```Smalltalk
 DynamicVariable subclass: #MyVariable
@@ -46,7 +46,7 @@ MyVariable value: MyNewObject during: [
 
 ## Example
 
-Here is the way Dynamic variables are used in the `TinyLogger` project quoted above.
+Here is the way dynamic variables are used in the `TinyLogger` project quoted above.
 
 ```Smalltalk
 DynamicVariable subclass: #TinyCurrentLogger
