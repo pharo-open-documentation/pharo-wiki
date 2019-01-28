@@ -37,3 +37,16 @@ url := 'http://files.pharo.org/media/logo/logo-flat.png' asZnUrl.
 	TimeProfiler spyOn: [ testSuite run ]
 
 ```
+
+## Browse all available icons
+The following code snippet opens an inspector in which the 'Icons' tab allows to browse all icons available in the image.
+
+```
+Smalltalk ui icons inspect
+```
+
+To get a specific icon, use `#iconNamed:` method as follow:
+
+```
+Smalltalk ui icons iconNamed: #arrowUp
+```
