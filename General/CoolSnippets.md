@@ -5,6 +5,7 @@ This files contains snippets of code that can be useful sometimes.
 - [Download a file with a progress bar](#download-a-file-with-a-progress-bar)
 - [Bench and profile a project from the tests](#bench-and-profile-a-project-from-the-tests)
 - [Automatic transformation of Pharo's methods source code](#automatic-transformation-of-pharo-s-methods-source-code)
+- [Browse all available icons](#browse-all-available-icons)
 
 ## Download a file with a progress bar
 
@@ -81,3 +82,15 @@ rewrittenSourceCode := (BIConfigurableFormatter format: ast).
 ExampleCodeTransformation compile: rewrittenSourceCode
 ```
 
+## Browse all available icons
+The following code snippet opens an inspector in which the 'Icons' tab allows to browse all icons available in the image.
+
+```
+Smalltalk ui icons inspect
+```
+
+To get a specific icon, use `#iconNamed:` method as follow:
+
+```
+Smalltalk ui icons iconNamed: #arrowUp
+```
