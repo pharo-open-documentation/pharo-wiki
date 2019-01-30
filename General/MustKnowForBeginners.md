@@ -32,7 +32,7 @@ This will open a message browser with all the methods/class comments containing 
 
 Pharo currently run in one native thread. If you launch a method taking a lot of time to run, or if you have an infinite loop in your code, you might want to interupt the process. 
 
-It is possible to do that in Pharo with the shortcut `cmd/ctrl + .`.
+It is possible to do that in Pharo with the shortcut `CMD/CTRL + .`.
 
 > This feature will work in most cases but sometime it might not work because a faulty code will have fill up too much the memory.
 
