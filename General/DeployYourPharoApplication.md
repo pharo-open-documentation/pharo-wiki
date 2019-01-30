@@ -109,8 +109,8 @@ In production examples and tests packages are useless. You can find bellow a scr
 substrings := #('Test' 'Example' 'Mock' 'Demo').
 
 RPackageOrganizer default packages
-		select: [ :p | substrings anySatisfy: [ :aString | p name includesSubstring: aString ] ]
-		thenDo: #removeFromSystem
+	select: [ :p | substrings anySatisfy: [ :aString | p name includesSubstring: aString ] ]
+	thenDo: #removeFromSystem
 ```
 
 ### Disable Monticello cache
@@ -239,7 +239,7 @@ UserInterruptHandler cmdDotEnabled: false
 
 It is possible to drop files in Pharo to install code in it. It is recommanded to disable this feature to block users to inject code into the application. Since there is no setting to do that, you can recompile a part of the Pharo image to block it this way:
 
-```Smalltlak
+```Smalltalk
 Author
 	useAuthor: 'Deployment'
 	during: [ WorldMorph
