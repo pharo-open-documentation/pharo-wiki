@@ -68,9 +68,9 @@ ast allChildren
 	select: [ :n | n class = RBLiteralValueNode and: [ n value = #symbolToReplace ] ]
 	thenDo: [ :node |
 		rewriter := RBParseTreeRewriter new
-							replaceTree: node
-							withTree: (RBLiteralValueNode value: #replacedSymbol);
-							yourself.
+			replaceTree: node
+			withTree: (RBLiteralValueNode value: #replacedSymbol);
+			yourself.
 		(rewriter executeTree: ast)
 			ifTrue: [ node replaceWith: rewriter tree ] ].
 		
