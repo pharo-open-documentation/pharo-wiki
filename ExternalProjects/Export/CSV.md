@@ -11,9 +11,9 @@ This section shows some quick examples but there is a great [documentation made 
 To install NeoCSV, simply execute the following code snippet in a playground:
 ```Smalltalk
 Metacello new
-    repository: 'github://svenvc/NeoCSV/repository';
-    baseline: 'NeoCSV';
-    load
+	repository: 'github://svenvc/NeoCSV/repository';
+	baseline: 'NeoCSV';
+	load
 ```
 
 ### Parse CSV
@@ -50,12 +50,12 @@ stream := 'id, name
 - Read from CSV file:
 ```Smalltalk
 '/path/to/file.csv' asFileReference
-    readStreamDo: [ :readStream |
-	    (NeoCSVReader on: readStream)
-		    skipHeader;
-		    addIntegerField;
-		    addField;
-		    upToEnd ]
+	readStreamDo: [ :readStream |
+		(NeoCSVReader on: readStream)
+			skipHeader;
+			addIntegerField;
+			addField;
+			upToEnd ]
 ```
 
 ### Generate CSV
@@ -85,8 +85,8 @@ String streamContents: [ :writeStream |
 - To write a CSV file:
 ```Smalltalk
 '/path/to/file.csv' asFileReference
-    writeStreamDo: [ :writeStream |
-        (NeoCSVWriter on: writeStream)
-	        nextPut: #(id name);
-	        nextPutAll: data ]
+	writeStreamDo: [ :writeStream |
+		(NeoCSVWriter on: writeStream)
+			nextPut: #(id name);
+			nextPutAll: data ]
 ```
