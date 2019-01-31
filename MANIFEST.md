@@ -2,7 +2,7 @@
 
 This file will explain the goals of this project and define it's perimeter. 
 
-Pharo-wiki is a user maintained wiki around the programming language and development environment Pharo but also it's echosystem.
+Pharo-wiki is a user maintained wiki around the programming language and development environment Pharo but also it's ecosystem.
 
 Here is a list of the goals of the project:
 - Provide documentation on parts of Pharo that are not yet or poorly documented
