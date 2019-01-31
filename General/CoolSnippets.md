@@ -1,6 +1,6 @@
 # Cool Snippets
 
-This files contains snippets of code that can be useful sometimes.
+This file contains snippets of code that can be useful sometimes.
 
 - [Download a file with a progress bar](#download-a-file-with-a-progress-bar)
 - [Bench and profile a project from the tests](#bench-and-profile-a-project-from-the-tests)
