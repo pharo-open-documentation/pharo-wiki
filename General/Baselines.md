@@ -11,8 +11,6 @@ Adding a baseline to a project has some advantages:
 
 This documentation explains how to write a baseline and how to load the project described by this baseline.
 
-> **TODO: Add documentation about #includes: (Includes allow to say "When XXX is loaded, I must be loaded before it". It's really useful when we define spec for specific attributes)**
-
 - [Baselines](#baselines)
   - [How to define Baselines](#how-to-define-baselines)
     - [Define packages forming your project](#define-packages-forming-your-project)
