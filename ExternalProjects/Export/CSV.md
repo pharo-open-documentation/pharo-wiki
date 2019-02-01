@@ -87,6 +87,6 @@ String streamContents: [ :writeStream |
 '/path/to/file.csv' asFileReference
 	writeStreamDo: [ :writeStream |
 		(NeoCSVWriter on: writeStream)
-		nextPut: #(id name);
-		nextPutAll: data ]
+ 			nextPut: #(id name);
+			nextPutAll: data ]
 ```
