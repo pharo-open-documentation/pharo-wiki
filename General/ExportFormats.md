@@ -71,18 +71,18 @@ Tonel works out of the box in Pharo 6.1 and higher. But it is possible to make i
 
 ```Smalltalk
 Metacello new
-  baseline: 'Metacello';
-  repository: 'github://Metacello/metacello:pharo-6.1_dev/repository';
-  get.
+	baseline: 'Metacello';
+	repository: 'github://Metacello/metacello:pharo-6.1_dev/repository';
+	get.
 Metacello new
-  baseline: 'Metacello';
-  repository: 'github://Metacello/metacello:pharo-6.1_dev/repository';
-  onConflict: [:ex | ex allow];
-  load.
+	baseline: 'Metacello';
+	repository: 'github://Metacello/metacello:pharo-6.1_dev/repository';
+	onConflict: [:ex | ex allow];
+	load.
 Metacello new 
-  repository: 'github://pharo-vcs/tonel';
-  baseline: 'Tonel';
-  load.
+	repository: 'github://pharo-vcs/tonel';
+	baseline: 'Tonel';
+	load.
 ```
 
 ## FileTree metadata less 
