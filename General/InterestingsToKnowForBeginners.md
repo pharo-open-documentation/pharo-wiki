@@ -1,4 +1,4 @@
-# Interesting things to know for a beginners
+# Interesting things to know for beginners
 
 This page will expose different things that might be interesting to know for beginners. Tools, API, shortcuts...
 
@@ -62,7 +62,8 @@ The second way is shorter and often more readable.
 > TODO
 
 ## Flags
-It is possible to "flag" methods in Pharo in order to be able to retrieve them later. The can be done by sending `#flag:` message to self with a symbol as parameter which is the flag to be used.
+
+It is possible to "flag" methods in Pharo in order to be able to retrieve them later. This can be done by sending `#flag:` message to self with a symbol as parameter which is the flag to be used.
 
 Commonly used flags are:
 - `#todo` to mark code that needs work to be done.
@@ -78,14 +79,15 @@ For example, the method below will return `42` if executed as if there was no ca
 
 ```
 myUnfinishedMethod
-  self flag: #TODO. "Some process to be done here."
-  ^ 42
+	self flag: #TODO. "Some process to be done here."
+	^ 42
 ```
 
 To retrieve methods for which you put flag(s), just search for senders of your flag. For example, to retrieve methods flagged with `#todo`, either inspect the result of the following script: `#todo senders` or just select the symbol and press Meta+N (shortcut for "Browse senders").
 
 ## Useful pragmas
-Pragmas allow one to tag methods. They are similar to Java's annotations. Some pragmas allow the developer to modify the IDE or to influence execution of methods. This section present some of these useful pragmas.
+
+Pragmas allow one to tag methods. They are similar to Java's annotations. Some pragmas allow the developer to modify the IDE or to influence execution of methods. This section presents some of these useful pragmas.
 
 ### Modify IDE
 
@@ -94,7 +96,7 @@ Pragmas allow one to tag methods. They are similar to Java's annotations. Some p
 - `<sampleInstance>` for class-side methods, adds a button next to the method name in the IDE. When clicked, the method is executed and an inspector is opened on its result.
 - `<worldMenu>` for class-side methods, add a menu entry if the Pharo menu. The method with this pragma should take a builder as parameter. You can browse the senders of the `worldMenu` pragma to find the API.
 - `<systemsettings>` for class-side methods, add an entry if the Pharo settings. The method with this pragma should take a builder as parameter. You can browse the senders of the `systemsettings` pragma to find the API.
-- `<haltOrBreakpointForTesting>` should be used in methods using breakpoints that should not be listed in the Breakpoint browser. For example it can be used in examples using breakpoints to highlight a feature of the example.
+- `<haltOrBreakpointForTesting>` should be used in methods using breakpoints that should not be listed in the Breakpoint browser. For example, it can be used in examples using breakpoints to highlight a feature of the example.
 
 ### Influence execution of methods
 

@@ -11,7 +11,7 @@ If the return code is `0`, the execution of the command is successful. Else, the
 
 ```Smalltalk
 LibC uniqueInstance
-  system: 'echo "foo" >> /tmp/foo.txt'
+	system: 'echo "foo" >> /tmp/foo.txt'
 ```
 
 ## Write environment variable

@@ -39,8 +39,8 @@ STONJSON fromStream: readStream "a Dictionary('foo'->42.0 )"
 - Let `jsonObject` be defined as:
 ```Smalltalk
 jsonObject := Dictionary new
-		at: 'foo' put: 42.0;
-		yourself.
+	at: 'foo' put: 42.0;
+	yourself.
 ```
 
 - To generate a JSON `String`:
@@ -70,9 +70,9 @@ This section shows some quick examples but there is a great [documentation made 
 To install NeoJSON, simply execute the following code snippet in a playground:
 ```
 Metacello new
-    repository: 'github://svenvc/NeoJSON/repository';
-    baseline: 'NeoJSON';
-    load
+	repository: 'github://svenvc/NeoJSON/repository';
+	baseline: 'NeoJSON';
+	load
 ```
 
 ### Parse JSON
@@ -99,8 +99,8 @@ readStream := '{ "foo" : 42.0 }' readStream.
 Let `jsonObject` be defined as:
 ```Smalltalk
 jsonObject := Dictionary new
-		at: 'foo' put: 42.0;
-		yourself.
+	at: 'foo' put: 42.0;
+	yourself.
 ```
 
 - To generate a JSON `String`:

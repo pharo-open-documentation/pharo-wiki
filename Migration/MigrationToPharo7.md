@@ -30,7 +30,7 @@ FileStream forceNewFileNamed: '1.txt' do: [ :stream | stream nextPutAll: 'a ≠ 
 ##### new code
 ```smalltalk
 '1.txt' asFileReference ensureDelete; 
-    writeStreamDo: [ :stream | stream nextPutAll: 'a ≠ b' ].
+	writeStreamDo: [ :stream | stream nextPutAll: 'a ≠ b' ].
 ```
 
 #### Read UTF-8 text from an existing file
@@ -38,13 +38,13 @@ FileStream forceNewFileNamed: '1.txt' do: [ :stream | stream nextPutAll: 'a ≠ 
 ##### obsolete code
 ```smalltalk
 FileStream readOnlyFileNamed: '1.txt' do: [ :stream | 
-    stream upToEnd ].
-  ```
+	stream upToEnd ].
+```
 
 ##### new code
 ```smalltalk
 '1.txt' asFileReference readStreamDo: [ :stream | 
-    stream upToEnd ].
+	stream upToEnd ].
 ```
 
 #### Get all content of existing UTF-8 file
@@ -64,14 +64,14 @@ FileStream readOnlyFileNamed: '1.txt' do: [ :stream |
 ##### obsolete code
 ```smalltalk
 (FileStream forceNewFileNamed: '1.bin') 
-    binary;
-    nextPutAll: #[1 2 3].
+	binary;
+	nextPutAll: #[1 2 3].
 ```
 
 ##### new code
 ```smalltalk
 '1.bin' asFileReference ensureDelete; 
-    binaryWriteStreamDo: [ :stream | stream nextPutAll: #[1 2 3] ].
+	binaryWriteStreamDo: [ :stream | stream nextPutAll: #[1 2 3] ].
 ```
 
 #### Read binary data from an existing file
@@ -91,15 +91,15 @@ FileStream readOnlyFileNamed: '1.txt' do: [ :stream |
 ##### obsolete code
 ```smalltalk
 FileStream forceNewFileNamed: '2.txt' do: [ :stream | 
-    stream converter: (TextConverter newForEncoding: 'cp-1250').
-    stream nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.' ].
+	stream converter: (TextConverter newForEncoding: 'cp-1250').
+	stream nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.' ].
 ```
 
 ##### new code
 ```smalltalk
 ('2.txt' asFileReference) ensureDelete;
-    writeStreamEncoded: 'cp-1250' do: [ :stream |
-        stream nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.' ].
+	writeStreamEncoded: 'cp-1250' do: [ :stream |
+		stream nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.' ].
 ```
 
 #### Read encoded text from an existing file
@@ -107,16 +107,16 @@ FileStream forceNewFileNamed: '2.txt' do: [ :stream |
 ##### obsolete code
 ```smalltalk
 FileStream readOnlyFileNamed: '2.txt' do: [ :stream | 
-    stream converter: (TextConverter newForEncoding: 'cp-1250').
-    stream upToEnd ].
+	stream converter: (TextConverter newForEncoding: 'cp-1250').
+	stream upToEnd ].
 
 ```
 
 ##### new code
 ```smalltalk
 ('2.txt' asFileReference)
-    readStreamEncoded: 'cp-1250' do: [ :stream |
-        stream upToEnd ].
+	readStreamEncoded: 'cp-1250' do: [ :stream |
+		stream upToEnd ].
 ```
 
 #### Write a UTF-8 text to STDOUT
@@ -129,8 +129,8 @@ FileStream stdout nextPutAll: 'a ≠ b'; lf.
 ##### new code
 ```smalltalk
 (ZnCharacterWriteStream on: Stdio stdout)
-    nextPutAll: 'a ≠ b'; lf;
-    flush.
+	nextPutAll: 'a ≠ b'; lf;
+	flush.
 ```
 
 #### Write CP-1250 encoded text to STDOUT
@@ -138,15 +138,15 @@ FileStream stdout nextPutAll: 'a ≠ b'; lf.
 ##### obsolete code
 ```smalltalk
 FileStream stdout 
-    converter: (TextConverter newForEncoding: 'cp-1250');
-    nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.'; lf.
+	converter: (TextConverter newForEncoding: 'cp-1250');
+	nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.'; lf.
 ```
 
 ##### new code
 ```smalltalk
 (ZnCharacterWriteStream on: Stdio stdout encoding: 'cp1250')
-    nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.'; lf;
-    flush.
+	nextPutAll: 'Příliš žluťoučký kůň úpěl ďábelské ódy.'; lf;
+	flush.
 ```
 
 #### Read a UTF-8 text from STDIN
@@ -168,14 +168,14 @@ FileStream stdin upTo: Character lf.
 ##### obsolete code
 ```smalltalk
 FileStream stdout 
-    binary
-    nextPutAll: #[80 104 97 114 111 10 ].
+	binary
+	nextPutAll: #[80 104 97 114 111 10 ].
 ```
 
 ##### new code
 ```smalltalk
 Stdio stdout 
-    nextPutAll: #[80 104 97 114 111 10 ].
+	nextPutAll: #[80 104 97 114 111 10 ].
 ```
 
 #### Read binary data from STDIN
@@ -198,8 +198,8 @@ The message `#position:` always works on the binary level, not on the character 
 
 ```smalltalk
 '1.txt' asFileReference readStreamDo: [ :stream | 
-    stream position: 4.
-    stream upToEnd ].
+	stream position: 4.
+	stream upToEnd ].
 ```
 
 This will lead to an error (ZnInvalidUTF8: Illegal leading byte for utf-8 encoding) in case of 
@@ -208,8 +208,8 @@ To be safe, you need to read the file from the beginning.
 
 ```smalltalk
 '1.txt' asFileReference readStreamDo: [ :stream |
-    3 timesRepeat: [ stream next ].
-    stream upToEnd.].
+	3 timesRepeat: [ stream next ].
+	stream upToEnd.].
 ```
 
 #### Buffering

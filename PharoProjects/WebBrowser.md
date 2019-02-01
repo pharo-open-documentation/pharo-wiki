@@ -10,5 +10,5 @@ It currently supports:
 To use it you just need to call:
 
 ```Smalltalk
-  WebBrowser openOn: 'https://pharo.org'
+WebBrowser openOn: 'https://pharo.org'
 ```
