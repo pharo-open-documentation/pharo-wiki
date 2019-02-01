@@ -47,8 +47,8 @@ If you already have extensions in this package, you can also select the package 
 ### Define an extension method programmatically
 
 ```Smalltalk
-  ExistingClass compile: 'myMethod
-  ^ true' classified: '*MyPackage'
+ExistingClass compile: 'myMethod
+	^ true' classified: '*MyPackage'
 ```
 
 ## Find methods currently extending a class
