@@ -34,9 +34,9 @@ Concrete example:
 
 ```Smalltalk
 Trait named: #FamixTWithEnumValues
-	 uses: {}
-	 slots: {}
-	 category: 'Famix-Traits-EnumValue'
+	uses: {}
+	slots: {}
+	category: 'Famix-Traits-EnumValue'
 ```
 
 This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`.
@@ -99,16 +99,16 @@ Examples:
 
 ```Smalltalk
 Trait named: #MDLWithConfigurableRightPanel
-	 uses: {}
-	 slots: { #panelComponent. #toolbar }
-	 category: 'MaterialDesignLite-Extensions'
+	uses: {}
+	slots: { #panelComponent. #toolbar }
+	category: 'MaterialDesignLite-Extensions'
 ```
 
 ```Smalltalk
 Trait named: #FamixTWithEnumValues
-	 uses: {}
-	 slots: { #enumValues => FMMany type: #FamixTEnumValue opposite: #parentEnum }
-	 category: 'Famix-Traits-EnumValue'
+	uses: {}
+	slots: { #enumValues => FMMany type: #FamixTEnumValue opposite: #parentEnum }
+	category: 'Famix-Traits-EnumValue'
 ```
 
 ## Traits initialization
@@ -183,10 +183,9 @@ Example:
 
 ```Smalltalk
 Trait named: #EpTEventVisitor
-	 uses: EpTCodeChangeVisitor
-	 category: 'Epicea-Visitors'
+	uses: EpTCodeChangeVisitor
+	category: 'Epicea-Visitors'
 ```
-
 ## Conflicts
 
 Two kinds of *conflicts* can happen with methods implemented on Traits.
