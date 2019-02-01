@@ -79,8 +79,8 @@ For example, the method below will return `42` if executed as if there was no ca
 
 ```
 myUnfinishedMethod
-  self flag: #TODO. "Some process to be done here."
-  ^ 42
+	self flag: #TODO. "Some process to be done here."
+	^ 42
 ```
 
 To retrieve methods for which you put flag(s), just search for senders of your flag. For example, to retrieve methods flagged with `#todo`, either inspect the result of the following script: `#todo senders` or just select the symbol and press Meta+N (shortcut for "Browse senders").
