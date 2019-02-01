@@ -23,7 +23,7 @@ It is possible to asign a default value to your dynamic variable. To do so, you 
 
 ```Smalltalk
 MyVariable>>default
-  ^ MyDefaultObject
+	^ MyDefaultObject
  ```
  
 ## Use your dynamic variable
@@ -40,7 +40,7 @@ If you need to change the value of the variable for the execution of a specific 
 
 ```Smalltalk
 MyVariable value: MyNewObject during: [
-  self doAnActionS=UsingTheVariable.
+	self doAnActionS=UsingTheVariable.
 ]
 ```
 
