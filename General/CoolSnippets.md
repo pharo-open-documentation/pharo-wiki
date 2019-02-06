@@ -6,6 +6,7 @@ This file contains snippets of code that can be useful sometimes.
 - [Bench and profile a project from the tests](#bench-and-profile-a-project-from-the-tests)
 - [Automatic transformation of Pharo's methods source code](#automatic-transformation-of-pharo-s-methods-source-code)
 - [Browse all available icons](#browse-all-available-icons)
+- [Rename programatically methods](#rename-programatically-methods)
 
 ## Download a file with a progress bar
 
@@ -92,3 +93,31 @@ To get a specific icon, use `#iconNamed:` method as follow:
 ```
 Smalltalk ui icons iconNamed: #arrowUp
 ```
+
+## Rename programatically methods
+
+In this section we'll present a snippet of code to rename all the methods of a class containing a substring to replace it by another substring. 
+
+```Smalltalk
+"Class in which we want to rename the methods"
+class := EpApplyPreviewerTest.
+"Substring to replace"
+from := 'With'.
+"Substring to use"
+to := 'Without'.
+
+class methods
+	select: [ :method | method selector includesSubstring: from ]
+	thenDo: [ :method | 
+		| permutationMap |
+		"We want to keep the arguments in the same order"
+		permutationMap := method numArgs = 0 ifTrue: [ #() ] ifFalse: [ (1 to: method numArgs) asArray ].
+		
+		(RBRenameMethodRefactoring
+			renameMethod: method selector
+			in: class
+			to: (method selector copyReplaceAll: from with: to)
+			permutation: permutationMap) execute ]
+```
+
+> Be careful, this will also rename the senders of those methods and if you have two methods of the same name in the image, it might badly rename some. Use this only on methods with unique names.
