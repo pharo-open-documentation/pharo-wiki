@@ -119,3 +119,5 @@ class methods
 			to: (method selector copyReplaceAll: from with: to)
 			permutation: permutationMap) execute ]
 ```
+
+> Be careful, this will also rename the senders of those methods and if you have two methods of the same name in the image, it might badly rename some. Use this only on methods with unique names.
