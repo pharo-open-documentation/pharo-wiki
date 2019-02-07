@@ -7,7 +7,7 @@ This file contains snippets of code that can be useful sometimes.
 - [Automatic transformation of Pharo's methods source code](#automatic-transformation-of-pharo-s-methods-source-code)
 - [Browse all available icons](#browse-all-available-icons)
 - [Rename programatically methods](#rename-programatically-methods)
-- [Get all senders/implementors of a selector](#get-all-senders-implementors-of-a-selector)
+- [Get all senders/implementors of a selector](#get-all-sendersimplementors-of-a-selector)
 
 ## Download a file with a progress bar
 
