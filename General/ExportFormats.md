@@ -13,7 +13,7 @@ This page will present formats from the most recommended for new projects to the
   * [Tonel Pros and Cons](#tonel-pros-and-cons)
   * [Tonel supported Pharo versions](#tonel-supported-pharo-versions)
 - [FileTree metadata less](#filetree-metadata-less)
-- [FileTree metadata less Pros and Cons](#filetree-metadata-less-pros-and-cons)
+  * [FileTree metadata less Pros and Cons](#filetree-metadata-less-pros-and-cons)
   * [FileTree metadata less supported Pharo versions](#filetree-metadata-less-supported-pharo-versions)
 - [FileTree metadata full](#filetree-metadata-full)
   * [FileTree metadata full Pros and Cons](#filetree-metadata-full-pros-and-cons)
@@ -95,7 +95,7 @@ Another problem of the FileTree format is that most Pharo's methods are short an
 
 Its advantage compared to FileTree metadata full is that there is no problem during merge because of metadata.
 
-## FileTree metadata less Pros and Cons 
+### FileTree metadata less Pros and Cons 
 
 Pros
 - Easy to browse the history of a method
