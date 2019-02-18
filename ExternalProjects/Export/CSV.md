@@ -71,14 +71,14 @@ data := #(
 ```Smalltalk
 String streamContents: [ :writeStream |
 	(NeoCSVWriter on: writeStream)
-		nextPut: #(id name);
+		writeHeader: #(id name);
 		nextPutAll: data ]
 ```
 
 - To generate CSV on a `Stream`:
 ```Smalltalk
 (NeoCSVWriter on: writeStream)
-	nextPut: #(id name);
+	writeHeader: #(id name);
 	nextPutAll: data
 ```
 
@@ -87,6 +87,6 @@ String streamContents: [ :writeStream |
 '/path/to/file.csv' asFileReference
 	writeStreamDo: [ :writeStream |
 		(NeoCSVWriter on: writeStream)
- 			nextPut: #(id name);
+ 			writeHeader: #(id name);
 			nextPutAll: data ]
 ```
