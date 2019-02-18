@@ -7,6 +7,7 @@ This file contains snippets of code that can be useful sometimes.
 - [Automatic transformation of Pharo's methods source code](#automatic-transformation-of-pharo-s-methods-source-code)
 - [Browse all available icons](#browse-all-available-icons)
 - [Rename programatically methods](#rename-programatically-methods)
+- [Get all senders/implementors of a selector](#get-all-sendersimplementors-of-a-selector)
 
 ## Download a file with a progress bar
 
@@ -121,3 +122,33 @@ class methods
 ```
 
 > Be careful, this will also rename the senders of those methods and if you have two methods of the same name in the image, it might badly rename some. Use this only on methods with unique names.
+
+## Get all senders/implementors of a selector
+The selector of a method is kind of the equivalent of the signature of a method or function in other programming language.
+However, since Pharo is dynamically typed, this selector is only the name of the method, without the parameters.
+For example, the selector of the method below is `#name:`
+
+```
+Example>>name: aString
+	name := aString
+```
+
+For a given `CompiledMethod` in the system, its selector is accessible via `#selector` message.
+
+```
+(Object>>#yourself) selector. "#yourself"
+```
+
+### Senders
+To get all the senders of a selector accross the image, simply call `#senders` on the selector:
+
+```
+#yourself senders
+```
+
+### Implementors
+To get all `CompiledMethod`s implementing a method having a selector, simply call `#implementors` on the selector:
+
+```
+#yourself implementors
+```
