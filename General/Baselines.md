@@ -771,7 +771,7 @@ The repository parameter is a string that can takes different form in case we ha
 
 The repository parameter to load a project from github/gitlab/bitbucket takes this form:
 
-`{prefix}://{option}:{owner}/{projectName}:{version}/{subFolder}`
+`{prefix}://{optionalHostname}:{owner}/{projectName}:{version}/{subFolder}`
 
 This snippet should be configured with:
 
