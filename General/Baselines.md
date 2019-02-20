@@ -779,7 +779,7 @@ This snippet should be configured with:
   - `github` for github
   - `bitbucket` for bitbucket
   - `gitlab` for gitlab
-- `{option}`: Optional server host, for private git servers
+- `{optionalHostname}`: Optional server host, for private git servers
 - `{owner}`: Name of the user or organisation hosting the project
 - `{projectName}`: Name of the project
 - `{version}`: This parameter is optional, and it defaults to master. It can be the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
