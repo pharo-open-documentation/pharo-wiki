@@ -796,7 +796,8 @@ Metacello new
 
 Example: loading from a private Gitlab host.
 
-```Metacello new 
+```Smalltalk
+Metacello new 
 	baseline: 'Ghost';
 	repository: 'gitlab://gitlab.inria.fr:RMOD/Ghost';
 	load
