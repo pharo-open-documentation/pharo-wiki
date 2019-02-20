@@ -771,7 +771,7 @@ The repository parameter is a string that can takes different form in case we ha
 
 The repository parameter to load a project from github/gitlab/bitbucket takes this form:
 
-`{prefix}://{owner}/{projectName}:{version}/{subFolder}`
+`{prefix}://{optionalHostname}:{owner}/{projectName}:{version}/{subFolder}`
 
 This snippet should be configured with:
 
@@ -779,17 +779,27 @@ This snippet should be configured with:
   - `github` for github
   - `bitbucket` for bitbucket
   - `gitlab` for gitlab
+- `{optionalHostname}`: Optional server host, for private git servers
 - `{owner}`: Name of the user or organisation hosting the project
 - `{projectName}`: Name of the project
 - `{version}`: This parameter is optional, and it defaults to master. It can be the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
 - `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the sub-folder containing the code.
 
-Examples:
+Example: loading from Github.
 
 ```Smalltalk
 Metacello new
 	repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src';
 	baseline: 'MaterialDesignLite';
+	load
+```
+
+Example: loading from a private Gitlab host.
+
+```Smalltalk
+Metacello new 
+	baseline: 'Ghost';
+	repository: 'gitlab://gitlab.inria.fr:RMOD/Ghost';
 	load
 ```
 
