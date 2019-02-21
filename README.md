@@ -23,6 +23,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
 - [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user
 - [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu
 
 ## Pharo projects
 
