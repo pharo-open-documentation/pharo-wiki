@@ -2,7 +2,7 @@
 
 In Pharo, to open tools or execute actions a Menubar (At the top of the screen) and a WorldMenu (Appears on a left click in the world) are present.
 
-This page will document sone aspects of those features. 
+This page will document some aspects of those features. 
 
 - [Disable the Menubar/WorldMenu](#disable-the-menubarworldmenu)
 - [Add your own entries](#add-your-own-entries)
@@ -12,9 +12,9 @@ This page will document sone aspects of those features.
 
 ## Disable the Menubar/WorldMenu
 
-In some case, we might want to hide the menubar and/or the world menu. For example, when releasing a new verison of a project to deploy, the development tools needs to be hidden. 
+In some case, we want to hide the menubar and/or the world menu. For example, when releasing a new version of a project to deploy, the development tools need to be hidden. 
 
-It is possible to do so with some settings.
+It is possible to do that with some settings.
 
 **Disable Menubar**
 
@@ -36,7 +36,7 @@ PasteUpMorph shouldShowWorldMenu: false
 
 **Disable WorldMenu and Menubar**
 
-To disable both the menubar and the world menu it is possible to disable both of them individually, or it is also possible to change the setting `World menu pragma` to set an empty pragma. programmatically, it can be done this way:
+To disable both the menubar and the world menu it is possible to disable each of them individually, or to change the setting `World menu pragma` to set an empty pragma. Programmatically, it can be done this way:
 
 ```Smalltalk
 WorldState desktopMenuPragmaKeyword: ''
@@ -50,7 +50,7 @@ To build the menu, Pharo uses a pragma mecanism. Each class method containing a 
 
 ### Add a simple entry
 
-To add a simple entry, you need to create and configure a new item in the builder.
+To add a simple entry, one need to create and configure a new item in the builder.
 
 Here is a minimal example of a new entry toogling the `Show deprecation warnings` setting:
 
