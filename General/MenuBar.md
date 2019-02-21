@@ -4,6 +4,12 @@ In Pharo, to open tools or execute actions a Menubar (At the top of the screen) 
 
 This page will document sone aspects of those features. 
 
+- [Disable the Menubar/WorldMenu](#disable-the-menubarworldmenu)
+- [Add your own entries](#add-your-own-entries)
+  * [Add a simple entry](#add-a-simple-entry)
+  * [Add a sub menu](#add-a-sub-menu)
+- [Change the menu](#change-the-menu)
+
 ## Disable the Menubar/WorldMenu
 
 In some case, we might want to hide the menubar and/or the world menu. For example, when releasing a new verison of a project to deploy, the development tools needs to be hidden. 
@@ -126,3 +132,13 @@ toggleDeprecationWorldMenuOn: aBuilder
 ```
 
 ## Change the menu
+
+It is also possible to totally change the Menubar and WorldMenu in case you do not like the current one, or if you want to create a menu for your application. 
+
+In order to do so, you need to define your own pragma to use by executing this code:
+
+```Smalltalk
+WorldState desktopMenuPragmaKeyword: 'myOwnMenu'
+```
+
+Then you can follow the previous section replacing the `<worldMenu>` pragma by `<myOwnMenu>` in the examples.
