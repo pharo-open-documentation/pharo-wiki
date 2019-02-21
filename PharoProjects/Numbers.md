@@ -23,7 +23,7 @@ Scaled decimals allow one to model rationals. That is to say numbers with a fixe
 - Negative infinity: `Float negativeInfinity`
 - Not a number: `Float nan`
 - Pi, 2\*Pi, 3\*Pi: `Float pi. Float twoPi. Float threePi`
-- Euler number: `Float e`
+- Euler's number: `Float e`
 
 ## Parse number
 The class-side methods `#readFrom:` and `#readFrom:base:` of `Number` class allow one to parse a number from a `String`. Here are some examples:
