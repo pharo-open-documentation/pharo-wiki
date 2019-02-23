@@ -18,13 +18,13 @@ Pragmas in Pharo are annotations on `CompiledMethods`. They are used to attach a
 
 Pragmas are part of Pharo's syntax and are declared like this: `<aPragma>`. They should be placed at the beginning of a method, after the method selector.
 
-This documentation will illustrate the use of pragmas by describing how to use them to annotate an application's parameters and generate documentation from those parameters comments.
+This documentation illustrates the use of pragmas by describing how to use them to annotate an application's parameters and generate documentation from those parameters comments.
 
 ## How to declare a new pragma
 
-To declare a new pragma, you do not need to create any class or anything, you only need to add you pragma to one method.
+To declare a new pragma, you only need to add it to, at least, one method in the system.
 
-For example, to annotate an application parameter you can do it like this:
+For example, annotating an application parameter can be done as follow:
 
 ```Smalltalk
 isInAdminMode
@@ -34,7 +34,7 @@ isInAdminMode
   ^ isAdminMode
 ```
 
-Pragmas can also take literals as a parameter to configure their future handling.
+Pragmas can take literals as a parameter in order to configure their future handling.
 
 In our example, we might want to declare which parameters are optional.
 
@@ -50,17 +50,17 @@ isInAdminMode
 
 Once defined, we need to be able to collect the pragmas either to modify them during the development or to use them to handle a feature of the application.
 
-We will explore those parts in these sections.
+We will explore these possibilities in the following sections.
 
 ### Find pragmas in the IDE
 
 During the development of the application, the developer might need to browse the currents senders of a pragma. This can be done in the same way we browse method selectors in Pharo.
 
 You can:
-- Select a symbol which will be the name of the pragma and type `CMD + n` or `CTRL + n`.
-- Select a symbol which will be the name of the pragma and right click on it then select `Browse senders` in the search menu.
-- Type the name of the pragma in the Spotter (`SHIFT + ENTER`) followed by `#p`.
-- Use the `Finder` (`Menubar -> Tools -> Finder`) and select the `Pragmas` mode.
+- Select a symbol is the name of the pragma and type `CMD + n` (or `CTRL + n` depending on your operating system).
+- Select a symbol which is the name of the pragma and right click on it then select `Browse senders` in the search menu.
+- Type the name of the pragma in the Spotter (`SHIFT + ENTER` to open Spotter) followed by `#p`.
+- Use the `Finder` (accessible via the menu through path: `Menubar -> Tools -> Finder`) and select the `Pragmas` mode.
 - Send the message `senders` to a symbol which is the name of the pragma.
 
 ### Get the pragmas of a CompiledMethod
@@ -77,7 +77,7 @@ SystemNavigation new browseAllSelect: [ :method | method pragmas isNotEmpty]
 
 When you want to use the pragmas in your application you have two ways to collect them. If you want to find the pragmas in one class or one hierarchy of class, you can use the `Pragma` class to collect them.
 
-The Pragma class implements different ways to get to pragmas depending on what you want.
+The Pragma class implements different ways to get to pragmas depending on your requirements.
 
 You can use:
 - `allNamed: aSymbol from: aSubClass to: aSuperClass`
@@ -104,37 +104,37 @@ Pragma allNamed: #applicationParameterOptional: from: MyConfiguration to: MyAbst
 
 The second way to collect the pragmas to handle them is to use the PragmaCollector. This class can be configured with a query and will return all the pragmas matching the query.
 
-To configure the PragmaCollector we need to send implement a filter block. If we want to collect the primitive pragmas:
+To configure the PragmaCollector we need to send implement a filter block. If we want to collect the `primitive:` pragmas:
 
 ```Smalltalk
-PragmaCollector filter: [:prg | prg keyword = 'primitive:' ]
+PragmaCollector filter: [:prg | prg keyword = #'primitive:' ]
 ```
 
 Once configured we can execute the collection of the pragmas by sending the method #reset to the pragma collector:
 
 ```Smalltalk
-(PragmaCollector filter: [:prg | prg keyword = 'primitive:' ]) reset
+(PragmaCollector filter: [:prg | prg keyword = #'primitive:' ]) reset
 ```
 
-Then you can iterate on the result using #do:, #collect:, #reject:, etc or using them directly through #collected. 
+Then you can iterate on the result using `#do:`, `#collect:`, `#reject:`, etc or use them directly through `#collected`. 
 
 In our example we might want to access them this way:
 
 ```Smalltalk
-(PragmaCollector filter: [:prg | prg keyword = 'applicationParameterOptional:' ]) reset collected
+(PragmaCollector filter: [:prg | prg keyword = #'applicationParameterOptional:' ]) reset collected
 ```
 
 Or we can select only non optional parameters this way:
 
 ```Smalltalk
-(PragmaCollector filter: [:prg | prg keyword = 'applicationParameterOptional:' and: [ (prg argumentAt: 1) not ] ]) reset collected
+(PragmaCollector filter: [:prg | prg keyword = #'applicationParameterOptional:' and: [ (prg argumentAt: 1) not ] ]) reset collected
 ```
 
 ## Act on collected pragmas
 
 Once collected, we need to act on pragmas.
 
-For that, the pragmas can answer diverse messages to get their context. They can answer to:
+For that, the pragmas can answer diverse messages to get their context. For example, they can answer to:
 - `#method` : Returns the CompiledMethod in which the pragmas is.
 - `#arguments` : Returns the arguments of the pragmas.
 - `#argumentAt:` : Returns the value of the n-th argument of the pragma instance.
@@ -167,7 +167,7 @@ String
 
 ## Examples of pragma usage
 
-Pragmas are used for many things in Pharo and you can find examples by browsing Pharo code.
+Pragmas are used for many things in Pharo and you can find examples of their usage by browsing Pharo code using them.
 
 For example, the setting framework is built with pragmas. The pragma `<systemSetting>` is used to register new settings the setting browser.
 
@@ -175,7 +175,7 @@ And other examples can be found in the world menu registration and is explain if
 
 ### Pragmas used in the IDE
 
-Some pragmas are interesting to know in Pharo IDE. You can find information on them in [this page](InterestingsToKnowForBeginners.md#useful-pragmas)
+Some pragmas are interesting to know in Pharo IDE. You can find information on them on [this page](InterestingsToKnowForBeginners.md#useful-pragmas)
 
 ## See also
 
