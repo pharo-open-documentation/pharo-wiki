@@ -2,11 +2,11 @@
 
 ## Description
 
-Pragmas in Pharo are annotations on `CompiledMethods`. They are used to attach to the methods additional properties to make those methods easily collectable through reflectivity and to easy the creation of special handlings.
+Pragmas in Pharo are annotations on `CompiledMethods`. They are used to attach additional properties to the methods to make those methods easily collectable through reflectivity and to ease the creation of special handlings.
 
 Pragmas are part of Pharo's syntax and are declared like this: `<aPragma>`. They should be placed at the beginning of a method, after the method selector.
 
-This documentation will illustrate the use of pragmas by describing how to use them to annotate an application's parameters and generate a documentation from those parameters comments.
+This documentation will illustrate the use of pragmas by describing how to use them to annotate an application's parameters and generate documentation from those parameters comments.
 
 ## How to declare a new pragma
 
@@ -16,19 +16,19 @@ For example, to annotate an application parameter you can do it like this:
 
 ```Smalltalk
 isInAdminMode
-  "If this parameter is true, the application will allows the user to access all the administration panels."
+  "If this parameter is true, the application will allow one to access all the administration panels."
   
   <applicationParameter>
   ^ isAdminMode
 ```
 
-Pragmas can also take literals as parameter to configure their future handling.
+Pragmas can also take literals as a parameter to configure their future handling.
 
-In our example we might want to declare each parameters are optional.
+In our example, we might want to declare which parameters are optional.
 
 ```Smalltalk
 isInAdminMode
-  "If this parameter is true, the application will allows the user to access all the administration panels."
+  "If this parameter is true, the application will allow the user to access all the administration panels."
   
   <applicationParameterOptional: false>
   ^ isAdminMode
@@ -38,24 +38,24 @@ isInAdminMode
 
 Once defined, we need to be able to collect the pragmas either to modify them during the development or to use them to handle a feature of the application.
 
-We will explore those parts in this sections.
+We will explore those parts in these sections.
 
 ### Find pragmas in the IDE
 
-During the development of the application, the developer might need to browse the currents senders of a pragmas. This cas be done in the same way we browse method selectors in Pharo.
+During the development of the application, the developer might need to browse the currents senders of a pragma. This can be done in the same way we browse method selectors in Pharo.
 
 You can:
-- Select a symbole which will be the name of the pragma and type `CMD + n` or `CTRL + n`.
-- Select a symbole which will be the name of the pragma and right click on it then select `Browse senders` in the search menu.
+- Select a symbol which will be the name of the pragma and type `CMD + n` or `CTRL + n`.
+- Select a symbol which will be the name of the pragma and right click on it then select `Browse senders` in the search menu.
 - Type the name of the pragma in the Spotter (`SHIFT + ENTER`) followed by `#p`.
 - Use the `Finder` (`Menubar -> Tools -> Finder`) and select the `Pragmas` mode.
-- Send the message `senders` to a symbole which is the name of the pragma.
+- Send the message `senders` to a symbol which is the name of the pragma.
 
 ### Get the pragmas of a CompiledMethod
 
-If you have a compile method you can directly ask it tis pragmas via the `#pragmas` method.
+If you have a compile method you can directly ask it his pragmas via the `#pragmas` method.
 
-For example you can get all methods with a pragma like this:
+For example, you can get all methods with a pragma like this:
 
 ```Smalltalk
 SystemNavigation new browseAllSelect: [ :method | method pragmas isNotEmpty]
@@ -63,9 +63,9 @@ SystemNavigation new browseAllSelect: [ :method | method pragmas isNotEmpty]
 
 ### Collect pragmas in a hierarchy
 
-When you want to use the pagmas in you application you have two ways to collect them. If you want to find the pragmas in one class or one hierarchy of class, you can use the `Pragma` class to collect them.
+When you want to use the pragmas in your application you have two ways to collect them. If you want to find the pragmas in one class or one hierarchy of class, you can use the `Pragma` class to collect them.
 
-The Pragma class implements different way to get to pragmas depending on what you want.
+The Pragma class implements different ways to get to pragmas depending on what you want.
 
 You can use:
 - `allNamed: aSymbol from: aSubClass to: aSuperClass`
@@ -76,7 +76,7 @@ You can use:
 
 In our example, we might want to use this way of accessing our pragmas if all parameters are defined in a configuration object.
 
-In that case we can access them this way:
+In that case, we can access them this way:
 
 ```Smalltalk
 Pragma allNamed: #applicationParameterOptional: in: MyConfiguration
@@ -124,42 +124,42 @@ Once collected, we need to act on pragmas.
 
 For that, the pragmas can answer diverse messages to get their context. They can answer to:
 - `#method` : Returns the CompiledMethod in which the pragmas is.
-- `#arguments` : Returns the arguements of the pragmas.
-- `#argumentAt:` : Returns the value of the n-th arguement of the pragma instance.
+- `#arguments` : Returns the arguments of the pragmas.
+- `#argumentAt:` : Returns the value of the n-th argument of the pragma instance.
 - `#keyword` : Returns the pragma selector.
 - `#methodClass` : Returns the class in which the method containing the pragma is.
 - Etc
 
-With those informations we can them build our handler.
+With that information, we can then build our handler.
 
-The next snippet will collect the senders of our example pragma and generate a user documentation about them:
+The next snippet will collect the senders of our example pragma and generate user documentation about them:
 
 ```Smalltalk
 String
-	streamContents: [ :stream | 
-		stream
-			<< 'Documentation';
-			lf;
-			lf.
-		(PragmaCollector filter: [ :prg | prg keyword = 'applicationParameterOptional:' ]) reset
-			do: [ :pragma | 
-				stream
-					<< '- ';
-					<< pragma methodSelector.
-				(pragma argumentAt: 1) ifTrue: [ stream << ' (Optional)' ].
-				stream
-					<< ': ';
-					<< pragma method comment;
-					lf ] ]
+    streamContents: [ :stream | 
+        stream
+            << 'Documentation';
+            lf;
+            lf.
+        (PragmaCollector filter: [ :prg | prg keyword = 'applicationParameterOptional:' ]) reset
+            do: [ :pragma | 
+                stream
+                    << '- ';
+                    << pragma methodSelector.
+                (pragma argumentAt: 1) ifTrue: [ stream << ' (Optional)' ].
+                stream
+                    << ': ';
+                    << pragma method comment;
+                    lf ] ]
 ```
 
 ## Examples of pragma usage
 
 Pragmas are used for many things in Pharo and you can find examples by browsing Pharo code.
 
-For example, the setting framework is build with pragmas. The pragma `<systemSetting>` is used to register new settings the the setting browser.
+For example, the setting framework is built with pragmas. The pragma `<systemSetting>` is used to register new settings the setting browser.
 
-And other example can be found in the world menu registration and is explain if the page [Menubar and Wrold menu](Menubar.md).
+And other examples can be found in the world menu registration and is explain if the page [Menubar and World menu](Menubar.md).
 
 ### Pragmas used in the IDE
 
