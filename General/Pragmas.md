@@ -1,0 +1,127 @@
+# Pragmas
+
+## Description
+
+Pragmas in Pharo are annotations on `CompiledMethods`. They are used to attach to the methods additional properties to make those methods easily collectable through reflectivity and to easy the creation of special handlings.
+
+Pragmas are part of Pharo's syntax and are declared like this: `<aPragma>`. They should be placed at the beginning of a method, after the method selector.
+
+This documentation will illustrate the use of pragmas by describing how to use them to annotate an application's parameters and generate a documentation from those parameters comments.
+
+## How to declare a new pragma
+
+To declare a new pragma, you do not need to create any class or anything, you only need to add you pragma to one method.
+
+For example, to annotate an application parameter you can do it like this:
+
+```Smalltalk
+isInAdminMode
+  "If this parameter is true, the application will allows the user to access all the administration panels."
+  
+  <applicationParameter>
+  ^ isAdminMode
+```
+
+Pragmas can also take literals as parameter to configure their future handling.
+
+In our example we might want to declare each parameters are optional.
+
+```Smalltalk
+isInAdminMode
+  "If this parameter is true, the application will allows the user to access all the administration panels."
+  
+  <applicationParameterOptional: false>
+  ^ isAdminMode
+```
+
+## Collect pragmas
+
+Once defined, we need to be able to collect the pragmas either to modify them during the development or to use them to handle a feature of the application.
+
+We will explore those parts in this sections.
+
+### Find pragmas in the IDE
+
+During the development of the application, the developer might need to browse the currents senders of a pragmas. This cas be done in the same way we browse method selectors in Pharo.
+
+You can:
+- Select a symbole which will be the name of the pragma and type `CMD + n` or `CTRL + n`.
+- Select a symbole which will be the name of the pragma and right click on it then select `Browse senders` in the search menu.
+- Type the name of the pragma in the Spotter (`SHIFT + ENTER`) followed by `#p`.
+- Use the `Finder` (`Menubar -> Tools -> Finder`) and select the `Pragmas` mode.
+- Send the message `senders` to a symbole which is the name of the pragma.
+
+### Get the pragmas of a CompiledMethod
+
+If you have a compile method you can directly ask it tis pragmas via the `#pragmas` method.
+
+For example you can get all methods with a pragma like this:
+
+```Smalltalk
+SystemNavigation new browseAllSelect: [ :method | method pragmas isNotEmpty]
+```
+
+### Collect pragmas in a hierarchy
+
+When you want to use the pagmas in you application you have two ways to collect them. If you want to find the pragmas in one class or one hierarchy of class, you can use the `Pragma` class to collect them.
+
+The Pragma class implements different way to get to pragmas depending on what you want.
+
+You can use:
+- `allNamed: aSymbol from: aSubClass to: aSuperClass`
+- `allNamed: aSymbol from: aSubClass to: aSuperClass sortedByArgument: anInteger`
+- `allNamed: aSymbol in: aClass`
+- `allNamed: aSymbol in: aClass sortedByArgument: anInteger`
+...
+
+In our example, we might want to use this way of accessing our pragmas if all parameters are defined in a configuration object.
+
+In that case we can access them this way:
+
+```Smalltalk
+Pragma allNamed: #applicationParameterOptional: in: MyConfiguration
+```
+
+Or if we have a hierarchy of configurations:
+
+```Smalltalk
+Pragma allNamed: #applicationParameterOptional: from: MyConfiguration to: MyAbstractConfiguration
+```
+
+### Collect pragmas in the image
+
+The second way to collect the pragmas to handle them is to use the PragmaCollector. This class can be configured with a query and will return all the pragmas matching the query.
+
+To configure the PragmaCollector we need to send implement a filter block. If we want to collect the primitive pragmas:
+
+```Smalltalk
+PragmaCollector filter: [:prg | prg keyword = 'primitive:' ]
+```
+
+Once configured we can execute the collection of the pragmas by sending the method #reset to the pragma collector:
+
+```Smalltalk
+(PragmaCollector filter: [:prg | prg keyword = 'primitive:' ]) reset
+```
+
+Then you can iterate on the result using #do:, #collect:, #reject:, etc or using them directly through #collected. 
+
+In our example we might want to access them this way:
+
+```Smalltalk
+(PragmaCollector filter: [:prg | prg keyword = 'applicationParameterOptional:' ]) reset collected
+```
+
+Or we can select only non optional parameters this way:
+
+```Smalltalk
+(PragmaCollector filter: [:prg | prg keyword = 'applicationParameterOptional:' and: [ (prg argumentAt: 1) not ] ]) reset collected
+```
+
+## Act on collected pragmas
+
+## Example of pragma usage
+
+## Pragmas used in the IDE
+
+## See also
