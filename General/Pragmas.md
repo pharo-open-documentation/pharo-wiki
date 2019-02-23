@@ -120,8 +120,41 @@ Or we can select only non optional parameters this way:
 
 ## Act on collected pragmas
 
+Once collected, we need to act on pragmas.
+
+For that, the pragmas can answer diverse messages to get their context. They can answer to:
+- `#method` : Returns the CompiledMethod in which the pragmas is.
+- `#arguments` : Returns the arguements of the pragmas.
+- `#argumentAt:` : Returns the value of the n-th arguement of the pragma instance.
+- `#keyword` : Returns the pragma selector.
+- `#methodClass` : Returns the class in which the method containing the pragma is.
+- Etc
+
+With those informations we can them build our handler.
+
+The next snippet will collect the senders of our example pragma and generate a user documentation about them:
+
+```Smalltalk
+String
+	streamContents: [ :stream | 
+		stream
+			<< 'Documentation';
+			lf;
+			lf.
+		(PragmaCollector filter: [ :prg | prg keyword = 'applicationParameterOptional:' ]) reset
+			do: [ :pragma | 
+				stream
+					<< '- ';
+					<< pragma methodSelector.
+				(pragma argumentAt: 1) ifTrue: [ stream << ' (Optional)' ].
+				stream
+					<< ': ';
+					<< pragma method comment;
+					lf ] ]
+```
+
 ## Example of pragma usage
 
-## Pragmas used in the IDE
+### Pragmas used in the IDE
 
 ## See also
