@@ -153,8 +153,18 @@ String
 					lf ] ]
 ```
 
-## Example of pragma usage
+## Examples of pragma usage
+
+Pragmas are used for many things in Pharo and you can find examples by browsing Pharo code.
+
+For example, the setting framework is build with pragmas. The pragma `<systemSetting>` is used to register new settings the the setting browser.
+
+And other example can be found in the world menu registration and is explain if the page [Menubar and Wrold menu](Menubar.md).
 
 ### Pragmas used in the IDE
 
+Some pragmas are interesting to know in Pharo IDE. You can find information on them in [this page](InterestingsToKnowForBeginners.md#useful-pragmas)
+
 ## See also
+
+- [Pragmas: Literal Messages as Powerful Method Annotations](https://rmod.inria.fr/archives/papers/Duca16a-Pragmas-IWST.pdf)
