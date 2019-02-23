@@ -132,7 +132,7 @@ Or we can select only non optional parameters this way:
 
 ## Act on collected pragmas
 
-Once collected, we need to act on pragmas.
+Once collected, we need use the pragmas to implement the feature we want.
 
 For that, the pragmas can answer diverse messages to get their context. For example, they can answer to:
 - `#method` : Returns the CompiledMethod in which the pragmas is.
@@ -140,7 +140,6 @@ For that, the pragmas can answer diverse messages to get their context. For exam
 - `#argumentAt:` : Returns the value of the n-th argument of the pragma instance.
 - `#keyword` : Returns the pragma selector.
 - `#methodClass` : Returns the class in which the method containing the pragma is.
-- Etc
 
 With that information, we can then build our handler.
 
