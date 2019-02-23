@@ -1,5 +1,17 @@
 # Pragmas
 
+- [Description](#description)
+- [How to declare a new pragma](#how-to-declare-a-new-pragma)
+- [Collect pragmas](#collect-pragmas)
+  * [Find pragmas in the IDE](#find-pragmas-in-the-ide)
+  * [Get the pragmas of a CompiledMethod](#get-the-pragmas-of-a-compiledmethod)
+  * [Collect pragmas in a hierarchy](#collect-pragmas-in-a-hierarchy)
+  * [Collect pragmas in the image](#collect-pragmas-in-the-image)
+- [Act on collected pragmas](#act-on-collected-pragmas)
+- [Examples of pragma usage](#examples-of-pragma-usage)
+  * [Pragmas used in the IDE](#pragmas-used-in-the-ide)
+- [See also](#see-also)
+
 ## Description
 
 Pragmas in Pharo are annotations on `CompiledMethods`. They are used to attach additional properties to the methods to make those methods easily collectable through reflectivity and to ease the creation of special handlings.
