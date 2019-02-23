@@ -170,7 +170,7 @@ Pragmas are used for many things in Pharo and you can find examples of their usa
 
 For example, the setting framework is built with pragmas. The pragma `<systemSetting>` is used to register new settings the setting browser.
 
-And other examples can be found in the world menu registration and is explain if the page [Menubar and World menu](Menubar.md).
+And other examples can be found in the world menu registration and is explain if the page [Menubar and World menu](MenuBar.md).
 
 ### Pragmas used in the IDE
 
