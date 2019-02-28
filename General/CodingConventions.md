@@ -1,8 +1,8 @@
 # Coding conventions
 
-Pharo is full of coding conventions that are known by the community but not written anywhere. 
+Pharo is full of implicit coding conventions. 
 
-This documented aim to document all those conventions to help newcomers.
+This page aims to document all those conventions to help newcomers to write Pharo code following the community's idioms.
 
 **/!\ This document is a work in progress**
 
@@ -12,7 +12,7 @@ Pharo as some conventions when it comes to tests. This section will cover them.
 
 **Package name**
 
-First, it is usual to store tests in a separated package than the package of the tested classes. The name of this package should be `NameOfOriginalPackage-Tests`.
+First, it is usual to store tests rather in a separated package than in the package of the tested classes. The name of this package should be `NameOfOriginalPackage-Tests`.
 
 For example, if one wants to add tests to `Material-Design-Lite-Core`, the tests should be in a package called `Material-Design-Lite-Core-Tests`.
 
