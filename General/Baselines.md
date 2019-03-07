@@ -115,7 +115,7 @@ baseline: spec
 
 Defining packages is not enough to load them, because some of them might depend on other packages/projects. For example, `MyProject-Tests` needs to be loaded after `MyProject`.
 
-To manage dependencies that are external to a project, see section [Define external dependencies](#define-external-dependencies).
+To manage dependencies that are external to a project, see section *[Define external dependencies](#define-external-dependencies)*.
 
 For dependencies between the packages of your project, you can use the message `#package:with:` to give more informations to the spec.
 
@@ -133,6 +133,10 @@ baseline: spec
 					package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
 					package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ]
 ```
+
+The method `#requires:` will define the list of dependencies of a specific package.
+
+Another way to declare requirements is to use the method `#includes:`. This method takes a collection of declarations as parameter and will notify Metacello that all of them should includes the package if they are loaded. This is helpful when defining platform specific requirements, in case we want one of our package to come with a platform dependant packages which is depending on this package. See example in section *[Loads different packages depending on the Pharo version](#loads-different-packages-depending-on-the-pharo-version)*.
 
 ### Define external dependencies
 
@@ -516,6 +520,36 @@ baseline: spec
 					package: 'MyProject-Pharo3To6' ] ]
 ```
 
+The `#includes:` method explained in section *[Define packages forming your project](#define-packages-forming-your-project)* is often useful when dealing with platform specific requirements. Imagine you package `MyProject` will work in Pharo 6 only if `MyProject-Pharo6` is present, but `MyProject-Pharo6` depends on `MyProject`. This can be resolved like this:
+
+Example:
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+
+			spec
+				for: #'pharo6.x'
+				do: [ spec
+					package: 'MyProject' with: [ spec includes: #('MyProject-Pharo6') ];
+					package: 'MyProject-Pharo6' with: [ spec requires: #('MyProject') ] ].
+			spec
+				for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
+				do: [ spec
+					package: 'MyProject' with: [ spec requires: #('MyProject-Pharo3To6') ];
+					package: 'MyProject-Pharo3To6' ] ]
+```
+
 ### Define custom attributes
 
 On top of attributes from Pharo, it's also possible to define our own attributes.
@@ -630,8 +664,8 @@ baseline: spec
 			spec
 				for: #'pharo6.x'
 				do: [ spec
-					package: 'MyProject' with: [ spec requires: #('MyProject-Pharo6') ];
-					package: 'MyProject-Pharo6' ].
+					package: 'MyProject' with: [ spec includes: #('MyProject-Pharo6') ];
+					package: 'MyProject-Pharo6' with: [ spec requires: #('MyProject') ] ].
 
 			spec
 				for: #(#'pharo3.x' #'pharo4.x' #'pharo5.x' #'pharo6.x')
