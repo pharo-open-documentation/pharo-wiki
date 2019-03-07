@@ -14,6 +14,8 @@
 
 Pharo includes a system of extension methods. This feature allows the developer to add behavior (but not state) to existing objects in Pharo. 
 
+> Note that it is only possible to add methods (behavior) as extension and not variables (state)
+
 There is no syntactic difference between calling an extension method and calling a method declared in the class. The main difference between methods and extension methods is that extension methods are stored in a different package than the class they are implemented on.
 
 ## Use of Extension methods
