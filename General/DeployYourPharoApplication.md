@@ -301,11 +301,25 @@ Smalltalk tools register: NoDebugger as: #debugger
 
 ### Open a morph in full screen
 
-> TODO
+When deploying the application, while there is no real headless mode in Pharo or when the application contains a user interface embedded we can open a Morph in full screen to ensure the user cannot access to content behind it. 
+
+To do that we can create a Spec application (in case of headless application it can just contains a logo and a `quit` button) and open it in full screen with this command:
+
+```Smalltalk
+MyPresenter new openWorldWithSpec
+```
 
 ## Change the logo and window title of the application
 
-> TODO
+In Windows it is possible to change the title and the logo of the Pharo application. 
+
+To do that you can execute:
+
+```Smalltalk
+DisplayScreen setWindowTitle: 'MyApplication'.
+
+DisplayScreen hostWindowIcon: (FileLocator imageDirectory / 'testLogo.ico') asFileReference fullName.
+```
 
 ## Sign your application on Windows and OSX
 
