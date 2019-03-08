@@ -207,14 +207,17 @@ It is doable this way:
 To block the access to the tools it is possible to disable the world menu, the taskbar and the menu bar from Pharo with this piece of code:
 
 ```Smalltalk
-"Disable world menu"
+"Disable world menu and menubar"
 WorldState desktopMenuPragmaKeyword: ''.
+
+"Disable Menubar only"
+MenubarMorph showMenubar: false.
+
+"Disable WorldMenu only"
+PasteUpMorph shouldShowWorldMenu: false.
 
 "Disable taskbar"
 TaskbarMorph showTaskbar: false.
-
-"Disable Menubar"
-MenubarMorph showMenubar: false.
 ```
 
 ### Disable progress bar interrupt button
@@ -240,12 +243,7 @@ UserInterruptHandler cmdDotEnabled: false
 It is possible to drop files in Pharo to install code in it. It is recommanded to disable this feature to block users to inject code into the application. Since there is no setting to do that, you can recompile a part of the Pharo image to block it this way:
 
 ```Smalltalk
-Author
-	useAuthor: 'Deployment'
-	during: [ WorldMorph
-			compile:
-				'wantsDropFiles: arg
-	^ false' ]
+WorldMorph allowDropFiles: false
 ```
 
 ### Disable Morph's Halos
@@ -258,7 +256,48 @@ Morph halosEnabled: false
 
 ### Disable Debuggeur
 
-> TODO
+#### Pharo 8
+
+Since Pharo 8, Pharo comes with new debuggers you can choose from.
+
+When deploying a private application you don't want the user to get a bug and access to the code through it. For that you can use the `NoDebugger`:
+
+```Smalltalk
+NoDebugger beCurrent
+```
+
+#### Pharo < 8 or specific debuggers
+
+In case you are using Pharo < 8 or you want a special handling of the bug you can create your own debugger.
+
+For that you need to create a object and implement a class side method called `#openOn:withFullView:andNotification:`.
+
+For example for a `NoDebugger`:
+
+```Smalltalk
+NoDebugger class>>openOn: aDebugSession withFullView: aBool andNotification: aString
+	"Do nothing"
+```
+
+For a debugger exporting in a file the error:
+
+```Smalltalk
+openOn: aDebugSession withFullView: aBool andNotification: aString
+	'errors.log'
+		ensureCreateFile;
+		writeStreamDo: [ :s |
+			s
+				setToEnd;
+				<< 'ERROR. Here is the stack:';
+				<< OSPlatform current lineEnding.
+			aDebugSession interruptedContext shortDebugStackOn: s ]
+```
+
+You then need to register the debugger:
+
+```Smalltalk
+Smalltalk tools register: NoDebugger as: #debugger
+```
 
 ### Open a morph in full screen
 
