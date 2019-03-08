@@ -325,6 +325,206 @@ DisplayScreen hostWindowIcon: (FileLocator imageDirectory / 'testLogo.ico') asFi
 
 > TODO
 
-## Deploy a Seaside application with Nginx
+## Deploy a Seaside application
 
-> TODO Don't forget to talk about the server mode of the world state
+This section will cover a specific kind of deployment: the deployment of a web application with Seaside.
+
+### Prepare the image
+
+It is recommanded to prepare the image for deployment. This section will cover some possible configurations you can apply to your image.
+
+> Note: This is section only contains suggestions and it might be missing interesting options. If you have an idea of missing section do not hesitate to open an issue.
+
+#### Set server mode
+
+When deploying an application as a server, it is possible to change a setting to slow down the rendering cycle of the image and increase performances. It can be done like this:
+
+```Smalltalk
+WorldState serverMode: true
+```
+
+#### Unregister applications
+
+When building your seaside image it is possible that some Seaside application got registered (demos for examples). 
+
+It is possible to unregister them like this:
+
+```Smalltalk
+applicationsToUnregister := WAAdmin defaultDispatcher handlers keys \ #('myApplication' 'files' 'myHandler' 'config').
+applicationsToUnregister do: [ :appName | WAAdmin defaultDispatcher unregister: (WAAdmin defaultDispatcher handlerAt: appName) ]
+```
+
+#### Set default application
+
+Applications must have a name in Seaside and the name should be in the URL. However, it is possible to define a default application which will be selected in case no application name is in the URL. 
+
+```Smalltalk
+WAAdmin defaultDispatcher defaultName: 'myApplicationName'
+```
+
+#### Disable development toolbar
+
+In case you load a version of Seaside containing development tools, your application will come with a development toolbar. 
+
+It is possible to remove it by executing:
+
+```Smalltalk
+WAAdmin applicationDefaults removeParent: WADevelopmentConfiguration instance ].
+```
+
+Then you need to initialize you application. 
+
+#### Protect configuration by a password
+
+In case you keep the configuration application available to the user, you might want to protect it by a password. It wan be done like this:
+
+```Smalltalk
+| application |
+application := WAAdmin defaultDispatcher handlerAt: 'config'.
+application configuration addParent: WAAuthConfiguration instance.
+application
+	preferenceAt: #login put: 'admin';
+	preferenceAt: #passwordHash put: (GRPlatform current secureHashFor: 'seasideiscool').
+application addFilter: WAAuthenticationFilter new
+```
+
+### Deploy with a Ngnix server
+
+This section will cover the configuration needed to deploy an image with a nginx server.
+
+#### Launch the image
+
+In general I (the author of this decumentation) use a Jenkins to generate my image and then I have a script to deploy the image.
+
+My script looks like this:
+
+```bash
+#!/usr/bin/env bash
+set -vx
+
+# Where to deploy the application
+export DEST=/srv/app/mdl
+# Pharo version for the deployment
+export PHARO=61
+# Location of the zip containing the archive
+export ARCHIVE_LOCATION=/var/lib/jenkins/workspace/MaterialDesignLite/PHARO/$PHARO/VERSION/master/
+
+# To launch an image I uses a screen, else the image will close with my ssh session. Here I ensure the session used is closed.
+screen -S mdl -X quit
+
+# Remove the old version
+rm -rf $DEST/{MaterialDesignLite.*,pharo*,*.sources,Pharo*}
+
+# Copy the application
+cp ${ARCHIVE_LOCATION}MaterialDesignLite.zip $DEST/
+cd $DEST
+
+# Get a VM and unzip the application
+wget --quiet -O - get.pharo.org/vm${PHARO} | bash
+unzip MaterialDesignLite.zip
+
+# Launch the application and initialize it on a free and open port
+./pharo MaterialDesignLite.image eval --save "
+MDLDemo initializeAs: 'mdl'.
+
+WAAdmin defaultDispatcher defaultName: 'mdl'.
+
+ZnZincServerAdaptor startOn: 8088"
+
+#Launch the image in a screen
+screen -Sdm mdl ./pharo MaterialDesignLite.image --no-quit
+```
+#### HTTP deployment
+
+Now that the image is launched we need to dispatch it via nginx.
+
+In order to do that over HTTP I uses this configuration:
+
+```nginx
+server {
+  listen 80; #Since it's a web application, listen port 80
+  listen [::]:80; #Same for IPv6
+  server_name {Domaine name. Example mysite.com}; #Set your domaine name
+  server_tokens off;  #Do not display nginx version for security reasons
+
+  access_log /var/log/nginx/{log name}.log; #loging
+  error_log /var/log/nginx/{error log name}.log; #error loging
+
+  root {Path to the root. For example /srv/myApp/};
+
+  location = / {
+    try_files $uri $uri/index.html @proxy;
+  }
+
+  #use a proxy for your seaside application
+  location @proxy {
+    rewrite ^ /{Seaside application name. For example TelescopeDemo}$1 last;
+  }
+
+  location /{Seaside application name. For example TelescopeDemo} {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://127.0.0.1:{Port on which your ZincServerAdaptor listen. For example 8080};
+  }
+
+  # This is for the file libraries
+  location /files {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://127.0.0.1:{Port on which your ZincServerAdaptor listen. For example 8080};
+  }
+
+}
+```
+#### HTTPS deployment
+
+The previous option works but is not secured. It is recommanded to generate a TLS certificate (with `let's encrypt` via `certbot` for example) and to deploy over HTTPS.
+
+Then the configuration will look like this:
+
+```nginx
+server {
+  listen 80; #Since it's a web application, listen port 80
+  listen [::]:80; #Same for IPv6
+  server_name {Domaine name. Example mysite.com}; #Set your domaine name
+  server_tokens off;  #Do not display nginx version for security reasons
+  return 301 https://$server_name$request_uri; #Redirect HTTP -> HTTPS
+}
+
+server {
+  listen 443 ssl http2; #Listen to port 443 for HTTPS
+  listen [::]:443 ssl http2; #Same for IPv6
+  server_name {Domaine name. Example mysite.com}; #Set your domaine name
+  server_tokens off;  #Do not display nginx version for security reasons
+  ssl_certificate {path to your public certificate key}.pem;
+  ssl_certificate_key {path to your private certificate key}.pem;
+
+  access_log /var/log/nginx/{log name}.log; #loging
+  error_log /var/log/nginx/{error log name}.log; #error loging
+
+  root {Path to the root. For example /srv/myApp/};
+
+  location = / {
+    try_files $uri $uri/index.html @proxy;
+  }
+
+  #use a proxy for your seaside application
+  location @proxy {
+    rewrite ^ /{Seaside application name. For example TelescopeDemo}$1 last;
+  }
+
+  location /{Seaside application name. For example TelescopeDemo} {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://127.0.0.1:{Port on which your ZincServerAdaptor listen. For example 8080};
+  }
+
+  # This is for the file libraries
+  location /files {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_pass http://127.0.0.1:{Port on which your ZincServerAdaptor listen. For example 8080};
+  }
+}
+```
+
