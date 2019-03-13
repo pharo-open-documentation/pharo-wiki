@@ -14,7 +14,7 @@ This page provide a quick tutorial to get started with them.
 
 ## Getting started
 The `Announcer` class implements a mechanism to:
-1. Allow objects (the observers) to subscribe to announcements;
+1. Allow objects (the observers) to subscribe to announcements
 2. Manage objects subscriptions; and
 3. Allow the object holding the announcer (the subject) to announce events.
 
