@@ -3,7 +3,7 @@
 As written on the wikipedia page, it aims to address the following problems:
 
 - A one-to-many dependency between objects should be defined without making the objects tightly coupled.
-- It should be ensured that when one object changes state an open-ended number of dependent objects are updated automatically.
+- It should be ensured that, when one object changes state, an open-ended number of dependent objects are updated automatically.
 - It should be possible that one object can notify an open-ended number of other objects.
 
 This page provide a quick tutorial to get started with them.
@@ -25,7 +25,7 @@ Such announcements include:
 - `MethodModified`
 - etc.
 
-If one wants to be notified when a class is removed, it is possible to subscribe an object to this specific announcement as follow:
+If one wants to be notified when a class is removed, it is possible to subscribe an object to this specific announcement as follow.
 
 First, let's create the method `#whenClassAdded:` for the object that will listen to `ClassAdded` announcement.
 This method will be the hook called when such announcement has been announced.
@@ -42,7 +42,7 @@ MyObjectListeningToClassAdded>>#whenClassAdded: aClassAdded
 Then, we subscribe an instance of our object to the announcer.
 When doing that, it is needed to specify
 1. Which kind of announcements (its class) our object listen to.
-2. Which object list to this kind of announcements.
+2. Which object listen to this kind of announcements.
 3. Which method to call when the annoncement is sent.
 
 The previous step can be achieved as follow:
@@ -53,7 +53,7 @@ SystemAnnouncer uniqueInstance
 ```
 
 > Note: the SystemAnnouncer is a bit special because it is a subclass of `Announcer`.
-> Usually, when creating you own announcer, you do not subclass `Announcer` but rather use it directly by storing an instance in a dedicated instance variable.
+> Usually, when creating you own announcer, you do not subclass `Announcer` but rather use it directly by storing an instance in a dedicated instance variable (see Section "[Using announcer for your subject object](#using-announcer-for-your-subject-object)").
 
 Once the code above has been executed, a message is printed in the Transcript each time a class has been added.
 To unsubscribe an object from an announcer, simply call `#unsubscribe:` method on the announcer.
