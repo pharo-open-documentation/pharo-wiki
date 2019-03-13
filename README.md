@@ -31,11 +31,14 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 <!-- - [How to deal with files](PharoProjects/Files.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
 <!-- - [Objects serialization](PharoProjects/ObjectsSerialization.md) - Lists possibilities to serialize your objects on disk. ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
+- [Announcer](PharoProjects/Announcer.md)
+- [Basic interactions with OS](PharoProjects/OS.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Cursor](PharoProjects/Cursor.md)
+- [Dynamic variables](PharoProjects/DynamicVariables.md)
 - [Rich text](PharoProjects/RichText.md)
 - [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.<!-- - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
-- [Basic interactions with OS](PharoProjects/OS.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
-- [Dynamic variables](PharoProjects/DynamicVariables.md)
-- [Cursor](PharoProjects/Cursor.md)
+
+
 
 ## External projects
 ### Data exchange
