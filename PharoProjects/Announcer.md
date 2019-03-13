@@ -2,7 +2,7 @@
 `Announcer` and `Announcement` classes provide an implementation of the [observer design pattern](https://en.wikipedia.org/wiki/Observer_pattern) in Pharo.
 As written on the wikipedia page, it aims to address the following problems:
 
-> - A one-to-many dependency between objects should be defined without making the objects tightly coupled.
+- A one-to-many dependency between objects should be defined without making the objects tightly coupled.
 > - It should be ensured that when one object changes state an open-ended number of dependent objects are updated automatically.
 > - It should be possible that one object can notify an open-ended number of other objects.
 
