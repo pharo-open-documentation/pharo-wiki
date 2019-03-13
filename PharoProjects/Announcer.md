@@ -4,7 +4,7 @@ As written on the wikipedia page, it aims to address the following problems:
 
 - A one-to-many dependency between objects should be defined without making the objects tightly coupled.
 - It should be ensured that when one object changes state an open-ended number of dependent objects are updated automatically.
-> - It should be possible that one object can notify an open-ended number of other objects.
+- It should be possible that one object can notify an open-ended number of other objects.
 
 This page provide a quick tutorial to get started with them.
 
