@@ -15,7 +15,7 @@ This page provide a quick tutorial to get started with them.
 ## Getting started
 The `Announcer` class implements a mechanism to:
 1. Allow objects (the observers) to subscribe to announcements
-2. Manage objects subscriptions; and
+2. Manage objects subscriptions
 3. Allow the object holding the announcer (the subject) to announce events.
 
 For example, there is an announcer available to let objects listen to announcements (events) concerning the system: `SystemAnnouncer uniqueInstance`.
