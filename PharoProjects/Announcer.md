@@ -102,7 +102,7 @@ MyObjectChangeColor>>#announcer
 
 And when the color of the object is updated, we announce it:
 
-```
+```Smalltalk
 MyObjectChangeColor>>#color: aColor
   color := aColor.
   self announcer
