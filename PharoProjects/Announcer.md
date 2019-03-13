@@ -86,7 +86,7 @@ The common pattern to use an `Announcer` in your subject object is to:
 
 As an example, let's implement the object changing its color discussed in previous section"
 
-```
+```Smalltalk
 Object subclass: #MyObjectChangeColor
 	slots: { #announcer. #color }
 	classVariables: {  }
