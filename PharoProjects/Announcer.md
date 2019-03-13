@@ -68,7 +68,7 @@ Creating a new kind of announcement to fit your needs is easy, just subclass `An
 For example, let's say you have an object that has a color. You want to allow observers to listen to color changes of the object.
 To do that, let's create a `ColorChangeAnnouncement` class:
 
-```
+```Smalltalk
 Announcement subclass: #ColorChangeAnnouncement
 	slots: { #newColor }
 	classVariables: {  }
