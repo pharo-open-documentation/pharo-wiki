@@ -95,7 +95,7 @@ Object subclass: #MyObjectChangeColor
 
 Then we create the accessor for `#announcer` with lazy-initialisation.
 
-```
+```Smalltalk
 MyObjectChangeColor>>#announcer
   ^ announcer ifNil: [ announcer := Announcer new ]
 ```
