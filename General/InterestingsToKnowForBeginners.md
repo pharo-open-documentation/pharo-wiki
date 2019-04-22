@@ -100,4 +100,4 @@ Pragmas allow one to tag methods. They are similar to Java's annotations. Some p
 
 ### Influence execution of methods
 
-- `<expectedFailure>` for instance-side methods of subclasses of `TestCase`, will make the test green even if it fails.
+- `<expectedFailure>` for instance-side methods of subclasses of `TestCase`, will make the test green when it is failing. But, althrough we expect that the test fails, a success of the test (i.e. not assertion missed) will show as a failure.
