@@ -130,7 +130,7 @@ Cons
 - Cause trouble on Windows
 - Waste space on the file system
 - Hard to merge two branches because of metadata
-- Does not work with Iceberg, the default git tool in Pharo 7
+- Does not work with Iceberg, the default git tool since Pharo 7
 
 ### FileTree metadata full supported Pharo versions
 
