@@ -93,7 +93,7 @@ This format exports one file per method. This can cause trouble with Windows bec
 
 Another problem of the FileTree format is that most Pharo's methods are short and creating one file by method waste a lot of space because the physical representation of files on a drive has a minimal size (4 KiB on NTFS file systems) that is reached by most of Pharo's method. 
 
-Its advantage compared to FileTree metadata full is that there is no problem during merge of the source code thanks to the metadata.
+Its advantage compared to FileTree metadata full is that there is no problem during the merge of the source code thanks to the absence of metadata.
 
 ### FileTree metadata less Pros and Cons 
 
