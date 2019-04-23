@@ -1,8 +1,8 @@
-# Export formats
+# Source Code Export formats
 
-Pharo stores its code in memory by default or in a snapshot of the memory when we save a Pharo image. This makes it complicated to manage code in the long term or to collaborate with others.
+Pharo stores its source code in memory (by default) or in a snapshot of the memory when we save a Pharo image. This makes it complicated to manage source code in the long term or to collaborate with others.
 
-In order to be able to save some code in readable files, Pharo includes some textual export formats. This page will explain the main export formats used to save code in VCS such as git.
+In order to be able to save some source code in readable files, Pharo includes some textual export formats. This page will explain the main export formats used to save code in VCS such as git.
 
 This page will present formats from the most recommended for new projects to the less recommended.
 
@@ -51,12 +51,12 @@ This page will present formats from the most recommended for new projects to the
 
 Tonel ([https://github.com/pharo-vcs/tonel](https://github.com/pharo-vcs/tonel)) is an export format introduced in Pharo 6.1. 
 
-It creates one file by class or extended class and works well on windows (compared to file tree).
+It creates one file by class or extended class and works well on Windows (compared to file tree).
 
 ### Tonel Pros and Cons
 
 Pros
-- Works well on windows 
+- Works well on Windows 
 - Not much space lost because of small files
 - Export readable files
 - No problem during merge because of metadata
@@ -87,13 +87,13 @@ Metacello new
 
 ## FileTree metadata less 
 
-FileTree ([https://github.com/dalehenrich/filetree](https://github.com/dalehenrich/filetree)) is the first export format planned to use Pharo with Git that was integrated. It had the first version with a lot of metadata (see section Filetree metadata full) then a new version with metadata less format. 
+FileTree ([https://github.com/dalehenrich/filetree](https://github.com/dalehenrich/filetree)) is the first export format that was integrated in the goal to use Pharo with Git. The first version had a lot of metadata (see section Filetree metadata full), the second was a new version with metadata less format. 
 
-This format exports one file per methods. This can cause trouble with Windows because Windows has a maximum path and file name length of 255 characters. This limit can easily be reached with FileTree. 
+This format exports one file per method. This can cause trouble with Windows because Windows has a maximum path and file name length of 255 characters. This limit can easily be reached with FileTree. 
 
 Another problem of the FileTree format is that most Pharo's methods are short and creating one file by method waste a lot of space because the physical representation of files on a drive has a minimal size (4 KiB on NTFS file systems) that is reached by most of Pharo's method. 
 
-Its advantage compared to FileTree metadata full is that there is no problem during merge because of metadata.
+Its advantage compared to FileTree metadata full is that there is no problem during the merge of the source code thanks to the absence of metadata.
 
 ### FileTree metadata less Pros and Cons 
 
@@ -130,7 +130,7 @@ Cons
 - Cause trouble on Windows
 - Waste space on the file system
 - Hard to merge two branches because of metadata
-- Does not work with Iceberg, the default git tool in Pharo
+- Does not work with Iceberg, the default git tool since Pharo 7
 
 ### FileTree metadata full supported Pharo versions
 
