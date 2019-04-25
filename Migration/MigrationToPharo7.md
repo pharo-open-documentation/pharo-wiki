@@ -230,3 +230,6 @@ one by one which may be about **ten times slower**!
 ZnCharacterReadStream on: (File openForReadFileNamed: 'file.txt').
 ```
 
+#### Binary streams do not undestand #<< message anymore
+
+Binary streams used to understand `#<<` message in the past. This time is over, one should either use `#next:` or `#nextPutAll:`.
