@@ -13,6 +13,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 ## General
 
+- [Setting up a new project](General/SettingUpANewProject.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies
