@@ -5,6 +5,7 @@ Wiki for the Pharo programming language and development environment.
 The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](CONTRIBUTION.md).
 
 ## Contents
+- [Beginners](#beginners)
 - [General](#general)
 - [Pharo projects](#pharo-projects)
 - [External projects](#external-projects)
