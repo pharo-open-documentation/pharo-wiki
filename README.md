@@ -5,17 +5,21 @@ Wiki for the Pharo programming language and development environment.
 The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](CONTRIBUTION.md).
 
 ## Contents
+- [Beginners](#beginners)
 - [General](#general)
 - [Pharo projects](#pharo-projects)
 - [External projects](#external-projects)
   * [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
 
-## General
+## Beginners
 
 - [Setting up a new project](General/SettingUpANewProject.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+
+## General
+
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies
 - [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages

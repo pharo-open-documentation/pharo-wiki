@@ -15,12 +15,13 @@ Here is a list of the goals of the project:
 
 To be easy to contribute, this project is written in Markdown and hosted on github. Anyone with a github account can easily provide a Pull Request. (See [Contribution guide](CONTRIBUTION.md))
 
-To answer to the goal, the project is divided on four sections.
+To answer to the goal, the project is divided into the following sections:
 
-* The first section contains pages describing some of Pharo mechanisme and guide on possible workflows.
-* The second section contains documentation about subprojects contained in Pharo general distribution.
-* The third section contains informations about external projects. Most of the pages gives some examples to give an idea on how those project works and offer comparisons between multiple project around the same theme.
-* The fourth section contains migration guides between different versions of Pharo.
+* [Beginners](https://github.com/pharo-open-documentation/pharo-wiki#beginners) - guides for beginners who have just recently discovered Pharo
+* [General](https://github.com/pharo-open-documentation/pharo-wiki#general) - pages describing some of Pharo mechanism and guide on possible workflows.
+* [Pharo projects](https://github.com/pharo-open-documentation/pharo-wiki#pharo-projects) - documentation about subprojects contained in Pharo general distribution.
+* [External projects](https://github.com/pharo-open-documentation/pharo-wiki#external-projects) - informations about external projects. Most of the pages gives some examples to give an idea on how those project works and offer comparisons between multiple project around the same theme.
+* [Migration guidelines](https://github.com/pharo-open-documentation/pharo-wiki#migration-guidelines) - migration guides between different versions of Pharo.
 
 As long as it fits the goal of the wiki, the entries of this project can be:
 - Documentations
