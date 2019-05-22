@@ -13,8 +13,8 @@
   * [Deploy a Seaside application with Nginx](#deploy-a-seaside-application-with-nginx)
 
 ## Cruiser
-
-
+Cruiser is a tool to package Pharo applications. The idea is to quickly convert an application in a development environment to a production one.
+[https://github.com/VincentBlondeau/Cruiser](https://github.com/VincentBlondeau/Cruiser)
 
 
 ## Clean your image before deployment
