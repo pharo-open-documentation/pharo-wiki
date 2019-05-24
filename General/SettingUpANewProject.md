@@ -36,7 +36,7 @@ System Browser is split into five parts. The most left one, shows all the packag
 
 Choosing it, a new small window will open, where you give a name to the package you are creating.
 
-We will show this by following an example. The task is to make a counter.Type the name *Counter* in Window for creating a new package and press ok.
+We will show this by following given example. Type the name *Counter* in Window for creating a new package and press ok.
 
 
 To create a class, first you need to choose the package in which it will be located. Then look at the bottom part of the System Browser in it there is a template for creating a class. It gives us all the information we need: superclass, variables, package. Creating a new class is as easy as filling out this template. Continuing with our example, we will create a new class *MyCounter*. The superclass is *Object*, so we will not change that. But we will change the name of the class. You will notice that saving our class, the second left part of SystemBrowser is no longer empty.
