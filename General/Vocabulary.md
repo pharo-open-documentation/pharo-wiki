@@ -22,6 +22,7 @@ This name is used to designate the error that arise when a message is sent to an
 ## Pragma
 
 ## Protocol
+In Pharo, each method belongs to a protocol. A protocol has a name and allows one to group methods that are related together. For example, the protocol `accessing` is widely used in the system to hold accessor and mutator methods.
 
 ## Selector
 
