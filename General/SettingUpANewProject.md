@@ -130,6 +130,16 @@ At this point, our baseline does not contain any external dependencies. It only 
 
 ## Step 6. Create repository on GitHub
 
+To create the repository on [GitHub](https://github.com/), first you need to visit the site and either *sign in* (if you already have an account) or *sign up* (to make a new account). Go to your profile and choose Repositories.
+
+![](SettingUp_NewRepoGit.png)
+
+In the right corner there will be a button *New*, press it to create a new repository. 
+
+In newly opened window add name; description and README if you choose. You can also decide who will see your repository (Public - everyone; Private - you select people who will have access). After filling the necessary information, press *create repository* button.
+
+![](SettingUp_CreateNewRepo.png)
+
 ## Step 7. Load the repository into your image
 
 ## Step 8. Create an src/ folder and add metadata to your repository
