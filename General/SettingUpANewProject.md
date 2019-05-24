@@ -95,7 +95,8 @@ To make the first test work, we need to implement initialization of an object. M
 Now we will show the implementation on method *increment*. This method is adding one to variable value and putting this new number as value. Implementation for method *decrement* will be similar.
 
 ![](SettingUp_IncrementMethod.png)
-![](SettingUp_decrementMethod.png)
+
+![](SettingUp_DecrementMethod.png)
 
 After you have added all the methods, go to your test class and run your tests. Notice that all of them are green now.
 
