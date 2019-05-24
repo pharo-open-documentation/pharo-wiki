@@ -1,5 +1,5 @@
 # Playground
-Is a window that is most often used for typing Pharo expressions and executing them via Do it but, It can be used for any purpose.
+Playground is a tool that is most often used for typing Pharo expressions and executing them but it can be used as a scratchpad area where fragments of Pharo code can be entered, stored, edited, and evaluated.
 
 You can open it with the shortcut `⌘OW` or using the menu in the image: 
 
