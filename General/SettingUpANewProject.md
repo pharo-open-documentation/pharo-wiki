@@ -110,7 +110,7 @@ At this point, our baseline does not contain any external dependencies. It only 
 
 ## Step 8. Create an src/ folder and add metadata to your repository
 
-It is a good practice to put all your source packages into a separate folder, usually called `src/`. This ensures that as the number of packages grows, people will not have to scroll a lot to see README.
+It is a good practice to put all your source packages into a separate folder, usually called `src/`. This ensures that as the number of packages grows, people will not have to scroll a lot to see README. It also makes repository structure cleaner because source code is separated from documentation, licence, etc.
 
 ```Smalltalk
 (FileLocator localDirectory / 'iceberg' / '<userName>' / '<projectName>' / 'src') ensureCreateDirectory 
