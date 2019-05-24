@@ -45,6 +45,29 @@ To create a class, first you need to choose the package in which it will be loca
 
 ## Step 3. Write some failing tests
 
+If we want to follow the TDD (test driven development), we need to create tests first. All tests are stored in a test class, which is a subclass of *TestCase*. By useing the previous step, make Counter-Tests package and CounterTest class.
+
+![](SettingUp_TestClass.png)
+
+Next what we need to do is create some tests. We do this by clicking on out test class, choosing a protocol in second from the right part of the Browser, and implementing a test. 
+
+In case there are no protocols to choose from (this happens in cases when we are making our first test), then we need to add a new one. This is done by pressing a right click on *instance side*, going to New protocol option and picking a protocol you need (in our case tests).
+
+![](SettingUp_NewProtocol.png)
+
+After we have choosen a protocol, our bottom part of System Browser will change and show a template for making methods (each test is a separate method). When giving a name it is important to put the word *test* first, so that Pharo knows that what we are making is in fact a test.
+
+In our example, a counter will be incrementing and decrementing some value. You will notice that we are using methods which have not been created yet and that each test you write will fail (be red) when you run it. 
+
+We can make these tests:
+	1. Creating MyCounter object. 
+	We want to check if the object we created is not equal to nil, that is why we are using *self deny:* message. This will to a check if the statement we send is true and if it is return false. 
+![](SettingUp_FirstTest.png)
+	2. Incrementing value. 
+	Here we want to check if the method *increment* is really doing his job and adding one to the value. What we did here is: created a new object MyCounter, set the test value, call the method *increment* and checked if the new value is equal to an expected result. Here we use *self assert:* key word message, which returns true if the statement is in fact true. 
+![](SettingUp_TestIncrementing.png)
+	3  Decrementing value.Here we are checking if the method *decrement* is doing his job and subtracting one from the value. The process of creating this test is similar to previous one.
+
 ## Step 4. Add methods to make tests green
 
 ## Step 5. Create a baseline and a Metacello script
