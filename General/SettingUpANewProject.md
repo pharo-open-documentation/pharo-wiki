@@ -23,6 +23,23 @@ Open the list of `Official distributions` in the left panel and double-click on 
 
 ## Step 2. Create a package and a class
 
+Let us make our first package. In your newly made image in Pharo Launcher, look at the menu on the top. Choose a tools card and from there open System Browser.
+
+![](SettingUp_SystemBrowser.png)
+
+System Browser is split into five parts. The most left one, shows all the packages that already exist. To create a new one, press the right click of a mouse on this part, and choose the option New Package. 
+
+![](SettingUp_AddNewPackage.png)
+
+Choosing it, a new small window will open, where you give a name to the package you are creating.
+
+We will show this by following an example. The task is to make a small library of mathematical functions.Type the name *TinyMathLibrary* in Window for creating a new package and press ok.
+
+
+To create a class, first you need to choose the package in which it will be located. Then look at the bottom part of the System Browser in it there is a template for creating a class. It gives us all the information we need: superclass, variables, package. Creating a new class is as easy as filling out this template. Continuing with our example, we will create a new class *MathFunctions*. The superclass is *Object*, so we will not change that. But we will change the name of the class. You will notice that saving our class, the second left part of SystemBrowser is no longer empty.
+
+![](SettingUp_CreateClass.png)
+
 ## Step 3. Write some tests
 
 ## Step 4. Create repository on GitHub
