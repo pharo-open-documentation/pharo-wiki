@@ -5,6 +5,7 @@ This page aims to provide disambiguation for the words belonging to this vocabul
 ## Class-side
 
 ## Dispatch
+Dispatch is a technique used in object-oriented programming to delegate behavior using polymorphism. The goal is to define a concept that will changed depending on the context. For example we can have an application with commands. When we need to execute the command, instead of creating a switch/case, each object will implément their own behavior on a method of the same name and we just need to call this method. 
 
 ## DoesNotUnderstand (DNU)
 This name is used to designate the error that arise when a message is sent to an object but this object does not understand it. It also happen that people use the "DNU" shortcut.
@@ -18,6 +19,8 @@ This name is used to designate the error that arise when a message is sent to an
 ## Message-send
 
 ## Playground / Workspace
+
+## Polymorphism
 
 ## Pragma
 Pragmas are annotations on methods. They are used to attach additional properties to the methods to make those methods easily collectable through reflectivity and to ease the creation of special handlings.
