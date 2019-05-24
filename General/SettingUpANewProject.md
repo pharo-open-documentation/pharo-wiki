@@ -61,13 +61,17 @@ In our example, a counter will be incrementing and decrementing some value. You 
 
 We can make these tests:
 
-**Creating MyCounter object** 
+**Creating MyCounter object:** 
 We want to check if the object we created is not equal to nil, that is why we are using *self deny:* message. This will to a check if the statement we send is true and if it is return false. 
+
 ![](SettingUp_FirstTest.png)
-**Incrementing value** 
+
+**Incrementing value:** 
 Here we want to check if the method *increment* is really doing his job and adding one to the value. What we did here is: created a new object MyCounter, set the test value, call the method *increment* and checked if the new value is equal to an expected result. Here we use *self assert:* key word message, which returns true if the statement is in fact true. 
+
 ![](SettingUp_TestIncrementing.png)
-**Decrementing value**
+
+**Decrementing value:**
 Here we are checking if the method *decrement* is doing his job and subtracting one from the value. The process of creating this test is similar to previous one.
 
 ## Step 4. Add methods to make tests green
