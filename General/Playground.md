@@ -8,21 +8,26 @@ You can open it with the shortcut `⌘OW`or using the menu in the image:
 
 ## Basic usage
 We can use Playground to quickly execute Pharo code, just writing something and doing some operations on the code, such as:
-*  __Do it__ or using the shortcut `⌘D`: Execute the 
+
+* __Do it__ or using the shortcut `⌘D`: Execute the code
+
 ![Do it command on playground](playground_do_it.png)
 
 * __Print it__ or using the shortcut `⌘P`: Compiles the expression, executes it, sends the message printString to the result, and displays the resulting string.
+
 ![Print it command on playground](playground_print_it.png)
 ![Print it result on playground](playground_print_result.png)
 
 * __Do it and go__ `⌘G` :  additionally opens a navigable inspector on the side of the playground. It allows us to navigate the object structure.
 
 ![Do it and go on the playground](playgorund_do_it_and_go.png)
+
 * __Inspect it__ `⌘I` : If you want to understand not only the result value but the result: The inspector is an extremely useful tool that allows you to browse and interact with any object in the system.
 
 ![Inspect on Time now](playground_inspect_on_Time_now.png)
 
 The title tells us that `11:55:11.561177 am` is an instance of the class `Time`. The top panel allows us to browse the instance variables of an object and their values. The bottom panel can be used to write expressions to send messages to the object. 
+
 * __Basic inspect it__ `⇧⌘I` : Opens the classic inspector that offers a more minimal GUI and live updates of changes to the object.
 * __Debug it__ `⇧⌘D` : Opens the debugger on the code.
 * __Profile it__ : Profiles the code with the Pharo profile tool which shows how much time is spent for each message sent.
