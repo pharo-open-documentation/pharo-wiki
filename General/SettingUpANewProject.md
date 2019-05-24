@@ -81,6 +81,10 @@ At this point, our baseline does not contain any external dependencies. It only 
 
 ## Step 8. Create an src/ folder and repair the repository
 
+```Smalltalk
+(FileLocator localDirectory / 'iceberg' / '<userName>' / '<projectName>' / 'src') ensureCreateDirectory 
+```
+
 ## Step 9. Add packages and do the first commit
 
 ## Step 10. Set up the continuous integration (CI)
