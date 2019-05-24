@@ -23,16 +23,18 @@ Open the list of `Official distributions` in the left panel and double-click on 
 
 ## Step 2. Create a package and a class
 
-## Step 3. Write some tests
+## Step 3. Write some failing tests
 
-## Step 4. Create repository on GitHub
+## Step 4. Add methods to make tests green
 
-## Step 5. Load the repository into your image
+## Step 5. Create repository on GitHub
 
-## Step 6. Add your package and do the first commit
+## Step 6. Load the repository into your image
 
-## Step 7. Create a baseline and a Metacello script
+## Step 7. Add your package and do the first commit
 
-## Step 8. Set up the continuous integration (CI)
+## Step 8. Create a baseline and a Metacello script
 
-## Step 9. Add badges to your README.md
+## Step 9. Set up the continuous integration (CI)
+
+## Step 10. Add badges to your README.md
