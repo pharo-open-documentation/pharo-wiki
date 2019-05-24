@@ -2,12 +2,7 @@
 
 In this article, we describe the good workflow for setting up a new project in Pharo. We will guide you through the whole process from getting a new Pharo image, creating the GitHub repository, and setting up the CI.
 
-We will demonstrate everything by setting up a simple toy project - `TinyMathLibrary`. It is a simple package that implements for arithmetic operations:
-
-- `add: firstNumber to: secondNumber`
-- `subtract: firstNumber from: secondNumber`
-- `multiply: firstNumber by: secondNumber`
-- `divide: firstNumber by: secondNumber`
+We will demonstrate everything by setting up a toy project - `Counter`, inspired by Chapter 14. Seaside by Example of [Pharo by Example](https://files.pharo.org/books-pdfs/updated-pharo-by-example/2017-01-14-UpdatedPharoByExample.pdf) book. It is a simple class that has a value which can be incremented or decremented.
 
 ## Step 0. Download and install Pharo Launcher
 
