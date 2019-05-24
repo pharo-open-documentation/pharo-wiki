@@ -1,7 +1,7 @@
 # Playground
 Playground is a tool that is most often used for typing Pharo expressions and executing them but it can be used as a scratchpad area where fragments of Pharo code can be entered, stored, edited, and evaluated.
 
-You can open it with the shortcut `⌘OW` or using the menu in the image: 
+You can open it with the shortcut `cmd/ctrl + o + w` or using the menu entry from the menubar: 
 
 ![open playground from the image](playground_open_from_image.png)
 
