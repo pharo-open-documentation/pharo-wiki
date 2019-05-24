@@ -24,7 +24,7 @@ You can open it with the shortcut `cmd/ctrl + o + w` or using the menu entry fro
 The Playground can be used to quickly execute Pharo code. You write something and then can do operations on the code, such as:
 
 ### Do it 
-Shortcut: `⌘D` It Execute the code/expression
+Shortcut: `⌘D` It Executes the code/expression
 
 ![Do it command on playground](Playground_do_it.png)
 
@@ -35,21 +35,21 @@ Shortcut: `cmd/ctrl + p` It Compiles the expression, executes it, sends the mess
 ![Print it result on playground](Playground_print_result.png)
 
 ### Do it and go
-Shortcut: `cmd/ctrl + g` :  Execute the code and additionally opens a navigable inspector on the side of the playground. It allows us to navigate the object structure.
+Shortcut: `cmd/ctrl + g` It executes the code and additionally opens a navigable inspector on the side of the playground. It allows us to navigate the object structure.
 
 ![Do it and go on the playground](Playground_do_it_and_go.png)
 
 ### Inspect it
-Shortcut: `cmd/ctrl + i` : Execute the code and additionally opens a navigable inspector outside of the playground. It allows us to navigate the object structure.
+Shortcut: `cmd/ctrl + i` It executes the code and additionally opens a navigable inspector outside of the playground. It allows us to navigate the object structure.
 
 ![Inspect on Time now](Playground_inspect_on_Time_now.png)
 
 > The title tells us that `11:55:11.561177 am` is an instance of the class `Time`. The top panel allows us to browse the instance variables of an object and their values. The bottom panel can be used to write expressions to send messages to the object. 
 
 ### Basic inspect it
-Shortcut: `cmd/ctrl + shift + i` : Opens a minimal inspector on the result of the expression. (Might be useful if you work on the Inspector for example)
+Shortcut: `cmd/ctrl + shift + i` It opens a minimal inspector on the result of the expression. (Might be useful if you work on the Inspector for example)
 ### Debug it
-Shortcut: `cmd/ctrl + shift + d` : Opens a debugger on the code with the context at the start of the snippet.
+Shortcut: `cmd/ctrl + shift + d` It opens a debugger on the code with the context at the start of the snippet.
 
 ![Debug it on Time now](Playground_debug_it.png)
 
@@ -58,7 +58,7 @@ Shortcut: `cmd/ctrl + shift + d` : Opens a debugger on the code with the context
 ### Profile it
 Profiles the code with the Pharo profile tool which shows how much time is spent for each message sent.
 ### Code search
-offers several options provided by System Browser, such as browsing the source code of an expression, searching for senders and implementors, and so on.
+Offers several options provided by System Browser, such as browsing the source code of an expression, searching for senders and implementors, and so on.
 
 You can also use the playground for typing any text that you would like to remember, such as to-do lists or instructions for anyone who will use your image.
 
