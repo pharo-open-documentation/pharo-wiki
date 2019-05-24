@@ -21,13 +21,13 @@ We can use Playground to quickly execute Pharo code. You just write something an
 
 ![Do it and go on the playground](playgorund_do_it_and_go.png)
 
-4. __Inspect it__ `⌘I` : If you want to understand not only the result value but the result: __The inspector__ is an extremely useful tool that allows you to browse and interact with any object in the system.
+4. __Inspect it__ `⌘I` : If you want to understand not only the result value but the result object you can inspect it. __The inspector__ is an extremely useful tool that allows you to browse and interact with any object in the system.
 
 ![Inspect on Time now](playground_inspect_on_Time_now.png)
 
 > The title tells us that `11:55:11.561177 am` is an instance of the class `Time`. The top panel allows us to browse the instance variables of an object and their values. The bottom panel can be used to write expressions to send messages to the object. 
 
-5. __Basic inspect it__ `⇧⌘I` : Opens the classic inspector that offers a more minimal user interface  and live updates of changes to the object.
+5. __Basic inspect it__ `⇧⌘I` : Opens the classic inspector that offers a more minimal user interface and live updates of changes to the object.
 6. __Debug it__ `⇧⌘D` : Opens the debugger on the code.
 
 ![Debug it on Time now](playground_debug_it.png)
@@ -36,7 +36,6 @@ We can use Playground to quickly execute Pharo code. You just write something an
 
 7. __Profile it__ : Profiles the code with the Pharo profile tool which shows how much time is spent for each message sent.
 8. __Code search__ offers several options provided by System Browser, such as browsing the source code of an expression, searching for senders and implementors, and so on.
-
 
 You can also use the playground for typing any text that you would like to remember, such as to-do lists or instructions for anyone who will use your image.
 
