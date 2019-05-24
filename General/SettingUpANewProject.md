@@ -59,7 +59,7 @@ After we have choosen a protocol, our bottom part of System Browser will change 
 
 In our example, a counter will be incrementing and decrementing some value. You will notice that we are using methods which have not been created yet and that each test you write will fail (be red) when you run it. 
 
-We can make these tests:
+We can make these tests: 
 
 **Creating MyCounter object:** 
 We want to check if the object we created is not equal to nil, that is why we are using *self deny:* message. This will to a check if the statement we send is true and if it is return false. 
