@@ -57,14 +57,29 @@ To create a class, first you need to choose the package in which it will be loca
 
 Baselines allow us to manage dependencies and specify how the repository should be loaded. We can use `Metacello` object to load the project that has a baseline defined for it. In this tutorial we will only show an example of creating a baseline for our simple `Counter` project. For more information on baselines, please read this excellent [Baselines](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md) guide on Pharo Wiki.
 
-Start by creating a package called `BaselineOf[YourProjectName]` and the class with the same name which is the subclass of `BaselineOf`. In our case, both package and class are called `BaselineOfCounter`.
+Start by creating a package called `BaselineOf<YourProjectName>` and the class with the same name which is the subclass of `BaselineOf`. In our case, both package and class are called `BaselineOfCounter`.
 
 ```Smalltalk
 BaselineOf subclass: #BaselineOfCounter
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'BaselineOfCounter'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'BaselineOfCounter'
 ```
+
+Now create a method `BaselineOfCounter >> baseline:` with the following content:
+
+```Smalltalk
+baseline: spec
+    <baseline>
+    spec for: #common do: [	
+				
+        "Packages"
+        spec
+            package: 'Counter';
+            package: 'Counter-Tests' with: [ spec requires: #('Counter') ] ].
+```
+
+At this point, our baseline does not contain any external dependencies. It only says that our project consists of two packages: `Counter` and `Counter-Tests` and that the package `Counter-Tests` depends on `Counter`.
 
 ## Step 9. Set up the continuous integration (CI)
 
