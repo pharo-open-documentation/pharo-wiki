@@ -43,7 +43,7 @@ You can also use the playground for typing any text that you would like to remem
 
 ## Some Advices
 ### Doing vs. Printing
-The diference between this two actions is visual. try to execute something like `1+5` with `Do it`. Maybe you think that nothing happened because there isn't a visual clue about the execution but in fact something did happen. You send the message `+` with argument `5` to the number `1`.
+The diference between this two actions is visual. try to execute something like `1+5` with `Do it`. Maybe you think that nothing happened because there isn't a visual cue about the execution but in fact something did happen. You sent the message `+` with argument `5` to the number `1`.
 
 Now try to do it with Print it, the same will happen but also you will see the result printed just aside:
 
@@ -53,3 +53,4 @@ That could be useful if you want to understand the result value.
 
 ## Advance usage
 
+>TODO
