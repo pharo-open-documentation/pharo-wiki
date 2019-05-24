@@ -69,10 +69,12 @@ We want to check if the object we created is not equal to nil, that is why we ar
 **Incrementing value:** 
 Here we want to check if the method *increment* is really doing his job and adding one to the value. What we did here is: created a new object MyCounter, set the test value, call the method *increment* and checked if the new value is equal to an expected result. Here we use *self assert:* key word message, which returns true if the statement is in fact true. 
 
-![](SettingUp_TestIncrementing.png)
+![](SettingUp_SecondTestIncrement.png)
 
 **Decrementing value:**
 Here we are checking if the method *decrement* is doing his job and subtracting one from the value. The process of creating this test is similar to previous one.
+
+![](SettingUp_ThirdTestDecrement.png)
 
 ## Step 4. Add methods to make tests green
 
