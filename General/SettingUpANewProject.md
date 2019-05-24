@@ -78,6 +78,27 @@ Here we are checking if the method *decrement* is doing his job and subtracting 
 
 ## Step 4. Add methods to make tests green
 
+Now that we have create tests (which are all red), we need to implement methods that we have been testing. Switch to *MyCounter* class for this part.
+
+The first thing that you probably have noticed already is that most of our methods are working with some kind of value. This is a number which we are assigning to our counter. Therefore, value is an instance variable of a class MyCounter. Choose your class and add this variable.
+
+![](SettingUp_AddingVariable.png)
+
+If we have a variable, we need to assure access to it, by making *value* and *value: anInteger* methods. They will allowe putting some integer as a new value (*value: anInteger*) and retrieving the current value (*value*).
+
+![](SettingUp_AddingGetAndSet.png)
+
+To make the first test work, we need to implement initialization of an object. Method *init* will be in initialization protocol and it will assign some default integer to the variable value.
+
+![](SettingUp_AddingInit.png)
+
+Now we will show the implementation on method *increment*. This method is adding one to variable value and putting this new number as value. Implementation for method *decrement* will be similar.
+
+![](SettingUp_IncrementMethod.png)
+![](SettingUp_decrementMethod.png)
+
+After you have added all the methods, go to your test class and run your tests. Notice that all of them are green now.
+
 ## Step 5. Create a baseline and a Metacello script
 
 Baselines allow us to manage dependencies and specify how the repository should be loaded. We can use `Metacello` object to load the project that has a baseline defined for it. In this tutorial we will only show an example of creating a baseline for our simple `Counter` project. For more information on baselines, please read this excellent [Baselines](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md) guide on Pharo Wiki.
