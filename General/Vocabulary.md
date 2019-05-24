@@ -9,6 +9,8 @@ This name is used to designate the error that arise when a message is sent to an
 
 ## Message-send
 
+## Playground / Workspace
+
 ## Protocol
 
 ## Selector
