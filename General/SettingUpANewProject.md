@@ -2,6 +2,13 @@
 
 In this article, we describe the good workflow for setting up a new project in Pharo. We will guide you through the whole process from getting a new Pharo image, creating the GitHub repository, and setting up the CI.
 
+We will demonstrate everything by setting up a simple toy project - `TinyMathLibrary`. It is a simple package that implements for arithmetic operations:
+
+- `add: firstNumber to: secondNumber`
+- `subtract: firstNumber from: secondNumber`
+- `multiply: firstNumber by: secondNumber`
+- `divide: firstNumber by: secondNumber`
+
 ## Step 0. Download and install Pharo Launcher
 
 In order to work with Pharo, you should dowload and install Pharo Launcher - a tool for managing Pharo images. It is available for Windows, Linux, and macOS in both 32bit and 64bit version and can be dowloaded from [http://pharo.org/download]().
