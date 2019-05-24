@@ -28,3 +28,7 @@ In Pharo, each method belongs to a protocol. A protocol has a name and allows on
 A selector corresponds to the signature of a method in the system. Since Pharo is not statically typed, the selector of a method is simply a Symbol. On a CompiledMethod, it is possible to send `#selector` message to retrieve this Symbol.
 
 ## Slot
+Instance variables are reified in Pharo, which means they are real objects that can be manipulated as any other object.
+Because of that, the name *slot* has been given to the general concept of instance variable in Pharo.
+In practice, most of the slots in classes of the system are `InstanceVariableSlot`.
+One can create a new kind of slot by subclassing `Slot` class (see [this blogpost](https://medium.com/@juliendelplanque/typed-slots-for-pharo-98ba5d5aafbe) as an example).
