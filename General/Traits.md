@@ -152,18 +152,20 @@ In some case it is needed to reject an instance variable of a Trait. It can be a
 
 ```
 Object subclass: #MyObjectUsingTraitByRejectingInstVar
-	uses: TTraitToBeUsed -- #instVarNameToRemove
+	uses: TTraitToBeUsed asTraitComposition -- #instVarNameToRemove
 	slots: {  }
 	classVariables: {  }
 	package: 'TestTraitAliasing'
 ```
+
+> `#asTraitComposition` needs to sent to the trait because `#--` message is not understood by trait but by trait composition.
 
 ### Alias some instance variables received from the trait
 It is possible to alias some instance variables received from a trait. If, for example you alias `#aliasedInstVar` with `#instVarAlias` as shown below, your class will hold both `#instVarAlias` and `#aliasedInstVar`.
 
 ```
 Object subclass: #MyObjectUsingTraitByAliasingInstVar
-	uses: (TTraitToBeUsed aliasSelector: { #instVarAlias -> #aliasedInstVar })
+	uses: (TTraitToBeUsed >> { #instVarAlias -> #aliasedInstVar })
 	slots: {  }
 	classVariables: {  }
 	package: 'TestTraitAliasing'
