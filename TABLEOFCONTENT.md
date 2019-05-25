@@ -1,3 +1,4 @@
+# Documentation Full Index
 
 - [Pharo wiki manifest](./MANIFEST.md#pharo-wiki-manifest)
 
@@ -165,7 +166,6 @@
   * [Change the value of the variable in a process](./PharoProjects/DynamicVariables.md#change-the-value-of-the-variable-in-a-process)
   * [Example](./PharoProjects/DynamicVariables.md#example)
 
-
 - [Contribution guidlines](./CONTRIBUTION.md#contribution-guidlines)
   * [Suggest new pages](./CONTRIBUTION.md#suggest-new-pages)
   * [Entries structure](./CONTRIBUTION.md#entries-structure)
@@ -174,6 +174,7 @@
   * [Deleting, Moving or Renaming a page](./CONTRIBUTION.md#deleting,-moving-or-renaming-a-page)
   * [Review content](./CONTRIBUTION.md#review-content)
 
+- [Documentation Full Index](./TABLEOFCONTENT.md#documentation-full-index)
 
 - [Pharo wiki](./README.md#pharo-wiki)
   * [Contents](./README.md#contents)
