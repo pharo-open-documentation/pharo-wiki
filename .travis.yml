@@ -1,4 +1,4 @@
 language: ruby
 rvm: 2.4.1
 before_script: gem install awesome_bot
-script: awesome_bot --white-list travis-ci --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
+script: awesome_bot --white-list travis-ci,127.0.0.1,smalltalkhub.com/mc --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
