@@ -156,7 +156,7 @@ To get all `CompiledMethod`s implementing a method having a selector, simply cal
 
 ## Find dependencies on a package
 
-In Pharo it is easilly possible to find the dependencies of one package through the `Dependency Analyzer`, but there is not tool to browse the dependencies *on* one package. 
+In Pharo it is easy to find the dependencies of one package through the `Dependency Analyzer`, but there is not tool to browse the dependencies *on* a single package. 
 
 It is possible to do it programatically via this snippet:
 
