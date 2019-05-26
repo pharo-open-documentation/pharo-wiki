@@ -3,8 +3,10 @@ In Pharo, there is some specific vocabulary that is used inside the community to
 This page aims to provide disambiguation for the words belonging to this vocabulary.
 
 ## Browser
+The browser designate the tool for browsing and editing packages, classes and methods. In Pharo 6.1 and greater, the browser is Calypso.
 
 ## Candidates
+In the context of a method-call the candidates are the potential classes in the system that can receive the call. This list is computed from a static analysis of the source code.
 
 ## Class-side
 
@@ -21,6 +23,7 @@ This name is used to designate the error that arise when a message is sent to an
 ## Iceberg
 
 ## Implementors
+For a given selector in the system, implementors are classes that have a method with this selector (they implement the selector).
 
 ## Inspector
 
@@ -47,11 +50,15 @@ Pragmas are annotations on methods. They are used to attach additional propertie
 A page dedicated to pragmas is available [here](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Pragmas.md).
 
 ## Primitive
+A primitive is a method for which the source code is not written in Smalltalk but directly in C code. From the inside of the image, those methods contain a `<primitive:>` pragma.
+
+Some methods holding this primitive pragma also contain source code written in Smalltalk. For these methods, first the C version of the method is tried but if the implementation in C is not provided by the VM for some reason, Pharo falls back to the smalltalk implementation.
 
 ## Protocol
 In Pharo, each method belongs to a protocol. A protocol has a name and allows one to group methods that are related together. For example, the protocol `accessing` is widely used in the system to hold accessor and mutator methods.
 
-## Receivers
+## Receiver
+The receiver of a message send is the instance of a class implementing the method corresponding to the message sent receiving this message.
 
 ## Selector
 A selector corresponds to the signature of a method in the system. Since Pharo is not statically typed, the selector of a method is simply a Symbol. On a CompiledMethod, it is possible to send `#selector` message to retrieve this Symbol.
