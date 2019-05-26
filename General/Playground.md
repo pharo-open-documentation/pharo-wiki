@@ -24,7 +24,7 @@ You can open it with the shortcut `cmd/ctrl + o + w` or using the menu entry fro
 The Playground can be used to quickly execute Pharo code. You write something and then can do operations on the code, such as:
 
 ### Do it 
-Shortcut: `⌘D` It Executes the code/expression
+Shortcut: `cmd/ctrl + d` It Executes the code/expression
 
 ![Do it command on playground](Playground_do_it.png)
 
