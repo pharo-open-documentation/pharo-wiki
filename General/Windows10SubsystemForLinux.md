@@ -15,3 +15,6 @@ $ curl -L https://get.pharo.org/64/ | bash
 ```
 
 The last step can also be the Pharo Launcher.
+
+> Note: Last time it has been tested, only Pharo of version >= 6 64bit could be run.
+> Pharo 32bits is not compatible because of a missing part of the kernel.
