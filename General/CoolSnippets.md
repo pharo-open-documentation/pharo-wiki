@@ -8,6 +8,7 @@ This file contains snippets of code that can be useful sometimes.
 - [Browse all available icons](#browse-all-available-icons)
 - [Rename programatically methods](#rename-programatically-methods)
 - [Get all senders/implementors of a selector](#get-all-sendersimplementors-of-a-selector)
+- [Find dependencies on a package](#find-dependencies-on-a-package)
 
 ## Download a file with a progress bar
 
@@ -151,4 +152,15 @@ To get all `CompiledMethod`s implementing a method having a selector, simply cal
 
 ```
 #yourself implementors
+```
+
+## Find dependencies on a package
+
+In Pharo it is easilly possible to find the dependencies of one package through the `Dependency Analyzer`, but there is not tool to browse the dependencies *on* one package. 
+
+It is possible to do it programatically via this snippet:
+
+```Smalltalk
+report := DADependencyChecker new computeImageDependencies. "This might take some time but it will run in background"
+report knownDependantsOf: 'Epicea' "Replace Epicia by the name of your package."
 ```
