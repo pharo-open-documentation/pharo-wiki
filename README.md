@@ -11,6 +11,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [External projects](#external-projects)
   * [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
+- [External ressources](#external-ressources)
 
 ## Beginners
 
@@ -31,6 +32,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu
 - [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties
 - [Coding conventions](General/CodingConventions.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md)
 
 ## Pharo projects
 
@@ -64,6 +66,8 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 ## Migration guidelines
 - [Migration from Pharo 6.1 to Pharo 7.0](Migration/MigrationToPharo7.md)
 
+## External ressources
+- [Contributing to Pharo](https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo) (External link) - Official tutorial on how to contribute to Pharo using Iceberg.
 
 <!---
 Badges:
