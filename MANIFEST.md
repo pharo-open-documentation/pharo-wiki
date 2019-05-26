@@ -22,6 +22,7 @@ To achieve these goals, the project is divided into the following sections:
 * [Pharo projects](https://github.com/pharo-open-documentation/pharo-wiki#pharo-projects) - documentation about subprojects contained in the Pharo general distribution.
 * [External projects](https://github.com/pharo-open-documentation/pharo-wiki#external-projects) - information about external projects. Most of the pages give some examples to give an idea on how those project work and offer comparisons between multiple projects around the same theme.
 * [Migration guidelines](https://github.com/pharo-open-documentation/pharo-wiki#migration-guidelines) - migration guides between different versions of Pharo.
+* [External ressources](https://github.com/pharo-open-documentation/pharo-wiki#external-ressources) - links to ressources not maintained by the wiki community but interesting to check-out.
 
 As long as they fit the goals of the wiki, the entries of this project can be:
 - documentation
