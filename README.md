@@ -18,7 +18,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Setting up a new project](General/SettingUpANewProject.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
-- [Notes on CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 
 ## General
 
