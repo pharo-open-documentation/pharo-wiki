@@ -124,7 +124,7 @@ By doing so, during its first use, the playground creates and initialize the new
 
 This feature is useful while playing with some code. For example, if you need to work on a model, instead of recreating the model at each run you can just initialize it one time and reuse the variable containing the model for all the playground session.
 
-If at some point you don't remember the content of some variables, you can find all the variables the playground bound in the binding table button (4 on the previous overview screenshot). This table also allows you to unding variables by clicking on the cross next to their name.
+If at some point you don't remember the content of some variables, you can find all the variables the playground bound in the binding table button (4 on the previous overview screenshot). This table also allows you to unbind variables by clicking on the cross next to their name.
 
 ### Remote publishing
 
