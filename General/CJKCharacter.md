@@ -8,7 +8,7 @@ Operating systems may come with fonts that support those characters but they are
 
 ![](CJKCharacter_Screenshot_2.png)
 
-Note that on Windows 10, you may need to manually copy font files to `C:\Windows\Fonts\`.
+Note that on Windows 10, one may need to manually copy font files to `C:\Windows\Fonts\`.
 
 Here is a code sample:
 
