@@ -73,7 +73,7 @@ A message in Pharo represent an interaction between two objects. A [sender](#sen
 
 ## Pragma
 Pragmas are annotations on methods. They are used to attach additional properties to the methods to make those methods easily collectable through reflectivity and to ease the creation of special handlings.
-A page dedicated to pragmas is available [here](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Pragmas.md).
+A page dedicated to pragmas is available [here](Pragmas.md).
 
 ## Primitive
 A primitive is a method for which the source code is not written in Smalltalk but directly in C code. From the inside of the image, those methods contain a `<primitive:>` pragma.
@@ -125,6 +125,10 @@ Suqeak is a dialect of [Smalltalk](#smalltalk). Pharo started as a fork of Squea
 ## Super
 Super is the [receiver](#receiver) of a [message](#message) an object send to itself, but on the contrary of [self](#self), the method lookup will start in the superclass of a receiver. Super is a unique way for the class to add behavior
 to the inherited methods and not just replace them.
+
+## Traits
+Traits are pure units of behavior that can be composed to form classes or other traits. The trait composition mechanism is an alternative to multiple or mixin inheritance in which the composer has full control over the trait composition. It enables more reuse than single inheritance without introducing the drawbacks of multiple or mixin inheritance.
+A page dedicated to traits is available [here](Traits.md).
 
 ## Unary message
 An unary message is a [message](#message) where only the [receiver](#receiver) of the message will be involved, which is the reason it is call unary. This means that the message will have no argument. For example, `#factorial` is an unary message that will only involve the number receiving the message.
