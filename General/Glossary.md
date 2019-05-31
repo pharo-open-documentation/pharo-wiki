@@ -5,11 +5,18 @@ This page aims to provide disambiguation for the words belonging to this vocabul
 ## Binary message
 A binary message is a (message)[#message] composed of special character(s) where two objects are involved (the (receiver)[#receiver] and one argument), which is the reason it is call binary. This is mostly used for arithmetic, comparison, and logical operations. For example, `+` is a binary message involving the receiver and the argument in parameter.
 
+## Bootstrap
+
 ## Browser
 The browser designate the tool for browsing and editing packages, classes and methods. In Pharo 6.1 and greater, the browser is Calypso.
 
 ## Candidates
 In the context of a method-call the candidates are the potential classes in the system that can receive the call. This list is computed from a static analysis of the source code.
+
+## Changes (file)
+The changesfile logs of all source code modifications (especially all thechanges you did while programming) since the (sources file)[#sources] was generated. This facilitates a per method history for diffs or reverting. It means that even if you did not manage to save the image file on a crash or you just forgot, you can recover your changes from this file. A changes file is always coupled with a image file. They work in pair.
+
+> Note: Since Pharo 5 Pharo contains a project called Epicea implementing a new logging system. The long term goal of Epicea is to replace the changes file, but we are not yet at this stage.
 
 ## Class-side
 
@@ -30,6 +37,9 @@ See (DoesNotUnderstand)[#doesnotunderstand].
 This name is used to designate the error that arise when a message is sent to an object but this object does not understand it. It also happen that people use the "DNU" shortcut.
 
 ## Iceberg
+
+## Image
+A Pharo image is a snapshot of the system memory of the Pharo system at a given moment. It is called image since it is a snapshot. This is the file where all objects are stored and as such it’s a cross plat-form format. An image file contains the live state of all objects of the system (including classes and compiled methods, since they are objects too) at a givenpoint. An image is a virtual object container. 
 
 ## Implementors
 For a given selector in the system, implementors are classes that have a method with this selector (they implement the selector). For example the implementors of the method `#banana` are all the classes containing a method named `#banana`.
@@ -102,6 +112,9 @@ One can create a new kind of slot by subclassing `Slot` class (see [this blogpos
 
 ## Smalltalk
 Smalltalk is an object-oriented, dynamically typed reflective programming language with multiple implementations. Some implemenations includes (Squeak)[#squeak], VisualWorks, Gemstone, VA Smalltalk and many others. Pharo started as an implementation of Smalltalk and is still very close to it.
+
+## Sources (file)
+The sources file contains source code of Pharo. Sources file is important because the image file format stores only objects including compiled methods and their bytecode and not their source code. Originally, a new sources file was generated once per major release of Pharo. Now Pharo changed its production mechanisme to be (bootstraped)[#bootstrap] and generates a new sources file for each Pharo image produced.
 
 ## Spur
 Spur is the name of the current object representation in memory of Pharo used by the (virtual machine)[#virtual-machine]. This representation is used since Pharo 5 and was introduced to improve performances (by 30% compared to the previous implementation) and prepare Pharo to run in 64bits.
