@@ -24,7 +24,7 @@ StandardFonts
 	haloFont: (LogicalFont familyName: 'Noto Sans CJK SC' pointSize: 8).
 ```
 
-Related links:
+## Related links:
 
 https://www.samadhiweb.com/blog/2019.02.22.windows.multilingual.html  
 http://forum.world.st/Japanese-Fonts-td4928056.html  
