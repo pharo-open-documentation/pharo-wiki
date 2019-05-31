@@ -1,6 +1,6 @@
 # Using CJK (Chinese, Japanese, and Korean) characters
 
-Pharo's default font settings for code (Source Code Pro) and UI (Source Sans Pro) are unable to handle [CJK characters](https://en.wikipedia.org/wiki/CJK_characters) this page explains how to display them properly in Pharo.
+Pharo's default font settings for code (Source Code Pro) and UI (Source Sans Pro) are unable to handle [CJK characters](https://en.wikipedia.org/wiki/CJK_characters), this page explains how to display them properly in Pharo.
 
 ![Preview string for chinese characters under Source Code Pro](CJKCharacter_Screenshot_1.png)
 
