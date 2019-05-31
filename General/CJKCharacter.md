@@ -4,7 +4,7 @@ Pharo's default font settings for code (Source Code Pro) and UI (Source Sans Pro
 
 ![](CJKCharacter_Screenshot_1.png)
 
-Operating systems may come with fonts that support those characters, but as far as I know, none of them are monospaced, which is not good for displaying code. If you need to display CJK characters in Pharo, you are recommended to install a monospace font which also covers CJK characters. Some of them are [`Noto Sans Mono CJK`](https://www.google.com/get/noto/) , `Microsoft YaHei Mono`, [`WenQuanYi Zen Hei Mono`](http://wenq.org).
+Operating systems may come with fonts that support those characters but they are usually not monospaced which is not good for displaying code. If one need to display CJK characters in Pharo, it is recommended to install a monospace font which also covers CJK characters. Some of them are [`Noto Sans Mono CJK`](https://www.google.com/get/noto/) , `Microsoft YaHei Mono`, [`WenQuanYi Zen Hei Mono`](http://wenq.org).
 
 ![](CJKCharacter_Screenshot_2.png)
 
