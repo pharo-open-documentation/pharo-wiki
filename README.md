@@ -18,6 +18,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Setting up a new project](General/SettingUpANewProject.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Things beginners must learn](General/MustKnowForBeginners.md)
 - [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Glossary](General/Glossary.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 
 ## General
 
@@ -32,8 +33,9 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu
 - [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties
 - [Coding conventions](General/CodingConventions.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
-- [Playground](General/Playground.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat) - Documentation on the usage of Pharo's playground.
+- [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
 - [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md)
+- [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 
 ## Pharo projects
 
