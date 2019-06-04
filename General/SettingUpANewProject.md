@@ -62,17 +62,47 @@ We can make these tests:
 **Creating MyCounter object:** 
 We want to check if the object we created is not equal to nil, that is why we are using *self deny:* message. This will to a check if the statement we send is true and if it is return false. 
 
-![](SettingUp_FirstTestObject.png)
+  
+  ```GitHub
+  testCreatingMyCounter
+    "A test that will check if the creation of an object MyCounter is done properly"
+    |tmp|
+    tmp := MyCounter new.
+    self deny: (tmp = nil)
+  ```
+
 
 **Incrementing value:** 
 Here we want to check if the method *increment* is really doing his job and adding one to the value. What we did here is: created a new object MyCounter, set the test value, call the method *increment* and checked if the new value is equal to an expected result. Here we use *self assert:* key word message, which returns true if the statement is in fact true. 
 
-![](SettingUp_SecondTestIncrement.png)
+
+```GitHub
+testIncrementing
+  "A test that will check if method increment is working properly. 
+    Test value 5. Expected result 6."
+  |counter|
+  counter := MyCounter new.
+  counter value: 5.
+  counter increment.
+  self assert: (counter value = 6)
+  ```
+
 
 **Decrementing value:**
 Here we are checking if the method *decrement* is doing his job and subtracting one from the value. The process of creating this test is similar to previous one.
 
-![](SettingUp_ThirdTestDecrement.png)
+
+```GitHub
+testDecrementing
+  "A test that will check if method decrement is working properly.
+   Test value 5. Expested result is 4."
+  |counter|
+  counter := MyCounter new.
+  counter value: 5.
+  counter decrement.
+  self assert: (tmp value = 4)
+```
+
 
 ## Step 4. Add methods to make tests green
 
@@ -84,17 +114,45 @@ The first thing that you probably have noticed already is that most of our metho
 
 If we have a variable, we need to assure access to it, by making *value* and *value: anInteger* methods. They will allowe putting some integer as a new value (*value: anInteger*) and retrieving the current value (*value*).
 
-![](SettingUp_AddingGetAndSet.png)
+
+```GitHub
+value
+  "Method that returns variable value."
+  ^value
+  ```
+  
+  
+  ```GitHub
+  value: anInteger
+    "Method that sets *anInteger* as a variable value."
+    value := anInteger
+  ```
+
 
 To make the first test work, we need to implement initialization of an object. Method *init* will be in initialization protocol and it will assign some default integer to the variable value.
 
-![](SettingUp_AddingInit.png)
+
+```GitHub
+init
+  "Method for initialization.
+  Setting variables to some default values. For example 0."
+  value := 0
+  ```
 
 Now we will show the implementation on method *increment*. This method is adding one to variable value and putting this new number as value. Implementation for method *decrement* will be similar.
 
-![](SettingUp_IncrementMethod.png)
 
-![](SettingUp_DecrementMethod.png)
+```GitHub
+increment
+  "This method adds 1 to variable value."
+  self value: (value + 1)
+  ```
+
+```GitHub
+decrement
+  "This method subtracts 1 from variable value."	
+  self value: (value - 1)
+  ```
 
 After you have added all the methods, go to your test class and run your tests. Notice that all of them are green now.
 
