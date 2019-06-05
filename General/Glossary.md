@@ -14,21 +14,22 @@ The browser designate the tool for browsing and editing packages, classes and me
 In the context of a method-call the candidates are the potential classes in the system that can receive the call. This list is computed from a static analysis of the source code.
 
 ## Changes (file)
-The changesfile logs of all source code modifications (especially all thechanges you did while programming) since the [sources file](#sources) was generated. This facilitates a per method history for diffs or reverting. It means that even if you did not manage to save the image file on a crash or you just forgot, you can recover your changes from this file. A changes file is always coupled with a image file. They work in pair.
+The changesfile logs all source code modifications (especially all thechanges you did while programming) since the [sources file](#sources) was generated. This facilitates a per method history for diffs or reverting. It means that even if you did not manage to save the image file on a crash or you just forgot, you can recover your changes from this file. A changes file is always coupled with a image file. They work in pair.
 
-> Note: Since Pharo 5 Pharo contains a project called Epicea implementing a new logging system. The long term goal of Epicea is to replace the changes file, but we are not yet at this stage.
+> Note: Since Pharo 5, a project called Epicea implementing a new logging system has been introduced in the system. The long term goal of Epicea is to replace the changes file, but this objective has not been reached yet.
 
 ## Class-side
 
 ## Cog
-Cog is the name of the [virtual machine](#virtual-machine) used by Pharo. Cog is a virtual machine used by multiple programming languges such as Pharo, [Squeak](#squeak), Newspeak and Cuis.
+Cog is the name of the [virtual machine](#virtual-machine) used by Pharo.
+It is also used by other programming languages such as [Squeak](#squeak), Newspeak and Cuis.
 
 ## Context
 
 ## Debugger
 
 ## Dispatch
-Dispatch is a technique used in object-oriented programming to delegate behavior using [polymorphism](#polymorphism). The goal is to define a concept that will changed depending on the context. For example we can have an application with commands. When we need to execute the command, instead of creating a switch/case, each object will implement their own behavior on a method of the same name and we just need to call this method. 
+Dispatch is a technique used in object-oriented programming to delegate behavior using [polymorphism](#polymorphism). The goal is to define a concept that will changed depending on the context. For example we can have an application with commands. When we need to execute the command, instead of creating a switch/case, each object will implement its own behaviour on a method of the same name and we just need to call this method. 
 
 ## DNU
 See [DoesNotUnderstand](#doesnotunderstand).
@@ -39,7 +40,10 @@ This name is used to designate the error that arise when a [message](#message) i
 ## Iceberg
 
 ## Image
-A Pharo image is a snapshot of the system memory of the Pharo system at a given moment. It is called image since it is a snapshot. This is the file where all objects are stored and as such it’s a cross plat-form format. An image file contains the live state of all objects of the system (including classes and compiled methods, since they are objects too) at a givenpoint. An image is a virtual object container. 
+A Pharo image is a snapshot of Pharo memory at a given moment.
+This is the file where all objects are stored and as such it’s a cross platform format.
+An image file contains the live state of all objects of the system (including classes and compiled methods, since they are objects too) at a givenpoint.
+It can bee seen as a virtual object container.
 
 ## Implementors
 For a given selector in the system, implementors are classes that have a method with this selector (they implement the selector). For example the implementors of the method `#banana` are all the classes containing a method named `#banana`.
@@ -56,10 +60,13 @@ A keyword message is a [message](#message) where two or more objects are involve
 ## Late binding
 
 ## Lookup
-Method lookup is the name of the technique Pharo uses to find the method to execute when an object receive a [message](#message). it proceeds as follows: When a message is sent, methods in the [receiver](#receiver)'s class are searched for a matching method. If no match is found, the superclass is searched, and so on up the superclass chain. In the end if no method is found, the object call the method [`#doesNotUnderstand:`](#doesnotunderstand) with the message as parameter.
+Method lookup is the name of the technique Pharo uses to find the method to execute when an object receive a [message](#message). It proceeds as follows: When a message is sent, methods in the [receiver](#receiver)'s class are searched for a matching method. If no match is found, the superclass is searched, and so on up the superclass chain. In the end if no method is found, the object call the method [`#doesNotUnderstand:`](#doesnotunderstand) with the message as parameter.
 
 ## Message
-A message in Pharo represent an interaction between two objects. A [sender](#sender) will send a message to a [receiver](#receiver) which will start a [lookup](#lookup) from the receiver. A message is composed of two things that are a selector, which is the name of the method to lookup, and argument values which are the values of each arguments of the method to execute once find by the lookup. Three kinds of messages exists: [unary messages](#unary-message), [binary messages](#binary-message) and [keyword messages](#keyword-message).
+A message represents an interaction between two objects.
+A [sender](#sender) sends a message to a [receiver](#receiver) which will start a [lookup](#lookup).
+A message is composed of two elements: the selector, which is the name of the method to lookup, and argument values which are the values of each arguments of the method to execute once find by the lookup.
+Three kinds of messages exists: [unary messages](#unary-message), [binary messages](#binary-message) and [keyword messages](#keyword-message).
 
 ## Message-send
 
@@ -90,7 +97,7 @@ The receiver of a [message](#message) send is the instance of a class implementi
 A selector corresponds to the signature of a method in the system. Since Pharo is not statically typed, the selector of a method is simply a Symbol. On a CompiledMethod, it is possible to send `#selector` message to retrieve this Symbol.
 
 ## Self
-Self is the [receiver](#receiver) of a [message](#message) an object send to itself. This means that the [lookup](#lookup) of a method sent will start by the sender of this message then, if not found, it will proceed with its superclass.
+Self is the [receiver](#receiver) of a [message](#message) an object sends to itself. This means that the [lookup](#lookup) of a method send will start by the sender of this message then, if not found, it will proceed with its superclass.
 
 ## Sender
 The sender of a [message](#message) is the object that will send a message to another object. In case the [receiver](#receiver) of a message is [self](#self), then the sender is equal to the receiver.
@@ -102,7 +109,7 @@ For a given selector in the system, senders are the methods sending a message wi
 Sista is the name of a [virtual machine](#virtual-machine) with adaptive optimisations such as speculative inlining. It has better performances but is still currently under developement. It is not yet production ready.
 
 ## Slang
-The term "Slang" refers to a subset of the Smalltalk language and objects that can directly translated to C (or other language, such as Javascript). It is mainly used to develop the [Cog](#cog) virtual machine. It allows to develop the virtual machine in Smalltalk and generate it in C.
+The term "Slang" refers to a subset of the Smalltalk language and objects that can be translated to C (or other language, such as Javascript). It is mainly used to develop the [Cog](#cog) virtual machine. It allows to develop the virtual machine in Smalltalk and generate it in C.
 
 ## Slot
 Instance variables are reified in Pharo, which means they are real objects that can be manipulated as any other object.
@@ -120,7 +127,7 @@ The sources file contains source code of Pharo. Sources file is important becaus
 Spur is the name of the current object representation in memory of Pharo used by the [virtual machine](#virtual-machine). This representation is used since Pharo 5 and was introduced to improve performances (by 30% compared to the previous implementation) and prepare Pharo to run in 64bits.
 
 ## Squeak
-Suqeak is a dialect of [Smalltalk](#smalltalk). Pharo started as a fork of Squeak and both still share the same [virtual machine](#virtual-machine).
+Squeak is a dialect of [Smalltalk](#smalltalk). Pharo started as a fork of Squeak and both still share the same [virtual machine](#virtual-machine).
 
 ## Super
 Super is the [receiver](#receiver) of a [message](#message) an object send to itself, but on the contrary of [self](#self), the method lookup will start in the superclass of a receiver. Super is a unique way for the class to add behavior
