@@ -9,7 +9,7 @@ The Windows problem with long filenames is a constraint of [libgit](https://libg
 
 Here’s more about them:
 
-#### 1. Make path to the Pharo Image shorter
+## Make path to the Pharo Image shorter
 
 If you are simply using a standalone Pharo [download](http://pharo.org/download/#standalone), you can just move your image and VM a few folders up. However, if you are using [Pharo Launcher](http://pharo.org/download/), you have to access the settings, to change where it stores images it will create in the future, as well as move all the existing images and VMs up. Here’s how to do it.
 
