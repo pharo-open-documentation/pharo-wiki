@@ -36,7 +36,7 @@ Metacello new
   load.
 ```
 
-(In Pharo 7 and 8 you don’t need any kind of script to convert to Tonel — there’s a UI option available. But in Pharo 6.1 you need to upgrade Iceberg first, and Tonel will come with it. Link with the script [here](https://github.com/pharo-vcs/iceberg/#for-pharo-61)).
+> Note: In Pharo 7 and 8 you don’t need any kind of script to convert to Tonel — there’s a UI option available. But in Pharo 6.1 you need to upgrade Iceberg first, and Tonel will come with it. Link with the script [here](https://github.com/pharo-vcs/iceberg/#for-pharo-61).
 
 With Tonel loaded, if you go to Iceberg repositories and right-click on the specific repository, you can go to ‘extra’ and select ‘convert repository sources to tonel’. It will migrate the code for you.
 
