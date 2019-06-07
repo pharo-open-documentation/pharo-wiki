@@ -2,7 +2,7 @@
 
 Its error message goes by, “Failed to stat file ‘filename’: The filename or extension is too long”.
 
-The Windows problem with long filenames is a constraint of [libgit](https://libgit2.org/libgit2/#HEAD) library that is used in Pharo (Iceberg accesses git through this exact library). It occurs because the FileTree format tends to have such long paths and was one of the main drivers in creating the Tonel format. This error can occur, for example, when you are trying to clone your Pharo fork on Github into Pharo local. There are two possible ways to fix it:
+The Windows problem with long filenames is a constraint of [libgit](https://libgit2.org/libgit2/#HEAD) library that is used in Pharo (Iceberg accesses git through this exact library). It occurs because FileTree format tends to have long paths and was one of the main drivers in creating the Tonel format. This error can occur, for example, when you are trying to clone your Pharo fork on Github into Pharo local. There are two possible ways to fix it:
 
 1. Make path to Pharo Image short.
 2. Convert repo to Tonel format — in Iceberg there is a menu item under one of the Extras menus.
