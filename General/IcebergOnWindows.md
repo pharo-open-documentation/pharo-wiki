@@ -40,4 +40,4 @@ Metacello new
 
 With Tonel loaded, if you go to Iceberg repositories and right-click on the specific repository, you can go to ‘extra’ and select ‘convert repository sources to tonel’. It will migrate the code for you.
 
-However, this option is only possible if you repository isn’t already in the Tonel format. So if your problem is, like mine, cloning the Pharo fork (Pharo repo is partially tonel, partially filetree), then the only option that will actually solve it, is the first one — shortening the path.
+> Note: this option is only possible if the repository isn’t already in the Tonel format. So if your problem is cloning the Pharo fork (Pharo repo is partially Tonel, partially Filetree), then the only option that will actually solve it, is  shortening the path.
