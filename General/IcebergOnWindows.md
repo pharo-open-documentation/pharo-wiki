@@ -27,7 +27,7 @@ Now, everything should work!
 
 Note re FileTree/Tonel: A FileTree represents a hierarchy of files. [Tonel](https://github.com/pharo-vcs/tonel) is a file-per-class format — class and all methods are stored in a single file, which is better than having a file for each method because the code is easier to read outside of Pharo and it creates less files on the hard drive. Tonel also prevents some trouble with git on Windows due to number of files and subdirectory depth that create path exceeding windows limit.
 
-If you are using an older version of Pharo, you need to download Tonel using the code below (in Pharo 7 and 8 it comes by default):
+If you are using an older version of Pharo, you need to download Tonel by running the code below in a playground (in Pharo 7 and 8 it comes by default):
 
 ```Smalltalk
 Metacello new
