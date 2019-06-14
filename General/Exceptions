@@ -1,7 +1,0 @@
-# Exceptions
-
-All applications have to deal with exceptional situations.
-Arithmetic errors may occur (such as division by zero), unexpected situations may arise (file not found), or resources may be exhausted (network down, disk full,etc.).
-The old-fashioned solution is to have operations that fail return a special error code; this means that client code must check the return value of each operation, and take special action to handle errors. This leads to brittle code.
-
-Modern programming languages, including Pharo, offer a dedicated exception-handling mechanism that greatly simplifies the way in which exceptional situations are signaled and handled.
