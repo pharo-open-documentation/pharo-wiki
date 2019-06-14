@@ -37,6 +37,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md)
 - [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Iceberg on Windows workaround](General/IcebergOnWindows.md)
+- [Exceptions](General/Exceptions.md)
 
 ## Pharo projects
 
