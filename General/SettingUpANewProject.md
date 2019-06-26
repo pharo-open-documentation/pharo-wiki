@@ -100,7 +100,7 @@ testDecrementing
   counter := MyCounter new.
   counter value: 5.
   counter decrement.
-  self assert: (tmp value = 4)
+  self assert: (counter value = 4)
 ```
 
 
