@@ -163,7 +163,7 @@ This section works with the previous section aswell. We recommand to:
 
 ### Force omission of startup preferences
 
-At launch Pharo try to load preferences. Since the user can execute Smalltalk code via those proferences, we recommand to disable the preference mechanism with this code:
+At launch Pharo try to load preferences. Since the user can execute Smalltalk code via those preferences, we recommand to disable the preference mechanism with this code:
 
 ```Smalltalk
 PharoCommandLineHandler forcePreferencesOmission: true
