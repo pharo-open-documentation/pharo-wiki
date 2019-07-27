@@ -2,6 +2,9 @@
 In Pharo, there is some specific vocabulary that is used inside the community to designate concepts provided by the language.
 This page aims to provide disambiguation for the words belonging to this vocabulary.
 
+## $a 
+The character a. In Pharo strings are composed of characters, a character starts with a $. For unprintable characters such as tab, just send the message to the class e.g., Character tab.
+
 ## Binary message
 A binary message is a [message](#message) composed of special character(s) where two objects are involved (the [receiver](#receiver) and one argument), which is the reason it is call binary. This is mostly used for arithmetic, comparison, and logical operations. For example, `+` is a binary message involving the receiver and the argument in parameter.
 
@@ -35,7 +38,7 @@ Dispatch is a technique used in object-oriented programming to delegate behavior
 See [DoesNotUnderstand](#doesnotunderstand).
 
 ## DoesNotUnderstand
-This name is used to designate the error that arise when a [message](#message) is sent to an object but this object does not understand it. It also happen that people use the "DNU" shortcut.
+This name is used to designate the error that arises when a [message](#message) is sent to an object but this object does not understand it. It also happens that people use the "DNU" shortcut.
 
 ## Iceberg
 
@@ -106,10 +109,10 @@ The sender of a [message](#message) is the object that will send a message to an
 For a given selector in the system, senders are the methods sending a message with this selector. For example, the senders of the method `#banana` are all the methods sending the message `#banana` in their code.
 
 ## Sista 
-Sista is the name of a [virtual machine](#virtual-machine) with adaptive optimisations such as speculative inlining. It has better performances but is still currently under developement. It is not yet production ready.
+Sista is the name of a [virtual machine](#virtual-machine) with adaptive optimisations such as speculative inlining (it means that the Virtual machine tries to guess the type of receiver and arguments and based on this heavily optimises the code at runtime, in case of wrong guess it deoptimises the code). It showed better performance but is still currently under developement. It is not yet production ready.
 
 ## Slang
-The term "Slang" refers to a subset of the Smalltalk language and objects that can be translated to C (or other language, such as Javascript). It is mainly used to develop the [Cog](#cog) virtual machine. It allows to develop the virtual machine in Smalltalk and generate it in C.
+The term "Slang" refers to a subset of the Smalltalk language that can be translated to C (or other language, such as Javascript). It is mainly used to develop the [Cog](#cog) virtual machine. It allows one to develop the virtual machine using Pharo tools and generates C.
 
 ## Slot
 Instance variables are reified in Pharo, which means they are real objects that can be manipulated as any other object.
