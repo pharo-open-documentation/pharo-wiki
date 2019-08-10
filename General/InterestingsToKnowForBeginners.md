@@ -4,6 +4,16 @@ This page will expose different things that might be interesting to know for beg
 
 The goal is to ease the use of Pharo for beginners.
 
+- [API](#api)
+- [Evaluatable objects (Blocks and Symbols)](#evaluatable-objects--blocks-and-symbols-)
+- [Tools](#tools)
+  * [Dependency Analyzer](#dependency-analyzer)
+- [Flags](#flags)
+- [Useful pragmas](#useful-pragmas)
+  * [Modify IDE](#modify-ide)
+  * [Influence execution of methods](#influence-execution-of-methods)
+  * [Influence Debugger](#influence-debugger)
+
 ## API
 
 The Pharo API is extensive. In this section we will explain various methods existing in Pharo that have proven to be useful in our experience.
@@ -101,3 +111,21 @@ Pragmas allow one to tag methods. They are similar to Java's annotations. Some p
 ### Influence execution of methods
 
 - `<expectedFailure>` for instance-side methods of subclasses of `TestCase`, will make the test green when it is failing. But, althrough we expect that the test fails, a success of the test (i.e. not assertion missed) will show as a failure.
+
+### Influence Debugger
+- `<debuggerCompleteToSender>` allows one to tell the debugger to open itself on the method that sends the message corresponging to the method holding `<debuggerCompleteToSender>` pragma.
+
+For example, let us consider these two methods:
+```st
+foo
+	<debuggerCompleteToSender>
+	Error signal: 'foo'
+```
+
+```st
+fooCaller
+	self foo
+```
+
+Because of the `<debuggerCompleteToSender>`, when `#fooCaller` is executed, the debugger will show `#fooCaller` method source code.
+If the pragma was not there, the debugger would show `#foo` method source code.
