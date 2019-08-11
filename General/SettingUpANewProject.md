@@ -16,7 +16,7 @@ Instructions in this tutorial were written for Pharo 8, 64bit. But they should a
 
 Open your Pharo Launcher. You will see two panels:
 
-- **New Image Templetes** on the left - here you can select a template of a new image that you want to create on your machine.
+- **New Image Templates** on the left - here you can select a template of a new image that you want to create on your machine.
 - **Current Images** on the right - created images will appear here. By double-clicking on image name, you can launch it.
 
 Open the list of `Official distributions` in the left panel and double-click on the latest development version of Pharo. In our case, this is `Pharo 8.0 - 64bit (development version, latest)`. Give a nice descriptive name to your new image and press `OK`. You can now find your image in the right panel. Launch it by double-clicking on the image name.
