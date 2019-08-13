@@ -1,6 +1,6 @@
 # Sorting collections
 
-A common requirement in software engineering is to sort collection. This page will give some informations about collection sorting in Pharo.
+A common requirement in software engineering is to sort collections. This page will give information about collection sorting in Pharo.
 
 - [Sorting API](#sorting-api)
   * [Sort a collection](#sort-a-collection)
@@ -10,27 +10,27 @@ A common requirement in software engineering is to sort collection. This page wi
 
 ## Sorting API
 
-Collections in Pharo comes with an API to sort them. In this section we will present some if it and explain their difference.
+Collections in Pharo comes with an API to sort them. In this section, we will present some of it and explain their difference.
 
 The default sorting implemented on Pharo's collection is a merge sort. Mergesort is a worst-case O(N log N) sorting algorithm that usually does only half as many comparisons as heapsort or quicksort.
 
 ### Sort a collection 
 
-The two main methods to sort a collection are `#sort:` and `#sorted:`. Those two methods are taking a block or a sort function as parameter (those are explained later in this page) and will return a collection sorted based on the parameter.
-The difference between the two methods is that `#sort:` will sort the receiver when the `#sorted:` method will sort a copy of the receiver.
+The two main methods to sort a collection are `#sort:` and `#sorted:`. Those two methods are taking a block or a sort function as parameter (those are explained later in this page) and return a collection sorted based on the parameter.
+The difference between the two methods is that `#sort:` sort the receiver when the `#sorted:` method sort a copy of the receiver.
 
 ```Smalltalk
 #(1 2 4 7 3 6 4) sort: #yourself ascending. "#(1 2 3 4 4 6 7) <= This result is the receiver"
 #(1 2 4 7 3 6 4) sorted: #yourself ascending. "#(1 2 3 4 4 6 7) <= This result is a copy of the receiver"
 ```
 
-Those two methods also have an equivalent without argument, `#sort` and `#sorted` that will sort the collection using the `#<=` comparison operator.
+Those two methods also have an equivalent without argument, `#sort` and `#sorted` that sort the collection using the `#<=` comparison operator.
 
 The API described here will sort a collection at one point but new elements added to the collection will not be sorted. If you wish to keep a collection sorted, you should use `SortedCollection` as explained in the next section.
 
 ### Keep a collection sorted
 
-In case you want to keep a collection sorted, you should use a `SortedCollection`. This collection is configured with a sort block or sort function and will sort all new element added to the collection.
+In case you want to keep a collection sorted, you should use a `SortedCollection`. This collection is configured with a sort block or sort function and will sort all new elements added to the collection.
 
 You can transform a collection into sorted collection using `#asSortedCollection:` or `#asSortedCollection`. 
 
@@ -51,7 +51,7 @@ You can also instantiate yourself the sorted collection:
 
 ## Sort functions
 
-The first way to sort a collection is to use a sort function. A sort function is an object configuring how to sort a collection. They can be created in defferent ways and can be composed. 
+The first way to sort a collection is to use a sort function. A sort function is an object configuring how to sort a collection. They can be created in different ways and can be composed. 
 
 You can create a sort function using a property and a direction:
 
@@ -79,9 +79,9 @@ Using #undefinedFirst and #undefinedLast it is possible to deal with nil values,
 #(a nil z b) sorted: #value ascending undefinedLast. "#(#a #b #z nil)"
 ```
 
-Finally, you can use chained sorted function in case you have elements of the same priority in the first sort function.
+Finally, you can use a chained sorted function in case you have elements of the same priority in the first sort function.
 
-In this next example, we sost by size and for elements of same size we sort by alphabetical order:
+In this next example, we sort by size and for elements of same size we sort by alphabetical order:
 
 ```Smalltalk
 #('test' 'toto1' 'test2' 'toto') sorted: #size ascending, #yourself ascending "#('test' 'toto' 'test2' 'toto1')"
