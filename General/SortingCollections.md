@@ -1,6 +1,6 @@
 # Sorting collections
 
-A common requirement in software engineering is to sort collections. This page will give information about collection sorting in Pharo.
+A common requirement in software engineering is to sort collections. This page provides information on how to sort collections in Pharo.
 
 - [Sorting API](#sorting-api)
   * [Sort a collection](#sort-a-collection)
@@ -10,14 +10,14 @@ A common requirement in software engineering is to sort collections. This page w
 
 ## Sorting API
 
-Collections in Pharo comes with an API to sort them. In this section, we will present some of it and explain their difference.
+Pharo's Collections come with an API to sort them. In this section, we will present some of it and explain their difference.
 
-The default sorting implemented on Pharo's collection is a merge sort. Mergesort is a worst-case O(N log N) sorting algorithm that usually does only half as many comparisons as heapsort or quicksort.
+The default sorting implemented on Pharo's collection is a merge sort. Merge sort worst-case complexity is `O(N log N)`. This sorting algorithm usually does only half as many comparisons as heapsort or quicksort.
 
 ### Sort a collection 
 
 The two main methods to sort a collection are `#sort:` and `#sorted:`. Those two methods are taking a block or a sort function as parameter (those are explained later in this page) and return a collection sorted based on the parameter.
-The difference between the two methods is that `#sort:` sort the receiver when the `#sorted:` method sort a copy of the receiver.
+The difference between the two methods is that `#sort:` sort the receiver when the `#sorted:` method sorts a copy of the receiver.
 
 ```Smalltalk
 #(1 2 4 7 3 6 4) sort: #yourself ascending. "#(1 2 3 4 4 6 7) <= This result is the receiver"
@@ -28,6 +28,7 @@ Those two methods also have an equivalent without argument, `#sort` and `#sorted
 
 The API described here will sort a collection at one point but new elements added to the collection will not be sorted. If you wish to keep a collection sorted, you should use `SortedCollection` as explained in the next section.
 
+> Warning: If not absolutely needed, one should not use `SortedCollection` because it might impact performances of your software when adding and removing items to the collection.
 ### Keep a collection sorted
 
 In case you want to keep a collection sorted, you should use a `SortedCollection`. This collection is configured with a sort block or sort function and will sort all new elements added to the collection.
@@ -64,7 +65,7 @@ You can create a sort function using a property and a direction:
 #(#(1 2) #(2 3) #(0 0)) sorted: [:sequence | sequence inject: 0 into: [:sum :each | sum + each] ] descending. "#(#(2 3) #(1 2) #(0 0))"
 ```
 
-You can use 2 arg blocks, for those cases where the function isn't expressible with objects that respond to < and =. The only catch, is that such a function has to return not true and false, but instead a collation order, values of -1 (for before), 0 (the same) or 1 (to follow). For example:
+You can use 2 arguments blocks, for cases where the function isn't expressible with objects that respond to `<` and `=`. The only catch is that such a function should return true or false, but a collation order instead, values of -1 (for before), 0 (the same) or 1 (to follow). For example:
 
 ```Smalltalk
 | oddBlock |
@@ -89,7 +90,7 @@ In this next example, we sort by size and for elements of same size we sort by a
 
 ## Sorting via a block
 
-The second way to sort a collection is to use a sort block. A sort block takes two elements of the collection as paramter and should return a boolean defining if the first one shoould be before the second one.
+The second way to sort a collection is to use a sort block. A sort block takes two elements of the collection as parameter and should return a boolean describing if the first one should be before the second one.
 
 ```Smalltalk
 #('longstring' 'test' 'test2') sorted: [ :string1 :string2 | string1 size < string2 size ]. "#('test' 'test2' 'longstring')"
