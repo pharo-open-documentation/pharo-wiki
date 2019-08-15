@@ -38,6 +38,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Iceberg on Windows workaround](General/IcebergOnWindows.md)
 - [Exceptions](General/Exceptions.md)
+- [Sorting collections](General/SortingCollections.md)
 
 ## Pharo projects
 
