@@ -6,7 +6,7 @@ Pharo offers many automatic refactoring tools. Therefore, the objective of this 
 
 ## What is refactoring?
 
-Martin Fowler defines refactoring as: "It is a disciplined technique to restructure an existing body of code, altering its internal structure without changing its external behavior." This means that before carrying out any type of refactoring in the code it is important to have complete test coverage to demonstrate that the code behavior does not change during the refactoring process.
+Martin Fowler defines refactoring as: "... It is a disciplined technique to restructure an existing body of code, altering its internal structure without changing its external behavior." This means that before carrying out any type of refactoring in the code it is important to have complete test coverage to demonstrate that the code behavior does not change during the refactoring process.
 
 ## The most popular refactorings supported by Pharo 8.0
 
@@ -98,20 +98,17 @@ After
 
 <tr>
 <td>
-<pre>
-Example >> method
+<pre>Example >> method
     | a b c d|
     a := 1.
     b := 2.
     c := a + b.
     d := a + c.
-<br><br><br>
-</pre>
+<br><br><br></pre>
 </td>
 
 <td>
-<pre>
-Example >> method
+<pre>Example >> method
     | a b c d|
     a := 1.
     b := 2.
@@ -119,8 +116,7 @@ Example >> method
     d := self add: a to: c.
 <br>
 Example >> add: a to: b
-    ^ a + b
-</pre>
+    ^ a + b</pre>
 </td>
 </tr>
 </table>
@@ -202,8 +198,7 @@ After
 
 <tr>
 <td>
-<pre>
-MyA >> method
+<pre>Example >> method
     | number b |
     number := anotherClass value.
     b := 3 + number.
@@ -211,8 +206,7 @@ MyA >> method
 </td>
 
 <td>
-<pre>
-MyA >> method
+<pre>Example >> method
     | b |
     b := 3 + anotherClass value.
 <br>
@@ -241,8 +235,7 @@ After
 
 <tr>
 <td>
-<pre>
-Example >> method
+<pre>Example >> method
     | a b c d|
     a := 1.
     b := 2.
@@ -255,8 +248,7 @@ Example >> add: a to: b
 </td>
 
 <td>
-<pre>
-Example >> method
+<pre>Example >> method
     | a b c d|
     a := 1.
     b := 2.
@@ -334,8 +326,7 @@ After
 
 <tr>
 <td>
-<pre>
-Example >> textInputOn: html withName: aString andSymbol: aSymbol
+<pre>Example >> textInputOn: html withName: aString andSymbol: aSymbol
 	html text: aString.
 	html textInput on: aSymbol of: self contact.
 	html break
@@ -350,13 +341,11 @@ Example >> renderContentOn: html
 			html break.
 			html text: 'Example:'.
 			html textInput on: #example of: self contact.
-			html break]
-</pre>
+			html break]</pre>
 </td>
 
 <td>
-<pre>
-Example >> textInputOn: html withName: aString andSymbol: aSymbol
+<pre>Example >> textInputOn: html withName: aString andSymbol: aSymbol
 	html text: aString.
 	html textInput on: aSymbol of: self contact.
 	html break
@@ -366,8 +355,7 @@ Example >> renderContentOn: html
 		form: [ self textInputOn: html withName: 'Name:' andSymbol: #name.
 			self textInputextInputOnt: html withName: 'Email address:' andSymbol: #emailAddress.
 			self textInputOn: html withName: 'Example:' andSymbol: #example ]
-<br><br><br><br>
-</pre>
+<br><br><br><br></pre>
 </td>
 </tr>
 </table>
@@ -394,28 +382,24 @@ After
 
 <tr>
 <td>
-<pre>
-Object subclass: #Example
+<pre>Object subclass: #Example
 	instanceVariableNames: 'a'
 	classVariableNames: ''
 	package: 'Refactoring-Example'
-<br><br><br><br><br><br>
-</pre>
+<br><br><br><br><br><br></pre>
 </td>
 
 <td>
-<pre>
-Object subclass: #Example
+<pre>Object subclass: #Example
 	instanceVariableNames: 'a'
 	classVariableNames: ''
 	package: 'Refactoring-Example'
 <br>
 Example >> a
     ^ a
-<br>
+
 Example >> a: anObject
-    a := anObject
-</pre>
+    a := anObject</pre>
 </td>
 </tr>
 </table>
@@ -425,10 +409,12 @@ Example >> a: anObject
 >1. Select the class that you want generate accessors
 >2. Select **⌘GA** or from the menu, select **Generate accessors** option
 
->## Variables
+>### Variables
 >
 >1. Select the variable(s) that you want generate accessors
 >2. From the menu, select **Generate accessors** option
+
+[![video](https://i.ytimg.com/vi/0AqI4P7wfs0/hqdefault.jpg?sqp=-oaymwEXCPYBEIoBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAfCtLwNOXwG8ZnIGZC0Z9O6Zqyzw)](https://www.youtube.com/watch?v=LMnv8HDNE-4 "clic para ver el video")
 
 ## Insert subclass
 
