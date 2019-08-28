@@ -407,7 +407,7 @@ After
 <br>
 Example >> a
     ^ a
-
+<br>
 Example >> a: anObject
     a := anObject</pre>
 </td>
@@ -426,13 +426,224 @@ Example >> a: anObject
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/LMnv8HDNE-4/0.jpg)](http://www.youtube.com/watch?v=LMnv8HDNE-4)
 
+## New subclass
+
+Generate a new subclass of a class. 
+
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
+
+<tr>
+<td>
+<pre>Object subclass: #MyA
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+<br>
+MyA subclass: #MyB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'</pre>
+</td>
+
+<td>
+<pre>"Selecting the MyA class"
+Object subclass: #MyA
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+    <br>
+MyA subclass: #MyB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+    <br>
+MyA subclass: #MyC
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'</pre>
+</td>
+</tr>
+</table>
+
+>1. Select class.
+>2. From the menu, select **Refactorings** and then select **New subclass** option.
+>3. Fill the dialog's input with new class's name
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/PLqO6s46p_o/0.jpg)](http://www.youtube.com/watch?v=PLqO6s46p_o)
+
 ## Insert subclass
 
+Generate a new subclass of a class between the class and its subclasses. This refactoring is useful when we have to specialize some classes.
 
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
+
+<tr>
+<td>
+<pre>Object subclass: #MyA
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+<br>
+MyA subclass: #MyB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'</pre>
+</td>
+
+<td>
+<pre>"Selecting the MyA class"
+Object subclass: #MyA
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+    <br>
+MyA subclass: #MyC
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+    <br>
+MyC subclass: #MyB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'</pre>
+</td>
+</tr>
+</table>
+
+>1. Select class.
+>2. From the menu, select **Refactorings** and then select **Insert subclass** option.
+>3. Fill the dialog's input with new class's name
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/vflwFbwY58A/0.jpg)](http://www.youtube.com/watch?v=vflwFbwY58A)
 
 ## Insert superclass
 
+Generate a new superclass of a class between the class and its superclass. This refactoring is useful when we must generalize to avoid the redundancy of the classes.
 
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
 
-## New subclass
+<tr>
+<td>
+<pre>Object subclass: #MyA
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+<br>
+MyA subclass: #MyB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'</pre>
+</td>
 
+<td>
+<pre>"Selecting the MyB class"
+Object subclass: #MyA
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+    <br>
+MyA subclass: #MyC
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+    <br>
+MyC subclass: #MyB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	package: 'Refactoring-Example'</pre>
+</td>
+</tr>
+</table>
+
+>1. Select class.
+>2. From the menu, select **Refactorings** and then select **Insert subclass** option.
+>3. Fill the dialog's input with new class's name
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/b1wpkuxYwHc/0.jpg)](http://www.youtube.com/watch?v=b1wpkuxYwHc)
+
+## Jump to test class
+
+This seems trivial, however this command offers us a shortcut to automatically create a class for our tests or go to tests class.
+
+>1. Select class.
+>2. Press **⌘GJ** or from the menu, select **Jump to test class**.
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/https://youtu.be/IC6MawvjzwE/0.jpg)](http://www.youtube.com/watch?v=https://youtu.be/IC6MawvjzwE)
+
+##  Abstract instance variables
+
+This refactoring generate accessors methods if they don't exist and replace every direct access to class variables with accessor methods.
+
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
+
+<tr>
+<td>
+<pre>Object subclass: #MyA
+	instanceVariableNames: 'a'
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+<br>
+MyA >> method
+	|result|
+    a := self initializeVariable.
+    result := a value.
+</td>
+
+<td>
+<pre>"Selecting the a variable"
+Object subclass: #MyA
+	instanceVariableNames: 'a'
+	classVariableNames: ''
+	package: 'Refactoring-Example'
+<br>
+Example >> a
+    ^ a
+<br>
+Example >> a: anObject
+    a := anObject
+<br>
+MyA >> method
+	|result|
+    self a: self initializeVariable.
+    result := self a value.'</pre>
+</td>
+</tr>
+</table>
+
+>1. Select class.
+>2. From the menu, select **Refactorings** and then select **Insert subclass** option.
+>3. Fill the dialog's input with new class's name
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/b1wpkuxYwHc/0.jpg)](http://www.youtube.com/watch?v=b1wpkuxYwHc)
