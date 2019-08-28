@@ -414,7 +414,7 @@ Example >> a: anObject
 >1. Select the variable(s) that you want generate accessors
 >2. From the menu, select **Generate accessors** option
 
-<iframe src="https://giphy.com/embed/U6MOQpnD1PQnzTMQjQ" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/U6MOQpnD1PQnzTMQjQ">via GIPHY</a></p>
+![Generate accessors](https://i.makeagif.com/media/8-28-2019/mQW4Wa.mp4)
 
 ## Insert subclass
 
