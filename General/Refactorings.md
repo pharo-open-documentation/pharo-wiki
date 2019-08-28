@@ -315,8 +315,10 @@ In the same way as in the methods you can perform the push up and push down refa
 Replace senders helps us to change the senders of the selected method to the name of another method that we want, considering that the method with which we replace it must have the same number of arguments as the original.
 
 >1. Select the method.
->2. From the menu, select *Refactorings*.
+>2. From the menu, select **Refactorings**.
 >3. Select **Replace senders** option.
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/CJjZYugsqZg/0.jpg)](http://www.youtube.com/watch?v=CJjZYugsqZg)
 
 ## Find and Replace method
 
@@ -592,7 +594,7 @@ This seems trivial, however this command offers us a shortcut to automatically c
 >1. Select class.
 >2. Press **⌘GJ** or from the menu, select **Jump to test class**.
 
-[![Pharo - Rename refactoring](https://img.youtube.com/vi/https://youtu.be/IC6MawvjzwE/0.jpg)](http://www.youtube.com/watch?v=https://youtu.be/IC6MawvjzwE)
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/https://youtu.be/IC6MawvjzwE/0.jpg)](http://www.youtube.com/watch?v=IC6MawvjzwE)
 
 ##  Abstract instance variables
 
@@ -642,8 +644,7 @@ MyA >> method
 </tr>
 </table>
 
->1. Select class.
->2. From the menu, select **Refactorings** and then select **Insert subclass** option.
->3. Fill the dialog's input with new class's name
+>1. Select variable.
+>2. From the menu, select **Abstract instance variables** option.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/b1wpkuxYwHc/0.jpg)](http://www.youtube.com/watch?v=b1wpkuxYwHc)
