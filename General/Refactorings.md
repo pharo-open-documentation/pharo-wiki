@@ -38,7 +38,7 @@ Renaming seems like a trivial refactoring however it can lead to many complicati
 >2. Press **⌘R** or from the menu, select **Rename**.
 >3. Fill the input of dialog with the new name and press **Ok** button.
 
-[![Pharo - Rename refactoring](http://img.youtube.com/vi/YOUTUBE_tHdt11WDq2o/0.jpg)](http://www.youtube.com/watch?v=tHdt11WDq2o)
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/tHdt11WDq2o/0.jpg)](http://www.youtube.com/watch?v=tHdt11WDq2o)
 
 # Extract
 
@@ -126,6 +126,8 @@ Example >> add: a to: b
 >3. Select **Extract method** option.
 >4. Fill the input of dialog with the name of method and press **Ok** button.
 
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/LfyN3bo4b0A/0.jpg)](http://www.youtube.com/watch?v=LfyN3bo4b0A)
+
 # Remove
 
 Sometimes when the code is refactored it can end with code that is no longer used, or that should no longer be used. Therefore, it is necessary to eliminate all the unused code since this affects the developers who work and try to understand the source code.
@@ -143,6 +145,8 @@ Many times we want to change or add some functionalities to our code, however th
 >
 >1. Select class
 >2. Press **⌘C** or from the menu, select **Copy**.
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/wgeVyFltKXY/0.jpg)](http://www.youtube.com/watch?v=wgeVyFltKXY)
 
 # Move
 
@@ -274,12 +278,14 @@ This refactoring replaces all calls to the method selected from its class by the
 
 # Push up and Push down
 
-## Pull up method
+## Push up method
 
 Gets rid of duplicate code. If you need to make changes to a method, it’s better to do so in a single place than have to search for all duplicates of the method in subclasses; this refactoring technique can also be used if, for some reason, a subclass redefines a superclass method but performs what’s essentially the same work.
 
 >1. Select the method
 >2. Select **⌘PU** or from the menu, select **Refactorings** and then select **Push up** option.
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/nZiLNx4Y6tA/0.jpg)](http://www.youtube.com/watch?v=nZiLNx4Y6tA)
 
 ## Push down method
 
@@ -287,6 +293,8 @@ Improves class coherence. A method is located where you expect to see it. For ex
 
 >1. Select the method
 >2. Select **⌘PD** or from the menu, select **Refactorings** and then select **Push down** option.
+
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/F_JjZfZzCqY/0.jpg)](http://www.youtube.com/watch?v=F_JjZfZzCqY)
 
 In the same way as in the methods you can perform the push up and push down refactorings on the instance variables
 
@@ -364,6 +372,8 @@ Example >> renderContentOn: html
 >2. From the menu, select **Refactorings**.
 >3. Select **Find and replace** option.
 
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/yxOn3tdh1wU/0.jpg)](http://www.youtube.com/watch?v=yxOn3tdh1wU)
+
 # Other refactorings
 
 ## Generate accessors
@@ -414,7 +424,7 @@ Example >> a: anObject
 >1. Select the variable(s) that you want generate accessors
 >2. From the menu, select **Generate accessors** option
 
-![Generate accessors](https://media.giphy.com/media/U6MOQpnD1PQnzTMQjQ/giphy.gif)
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/LMnv8HDNE-4/0.jpg)](http://www.youtube.com/watch?v=LMnv8HDNE-4)
 
 ## Insert subclass
 
