@@ -32,18 +32,18 @@ This will open a message browser with all the methods/class comments containing 
 
 Pharo currently run in one native thread. If you launch a method taking a lot of time to run, or if you have an infinite loop in your code, you might want to interrupt the process. 
 
-It is possible to do that in Pharo with the shortcut `CMD/CTRL + .`.
+It is possible to do that in Pharo with the shortcut `CMD/ALT + .`.
 
-> This feature will work in most cases but sometime it might not work because a faulty code will have fill up too much the memory.
+> This feature will work in most cases. However, sometimes it might not work, e.g. when a faulty code will have fill up too much memory, or when a process is executing outside of the VM (FFI calls).
 
 ## Debugging facilities
 
-Pharo includes multiple way to help with debugging. This section will explain some of them.
+Pharo includes multiple ways to help with debugging. This section gives some of them.
 
-`Object` implements multiple debugging messages that are useful. They can be sent to any objects in your code.
+`Object` implements multiple debugging messages that are useful. They can be sent to any objects in your code:
 
-- `#halt` : This method will stop the executing of your code when it is called and open a debugger. (/!\ Do not use it in a code call multiple times in a fork or you might break your image)
-- `#haltOnce` : This method will stop the execution and raise a debugger the first time it is called. To enable it once more, use `Menubar -> Debbuging -> Enable all break/inspect once`.
+- `#halt` : This method will stop the execution of your code when it is called and open a debugger. (/!\ Do not use it in a code called multiple times in a fork, or system critical loops or you cqn regret it by breaking your image. In this case, it is advise to not save your image in this kind of unstable state)
+- `#haltOnce` : This method stops the execution and raise a debugger only the first time it is called. To enable it once more, use `Menubar -> Debbuging -> Enable all break/inspect once`.
 - `#haltIf:` : This method takes a block as parameter and will stop the execution and open a debugger if the block as parameter returns `true`.
 - `#haltOnCount:` : This method takes a number as argument and will stop the execution and open a debugger when it will be called at least the number of time given as argument. Reset the counter via `Menubar -> Debbuging -> Reset Counters`.
 - `#inspect` : This message can be called on any object and will open an inspector for the receiver.
@@ -58,7 +58,7 @@ myMethod
 	| temp |
 	self doSomething.
 
-	"If you think an infinit loop might happen here, #haltOnCount: might help"
+	"If you think an infinite loop might happen here, #haltOnCount: might help"
 	self haltOnCount: 1000.
 
 	temp := self doSomethingElse.

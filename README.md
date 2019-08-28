@@ -5,17 +5,24 @@ Wiki for the Pharo programming language and development environment.
 The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](CONTRIBUTION.md).
 
 ## Contents
+- [Beginners](#beginners)
 - [General](#general)
 - [Pharo projects](#pharo-projects)
 - [External projects](#external-projects)
   * [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
+- [External ressources](#external-ressources)
 - [Pharo 8.0](#pharo-8.0)
+
+## Beginners
+
+- [Setting up a new project](General/SettingUpANewProject.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Things beginners must learn](General/MustKnowForBeginners.md)
+- [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Glossary](General/Glossary.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 
 ## General
 
-- [Things beginners must learn](General/MustKnowForBeginners.md)
-- [Interesting things to know for beginners](General/InterestingsToKnowForBeginners.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies
 - [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages
@@ -27,6 +34,12 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu
 - [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties
 - [Coding conventions](General/CodingConventions.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
+- [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md)
+- [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Iceberg on Windows workaround](General/IcebergOnWindows.md)
+- [Exceptions](General/Exceptions.md)
+- [Sorting collections](General/SortingCollections.md)
 
 ## Pharo projects
 
@@ -36,6 +49,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Basic interactions with OS](PharoProjects/OS.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Cursor](PharoProjects/Cursor.md)
 - [Dynamic variables](PharoProjects/DynamicVariables.md)
+- [Numbers](PharoProjects/Numbers.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Rich text](PharoProjects/RichText.md)
 - [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.<!-- - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
 
@@ -59,6 +73,8 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 ## Migration guidelines
 - [Migration from Pharo 6.1 to Pharo 7.0](Migration/MigrationToPharo7.md)
 
+## External ressources
+- [Contributing to Pharo](https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo) (External link) - Official tutorial on how to contribute to Pharo using Iceberg.
 
 <!---
 Badges:

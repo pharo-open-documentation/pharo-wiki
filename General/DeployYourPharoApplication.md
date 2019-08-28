@@ -1,19 +1,25 @@
 # How to deploy a Pharo application
 
-This guide has for vocation to help developpers deploying a Pharo application. If something is missing in your point of view, do not hesitate to open an issue.
+*This guide has for purpose to help developpers deploying a Pharo application. If something is missing to you, do not hesitate to open an issue.*
 
-**This guide was first written for Pharo 7. Some part will not work in Pharo 6 and earlier.**
+**This guide is first written for Pharo 7. Some parts will not work in Pharo 6 and earlier.**
 
 - [How to deploy a Pharo application](#how-to-deploy-a-pharo-application)
+  * [Cruiser: A tool for app deployment?](#cruiser)
   * [Clean your image before deployment](#clean-your-image-before-deployment)
   * [Sources obfuscation](#sources-obfuscation)
   * [Change the logo and window title of the application](#change-the-logo-and-window-title-of-the-application)
   * [Sign your application on Windows and OSX](#sign-your-application-on-windows-and-osx)
   * [Deploy a Seaside application with Nginx](#deploy-a-seaside-application-with-nginx)
 
+## Cruiser
+Cruiser is a tool to package Pharo applications. The idea is to quickly convert an application in a development environment to a production one.
+[https://github.com/VincentBlondeau/Cruiser](https://github.com/VincentBlondeau/Cruiser)
+
+
 ## Clean your image before deployment
 
-In this section we will explain divers way to clean an image for deployment. All steps are not necessary and we will explain the benefits in each subsection.
+In this section we explain various ways to clean an image for deployment. All steps are not necessary and the benefits are given in each subsection.
 
 ### Clean up the system
 
@@ -157,7 +163,7 @@ This section works with the previous section aswell. We recommand to:
 
 ### Force omission of startup preferences
 
-At launch Pharo try to load preferences. Since the user can execute Smalltalk code via those proferences, we recommand to disable the preference mechanism with this code:
+At launch Pharo try to load preferences. Since the user can execute Smalltalk code via those preferences, we recommand to disable the preference mechanism with this code:
 
 ```Smalltalk
 PharoCommandLineHandler forcePreferencesOmission: true
