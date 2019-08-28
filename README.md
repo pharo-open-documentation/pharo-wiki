@@ -10,7 +10,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [External projects](#external-projects)
   * [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
-- [Pharo 8.0](#pharo8.0)
+- [Pharo 8.0](#pharo-8.0)
 
 ## General
 
