@@ -32,11 +32,12 @@ Renaming seems like a trivial refactoring however it can lead to many complicati
 2. The name of the class / method / variable does not match what it really is.
 3. Something new was introduced that requires the existing code to have a new more specific name.
 
-``` This refactoring can be done for classes, methods and variables.
+``` 
+This refactoring can be done for classes, methods and variables.
 
 1. Select the class / variable / method 
-2. Press *⌘R* or from the menu, select **Rename**.
-3. Fill the input of dialog with the new name and press **Ok** button.
+2. Press ⌘R or from the menu, select Rename.
+3. Fill the input of dialog with the new name and press Ok button.
 ```
 It should be noted that the renowned methods have some options more than classes and variables.
 
@@ -46,74 +47,101 @@ The extraction Pharo's tools allow developers to reshape their code when they ha
 
 Pharo can perform this refactoring to extract methods and extract temporal variables.
 
-**Extraer variable temporal**
+## Extract temporary variable
 
-| Before | After |
-| ---------- | ---------- |
-| Example >> method
-    | a b c|
-    a := 1.
-    b := a + list size.
-    c := b + list size. | Example >> method
-    | a b c d|
-    a := 1.
-    d := list size.
-    b := a + d.
-    c := b + d.|
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
 
-Antes
-
+<tr>
+<td>
+<pre>
 Example >> method
     | a b c|
     a := 1.
     b := a + list size.
     c := b + list size.
+</pre>
+</td>
 
-Despues
-
+<td>
+<pre>
 Example >> method
     | a b c d|
     a := 1.
     d := list size.
     b := a + d.
     c := b + d.
+</pre>
+</td>
 
+</tr>
+</table>
+
+```
 1. Seleccionar la seccion del codigo fuente que desea convertir
 en variable temporal.
 2. Press ⌘T or from the menu, select Source code.
 3. Select extract temp option .
 4. Fill the input of dialog with the name of the variable and press
 Ok button.
+```
 
 Extraer metodo
 
-Antes
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
 
+<tr>
+<td>
+<pre>
 Example >> method
     | a b c d|
     a := 1.
     b := 2.
     c := a + b.
     d := a + c.
+</pre>
+</td>
 
-Despues
-
+<td>
+<pre>
 Example >> method
     | a b c d|
     a := 1.
     b := 2.
     c := self add: a to: b.
     d := self add: a to: c.
+
 Example >> add: a to: b
     ^ a + b
+</pre>
+</td>
+</tr>
+</table>
 
+```
 1. Seleccionar la seccion del codigo fuente que desea extraer.
 2. Press ⌘T or from the menu, select Source code.
 3. Select extract method option.
 4. Fill the input of dialog with the name of method and press
 Ok button.
+```
 
-Eliminacion
+# Remove
 
 A veces cuando se refactoriza el codigo puede terminar con codigo que 
 ya no se usa, o que ya no deberia usarse; por lo cual es necesario 
@@ -125,10 +153,12 @@ Procedimiento
 Esta refactorizacion se puede hacer tanto para paquetes, clases, metodos y variables.
 A continuacion se especifican los pasos a seguir
 
+```
 1. Seleccionar el paquete / clase / variable / metodo 
 2. Press ⌘X
+```
 
-Copiar
+# Copy
 
 Muchas veces queremos cambiar o agregar algunas funcionalidades a nuestro codigo,
 sin embargo esto conlleva grandes cambios lo cual hace que sea peligroso realizarlo sobre la
@@ -139,10 +169,12 @@ Procedimiento
 
 Actualmente esta herramienta solo se aplica a clases y para utilizarla solo debe seguir los siguientes pasos:
 
+```
 1. Seleccionar la clase
 2. Press ⌘C or from the menu, select Copy.
+```
 
-Mover
+# Move
 
 La refactorizacion mover permite mover clases y metodos de un paquete
 a otro, y mover metodos al lado de la clase / instancia o incluso
@@ -150,8 +182,9 @@ moverlos a otra clase.
 
 Procedimiento
 
-Move to package
+## Move to package
 
+```
 Class
 
 1. Seleccionar la clases o clases que se desea mover.
@@ -164,58 +197,89 @@ Method
 1. Seleccionar el o los metodos que se desea mover.
 2. Select Refactorings and then select Move to package option.
 3. Select the package and press Ok button
+```
 
-Move to class
-
+## Move to class
+```
 1. Seleccionar el o los metodos que se desea mover.
 2. Select Refactorings and then select Move to another class option.
 3. Select the new class for method(s) and press Ok button
-
-Move to class side
-
+```
+## Move to class side
+```
 1. Seleccionar el o los metodos que se desea mover.
 2. Press ⌘TC, select Refactorings and then select Move to class side option.
+```
 
-Move to instance side
-
+## Move to instance side
+```
 1. Seleccionar el o los metodos que se desea mover.
 2. Press ⌘TI, select Refactorings and then select Move to instance side option.
+```
 
-Inline
+# Inline
 
 Inline refactoring permite revertir la refactorizacion de extraccion
 de un metodo o variable temporal.
 
-Procedimiento
-
-Inline temp
+## Inline temp
 
 La refactorización de variables en línea reemplaza el uso de variables redundantes con su inicializador.
 
-Antes
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
 
+<tr>
+<td>
+<pre>
 MyA >> method
     | number b |
     number := anotherClass value.
     b := 3 + number.
+</pre>
+</td>
 
-Despues
-
+<td>
+<pre>
 MyA >> method
     | b |
     b := 3 + anotherClass value.
+</pre>
+</td>
+</tr>
+</table>
 
+```
 1. Select the temporary variable in the source code
 2. Press ⌘T or from the menu, select Source code.
 3. Select Inline temp option.
+```
 
-Inline method
+## Inline method
 
 Los resultados del método en línea colocan el cuerpo del método en el 
 cuerpo del metodo donde seleccionamos su llamada.
 
-Antes
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
 
+<tr>
+<td>
+<pre>
 Example >> method
     | a b c d|
     a := 1.
@@ -225,33 +289,43 @@ Example >> method
 
 Example >> add: a to: b
     ^ a + b
+</pre>
+</td>
 
-Despues
-
+<td>
+<pre>
 Example >> method
     | a b c d|
     a := 1.
     b := 2.
     c := a + b.
     d := a + c.
+</pre>
+</td>
+</tr>
+</table>
 
+```
 1. Select the call to method in the source code
 2. Press ⌘T or from the menu, select Source code.
 3. Select Inline method option.
+```
 
-Inline senders
+## Inline senders
 
 Esta refactorizacion reemplaza todas las llamadas al metodo seleccionado
 desde su misma clase por el cuerpo de su implementacion ademas de que 
 el metodo en si sera eliminado.
 
+```
 1. Select the method
 2. From the menu, select Refactorings.
 3. Select Inline senders option.
+```
 
-Push up and Push down
+# Push up and Push down
 
-Pull up method
+## Pull up method
 
 Gets rid of duplicate code. If you need to make changes to a method,
  it’s better to do so in a single place than have to search for all 
@@ -259,13 +333,13 @@ Gets rid of duplicate code. If you need to make changes to a method,
  can also be used if, for some reason, a subclass redefines a 
  superclass method but performs what’s essentially the same work.
 
-Procedimiento
-
+```
 1. Select the method
 2. Select ⌘PU or from the menu, select Refactorings and then select 
 Push up option.
+```
 
-Push down method
+## Push down method
 
 Improves class coherence. A method is located where you expect to
  see it. For example if you see that a method is needed by more than
@@ -274,41 +348,43 @@ Improves class coherence. A method is located where you expect to
   avoiding the code duplication that would result from pushing a
    method down to all subclasses.
 
-Procedimiento
-
+```
 1. Select the method
 2. Select ⌘PD or from the menu, select Refactorings and then select 
 Push down option.
+```
 
 De la misma manera que en los metodos se puede realizar
 las refactorizaciones push up and push down sobre las variables de instancia
 
-Push up variable
-
+## Push up variable
+```
 1. Select the variable
 2. From the menu select Push up option.
+```
 
-Push down variable
-
+## Push down variable
+```
 1. Select the variable
 2. From the menu select Push down option.
+```
 
-Replace
+# Replace
 
-Replace senders
+## Replace senders
 
 Esta refactorizacion nos sirve para cambiar los senders del metodo
 seleccionado al nombre de otro metodo que nosotros querramos,
 considerando que el metodo con el que lo reemplacemos debe tener
 la misma cantidad de argumentos que el original.
 
-Procedimiento
-
+```
 1. Select the method
 2. From the menu, select Refactorings.
 3. Select Replace senders option.
+```
 
-Find and Replace method
+## Find and Replace method
 
 Esta refactorizacion nos ayuda cuando tenemos codigo duplicado, en si
 esta refactorizacion consiste en seleccionar un metodo y buscar las 
