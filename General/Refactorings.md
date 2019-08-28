@@ -32,21 +32,34 @@ Renaming seems like a trivial refactoring however it can lead to many complicati
 2. The name of the class / method / variable does not match what it really is.
 3. Something new was introduced that requires the existing code to have a new more specific name.
 
-> This refactoring can be done for classes, methods and variables.
+``` This refactoring can be done for classes, methods and variables.
 
-> 1. Select the class / variable / method 
-> 2. Press *⌘R* or from the menu, select **Rename**.
-> 3. Fill the input of dialog with the new name and press **Ok** button.
-
+1. Select the class / variable / method 
+2. Press *⌘R* or from the menu, select **Rename**.
+3. Fill the input of dialog with the new name and press **Ok** button.
+```
 It should be noted that the renowned methods have some options more than classes and variables.
 
 # Extract
 
 The extraction Pharo's tools allow developers to reshape their code when they have duplicate code or when they want to change the design.
 
-> Pharo can perform this refactoring to extract methods and extract temporal variables.
+Pharo can perform this refactoring to extract methods and extract temporal variables.
 
-> **Extraer variable temporal**
+**Extraer variable temporal**
+
+| Before | After |
+| ---------- | ---------- |
+| Example >> method
+    | a b c|
+    a := 1.
+    b := a + list size.
+    c := b + list size. | Example >> method
+    | a b c d|
+    a := 1.
+    d := list size.
+    b := a + d.
+    c := b + d.|
 
 Antes
 
