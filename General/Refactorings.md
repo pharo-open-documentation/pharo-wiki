@@ -648,4 +648,4 @@ MyA >> method
 >1. Select variable.
 >2. From the menu, select **Abstract instance variables** option.
 
-[![Pharo - Rename refactoring](https://img.youtube.com/vi/b1wpkuxYwHc/0.jpg)](http://www.youtube.com/watch?v=b1wpkuxYwHc)
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/cRBICE66v7g/0.jpg)](http://www.youtube.com/watch?v=cRBICE66v7g)
