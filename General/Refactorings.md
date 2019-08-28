@@ -38,7 +38,7 @@ Renaming seems like a trivial refactoring however it can lead to many complicati
 >2. Press **⌘R** or from the menu, select **Rename**.
 >3. Fill the input of dialog with the new name and press **Ok** button.
 
-It should be noted that the renowned methods have some options more than classes and variables.
+[![Pharo - Rename refactoring](http://img.youtube.com/vi/YOUTUBE_tHdt11WDq2o/0.jpg)](http://www.youtube.com/watch?v=tHdt11WDq2o)
 
 # Extract
 
