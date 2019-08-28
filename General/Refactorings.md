@@ -67,6 +67,7 @@ Example >> method
     a := 1.
     b := a + list size.
     c := b + list size.
+<br>
 </pre>
 </td>
 
@@ -85,15 +86,14 @@ Example >> method
 </table>
 
 ```
-1. Seleccionar la seccion del codigo fuente que desea convertir
-en variable temporal.
+1. Select the section of source code you want to convert
+in temporary variable.
 2. Press ⌘T or from the menu, select Source code.
-3. Select extract temp option .
-4. Fill the input of dialog with the name of the variable and press
-Ok button.
+3. Select extract temp option.
+4. Fill dialog's input with the name of the variable and press Ok button.
 ```
 
-Extraer metodo
+## Extract method
 
 <table>
 <tr>
@@ -114,6 +114,7 @@ Example >> method
     b := 2.
     c := a + b.
     d := a + c.
+<br><br><br>
 </pre>
 </td>
 
@@ -143,77 +144,63 @@ Ok button.
 
 # Remove
 
-A veces cuando se refactoriza el codigo puede terminar con codigo que 
-ya no se usa, o que ya no deberia usarse; por lo cual es necesario 
-eliminar todo aquel codigo no utilizado ya que esto afecta a los desarrolladores
-que trabajan e intentan entender el codigo fuente.
-
-Procedimiento
-
-Esta refactorizacion se puede hacer tanto para paquetes, clases, metodos y variables.
-A continuacion se especifican los pasos a seguir
+Sometimes when the code is refactored it can end with code that is no longer used, or that should no longer be used. Therefore, it is necessary to eliminate all the unused code since this affects the developers who work and try to understand the source code.
 
 ```
-1. Seleccionar el paquete / clase / variable / metodo 
+This refactoring can be done for packages, classes, methods and variables.
+
+1. Select the package / class / variable / method
 2. Press ⌘X
 ```
 
 # Copy
 
-Muchas veces queremos cambiar o agregar algunas funcionalidades a nuestro codigo,
-sin embargo esto conlleva grandes cambios lo cual hace que sea peligroso realizarlo sobre la
-clase orginal. Es por ello que puede resultar necesario copiar las clases
-para tener un respaldo en caso de que se quiera revertir los cambios.
-
-Procedimiento
-
-Actualmente esta herramienta solo se aplica a clases y para utilizarla solo debe seguir los siguientes pasos:
+Many times we want to change or add some functionalities to our code, however this entails major changes which makes it dangerous to do it on the original class. That is why it may be necessary to copy the classes to have a backup in case you want to reverse the changes.
 
 ```
-1. Seleccionar la clase
+Currently this tool only applies to classes and to use it you just have to follow the following steps:
+
+1. Select class
 2. Press ⌘C or from the menu, select Copy.
 ```
 
 # Move
 
-La refactorizacion mover permite mover clases y metodos de un paquete
-a otro, y mover metodos al lado de la clase / instancia o incluso
-moverlos a otra clase.
-
-Procedimiento
+Move allows you to move classes and methods from one package to another, and move methods to class / instance side or even move them to another class.
 
 ## Move to package
 
 ```
 Class
 
-1. Seleccionar la clases o clases que se desea mover.
+1. Select class or classes that you want to move.
 2. Press ⌘MC or from the menu, select Refactorings and then select 
 Move to package option.
 3. Select the package and press Ok button
 
 Method
 
-1. Seleccionar el o los metodos que se desea mover.
+1. Select the method or methods to be moved.
 2. Select Refactorings and then select Move to package option.
 3. Select the package and press Ok button
 ```
 
 ## Move to class
 ```
-1. Seleccionar el o los metodos que se desea mover.
+1. Select the method or methods to be moved.
 2. Select Refactorings and then select Move to another class option.
 3. Select the new class for method(s) and press Ok button
 ```
+
 ## Move to class side
 ```
-1. Seleccionar el o los metodos que se desea mover.
+1. Select the method or methods to be moved.
 2. Press ⌘TC, select Refactorings and then select Move to class side option.
 ```
 
 ## Move to instance side
 ```
-1. Seleccionar el o los metodos que se desea mover.
+1. Select the method or methods to be moved.
 2. Press ⌘TI, select Refactorings and then select Move to instance side option.
 ```
 
@@ -251,6 +238,7 @@ MyA >> method
 MyA >> method
     | b |
     b := 3 + anotherClass value.
+<br>
 </pre>
 </td>
 </tr>
@@ -264,8 +252,7 @@ MyA >> method
 
 ## Inline method
 
-Los resultados del método en línea colocan el cuerpo del método en el 
-cuerpo del metodo donde seleccionamos su llamada.
+The results of inline method place methods's body in the body of the method where we select its call.
 
 <table>
 <tr>
@@ -300,6 +287,7 @@ Example >> method
     b := 2.
     c := a + b.
     d := a + c.
+<br><br><br>
 </pre>
 </td>
 </tr>
@@ -313,9 +301,7 @@ Example >> method
 
 ## Inline senders
 
-Esta refactorizacion reemplaza todas las llamadas al metodo seleccionado
-desde su misma clase por el cuerpo de su implementacion ademas de que 
-el metodo en si sera eliminado.
+This refactoring replaces all calls to the method selected from its class by the body of its implementation, in addition to the method itself being eliminated.
 
 ```
 1. Select the method
@@ -327,11 +313,7 @@ el metodo en si sera eliminado.
 
 ## Pull up method
 
-Gets rid of duplicate code. If you need to make changes to a method,
- it’s better to do so in a single place than have to search for all 
- duplicates of the method in subclasses; this refactoring technique 
- can also be used if, for some reason, a subclass redefines a 
- superclass method but performs what’s essentially the same work.
+Gets rid of duplicate code. If you need to make changes to a method, it’s better to do so in a single place than have to search for all duplicates of the method in subclasses; this refactoring technique can also be used if, for some reason, a subclass redefines a superclass method but performs what’s essentially the same work.
 
 ```
 1. Select the method
@@ -341,21 +323,14 @@ Push up option.
 
 ## Push down method
 
-Improves class coherence. A method is located where you expect to
- see it. For example if you see that a method is needed by more than
-  one subclass, but not all of them, it may be useful to create an 
-  intermediate subclass and move the method to it. This allows 
-  avoiding the code duplication that would result from pushing a
-   method down to all subclasses.
+Improves class coherence. A method is located where you expect to see it. For example if you see that a method is needed by more than one subclass, but not all of them, it may be useful to create an intermediate subclass and move the method to it. This allows avoiding the code duplication that would result from pushing a method down to all subclasses.
 
 ```
 1. Select the method
 2. Select ⌘PD or from the menu, select Refactorings and then select 
 Push down option.
 ```
-
-De la misma manera que en los metodos se puede realizar
-las refactorizaciones push up and push down sobre las variables de instancia
+In the same way as in the methods you can perform the push up and push down refactorings on the instance variables
 
 ## Push up variable
 ```
@@ -373,10 +348,7 @@ las refactorizaciones push up and push down sobre las variables de instancia
 
 ## Replace senders
 
-Esta refactorizacion nos sirve para cambiar los senders del metodo
-seleccionado al nombre de otro metodo que nosotros querramos,
-considerando que el metodo con el que lo reemplacemos debe tener
-la misma cantidad de argumentos que el original.
+Replace senders helps us to change the senders of the selected method to the name of another method that we want, considering that the method with which we replace it must have the same number of arguments as the original.
 
 ```
 1. Select the method
@@ -386,12 +358,21 @@ la misma cantidad de argumentos que el original.
 
 ## Find and Replace method
 
-Esta refactorizacion nos ayuda cuando tenemos codigo duplicado, en si
-esta refactorizacion consiste en seleccionar un metodo y buscar las 
-ocurrencias de su cuerpo en un rango de metodos que se selecciona.
+Find and replace helps us when we have duplicate code, if this refactoring consists in selecting a method and looking for the occurrences of your body in a range of methods that is selected.
 
-Antes
+<table>
+<tr>
+<th>
+Before
+</th>
+<th>
+After
+</th>
+</tr>
 
+<tr>
+<td>
+<pre>
 Example >> textInputOn: html withName: aString andSymbol: aSymbol
 	html text: aString.
 	html textInput on: aSymbol of: self contact.
@@ -408,9 +389,11 @@ Example >> renderContentOn: html
 			html text: 'Example:'.
 			html textInput on: #example of: self contact.
 			html break]
+</pre>
+</td>
 
-Despues
-
+<td>
+<pre>
 Example >> textInputOn: html withName: aString andSymbol: aSymbol
 	html text: aString.
 	html textInput on: aSymbol of: self contact.
@@ -421,29 +404,46 @@ Example >> renderContentOn: html
 		form: [ self textInputOn: html withName: 'Name:' andSymbol: #name.
 			self textInputextInputOnt: html withName: 'Email address:' andSymbol: #emailAddress.
 			self textInputOn: html withName: 'Example:' andSymbol: #example ]
+<br><br><br><br><br><br>
+</pre>
+</td>
+</tr>
+</table>
 
-Procedimiento
 
 1. Select the method
 2. From the menu, select Refactorings.
 3. Select Find and replace option.
 
-Otras refactorizaciones
+# Other refactorings
 
-Generate accessors
+## Generate accessors
 
-Esta refactorizacion genera los mensajes get y set de las variables de instancia. Se puede
-usar esta refactorizacion desde la clase y las variables.
+This refactoring generates the get and set messages of the instance variables, can be used from the class and the variables.
 
+<table>
+<tr>
+<th>
 Before
+</th>
+<th>
+After
+</th>
+</tr>
 
+<tr>
+<td>
+<pre>
 Object subclass: #Example
 	instanceVariableNames: 'a'
 	classVariableNames: ''
 	package: 'Refactoring-Example'
+<br><br><br><br><br><br>
+</pre>
+</td>
 
-After
-
+<td>
+<pre>
 Object subclass: #Example
 	instanceVariableNames: 'a'
 	classVariableNames: ''
@@ -454,7 +454,12 @@ Example >> a
 
 Example >> a: anObject
     a := anObject
+</pre>
+</td>
+</tr>
+</table>
 
+```
 Class
 
 1. Select the class that you want generate accessors
@@ -464,14 +469,15 @@ Variables
 
 1. Select the variable(s) that you want generate accessors
 2. From the menu, select Generate accessors option
+```
 
-Insert subclass
-
-
-
-Insert superclass
+## Insert subclass
 
 
 
-New subclass
+## Insert superclass
+
+
+
+## New subclass
 
