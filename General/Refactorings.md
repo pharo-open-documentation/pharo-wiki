@@ -594,7 +594,8 @@ This seems trivial, however this command offers us a shortcut to automatically c
 >1. Select class.
 >2. Press **⌘GJ** or from the menu, select **Jump to test class**.
 
-[![Pharo - Rename refactoring](https://img.youtube.com/vi/https://youtu.be/IC6MawvjzwE/0.jpg)](http://www.youtube.com/watch?v=IC6MawvjzwE)
+[![Pharo - Rename refactoring](https://img.youtube.com/vi/IC6MawvjzwE/0.jpg)](http://www.youtube.com/watch?v=IC6MawvjzwE)
+
 
 ##  Abstract instance variables
 
