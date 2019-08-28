@@ -414,7 +414,7 @@ Example >> a: anObject
 >1. Select the variable(s) that you want generate accessors
 >2. From the menu, select **Generate accessors** option
 
-![Generate accessors](https://i.makeagif.com/media/8-28-2019/mQW4Wa.mp4)
+![Generate accessors](https://media.giphy.com/media/U6MOQpnD1PQnzTMQjQ/giphy.gif)
 
 ## Insert subclass
 
