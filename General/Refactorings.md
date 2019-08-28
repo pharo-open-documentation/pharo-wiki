@@ -117,7 +117,7 @@ Example >> method
     b := 2.
     c := self add: a to: b.
     d := self add: a to: c.
-
+<br>
 Example >> add: a to: b
     ^ a + b
 </pre>
@@ -248,7 +248,7 @@ Example >> method
     b := 2.
     c := self add: a to: b.
     d := self add: a to: c.
-
+<br>
 Example >> add: a to: b
     ^ a + b
 </pre>
@@ -262,7 +262,7 @@ Example >> method
     b := 2.
     c := a + b.
     d := a + c.
-<br><br><br>
+<br><br>
 </pre>
 </td>
 </tr>
@@ -339,7 +339,7 @@ Example >> textInputOn: html withName: aString andSymbol: aSymbol
 	html text: aString.
 	html textInput on: aSymbol of: self contact.
 	html break
-
+<br>
 Example >> renderContentOn: html
 	html
 		form: [ html text: 'Name:'.
@@ -360,13 +360,13 @@ Example >> textInputOn: html withName: aString andSymbol: aSymbol
 	html text: aString.
 	html textInput on: aSymbol of: self contact.
 	html break
-
+<br>
 Example >> renderContentOn: html
 	html
 		form: [ self textInputOn: html withName: 'Name:' andSymbol: #name.
 			self textInputextInputOnt: html withName: 'Email address:' andSymbol: #emailAddress.
 			self textInputOn: html withName: 'Example:' andSymbol: #example ]
-<br><br><br><br><br><br>
+<br><br><br><br>
 </pre>
 </td>
 </tr>
@@ -409,10 +409,10 @@ Object subclass: #Example
 	instanceVariableNames: 'a'
 	classVariableNames: ''
 	package: 'Refactoring-Example'
-
+<br>
 Example >> a
     ^ a
-
+<br>
 Example >> a: anObject
     a := anObject
 </pre>
