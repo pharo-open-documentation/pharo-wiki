@@ -144,7 +144,7 @@ Many times we want to change or add some functionalities to our code, however th
 >Currently this tool only applies to classes and to use it you just have to follow the following steps:
 >
 >1. Select class
->2. Press **⌘C** or from the menu, select **Copy**.
+>2. Press **Meta+C** or from the menu, select **Copy**.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/wgeVyFltKXY/0.jpg)](http://www.youtube.com/watch?v=wgeVyFltKXY)
 
