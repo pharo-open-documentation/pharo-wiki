@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Pharo offers many automatic refactoring tools. Therefore, the objective of this tutorial is to present what refactorings are, when to apply them, how to apply them and to show any possible inconvenience before using them.
+Pharo offers many automatic refactoring tools. This tutorial presents what refactorings are, when and how to apply them and to show any possible inconvenience before using them.
 
 ## What is refactoring?
 
