@@ -220,7 +220,7 @@ After
 </table>
 
 >1. Select the temporary variable in the source code
->2. Press **⌘T** or from the menu, select **Source code**.
+>2. Press **Meta+T** or from the menu, select **Source code**.
 >3. Select **Inline temp** option.
 
 ## Inline method
