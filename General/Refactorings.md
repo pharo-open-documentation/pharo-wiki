@@ -80,7 +80,7 @@ After
 </table>
 
 >1. Select the section of source code you want to convert in temporary variable.
->2. Press **⌘T** or from the menu, select **Source code**.
+>2. Press **Meta+T** or from the menu, select **Source code**.
 >3. Select **Extract temp** option.
 >4. Fill dialog's input with the name of the variable and press **Ok** button.
 
