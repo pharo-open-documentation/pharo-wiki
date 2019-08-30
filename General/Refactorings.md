@@ -122,7 +122,7 @@ Example >> add: a to: b
 </table>
 
 >1. Seleccionar la seccion del codigo fuente que desea extraer.
->2. Press **⌘T** or from the menu, select **Source code**.
+>2. Press **Meta+T** or from the menu, select **Source code**.
 >3. Select **Extract method** option.
 >4. Fill the input of dialog with the name of method and press **Ok** button.
 
