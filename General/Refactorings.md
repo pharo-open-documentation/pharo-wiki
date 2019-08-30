@@ -6,7 +6,7 @@ Pharo offers many automatic refactoring tools. This tutorial presents what refac
 
 ## What is refactoring?
 
-Martin Fowler defines refactoring as: "... It is a disciplined technique to restructure an existing body of code, altering its internal structure without changing its external behavior." This means that before carrying out any type of refactoring in the code it is important to have complete test coverage to demonstrate that the code behavior does not change during the refactoring process.
+Martin Fowler defines refactoring as: "... It is a disciplined technique to restructure an existing body of code, altering its internal structure without changing its external behavior" [1](#references). This means that before carrying out any type of refactoring in the code it is important to have complete test coverage to demonstrate that the code behavior does not change during the refactoring process.
 
 ## The most popular refactorings supported by Pharo 8.0
 
@@ -28,13 +28,13 @@ Renaming seems like a trivial refactoring however it can lead to many complicati
 
 ## When should we rename?
 
-1. When the name is not descriptive enough
+1. When the name is not descriptive enough.
 2. The name of the class / method / variable does not match what it really is.
 3. Something new was introduced that requires the existing code to have a new more specific name.
  
 > This refactoring can be done for classes, methods and variables.
 >
->1. Select the class / variable / method 
+>1. Select the `class / variable / method `.
 >2. Press **Meta+R** or from the menu, select **Rename**.
 >3. Fill the input of dialog with the new name and press **Ok** button.
 
@@ -67,7 +67,7 @@ Example >> method
     c := b + d.
 ```
 
->1. Select the section of source code you want to convert in temporary variable.
+>1. Select the section of `source code` you want to convert in temporary variable.
 >2. Press **Meta+T** or from the menu, select **Source code**.
 >3. Select **Extract temp** option.
 >4. Fill dialog's input with the name of the variable and press **Ok** button.
@@ -97,7 +97,7 @@ Example >> add: a to: b
     ^ a + b
 ```
 
->1. Seleccionar la seccion del codigo fuente que desea extraer.
+>1. Select the section of the `source code` you wish to extract.
 >2. Press **Meta+T** or from the menu, select **Source code**.
 >3. Select **Extract method** option.
 >4. Fill the input of dialog with the name of method and press **Ok** button.
@@ -110,7 +110,7 @@ Sometimes when the code is refactored it can end with code that is no longer use
 
 >This refactoring can be done for packages, classes, methods and variables.
 >
->1. Select the package / class / variable / method
+>1. Select the `package / class / variable / method`.
 >2. Press **Meta+X**
 
 # Copy
@@ -119,7 +119,7 @@ Many times we want to change or add some functionalities to our code, however th
 
 >Currently this tool only applies to classes and to use it you just have to follow the following steps:
 >
->1. Select class
+>1. Select `class`.
 >2. Press **Meta+C** or from the menu, select **Copy**.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/wgeVyFltKXY/0.jpg)](http://www.youtube.com/watch?v=wgeVyFltKXY)
@@ -132,21 +132,21 @@ Move allows you to move classes and methods from one package to another, and mov
 
 > ### Class
 >
->1. Select class or classes that you want to move.
+>1. Select `class or classes` that you want to move.
 >2. Press **Meta+MC** or from the menu, select **Refactorings** and then select **Move to package** option.
 >3. Select the package and press **Ok** button
 
 > ### Method
 >
->1. Select the method or methods to be moved.
+>1. Select the `method or methods` to be moved.
 >2. Select **Refactorings** and then select **Move to package** option.
->3. Select the package and press **Ok** button
+>3. Select the package and press **Ok** button.
 
 ## Move to class
 
->1. Select the method or methods to be moved.
+>1. Select the `method or methods` to be moved.
 >2. Select **Refactorings** and then select **Move to another class** option.
->3. Select the new class for method(s) and press **Ok** button
+>3. Select the new class for method(s) and press **Ok** button.
 
 ## Move to class side
 
@@ -155,7 +155,7 @@ Move allows you to move classes and methods from one package to another, and mov
 
 ## Move to instance side
 
->1. Select the method or methods to be moved.
+>1. Select the `method or methods` to be moved.
 >2. Press **Meta+TI**, select **Refactorings** and then select **Move to instance side** option.
 
 # Inline
@@ -181,7 +181,7 @@ Example >> method
     b := 3 + anotherClass value.
 ```
 
->1. Select the temporary variable in the source code
+>1. Select the `temporary variable` in the source code.
 >2. Press **Meta+T** or from the menu, select **Source code**.
 >3. Select **Inline temp** option.
 
@@ -212,7 +212,7 @@ Example >> method
     d := a + c.
 ```
 
->1. Select the call to method in the source code.
+>1. Select the `call to method` in the source code.
 >2. Press **Meta+T** or from the menu, select** Source code**.
 >3. Select **Inline method** option.
 
@@ -220,7 +220,7 @@ Example >> method
 
 This refactoring replaces all calls to the method selected from its class by the body of its implementation, in addition to the method itself being eliminated.
 
->1. Select the method
+>1. Select the `method`.
 >2. From the menu, select **Refactorings**.
 >3. Select **Inline senders** option.
 
@@ -248,12 +248,12 @@ In the same way as in the methods you can perform the push up and push down refa
 
 ## Push up variable
 
->1. Select the variable
+>1. Select the `variable`.
 >2. From the menu select **Push up** option.
 
 ## Push down variable
 
->1. Select the variable.
+>1. Select the `variable`.
 >2. From the menu select **Push down** option.
 
 # Replace
@@ -262,7 +262,7 @@ In the same way as in the methods you can perform the push up and push down refa
 
 Replace senders helps us to change the senders of the selected method to the name of another method that we want, considering that the method with which we replace it must have the same number of arguments as the original.
 
->1. Select the method.
+>1. Select the `method`.
 >2. From the menu, select **Refactorings**.
 >3. Select **Replace senders** option.
 
@@ -305,7 +305,7 @@ Example >> renderContentOn: html
 	    self textInputOn: html withName: 'Example:' andSymbol: #example ]
 ```
 
->1. Select the method
+>1. Select the `method`.
 >2. From the menu, select **Refactorings**.
 >3. Select **Find and replace** option.
 
@@ -335,18 +335,18 @@ Example >> a
     ^ a
 
 Example >> a: anObject
-    a := anObject</pre>
+    a := anObject
 ```
 
 >### Class
 >
->1. Select the class that you want generate accessors
->2. Select **Meta+GA** or from the menu, select **Generate accessors** option
+>1. Select the `class` that you want generate accessors.
+>2. Select **Meta+GA** or from the menu, select **Generate accessors** option.
 
 >### Variables
 >
->1. Select the variable(s) that you want generate accessors
->2. From the menu, select **Generate accessors** option
+>1. Select the `variable(s)` that you want generate accessors.
+>2. From the menu, select **Generate accessors** option.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/LMnv8HDNE-4/0.jpg)](http://www.youtube.com/watch?v=LMnv8HDNE-4)
 
@@ -385,9 +385,9 @@ MyA subclass: #MyC
     package: 'Refactoring-Example'
 ```
 
->1. Select class.
+>1. Select `class`.
 >2. From the menu, select **Refactorings** and then select **New subclass** option.
->3. Fill the dialog's input with new class's name
+>3. Fill the dialog's input with new class's name.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/PLqO6s46p_o/0.jpg)](http://www.youtube.com/watch?v=PLqO6s46p_o)
 
@@ -426,9 +426,9 @@ MyC subclass: #MyB
     package: 'Refactoring-Example'
 ```
 
->1. Select class.
+>1. Select `class`.
 >2. From the menu, select **Refactorings** and then select **Insert subclass** option.
->3. Fill the dialog's input with new class's name
+>3. Fill the dialog's input with new class's name.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/vflwFbwY58A/0.jpg)](http://www.youtube.com/watch?v=vflwFbwY58A)
 
@@ -467,9 +467,9 @@ MyC subclass: #MyB
     package: 'Refactoring-Example'
 ```
 
->1. Select class.
+>1. Select `class`.
 >2. From the menu, select **Refactorings** and then select **Insert subclass** option.
->3. Fill the dialog's input with new class's name
+>3. Fill the dialog's input with new class's name.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/b1wpkuxYwHc/0.jpg)](http://www.youtube.com/watch?v=b1wpkuxYwHc)
 
@@ -477,7 +477,7 @@ MyC subclass: #MyB
 
 This seems trivial, however this command offers us a shortcut to automatically create a class for our tests or go to tests class.
 
->1. Select class.
+>1. Select `class`.
 >2. Press **Meta+GJ** or from the menu, select **Jump to test class**.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/IC6MawvjzwE/0.jpg)](http://www.youtube.com/watch?v=IC6MawvjzwE)
@@ -516,10 +516,13 @@ Example >> a: anObject
 MyA >> method
     |result|
     self a: self initializeVariable.
-    result := self a value.'</pre>
+    result := self a value.
 ```
 
->1. Select variable.
+>1. Select `variable`.
 >2. From the menu, select **Abstract instance variables** option.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/cRBICE66v7g/0.jpg)](http://www.youtube.com/watch?v=cRBICE66v7g)
+
+# References
+[1] Martin Fowler, [Refactoring - Improving the Design of Existing Code](https://refactoring.com/)
