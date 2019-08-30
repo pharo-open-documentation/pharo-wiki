@@ -174,7 +174,7 @@ Example >> method
     b := 3 + number.
 ```
 #### After
-Selecting 'number' temp on source code
+Selecting `number` temp on source code
 ``` Smalltalk
 Example >> method
     | b |
@@ -202,7 +202,7 @@ Example >> add: a to: b
     ^ a + b
 ```
 #### After
-Selecting 'self add: a to: b.' on source code
+Selecting `self add: a to: b.` on source code
 ``` Smalltalk
 Example >> method
     | a b c d|
