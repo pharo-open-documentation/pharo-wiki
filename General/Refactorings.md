@@ -157,7 +157,7 @@ Move allows you to move classes and methods from one package to another, and mov
 > ### Class
 >
 >1. Select class or classes that you want to move.
->2. Press **⌘MC** or from the menu, select **Refactorings** and then select **Move to package** option.
+>2. Press **Meta+MC** or from the menu, select **Refactorings** and then select **Move to package** option.
 >3. Select the package and press **Ok** button
 
 > ### Method
