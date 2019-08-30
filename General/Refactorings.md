@@ -180,7 +180,7 @@ Move allows you to move classes and methods from one package to another, and mov
 ## Move to instance side
 
 >1. Select the method or methods to be moved.
->2. Press **⌘TI**, select **Refactorings** and then select **Move to instance side** option.
+>2. Press **Meta+TI**, select **Refactorings** and then select **Move to instance side** option.
 
 # Inline
 
