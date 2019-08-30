@@ -283,7 +283,7 @@ This refactoring replaces all calls to the method selected from its class by the
 Gets rid of duplicate code. If you need to make changes to a method, it’s better to do so in a single place than have to search for all duplicates of the method in subclasses; this refactoring technique can also be used if, for some reason, a subclass redefines a superclass method but performs what’s essentially the same work.
 
 >1. Select the method
->2. Select **⌘PU** or from the menu, select **Refactorings** and then select **Push up** option.
+>2. Select **Meta+PU** or from the menu, select **Refactorings** and then select **Push up** option.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/nZiLNx4Y6tA/0.jpg)](http://www.youtube.com/watch?v=nZiLNx4Y6tA)
 
