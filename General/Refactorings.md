@@ -265,7 +265,7 @@ Example >> add: a to: b
 </table>
 
 >1. Select the call to method in the source code.
->2. Press **⌘T** or from the menu, select** Source code**.
+>2. Press **Meta+T** or from the menu, select** Source code**.
 >3. Select **Inline method** option.
 
 ## Inline senders
