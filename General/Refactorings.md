@@ -292,7 +292,7 @@ Gets rid of duplicate code. If you need to make changes to a method, it’s bett
 Improves class coherence. A method is located where you expect to see it. For example if you see that a method is needed by more than one subclass, but not all of them, it may be useful to create an intermediate subclass and move the method to it. This allows avoiding the code duplication that would result from pushing a method down to all subclasses.
 
 >1. Select the method
->2. Select **⌘PD** or from the menu, select **Refactorings** and then select **Push down** option.
+>2. Select **Meta+PD** or from the menu, select **Refactorings** and then select **Push down** option.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/F_JjZfZzCqY/0.jpg)](http://www.youtube.com/watch?v=F_JjZfZzCqY)
 
