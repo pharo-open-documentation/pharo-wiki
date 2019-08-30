@@ -48,7 +48,6 @@ Pharo can perform this refactoring to extract methods and extract temporal varia
 
 ## Extract temporary variable
 
----
 #### Before
 ``` Smalltalk
 Example >> method
@@ -57,8 +56,8 @@ Example >> method
     b := a + list size.
     c := b + list size.
 ```
----
-### After
+#### After
+Selecting `list size` on source code
 ``` Smalltalk
 Example >> method
     | a b c d|
@@ -67,7 +66,6 @@ Example >> method
     b := a + d.
     c := b + d.
 ```
----
 
 >1. Select the section of source code you want to convert in temporary variable.
 >2. Press **Meta+T** or from the menu, select **Source code**.
@@ -76,7 +74,6 @@ Example >> method
 
 ## Extract method
 
----
 #### Before
 ``` Smalltalk
 Example >> method
@@ -86,7 +83,6 @@ Example >> method
     c := a + b.
     d := a + c.
 ```
----
 #### After
 ``` Smalltalk
 Example >> method
@@ -99,7 +95,6 @@ Example >> method
 Example >> add: a to: b
     ^ a + b
 ```
----
 
 >1. Seleccionar la seccion del codigo fuente que desea extraer.
 >2. Press **Meta+T** or from the menu, select **Source code**.
@@ -170,7 +165,6 @@ Inline refactoring allows you to reverse extract refactoring of a method or temp
 
 Inline variables replaces the use of redundant variables with its initializer.
 
----
 #### Before
 ``` Smalltalk
 Example >> method
@@ -178,14 +172,12 @@ Example >> method
     number := anotherClass value.
     b := 3 + number.
 ```
----
 #### After
 ``` Smalltalk
 Example >> method
     | b |
     b := 3 + anotherClass value.
 ```
----
 
 >1. Select the temporary variable in the source code
 >2. Press **Meta+T** or from the menu, select **Source code**.
@@ -195,8 +187,6 @@ Example >> method
 
 The results of inline method place methods's body in the body of the method where we select its call.
 
-
----
 #### Before
 ``` Smalltalk
 Example >> method
@@ -209,7 +199,6 @@ Example >> method
 Example >> add: a to: b
     ^ a + b
 ```
----
 #### After
 ``` Smalltalk
 Example >> method
@@ -219,7 +208,6 @@ Example >> method
     c := a + b.
     d := a + c.
 ```
----
 
 >1. Select the call to method in the source code.
 >2. Press **Meta+T** or from the menu, select** Source code**.
@@ -281,42 +269,38 @@ Replace senders helps us to change the senders of the selected method to the nam
 
 Find and replace helps us when we have duplicate code, if this refactoring consists in selecting a method and looking for the occurrences of your body in a range of methods that is selected.
 
-
----
 #### Before
 ``` Smalltalk
 Example >> textInputOn: html withName: aString andSymbol: aSymbol
-	html text: aString.
-	html textInput on: aSymbol of: self contact.
-	html break
+    html text: aString.
+    html textInput on: aSymbol of: self contact.
+    html break
 
 Example >> renderContentOn: html
-	html
-		form: [ html text: 'Name:'.
-			html textInput on: #name of: self contact.
-			html break.
-			html text: 'Email address:'.
-			html textInput on: #emailAddress of: self contact.
-			html break.
-			html text: 'Example:'.
-			html textInput on: #example of: self contact.
-			html break]
+    html
+	form: [ html text: 'Name:'.
+  	    html textInput on: #name of: self contact.
+	    html break.
+	    html text: 'Email address:'.
+	    html textInput on: #emailAddress of: self contact.
+	    html break.
+	    html text: 'Example:'.
+	    html textInput on: #example of: self contact.
+	    html break]
 ```
----
 #### After
 ``` Smalltalk
 Example >> textInputOn: html withName: aString andSymbol: aSymbol
-	html text: aString.
-	html textInput on: aSymbol of: self contact.
-	html break
+    html text: aString.
+    html textInput on: aSymbol of: self contact.
+    html break
 
 Example >> renderContentOn: html
-	html
-		form: [ self textInputOn: html withName: 'Name:' andSymbol: #name.
-			self textInputextInputOnt: html withName: 'Email address:' andSymbol: #emailAddress.
-			self textInputOn: html withName: 'Example:' andSymbol: #example ]
+    html
+	form: [ self textInputOn: html withName: 'Name:' andSymbol: #name.
+   	    self textInputextInputOnt: html withName: 'Email address:' andSymbol: #emailAddress.
+	    self textInputOn: html withName: 'Example:' andSymbol: #example ]
 ```
----
 
 >1. Select the method
 >2. From the menu, select **Refactorings**.
@@ -330,30 +314,26 @@ Example >> renderContentOn: html
 
 This refactoring generates the get and set messages of the instance variables, can be used from the class and the variables.
 
-
----
 #### Before
 ``` Smalltalk
 Object subclass: #Example
-	instanceVariableNames: 'a'
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: 'a'
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 ```
----
 #### After
 ``` Smalltalk
 Object subclass: #Example
-	instanceVariableNames: 'a'
-	classVariableNames: ''
-	package: 'Refactoring-Example'
-
+    instanceVariableNames: 'a'
+    classVariableNames: ''
+    package: 'Refactoring-Example'
+    
 Example >> a
     ^ a
 
 Example >> a: anObject
     a := anObject</pre>
 ```
----
 
 >### Class
 >
@@ -371,39 +351,36 @@ Example >> a: anObject
 
 Generate a new subclass of a class. 
 
----
 #### Before
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 
 MyA subclass: #MyB
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'</pre>
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'</pre>
 ```
----
 #### After
 Selecting the MyA class
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
     
 MyA subclass: #MyB
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
     
 MyA subclass: #MyC
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 ```
----
 
 >1. Select class.
 >2. From the menu, select **Refactorings** and then select **New subclass** option.
@@ -415,39 +392,36 @@ MyA subclass: #MyC
 
 Generate a new subclass of a class between the class and its subclasses. This refactoring is useful when we have to specialize some classes.
 
----
 #### Before
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 
 MyA subclass: #MyB
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 ```
----
 #### After
 Selecting the MyA class
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
     
 MyA subclass: #MyC
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
     
 MyC subclass: #MyB
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
-	```
-	---
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
+```
 
 >1. Select class.
 >2. From the menu, select **Refactorings** and then select **Insert subclass** option.
@@ -459,40 +433,36 @@ MyC subclass: #MyB
 
 Generate a new superclass of a class between the class and its superclass. This refactoring is useful when we must generalize to avoid the redundancy of the classes.
 
----
 #### Before
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 
 MyA subclass: #MyB
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
-	---
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 ```
----
 #### After
 Selecting the MyB class
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
     
 MyA subclass: #MyC
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
     
 MyC subclass: #MyB
-	instanceVariableNames: ''
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 ```
----
 
 >1. Select class.
 >2. From the menu, select **Refactorings** and then select **Insert subclass** option.
@@ -514,28 +484,26 @@ This seems trivial, however this command offers us a shortcut to automatically c
 
 This refactoring generate accessors methods if they don't exist and replace every direct access to class variables with accessor methods.
 
----
 #### Before
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: 'a'
-	classVariableNames: ''
-	package: 'Refactoring-Example'
+    instanceVariableNames: 'a'
+    classVariableNames: ''
+    package: 'Refactoring-Example'
 
 MyA >> method
-	|result|
+    |result|
     a := self initializeVariable.
     result := a value.
 ```
----
 #### After
 Selecting the a variable
 ``` Smalltalk
 Object subclass: #MyA
-	instanceVariableNames: 'a'
-	classVariableNames: ''
-	package: 'Refactoring-Example'
-
+    instanceVariableNames: 'a'
+    classVariableNames: ''
+    package: 'Refactoring-Example'
+    
 Example >> a
     ^ a
 
@@ -543,11 +511,10 @@ Example >> a: anObject
     a := anObject
 
 MyA >> method
-	|result|
+    |result|
     self a: self initializeVariable.
     result := self a value.'</pre>
 ```
----
 
 >1. Select variable.
 >2. From the menu, select **Abstract instance variables** option.
