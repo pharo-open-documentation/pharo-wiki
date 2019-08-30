@@ -135,7 +135,7 @@ Sometimes when the code is refactored it can end with code that is no longer use
 >This refactoring can be done for packages, classes, methods and variables.
 >
 >1. Select the package / class / variable / method
->2. Press **⌘X**
+>2. Press **Meta+X**
 
 # Copy
 
