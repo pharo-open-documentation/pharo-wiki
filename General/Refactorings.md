@@ -419,7 +419,7 @@ Example >> a: anObject
 >### Class
 >
 >1. Select the class that you want generate accessors
->2. Select **⌘GA** or from the menu, select **Generate accessors** option
+>2. Select **Meta+GA** or from the menu, select **Generate accessors** option
 
 >### Variables
 >
