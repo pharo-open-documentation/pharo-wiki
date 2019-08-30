@@ -12,15 +12,15 @@ Martin Fowler defines refactoring as: "... It is a disciplined technique to rest
 
 | Refactoring | Supported in |
 | ---------- | ---------- |
-| Rename   | Package, Class, Method, Instance and Temporary Variable |
-|  Extract   | Method and Temporary Variable  |
-| Remove| Package, Class, Method and Instance Variable |
-| Copy | Class |
-| Move | Class and method |
-| Inline | Method and Temporary Variable |
-| Push up / Push down | Method and Instance Variable |
-| Replace | Method |
-| Other refactorings|  Class, Method, Instance and Temporary Variable |
+| [Rename](#rename)   | Package, Class, Method, Instance and Temporary Variable |
+| [Extract](#extract)   | Method and Temporary Variable  |
+| [Remove](#remove)| Package, Class, Method and Instance Variable |
+| [Copy](#copy) | Class |
+| [Move](#move) | Class and method |
+| [Inline](#inline) | Method and Temporary Variable |
+| [Push up / Push down](#push-up-and-push-down) | Method and Instance Variable |
+| [Replace](#replace) | Method |
+| [Other refactorings](#other-refactorings) |  Class, Method, Instance and Temporary Variable |
 
 # Rename
 
@@ -84,6 +84,7 @@ Example >> method
     d := a + c.
 ```
 #### After
+Selecting `a + b` on source code
 ``` Smalltalk
 Example >> method
     | a b c d|
@@ -173,6 +174,7 @@ Example >> method
     b := 3 + number.
 ```
 #### After
+Selecting 'number' temp on source code
 ``` Smalltalk
 Example >> method
     | b |
@@ -200,6 +202,7 @@ Example >> add: a to: b
     ^ a + b
 ```
 #### After
+Selecting 'self add: a to: b.' on source code
 ``` Smalltalk
 Example >> method
     | a b c d|
@@ -364,7 +367,7 @@ MyA subclass: #MyB
     package: 'Refactoring-Example'</pre>
 ```
 #### After
-Selecting the MyA class
+Selecting the `MyA` class
 ``` Smalltalk
 Object subclass: #MyA
     instanceVariableNames: ''
@@ -405,7 +408,7 @@ MyA subclass: #MyB
     package: 'Refactoring-Example'
 ```
 #### After
-Selecting the MyA class
+Selecting the `MyA` class
 ``` Smalltalk
 Object subclass: #MyA
     instanceVariableNames: ''
@@ -446,7 +449,7 @@ MyA subclass: #MyB
     package: 'Refactoring-Example'
 ```
 #### After
-Selecting the MyB class
+Selecting the `MyB` class
 ``` Smalltalk
 Object subclass: #MyA
     instanceVariableNames: ''
@@ -497,7 +500,7 @@ MyA >> method
     result := a value.
 ```
 #### After
-Selecting the a variable
+Selecting the `a` variable
 ``` Smalltalk
 Object subclass: #MyA
     instanceVariableNames: 'a'
