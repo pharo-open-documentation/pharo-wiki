@@ -592,7 +592,7 @@ MyC subclass: #MyB
 This seems trivial, however this command offers us a shortcut to automatically create a class for our tests or go to tests class.
 
 >1. Select class.
->2. Press **⌘GJ** or from the menu, select **Jump to test class**.
+>2. Press **Meta+GJ** or from the menu, select **Jump to test class**.
 
 [![Pharo - Rename refactoring](https://img.youtube.com/vi/IC6MawvjzwE/0.jpg)](http://www.youtube.com/watch?v=IC6MawvjzwE)
 
