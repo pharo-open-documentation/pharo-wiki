@@ -12,7 +12,6 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
   * [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
 - [External ressources](#external-ressources)
-- [Pharo 8.0](#pharo-8.0)
 
 ## Beginners
 
