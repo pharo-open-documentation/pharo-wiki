@@ -39,6 +39,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Iceberg on Windows workaround](General/IcebergOnWindows.md)
 - [Exceptions](General/Exceptions.md)
 - [Sorting collections](General/SortingCollections.md)
+- [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool
 
 ## Pharo projects
 
@@ -82,3 +83,4 @@ Badges:
 * ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 
 -->
+
