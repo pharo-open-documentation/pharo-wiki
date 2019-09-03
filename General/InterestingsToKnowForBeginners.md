@@ -7,7 +7,9 @@ The goal is to ease the use of Pharo for beginners.
 - [API](#api)
 - [Evaluatable objects (Blocks and Symbols)](#evaluatable-objects--blocks-and-symbols-)
 - [Tools](#tools)
+  * [Calypso System Browser](#calypso)
   * [Dependency Analyzer](#dependency-analyzer)
+  
 - [Flags](#flags)
 - [Useful pragmas](#useful-pragmas)
   * [Modify IDE](#modify-ide)
@@ -66,6 +68,20 @@ The second way is shorter and often more readable.
 ## Tools
 
 > TODO
+
+### Calypso (System browser)
+
+- Display the differences between two methods
+	* Click on a method
+	* Hold down the SHIFT-key
+	* Click on the second method
+	* Click on the tab Diff to see the differences
+	
+- Editing 2 methods side by side
+	* Click on a method
+	* Hold down the CTRL-key
+	* Click on the second method
+	* Two tabs are displayed with the source code of the two methods.
 
 ### Dependency Analyzer
 
