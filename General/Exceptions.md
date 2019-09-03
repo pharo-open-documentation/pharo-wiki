@@ -1,37 +1,40 @@
 # Exceptions
 
 All applications have to deal with exceptional situations.
-Arithmetic errors may occur (such as division by zero), unexpected situations may arise (file not found), or resources may be exhausted (network down, disk full,etc.).
-The old-fashioned solution is to have operations that fail return a special error code; this means that client code must check the return value of each operation, and take special action to handle errors. This leads to brittle code.
+Arithmetic errors may occur (such as division by zero), unexpected situations may arise (file not found), or resources may be exhausted (network down, disk full, etc.).
+In languages like C, the solution is to have operations that fail return a special error code; this means that client code must check the return value of each operation, and take special action to handle errors. This leads to brittle code.
 
 Modern programming languages, including Pharo, offer a dedicated exception-handling mechanism that greatly simplifies the way in which exceptional situations are signaled and handled.
 This mechanism is the **Exception** mechanism.
 
 - [Exceptions](#exceptions)
-  * [Basic Uses](#basic-uses)
-    + [Signaling an exception](#signaling-an-exception)
-    + [Handling exceptions](#handling-exceptions)
-    + [Creating your own exceptions](#creating-your-own-exceptions)
-    + [Ensure](#ensure)
-    + [IfCurtailed](#ifcurtailed)
-  * [Advanced Uses](#advanced-uses)
-    + [Return](#return)
-    + [Retry](#retry)
-    + [Resume](#resume)
-    + [Pass](#pass)
-    + [Outer](#outer)
-    + [Resignal](#resignal)
-  * [A deeper look at the exception mechanism](#a-deeper-look-at-the-exception-mechanism)
-  * [Credits](#credits)
+  - [Basic Uses](#basic-uses)
+    - [Signalling an exception](#signalling-an-exception)
+    - [Handling exceptions](#handling-exceptions)
+    - [Creating your own exceptions](#creating-your-own-exceptions)
+    - [Ensure](#ensure)
+    - [IfCurtailed](#ifcurtailed)
+  - [Advanced Uses](#advanced-uses)
+    - [Return](#return)
+    - [Retry](#retry)
+    - [Resume](#resume)
+    - [Pass](#pass)
+    - [Outer](#outer)
+    - [Resignal](#resignal)
+  - [A deeper look at the exception mechanism](#a-deeper-look-at-the-exception-mechanism)
+  - [Credits](#credits)
 
 ## Basic Uses
-### Signaling an exception
+
+### Signalling an exception
+
 **Syntax:**  
 `anException signal`  
 or:
-`anException signal: 'message with additional information'`   
+`anException signal: 'message with additional information'`
 
 Imagine you have a method `potentiallyProblematicMethod`, that sometimes sets a variable to a bad value. When this happens (line 3), you want to signal this problem by **signalling** an exception (in this example an `Error` exception).
+
 ```Smalltalk
 potentiallyProblematicMethod
 	self doThings.
@@ -41,7 +44,6 @@ potentiallyProblematicMethod
 
 If you execute this code, the following window opens:
 ![Image](./Exceptions_Image_ExamplePreDebugger.png)
-
 
 And if you click on "Debug", a debugger opens to help you understand why your application signalled an exception.
 ![Image](./Exceptions_Image_ExampleDebugger.png)
@@ -54,11 +56,11 @@ Handling multiple exception classes:
 Accessing the exception in the handler block:  
 `protectedBlock on: anExceptionClass do: [:exceptionToHandle| yourCode]`.
 
-As seen in the previous paragraph, if an exception is signalled and nothing else is done, a debugger opens. It is useful when developping, but in the end you probably want your application to catch these exceptions and handle them itself if possible (for example by displaying a nice pop-up informing the user of the problem). This is done with exception **handlers**.
+As seen in the previous paragraph, if an exception is signalled and nothing else is done, a debugger opens. It is useful when developing, but in the end you probably want your application to catch these exceptions and handle them itself if possible (for example by displaying a nice pop-up informing the user of the problem). This is done with exception **handlers**.
 
 In Pharo, an exception handler is of the form:  
 `protectedBlock on: anExceptionClass do: handlerBlock`.  
-What this message does in english is: *"Evaluate `protectedBlock`. If it signals an exception of the class `anExceptionClass`, catch this exception and evaluate `handlerBlock` instead"*.
+Here's what happens (in English): *"Evaluate `protectedBlock`. If it signals an exception of the class `anExceptionClass`, catch this exception and evaluate `handlerBlock` instead"*.
 
 To continue the previous example, let's say that `potentiallyProblematicMethod` is called by `solidMethod`. Now `solidMethod` is solid, so it does not want debuggers to open when it is executed. Instead, if an exception is signalled by `potentiallyProblematicMethod`, it will handle it, display a pop-up informing the user, and return `42` instead of the result of `potentiallyProblematicMethod`.
 
@@ -81,7 +83,7 @@ When an exception is signalled, it walks the call stack (from the current method
 
 ![Image](./Exceptions_Image_ExceptionSample.png)
 
-An issue with writing handlers for generic exception types like `Error` is that these handlers will not only handle errors your application signals (which is fine), they will also handle errors signalled by the libraries you use, or code that your application uses but that is not a part of it. This is potentially dangerous as your application may not be doing the right thing for these errors.
+An issue with writing handlers for generic exception types like `Error` is that these handlers will not only handle errors your application signals (which is fine), but they will also handle errors signalled by the libraries you use, or code that your application uses but that is not a part of it. This is potentially dangerous, as your application may not be doing the right thing for these errors.
 
 To prevent this, you can define your own types of exceptions by creating subclasses of the `Exception` class, and signal and catch these.
 
@@ -124,10 +126,8 @@ After catching an exception in a handler, there are a number of advanced things 
 or: `protectedBlock on: anExceptionClass do: [:ex | ex return ]`  
 or: `protectedBlock on: anExceptionClass do: [:ex | ex return: aValue ]`  
 
-
 **Synopsis:**  
-This is the standard behaviour of handler blocks. If an exception is caught, this handler returns an alternative value for the protected block (the execution continues as if the protected block has returned that value).
-
+This is the standard behavior of handler blocks. If an exception is caught, this handler returns an alternative value for the protected block (the execution continues as if the protected block has returned that value).
 
 Here is a picture of the context stack (a.k.a. call stack) explaining this operation.
 ![Image](Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment1_return.png)
@@ -181,7 +181,7 @@ Here is a picture of the context stack (a.k.a. call stack) explaining this opera
 
 **Synopsis:**  
 Signals `anotherException` as if it had been signalled at the same place the original exception (`ex`) was signalled.  
-This can be used to catch generic exceptions and resignal them as application-specific exceptions if they meet some criterias.
+This can be used to catch generic exceptions and re-signal them as application-specific exceptions if they meet some criteria.
 
 ## A deeper look at the exception mechanism
 
