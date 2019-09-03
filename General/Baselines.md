@@ -617,7 +617,7 @@ By default, a baseline uses linear loading, which means packages are loaded one 
 
 #### Atomic loading
 
-This load type forces Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be peeled like a banana. For example it's useful to do an atomic load of Pharo's Kernel and Collections, since they depend on each other.
+This load type forces Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be resolved. For example it's useful to do an atomic load of Pharo's Kernel and Collections, since they depend on each other.
 
 To define atomic loading, override the method `#project`:
 
