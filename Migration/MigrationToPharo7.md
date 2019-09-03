@@ -2,23 +2,22 @@
 
 ## Pharo 7 file streams guideline
 
-Since the version 5, Pharo provides a new file streams API that makes the old one based on classes 
-like `FileStream` or `MultiByteBinaryOrTextStream` deprecated. Pharo 7 makes the next important 
-steps and removes usages of the old API from the kernel.
+Since version 5, Pharo provides a new file streams API that deprecates the one based on classes 
+like `FileStream` or `MultiByteBinaryOrTextStream`. In Pharo 7 this deprecated API was removed from the kernel.
 
-### What you should remember
+### Key points
 
 - use file references as entry points to file streams
-- do not use `FileStream` class
+- do not use the `FileStream` class
 - `'file.txt' asFileReference readStream` and similar methods now return an instance of `ZnCharacterReadStream`
 instead of `MultiByteFileStream`
 - `'file.txt' asFileReference writeStream` and similar methods now return an instance of `ZnCharacterWriteStream` 
 instead of `MultiByteFileStream`
-- the new API has more clear separation between binary and text files
+- the new API has a clearer separation between binary and text files
 
 ### Code conversion
 
-In this section, we will present the most common examples of file stream usages. For simplicity, errors are not handled.
+This section shows the most common examples of file streams. For simplicity, errors are not handled.
 
 #### Force creation of a new file and write a UTF-8 text
 
@@ -151,7 +150,7 @@ FileStream stdout
 
 #### Read a UTF-8 text from STDIN
 
-**CAUTION:** Following code will stop your VM until an input on STDIN will be provided!
+**CAUTION:** The following code will block your VM until input on STDIN is provided!
 
 ##### obsolete code
 ```smalltalk
@@ -180,7 +179,7 @@ Stdio stdout
 
 #### Read binary data from STDIN
 
-**CAUTION:** Following code will stop your VM until an input on STDIN will be provided!
+**CAUTION:** The following code will block your VM until input on STDIN is provided!
 
 ##### obsolete code
 ```smalltalk
@@ -194,7 +193,7 @@ Stdio stdin upTo: 10.
 
 ### Positionable streams
 
-The message `#position:` always works on the binary level, not on the character level.
+The message `#position:` always works at the binary level, not at the character level.
 
 ```smalltalk
 '1.txt' asFileReference readStreamDo: [ :stream | 
@@ -203,7 +202,7 @@ The message `#position:` always works on the binary level, not on the character 
 ```
 
 This will lead to an error (ZnInvalidUTF8: Illegal leading byte for utf-8 encoding) in case of 
-the file created above because we set the position into the middle of a UTF-8 encoded character.
+the file created above, because we set the position into the middle of a UTF-8 encoded character.
 To be safe, you need to read the file from the beginning.
 
 ```smalltalk
@@ -223,13 +222,13 @@ The `MultiByteFileStream` was buffered. If you create a stream using the express
 then the `ZnCharacterReadStream` is not created directly on top of the stream but on top of a buffered stream 
 that uses the file stream internally. 
 
-If you will create a `ZnCharacterReadStream` directly on the file stream, then the characters from the file are read 
+If you create a `ZnCharacterReadStream` directly on the file stream, then the characters from the file are read 
 one by one which may be about **ten times slower**!
 
 ```smalltalk
 ZnCharacterReadStream on: (File openForReadFileNamed: 'file.txt').
 ```
 
-#### Binary streams do not undestand #<< message anymore
+#### Binary streams do not understand #<< message anymore
 
-Binary streams used to understand `#<<` message in the past. This time is over, one should either use `#next:` or `#nextPutAll:`.
+Binary streams used to understand `#<<` message in the past, but not anymore. One should either use `#next:` or `#nextPutAll:`.

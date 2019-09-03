@@ -12,40 +12,40 @@ Adding a baseline to a project has some advantages:
 This documentation explains how to write a baseline and how to load the project described by this baseline.
 
 - [Baselines](#baselines)
-  - [How to define Baselines](#how-to-define-baselines)
-    - [Define packages forming your project](#define-packages-forming-your-project)
-    - [Define external dependencies](#define-external-dependencies)
-      - [To other remote git projects](#to-other-remote-git-projects)
-        - [Depends on the same project with different groups](#depends-on-the-same-project-with-different-groups)
-      - [To a local git project](#to-a-local-git-project)
-      - [To smalltalkhub projects](#to-smalltalkhub-projects)
-    - [Groups](#groups)
-      - [The default group](#the-default-group)
-    - [Pre/post load actions](#prepost-load-actions)
-    - [Loads different packages depending on the Pharo version](#loads-different-packages-depending-on-the-pharo-version)
-    - [Define custom attributes](#define-custom-attributes)
-    - [Loading types](#loading-types)
-      - [Linear loading](#linear-loading)
-      - [Atomic loading](#atomic-loading)
-    - [Full example](#full-example)
-  - [How to load a git project using its baseline](#how-to-load-a-git-project-using-its-baseline)
-    - [From the playground](#from-the-playground)
-      - [Project managed with Git](#project-managed-with-git)
-        - [Project from github/gitlab/bitbucket](#project-from-githubgitlabbitbucket)
-        - [Project from local repository](#project-from-local-repository)
-      - [Project managed with Smalltalkhub](#project-managed-with-smalltalkhub)
-      - [Project without repository](#project-without-repository)
-      - [Loading groups](#loading-groups)
-      - [Conflict, Upgrade and Downgrade resolution](#conflict-upgrade-and-downgrade-resolution)
-      - [Manage warnings](#manage-warnings)
-    - [From Iceberg](#from-iceberg)
-  - [Other features](#other-features)
-    - [Metacello lock feature](#metacello-lock-feature)
-    - [Metacello get feature](#metacello-get-feature)
-    - [Metacello fetch feature](#metacello-fetch-feature)
-    - [Metacello record feature](#metacello-record-feature)
-    - [Metacello listing feature](#metacello-listing-feature)
-  - [See also](#see-also)
+	- [How to define Baselines](#how-to-define-baselines)
+		- [Define packages forming your project](#define-packages-forming-your-project)
+		- [Define external dependencies](#define-external-dependencies)
+			- [To other remote git projects](#to-other-remote-git-projects)
+				- [Depends on the same project with different groups](#depends-on-the-same-project-with-different-groups)
+			- [To a local git project](#to-a-local-git-project)
+			- [To smalltalkhub projects](#to-smalltalkhub-projects)
+		- [Groups](#groups)
+			- [The default group](#the-default-group)
+		- [Pre/post load actions](#prepost-load-actions)
+		- [Loads different packages depending on the Pharo version](#loads-different-packages-depending-on-the-pharo-version)
+		- [Define custom attributes](#define-custom-attributes)
+		- [Loading types](#loading-types)
+			- [Linear loading](#linear-loading)
+			- [Atomic loading](#atomic-loading)
+		- [Full example](#full-example)
+	- [How to load a git project using its baseline](#how-to-load-a-git-project-using-its-baseline)
+		- [From the playground](#from-the-playground)
+			- [Project managed with Git](#project-managed-with-git)
+				- [Project from github/gitlab/bitbucket](#project-from-githubgitlabbitbucket)
+				- [Project from local repository](#project-from-local-repository)
+			- [Project managed with Smalltalkhub](#project-managed-with-smalltalkhub)
+			- [Project without repository](#project-without-repository)
+			- [Loading groups](#loading-groups)
+			- [Conflict, Upgrade and Downgrade resolution](#conflict-upgrade-and-downgrade-resolution)
+			- [Manage warnings](#manage-warnings)
+		- [From Iceberg](#from-iceberg)
+	- [Other features](#other-features)
+		- [Metacello lock feature](#metacello-lock-feature)
+		- [Metacello get feature](#metacello-get-feature)
+		- [Metacello fetch feature](#metacello-fetch-feature)
+		- [Metacello record feature](#metacello-record-feature)
+		- [Metacello listing feature](#metacello-listing-feature)
+	- [See also](#see-also)
 
 ## How to define Baselines
 
@@ -90,7 +90,7 @@ projectClass
 	do: [ super projectClass ]
 ```
 
-This will allow Metacello to be able to update your project and is needed because the default project class of Metacello used metadata to know if an update was needed. 
+This will allow Metacello to be able to update your project and is needed because the default project class of Metacello used metadata to know if an update was needed.
 
 ### Define packages forming your project
 
@@ -111,13 +111,13 @@ baseline: spec
 				package: 'MyProject-Examples' ]
 ```
 
-> Note: Packages are the most atomic entities managed by the baseline. It is not possible to declare entities at the package tag granularity.
+> Note: Packages are the most atomic entities managed by the baseline. It is not possible to declare entities at the package-tag granularity.
 
 Defining packages is not enough to load them, because some of them might depend on other packages/projects. For example, `MyProject-Tests` needs to be loaded after `MyProject`.
 
 To manage dependencies that are external to a project, see section *[Define external dependencies](#define-external-dependencies)*.
 
-For dependencies between the packages of your project, you can use the message `#package:with:` to give more informations to the spec.
+For dependencies between the packages of your project, you can use the message `#package:with:` to give more information to the spec.
 
 ```Smalltalk
 baseline: spec
@@ -136,7 +136,7 @@ baseline: spec
 
 The method `#requires:` will define the list of dependencies of a specific package.
 
-Another way to declare requirements is to use the method `#includes:`. This method takes a collection of declarations as parameter and will notify Metacello that all of them should includes the package if they are loaded. This is helpful when defining platform specific requirements, in case we want one of our package to come with a platform dependant packages which is depending on this package. See example in section *[Loads different packages depending on the Pharo version](#loads-different-packages-depending-on-the-pharo-version)*.
+Another way to declare requirements is to use the method `#includes:`. This method takes a collection of declarations as a parameter and will notify Metacello that all of them should include the package if they are loaded. This is helpful when defining platform-specific requirements, in case we want one of our packages to come with a platform-dependant package, which is depending on this package. See example in section *[Loads different packages depending on the Pharo version](#loads-different-packages-depending-on-the-pharo-version)*.
 
 ### Define external dependencies
 
@@ -263,9 +263,9 @@ materialDesignLite: spec
 
 #### To a local git project
 
-Sometimes, we do not have access to a network, so we want to define dependencies to local git repositories.
+Sometimes we do not have access to a network, so we want to define dependencies to local git repositories.
 
-This works like in the previous section but with this repository format:
+This works like in the previous section, but with this repository format:
 
 ```Smalltalk
 spec
@@ -305,7 +305,7 @@ spec
 		repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 ```
 
-As for git hosted repositories, you can ask for a specific group:
+As for git-hosted repositories, you can ask for a specific group:
 
 ```Smalltalk
 spec
@@ -317,7 +317,7 @@ spec
 		repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
 ```
 
-You can now use the dependencies names to add the project as dependency of your packages.
+You can now use the dependency names to add the project as a dependency of your packages.
 
 ```Smalltalk
 baseline: spec
@@ -350,7 +350,7 @@ magritte3: spec
 
 ### Groups
 
-Sometimes, we don't want to load the full project, but just a sub part, e.g.:
+Sometimes we don't want to load the full project, but just a sub part, e.g.:
 
 - Only the model of a project is needed without the UI (for example to build an alternative UI)
 - Only the core of the project is needed without the tests and examples
@@ -470,7 +470,7 @@ postload: loader package: packageSpec
 
 ### Loads different packages depending on the Pharo version
 
-It might be useful to load some packages in specific Pharo versions only. For example if we have a compatibility package for Pharo 6, we do not want to load it in Pharo 7.
+It might be useful to load some packages in specific Pharo versions only. For example, if we have a compatibility package for Pharo 6, we do not want to load it in Pharo 7.
 
 This is possible with the different spec attributes.
 
@@ -520,7 +520,7 @@ baseline: spec
 					package: 'MyProject-Pharo3To6' ] ]
 ```
 
-The `#includes:` method explained in section *[Define packages forming your project](#define-packages-forming-your-project)* is often useful when dealing with platform specific requirements. Imagine you package `MyProject` will work in Pharo 6 only if `MyProject-Pharo6` is present, but `MyProject-Pharo6` depends on `MyProject`. This can be resolved like this:
+The `#includes:` method explained in section *[Define packages forming your project](#define-packages-forming-your-project)* is often useful when dealing with platform-specific requirements. Imagine your package `MyProject` will work in Pharo 6 only if `MyProject-Pharo6` is present, but `MyProject-Pharo6` depends on `MyProject`. This can be resolved like this:
 
 Example:
 
@@ -617,7 +617,7 @@ By default, a baseline uses linear loading, which means packages are loaded one 
 
 #### Atomic loading
 
-This load type forces Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be cut. For example it's useful to load Pharo's Kernel and Collections since they depend on each other.
+This load type forces Metacello to load the full project in an atomic load. This is useful when a project has cyclic dependencies that cannot be resolved. For example it's useful to do an atomic load of Pharo's Kernel and Collections, since they depend on each other.
 
 To define atomic loading, override the method `#project`:
 
@@ -781,7 +781,7 @@ Note the three steps:
 2. Configure it (declare the repository of the project, specify the version, the baseline, optional options...)
 3. Launch the loading
 
-To configure the request some options are necessary and some are optional. We cover in the next two sub sections how to configure the loading of a project hosted via Monticello and git, and then we detail optional parameters.
+To configure the request, some options are necessary and some are optional. We cover in the next two sub sections how to configure the loading of a project hosted via Monticello and git, and then we detail optional parameters.
 
 #### Project managed with Git
 
@@ -794,12 +794,12 @@ Metacello new
 	load
 ```
 
-This command has two parameter:
+This command has two parameters:
 
 - `repository` defining the location of the git project, the version of the project to load and the subdirectory in which the project is stored.
 - `baselineName` is the name of the baseline to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
 
-The repository parameter is a string that can takes different form in case we have a local project or a project hosted remotely.
+The repository parameter is a string that can take different forms depending on if the project is local or hosted remotely.
 
 ##### Project from github/gitlab/bitbucket
 
@@ -814,7 +814,7 @@ This snippet should be configured with:
   - `bitbucket` for bitbucket
   - `gitlab` for gitlab
 - `{optionalHostname}`: Optional server host, for private git servers
-- `{owner}`: Name of the user or organisation hosting the project
+- `{owner}`: Name of the user or organization hosting the project
 - `{projectName}`: Name of the project
 - `{version}`: This parameter is optional, and it defaults to master. It can be the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
 - `{subfolder}`: This parameter is optional in case the code is at the root of the project. It should point to the sub-folder containing the code.
@@ -853,7 +853,7 @@ Metacello new
 
 ##### Project from local repository
 
-To load a project from a local repository you can this form to declare the repository:
+To load a project from a local repository you can use this form to declare the repository:
 
 `'{prefix}://{full/path/to/repository}/{subFolder}'`
 
@@ -886,7 +886,7 @@ Metacello new
 	load
 ```
 
-This command has two parameter:
+This command has two parameters:
 
 - `owner`: Name of the team or user hosting the project
 - `repositoryName`: Name of the repository on SmalltalkHub
@@ -949,7 +949,7 @@ Metacello new
 
 Sometimes there can be conflicts, updates or downgrades while loading a project.
 
-For example imagine in an image the project `ProjA` version v1.0.0. We want to load our project `ProjB` that depends on `ProjA` version v2.0.0., `ProjC` version v1.0.0, and `ProjD` that loads also `ProjC` version v2.0.0.
+For example, imagine in an image the project `ProjA` at version v1.0.0. We want to load our project `ProjB` that depends on `ProjA` version v2.0.0., `ProjC` version v1.0.0, and `ProjD` that loads also `ProjC` version v2.0.0.
 
 If we load `ProjB` in those conditions, we will have two problems:
 
@@ -983,7 +983,7 @@ Metacello new
 	load
 ```
 
-Here is a last example of conflict management. The Pharo community was previously on a version control system called Monticello. Most of the community has now migrated to Github. Some of the projects exist on Smalltalkhub (managed with Monticello) and on Github. It's not unusual to have conflict between the two.
+Here is a last example of conflict management. The Pharo community was previously on a version control system called Monticello. Most of the community has now migrated to GitHub. Some of the projects exist on Smalltalkhub (managed with Monticello) and on GitHub. It's not unusual to have conflict between the two.
 
 Here is a little script that loads the version managed with git when the project name is the same:
 
@@ -997,7 +997,7 @@ Metacello new
 
 #### Manage warnings
 
-In some cases a project has problems during the loading, for example if a package loaded misses a dependency. When this happen, Metacello will raise a warning. Most of the time the projects can still work, at least partially. If you do not want Metacello to open a warning, you can log them instead. To enable this option you can use the `onWarningLog` or `onWarning:` options.
+In some cases a project has problems during the loading, for example, if a package loaded is missing a dependency. When this happen, Metacello will raise a warning. Most of the time the projects can still work, at least partially. If you do not want Metacello to open a warning, you can log them instead. To enable this option you can use the `onWarningLog` or `onWarning:` options.
 
 Examples:
 
@@ -1019,9 +1019,9 @@ Metacello new
 
 ### From Iceberg
 
-In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This tool allow the developer to load a project via user interface.
+In Pharo 7 a new tool to manage git repositories was introduced: *Iceberg*. This tool allows the developer to load a project via a user interface.
 
-The first step is to add your git project to Iceberg. Then right click on the project name to access a `Metacello` sub-menu to load the project.
+The first step is to add your git project to Iceberg. Then right-click on the project name to access a `Metacello` sub-menu to load the project.
 
 ![Interface of Iceberg to load a project](Baselines_Image_LoadBaselineViaIceberg.png?raw=true "Interface of Iceberg to load a project")
 
@@ -1119,7 +1119,7 @@ Metacello new
 	fetch: #('Extensions' 'Widgets')
 ```
 
-The fetch command duplicates what the load command would do, which means if a package is already loaded in the image, it will not be fetched. To fetch packages regardless of what is loaded in the image, use the ignoreImage option:
+The fetch command duplicates what the load command would do, which means if a package is already loaded in the image, it will not be fetched. To fetch packages regardless of what is loaded in the image, use the `ignoreImage` option:
 
 ```Smalltalk
 Metacello new
@@ -1156,7 +1156,7 @@ Metacello registry
 	list
 ```
 
-This command needs to be inspected.
+This command needs to be inspected to see the list.
 
 ## See also
 
