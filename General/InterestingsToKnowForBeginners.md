@@ -76,12 +76,11 @@ The second way is shorter and often more readable.
 	* Hold down the `SHIFT` key
 	* Click on the second method
 	* Click on the tab Diff to see the differences
-	
-- Editing 2 methods side by side
+- Editing multiple methods side by side
 	* Click on a method
 	* Hold down the `CTRL` key
-	* Click on the second method
-	* Two tabs are displayed with the source code of the two methods.
+	* Click on all the methods you want to edit. 
+	* Tabs are displayed with the source code of the methods selected.
 
 ### Dependency Analyzer
 
