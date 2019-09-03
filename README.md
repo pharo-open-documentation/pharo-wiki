@@ -5,11 +5,12 @@ Wiki for the Pharo programming language and development environment.
 The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](CONTRIBUTION.md).
 
 ## Contents
+- [Contents](#contents)
 - [Beginners](#beginners)
 - [General](#general)
 - [Pharo projects](#pharo-projects)
 - [External projects](#external-projects)
-  * [Data exchange](#data-exchange)
+  - [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
 - [External ressources](#external-ressources)
 
@@ -71,7 +72,9 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 -->
 
 ## Migration guidelines
-- [Migration from Pharo 6.1 to Pharo 7.0](Migration/MigrationToPharo7.md)
+
+- [Migrating Streams from Pharo 6.1 to Pharo 7.0](Migration/MigrationToPharo7.md)
+
 
 ## External ressources
 - [Contributing to Pharo](https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo) (External link) - Official tutorial on how to contribute to Pharo using Iceberg.
