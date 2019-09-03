@@ -76,6 +76,7 @@ The second way is shorter and often more readable.
 	* Hold down the `SHIFT` key
 	* Click on the second method
 	* Click on the tab Diff to see the differences
+	
 - Editing multiple methods side by side
 	* Click on a method
 	* Hold down the `CTRL` key
