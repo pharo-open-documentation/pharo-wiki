@@ -9,7 +9,6 @@ The goal is to ease the use of Pharo for beginners.
 - [Tools](#tools)
   * [Calypso System Browser](#calypso)
   * [Dependency Analyzer](#dependency-analyzer)
-  
 - [Flags](#flags)
 - [Useful pragmas](#useful-pragmas)
   * [Modify IDE](#modify-ide)
