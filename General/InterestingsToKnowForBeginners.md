@@ -73,7 +73,7 @@ The second way is shorter and often more readable.
 
 - Display the differences between two methods
 	* Click on a method
-	* Hold down the SHIFT-key
+	* Hold down the `SHIFT` key
 	* Click on the second method
 	* Click on the tab Diff to see the differences
 	
