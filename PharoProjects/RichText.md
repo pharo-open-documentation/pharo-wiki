@@ -17,7 +17,7 @@ If you inspect `text`, you will see that `Hello` is bold, `World` is red, `!` is
 ## TextEmphasis
 The class `TextEmphasis` defines a set of simple (no font change) changes you can do. See the class side of `TextEmphasis` for the supported styles of emphasis.
 
-It i possible to overlap the different emphasis styles:
+It is possible to overlap the different emphasis styles:
 
 ```Smalltalk
 text := 'Hello World!' asText.
