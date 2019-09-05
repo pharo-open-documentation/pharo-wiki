@@ -35,7 +35,7 @@ Colored text is done as shown above. Examine the class `Color` for other colors.
 ## Different fonts
 Loading and managing fonts is an issue in itself.
 
-You can see which fonts you have available in your image using 'StrikeFont actualFamilyNames'.
+You can see which fonts you have available in your image using `StrikeFont actualFamilyNames`.
 
 Assume you have a font named: `Bitmap Source Sans Pro` (was the case on Macbook Pro, Pharo 8, fall 2019). 
 
