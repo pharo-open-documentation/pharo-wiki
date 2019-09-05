@@ -15,7 +15,7 @@ text
 If you inspect `text`, you will see that `Hello` is bold, `World` is red, `!` is green.
 
 ## TextEmphasis
-The class TextEmphasis defines a set of simple (no font change) changes you can do. See the class side of TextEmphasis for the supported styles of emphasis.
+The class `TextEmphasis` defines a set of simple (no font change) changes you can do. See the class side of `TextEmphasis` for the supported styles of emphasis.
 
 It i possible to overlap the different emphasis styles:
 
