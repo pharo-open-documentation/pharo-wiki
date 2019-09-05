@@ -49,6 +49,7 @@ largeAttribute := TextFontReference
 				pointSize: 20).
 'My larger text' asText addAttribute: largeAttribute from: 4 to: 10.
 ```
+
 This should give you 'My larger text' with 'larger' being in font size 20 and in the 'Bitmap Source Sans Pro' font.
 
 ## Clickable text.
