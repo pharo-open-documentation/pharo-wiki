@@ -20,7 +20,13 @@ The class TextEmphasis defines a set of simple (no font change) changes you can 
 It i possible to overlap the different emphasis styles:
 
 ```Smalltalk
-text := 'Hello World!' asText.text	addAttribute: TextEmphasis italic from: 7 to: 11;	addAttribute: TextEmphasis struckOut from: 7 to: 11.
+text := 'Hello World!' asText.
+text
+    addAttribute: TextEmphasis italic from: 7 to: 11;
+    addAttribute: TextEmphasis struckOut from: 7 to: 11.
+text
+	addAttribute: TextEmphasis italic from: 7 to: 11;
+	addAttribute: TextEmphasis struckOut from: 7 to: 11.
 ```
 
 ## Colors
@@ -36,7 +42,12 @@ Assume you have a font named: `Bitmap Source Sans Pro` (was the case on Macbook 
 You need to turn the font into a text attribute:
 
 ```Smalltalk
-largeAttribute := TextFontReference		toFont:			(StrikeFont				familyName: 'Bitmap Source Sans Pro'				pointSize: 20).'My larger text' asText addAttribute: largeAttribute from: 4 to: 10.
+largeAttribute := TextFontReference
+		toFont:
+			(StrikeFont
+				familyName: 'Bitmap Source Sans Pro'
+				pointSize: 20).
+'My larger text' asText addAttribute: largeAttribute from: 4 to: 10.
 ```
 This should give you 'My larger text' with 'larger' being in font size 20 and in the 'Bitmap Source Sans Pro' font.
 
@@ -47,5 +58,7 @@ It is possible to make text do stuff when clicked. This is obviously a huge area
 textAction := TextAction new 
 	actOnClickBlock: [ 
 		Transcript nextPutAll: 'action clicked';cr;endEntry
-		].'My action text' asText addAttribute: textAction from: 4 to: 10.
+		].
+
+'My action text' asText addAttribute: textAction from: 4 to: 10.
 ```
