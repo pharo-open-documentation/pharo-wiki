@@ -79,7 +79,6 @@ There are further examples in the class comment of `TextAnchor`.
 The inline images relies on the morphic system. Not all morphs seem to be able to be inlined in text in Pharo.
 
 In addition, you will most likely get the best results if you put images larger than the font size on a line by themself. The class comment of `TextAnchor` has an example of inlining a small icon.
-=======
 
 'My action text' asText addAttribute: textAction from: 4 to: 10.
 ```
