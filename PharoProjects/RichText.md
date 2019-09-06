@@ -20,7 +20,10 @@ The class TextEmphasis defines a set of simple (no font change) changes you can 
 It i possible to overlap the different emphasis styles:
 
 ```Smalltalk
-text := 'Hello World!' asText.text	addAttribute: TextEmphasis italic from: 7 to: 11;	addAttribute: TextEmphasis struckOut from: 7 to: 11.
+text := 'Hello World!' asText.
+text
+	addAttribute: TextEmphasis italic from: 7 to: 11;
+	addAttribute: TextEmphasis struckOut from: 7 to: 11.
 ```
 
 ## Colors
@@ -36,7 +39,12 @@ Assume you have a font named: `Bitmap Source Sans Pro` (was the case on Macbook 
 You need to turn the font into a text attribute:
 
 ```Smalltalk
-largeAttribute := TextFontReference		toFont:			(StrikeFont				familyName: 'Bitmap Source Sans Pro'				pointSize: 20).'My larger text' asText addAttribute: largeAttribute from: 4 to: 10.
+largeAttribute := TextFontReference
+		toFont:
+			(StrikeFont
+				familyName: 'Bitmap Source Sans Pro'
+				pointSize: 20).
+'My larger text' asText addAttribute: largeAttribute from: 4 to: 10.
 ```
 This should give you 'My larger text' with 'larger' being in font size 20 and in the 'Bitmap Source Sans Pro' font.
 
@@ -47,5 +55,26 @@ It is possible to make text do stuff when clicked. This is obviously a huge area
 textAction := TextAction new 
 	actOnClickBlock: [ 
 		Transcript nextPutAll: 'action clicked';cr;endEntry
-		].'My action text' asText addAttribute: textAction from: 4 to: 10.
+		].
+'My action text' asText addAttribute: textAction from: 4 to: 10.
 ```
+
+## Inline images
+It is possible to insert images into text. It is done using a `TextAnchor` attribute which can only be put on the text obtained using the expression `(String value: 1) asText`. The following example illustrates this:
+
+```Smalltalk
+anchoredImage := 
+	(String value: 1) asText addAttribute: 
+		(TextAnchor new anchoredMorph: PolymorphSystemSettings pharoLogoForm ).
+
+('Line before image\' withCRs asText), 
+anchoredImage,  
+('\Line afterimage' withCRs asText).
+```
+
+There are further examples in the class comment of `TextAnchor`.
+
+#### Notice.
+The inline images relies on the morphic system. Not all morphs seem to be able to be inlined in text in Pharo.
+
+In addition, you will most likely get the best results if you put images larger than the font size on a line by themself. The class comment of `TextAnchor` has an example of inlining a small icon.
