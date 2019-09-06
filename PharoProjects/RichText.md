@@ -15,9 +15,9 @@ text
 If you inspect `text`, you will see that `Hello` is bold, `World` is red, `!` is green.
 
 ## TextEmphasis
-The class TextEmphasis defines a set of simple (no font change) changes you can do. See the class side of TextEmphasis for the supported styles of emphasis.
+The class `TextEmphasis` defines a set of simple (no font change) changes you can do. See the class side of `TextEmphasis` for the supported styles of emphasis.
 
-It i possible to overlap the different emphasis styles:
+It is possible to overlap the different emphasis styles:
 
 ```Smalltalk
 text := 'Hello World!' asText.
@@ -32,7 +32,7 @@ Colored text is done as shown above. Examine the class `Color` for other colors.
 ## Different fonts
 Loading and managing fonts is an issue in itself.
 
-You can see which fonts you have available in your image using 'StrikeFont actualFamilyNames'.
+You can see which fonts you have available in your image using `StrikeFont actualFamilyNames`.
 
 Assume you have a font named: `Bitmap Source Sans Pro` (was the case on Macbook Pro, Pharo 8, fall 2019). 
 
@@ -46,6 +46,7 @@ largeAttribute := TextFontReference
 				pointSize: 20).
 'My larger text' asText addAttribute: largeAttribute from: 4 to: 10.
 ```
+
 This should give you 'My larger text' with 'larger' being in font size 20 and in the 'Bitmap Source Sans Pro' font.
 
 ## Clickable text.
@@ -78,3 +79,7 @@ There are further examples in the class comment of `TextAnchor`.
 The inline images relies on the morphic system. Not all morphs seem to be able to be inlined in text in Pharo.
 
 In addition, you will most likely get the best results if you put images larger than the font size on a line by themself. The class comment of `TextAnchor` has an example of inlining a small icon.
+=======
+
+'My action text' asText addAttribute: textAction from: 4 to: 10.
+```

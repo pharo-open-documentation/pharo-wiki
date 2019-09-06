@@ -22,6 +22,30 @@ The changesfile logs all source code modifications (especially all thechanges yo
 > Note: Since Pharo 5, a project called Epicea implementing a new logging system has been introduced in the system. The long term goal of Epicea is to replace the changes file, but this objective has not been reached yet.
 
 ## Class-side
+The class-side of a class refers to its meta-class. This meta-class contain methods that can be send to the class directly.
+For example, `#x:y:` method (which create an instance of `Point` with arbitrary x and y coordinates) is held by the meta-class of `Point`.
+
+In Pharo, both `Class` and `MetaClass` understand `#classSide` method.
+For example:
+
+```Smalltalk
+Point classSide. "Point class"
+Point class classSide. "Point class"
+Point includesSelector: #x:y:. "false"
+Point class includesSelector: #x:y:. "true"
+```
+
+The best way to understand what is the class-side is to have a look at `#classSide` methods implementations:
+
+```Smalltalk
+Class>>#classSide
+	^ self class
+```
+
+```Smalltalk
+MetaClass>>#classSide
+  ^ self
+```
 
 ## Cog
 Cog is the name of the [virtual machine](#virtual-machine) used by Pharo.
