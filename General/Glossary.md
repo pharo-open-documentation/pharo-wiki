@@ -54,7 +54,7 @@ It is also used by other programming languages such as [Squeak](#squeak), Newspe
 ## Context
 
 A *Context* represent a program execution. It will store for example the `CompiledMethod` currently been executed, the receiver and arguments of the message that invoked this `CompiledMethod`, the temporary variables, the stack of calls until this moment of the execution, ...
-In Pharo, you can use the keyword `thisContext` to interact with the current context of your code. It will return the `Context` object from the moment of the execution.
+In Pharo, you can use the keyword `thisContext` to interact with the current context of your code. It will return the `Context` object at the moment of the execution. This object is different at each method call.
 
 ## Debugger
 
