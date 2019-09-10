@@ -33,7 +33,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu
 - [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties
-- [Coding conventions](General/CodingConventions.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
+- [Coding conventions](General/CodingConventions.md)
 - [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
 - [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md)
 - [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
