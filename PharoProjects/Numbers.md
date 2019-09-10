@@ -9,7 +9,7 @@ As written in [Pharo by Example book](http://books.pharo.org/pharo-by-example),
 
 Which is an interesting feature because it means that extension methods can be added to create objects holding a quantity. This is what is done for `Duration`s:
 
-```
+```Smalltalk
 5 seconds. "0:00:00:05"
 ```
 
@@ -28,10 +28,15 @@ Scaled decimals allow one to model rationals. That is to say numbers with a fixe
 ## Parse number
 The class-side methods `#readFrom:` and `#readFrom:base:` of `Number` class allow one to parse a number from a `String`. Here are some examples:
 
-```
+```Smalltalk
 Number readFrom: '10'. "10"
 Number readFrom: '10' base: 2. "2"
 Number readFrom: '1.0'. "1.0"
 ```
 
-A specific subclass of `Number` can be used to ensure that the
+A specific subclass of `Number` can be used to ensure that the object created by the parser is of a specific kind:
+
+```Smalltalk
+Integer readFrom: '10'. "10"
+Float readFrom: '1.0'. "1.0"
+```
