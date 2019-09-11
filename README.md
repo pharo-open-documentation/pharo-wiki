@@ -1,4 +1,4 @@
-# Pharo wiki
+# Pharo wiki 
 
 Wiki for the Pharo programming language and development environment.
 
@@ -79,6 +79,9 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 ## External ressources
 - [Contributing to Pharo](https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo) (External link) - Official tutorial on how to contribute to Pharo using Iceberg.
 
+![CC](https://mirrors.creativecommons.org/presskit/icons/cc.svg)
+![BY](https://mirrors.creativecommons.org/presskit/icons/by.svg)
+
 <!---
 Badges:
 * ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat)
@@ -86,4 +89,3 @@ Badges:
 * ![Review](https://img.shields.io/badge/Progress-Review-blue.svg?style=flat)
 
 -->
-
