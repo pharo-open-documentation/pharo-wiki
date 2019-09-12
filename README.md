@@ -23,16 +23,16 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 ## General
 
-- [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies
-- [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git
-- [Extension methods](General/Extensions.md) - How to extend existing classes in your packages
-- [Traits](General/Traits.md) - Structure to build classes via composition
+- [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies.
+- [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git.
+- [Extension methods](General/Extensions.md) - How to extend existing classes in your packages.
+- [Traits](General/Traits.md) - Structure to build classes via composition.
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 - [Some cool snippets in Pharo](General/CoolSnippets.md)
-- [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user
-- [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute
-- [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu
-- [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties
+- [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user.
+- [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute.
+- [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu.
+- [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties.
 - [Coding conventions](General/CodingConventions.md)
 - [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
 - [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md)
@@ -40,7 +40,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Iceberg on Windows workaround](General/IcebergOnWindows.md)
 - [Exceptions](General/Exceptions.md)
 - [Sorting collections](General/SortingCollections.md)
-- [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool
+- [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool.
 
 ## Pharo projects
 
