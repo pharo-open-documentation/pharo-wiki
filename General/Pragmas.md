@@ -107,13 +107,13 @@ The second way to collect the pragmas to handle them is to use the PragmaCollect
 To configure the PragmaCollector we need to send implement a filter block. If we want to collect the `primitive:` pragmas:
 
 ```Smalltalk
-PragmaCollector filter: [:prg | prg keyword = #'primitive:' ]
+PragmaCollector filter: [:prg | prg selector = #'primitive:' ]
 ```
 
 Once configured we can execute the collection of the pragmas by sending the method #reset to the pragma collector:
 
 ```Smalltalk
-(PragmaCollector filter: [:prg | prg keyword = #'primitive:' ]) reset
+(PragmaCollector filter: [:prg | prg selector = #'primitive:' ]) reset
 ```
 
 Then you can iterate on the result using `#do:`, `#collect:`, `#reject:`, etc or use them directly through `#collected`. 
@@ -121,13 +121,13 @@ Then you can iterate on the result using `#do:`, `#collect:`, `#reject:`, etc or
 In our example we might want to access them this way:
 
 ```Smalltalk
-(PragmaCollector filter: [:prg | prg keyword = #'applicationParameterOptional:' ]) reset collected
+(PragmaCollector filter: [:prg | prg selector = #'applicationParameterOptional:' ]) reset collected
 ```
 
 Or we can select only non optional parameters this way:
 
 ```Smalltalk
-(PragmaCollector filter: [:prg | prg keyword = #'applicationParameterOptional:' and: [ (prg argumentAt: 1) not ] ]) reset collected
+(PragmaCollector filter: [:prg | prg selector = #'applicationParameterOptional:' and: [ (prg argumentAt: 1) not ] ]) reset collected
 ```
 
 ## Act on collected pragmas
@@ -138,7 +138,7 @@ For that, the pragmas can answer diverse messages to get their context. For exam
 - `#method` : Returns the CompiledMethod in which the pragmas is.
 - `#arguments` : Returns the arguments of the pragmas.
 - `#argumentAt:` : Returns the value of the n-th argument of the pragma instance.
-- `#keyword` : Returns the pragma selector.
+- `#selector` : Returns the pragma selector.
 - `#methodClass` : Returns the class in which the method containing the pragma is.
 
 With that information, we can then build our handler.
@@ -152,7 +152,7 @@ String
             << 'Documentation';
             lf;
             lf.
-        (PragmaCollector filter: [ :prg | prg keyword = 'applicationParameterOptional:' ]) reset
+        (PragmaCollector filter: [ :prg | prg selector = 'applicationParameterOptional:' ]) reset
             do: [ :pragma | 
                 stream
                     << '- ';
