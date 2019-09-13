@@ -56,6 +56,7 @@ A *Context* represent a program execution. It will store for example the `Compil
 In Pharo, you can use the keyword `thisContext` to interact with the current context of your code. It will return the `Context` object at the moment of the execution. This object is different at each method call.
 
 ## Debugger
+The *Debugger* is a tool opened by the system when an exception is raised and never get caught. This tool allows the developer to interact with the execution [context](#context) that raised the error and its previous contexts. It let the users inspect the objects present in this context and update the code to fix the bug using the execution informations as a help.
 
 ## Dispatch
 Dispatch is a technique used in object-oriented programming to delegate behavior using [polymorphism](#polymorphism). The goal is to define a concept that will changed depending on the context. For example we can have an application with commands. When we need to execute the command, instead of creating a switch/case, each object will implement its own behaviour on a method of the same name and we just need to call this method. 
@@ -67,6 +68,7 @@ See [DoesNotUnderstand](#doesnotunderstand).
 This name is used to designate the error that arises when a [message](#message) is sent to an object but this object does not understand it. It also happens that people use the "DNU" shortcut.
 
 ## Iceberg
+*Iceberg* is git client integrated in the system since Pharo 7 (Pharo 6.1 contained a technical preview of the tool). It is a set of tools that allows one to handle git repositories directly from a Pharo image. Iceberg is the default repository manager for Pharo, allowing for smoother and faster integration of contributions, as well as better branch and version management.
 
 ## Image
 A Pharo image is a snapshot of Pharo memory at a given moment.
@@ -78,6 +80,7 @@ It can bee seen as a virtual object container.
 For a given selector in the system, implementors are classes that have a method with this selector (they implement the selector). For example the implementors of the method `#banana` are all the classes containing a method named `#banana`.
 
 ## Inspector
+The *Inspector* is a Pharo tool which allows one to inspect objects, see their current state, interact with them and display specific informations depending on the object. It offers multiple views and it uses a finder as a navigation. One particular feature is that you can use the evaluator tab to enter code, and evaluating it results in opening another pane to the right.
 
 ## Instance
 
@@ -100,6 +103,7 @@ Three kinds of messages exists: [unary messages](#unary-message), [binary messag
 ## Message-send
 
 ## Monticello
+*Monticello* is a distributed versioning system for [Squeak](#squeak) and Pharo code. It was the main versionning system until Pharo 6. It is now recommanded to use [Iceberg](#iceberg).
 
 ## Object
 
