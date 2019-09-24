@@ -9,7 +9,7 @@ This file contains snippets of code that can be useful sometimes.
 - [Rename programatically methods](#rename-programatically-methods)
 - [Get all senders/implementors of a selector](#get-all-sendersimplementors-of-a-selector)
 - [Find dependencies on a package](#find-dependencies-on-a-package)
-- [Embed an image (picture) into Pharo](#embed-an-image-(picture)-into-Pharo)
+- [Embed an image (picture) into Pharo](#embed-an-image-picture-into-pharo)
 
 ## Download a file with a progress bar
 
@@ -177,9 +177,9 @@ and probably to store it into the image for further reuse. It is achieved by enc
 ```
 Let's say we stored the image base64 String in `Foo>>#image`. To materialize a Form from this image, you can do:
 ```Smalltalk
- Form fromBinaryStream: Foo image base64Decoded asByteArray readStream
- ```
- Here is a shortcut available since Pharo 8.0:
- ```Smalltalk
- Form fromBase64String: Foo image
- ```
+Form fromBinaryStream: Foo image base64Decoded asByteArray readStream
+```
+Here is a shortcut available since Pharo 8.0:
+```Smalltalk
+Form fromBase64String: Foo image
+```
