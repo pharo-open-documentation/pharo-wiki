@@ -22,7 +22,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Glossary](General/Glossary.md) ![Unfinished](https://img.shields.io/badge/Progress-Unfinished-yellow.svg?style=flat)
 
 ## General
-- [How to run Pharo from the command line](General/CommandLine.md) - How to run pharo from the command line.
+- [How to run Pharo from the command line](General/HowToRunPharoFromCommandLine.md) - How to run pharo from the command line.
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies.
 - [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git.
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages.
