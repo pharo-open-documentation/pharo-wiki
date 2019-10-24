@@ -10,6 +10,8 @@ This page will document some aspects of those features.
   * [Add a sub menu](#add-a-sub-menu)
 - [Change the menu](#change-the-menu)
 
+![MenuBar_Image_WhatIsMenuBarAndWorldMenu.png](./MenuBar_Image_WhatIsMenuBarAndWorldMenu.png)
+
 ## Disable the Menubar/WorldMenu
 
 In some case, we want to hide the menubar and/or the world menu. For example, when releasing a new version of a project to deploy, the development tools need to be hidden. 
