@@ -73,6 +73,21 @@ oddBlock := [ :a :b | a odd = b odd ifTrue: [ 0 ] ifFalse: [ a odd ifTrue: [ -1 
 #(1 5 1 3 2 7 9 4 6) asSortedCollection: oddBlock descending	"a SortedCollection(6 2 4 3 1 7 9 5 1)"
 ```
 
+Since Pharo 8, it is also bossible to express the previous sort function using a property returning a boolean:
+
+```Smalltalk
+#(1 5 1 3 2 7 9 4 6) asSortedCollection: #odd ascending	"a SortedCollection(6 2 4 3 1 7 9 5 1)"
+```
+
+In this case, the elements answering `false` will be placed before the elements answering true in the ascending order.
+
+> If you wish to use this feature in a version earlier than Pharo 8, you can add this method as an [extension](Extensions.md) of the Boolean class:
+
+```Smalltalk
+threeWayCompareTo: anotherObject
+	^ self asBit threeWayCompareTo: anotherObject asBit
+```
+
 Using #undefinedFirst and #undefinedLast it is possible to deal with nil values, moving them first or last. For Example:
 
 ```Smalltalk
