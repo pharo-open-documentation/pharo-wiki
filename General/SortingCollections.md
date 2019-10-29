@@ -73,13 +73,13 @@ oddBlock := [ :a :b | a odd = b odd ifTrue: [ 0 ] ifFalse: [ a odd ifTrue: [ -1 
 #(1 5 1 3 2 7 9 4 6) asSortedCollection: oddBlock descending	"a SortedCollection(6 2 4 3 1 7 9 5 1)"
 ```
 
-Since Pharo 8, it is also bossible to express the previous sort function using a property returning a boolean:
+Since Pharo 8, it is also possible to express the previous sort function using a property returning a boolean:
 
 ```Smalltalk
 #(1 5 1 3 2 7 9 4 6) asSortedCollection: #odd ascending	"a SortedCollection(6 2 4 3 1 7 9 5 1)"
 ```
 
-In this case, the elements answering `false` will be placed before the elements answering true in the ascending order.
+In this case, the elements answering `false` will be placed before the elements answering true in the ascending order. This is explained by the fact that the function will sort the booleans according to their bit value (0 or 1).
 
 > If you wish to use this feature in a version earlier than Pharo 8, you can add this method as an [extension](Extensions.md) of the Boolean class:
 
