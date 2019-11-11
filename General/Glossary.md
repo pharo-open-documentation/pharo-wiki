@@ -1,5 +1,6 @@
 # Pharo vocabulary
-In Pharo, there is some specific vocabulary that is used inside the community to designate concepts provided by the language.
+The Pharo community uses specific vocabulary to designate object oriented concepts, Pharo concepts and Pharo tools.
+
 This page aims to provide disambiguation for the words belonging to this vocabulary.
 
 **$a**
