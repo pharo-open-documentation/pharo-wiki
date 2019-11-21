@@ -12,7 +12,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [External projects](#external-projects)
   - [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
-- [External ressources](#external-ressources)
+- [External resources](#external-resources)
 
 ## Beginners
 
