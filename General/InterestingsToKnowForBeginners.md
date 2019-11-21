@@ -8,7 +8,6 @@ The goal is to ease the use of Pharo for beginners.
 - [Evaluatable objects (Blocks and Symbols)](#evaluatable-objects--blocks-and-symbols-)
 - [Tools](#tools)
   * [Calypso System Browser](#calypso)
-  * [Dependency Analyzer](#dependency-analyzer)
 - [Flags](#flags)
 - [Useful pragmas](#useful-pragmas)
   * [Modify IDE](#modify-ide)
@@ -28,8 +27,6 @@ String concatenation can be costly because it will create a new string instance 
 
 String streamContents: [ :aStream | aStream << 'This is a '<< 'strong concatenation ' << 'that is ' << ' ' << ' efficient' ]
 ```
-
-> TODO
 
 ## Evaluatable objects (Blocks and Symbols)
 Pharo's Blocks and Symbols have an interesting property: they are polymorphic through `#value:` and `#cull:` methods.
@@ -66,8 +63,6 @@ The second way is shorter and often more readable.
 
 ## Tools
 
-> TODO
-
 ### Calypso (System browser)
 
 - Display the differences between two methods
@@ -81,10 +76,6 @@ The second way is shorter and often more readable.
 	* Hold down the `CTRL` key
 	* Click on all the methods you want to edit. 
 	* Tabs are displayed with the source code of the methods selected.
-
-### Dependency Analyzer
-
-> TODO
 
 ## Flags
 
