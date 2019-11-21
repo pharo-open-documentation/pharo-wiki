@@ -75,8 +75,8 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 - [Migrating Streams from Pharo 6.1 to Pharo 7.0](Migration/MigrationToPharo7.md)
 
-
 ## External resources
+- [Pharo Community](ExternalResources/Community.md) - Various links of people involved in Pharo community. Helps to discover Pharo ecosystem.
 - [Contributing to Pharo](https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo) (External link) - Official tutorial on how to contribute to Pharo using Iceberg.
 - [Generating your own Pharo images (Bootstrapping)](https://github.com/carolahp/pharo/tree/candle) Tools for generating small Pharo images from source code.
 - [Magritte3 Wiki](https://github.com/seandenigris/Magritte/wiki) - Wiki related to Magritte3.
