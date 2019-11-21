@@ -327,10 +327,6 @@ DisplayScreen setWindowTitle: 'MyApplication'.
 DisplayScreen hostWindowIcon: (FileLocator imageDirectory / 'testLogo.ico') asFileReference fullName.
 ```
 
-## Sign your application on Windows and OSX
-
-> TODO
-
 ## Deploy a Seaside application
 
 This section will cover a specific kind of deployment: the deployment of a web application with Seaside.
