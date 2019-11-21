@@ -9,7 +9,6 @@
   * [Clean your image before deployment](#clean-your-image-before-deployment)
   * [Sources obfuscation](#sources-obfuscation)
   * [Change the logo and window title of the application](#change-the-logo-and-window-title-of-the-application)
-  * [Sign your application on Windows and OSX](#sign-your-application-on-windows-and-osx)
   * [Deploy a Seaside application with Nginx](#deploy-a-seaside-application-with-nginx)
 
 ## Cruiser
@@ -326,10 +325,6 @@ DisplayScreen setWindowTitle: 'MyApplication'.
 
 DisplayScreen hostWindowIcon: (FileLocator imageDirectory / 'testLogo.ico') asFileReference fullName.
 ```
-
-## Sign your application on Windows and OSX
-
-> TODO
 
 ## Deploy a Seaside application
 
