@@ -4,12 +4,18 @@ The Pharo community uses specific vocabulary to designate object oriented concep
 This page aims to provide disambiguation for the words belonging to this vocabulary.
 
 ## $a 
-The character a. In Pharo strings are composed of characters, a character starts with a $. For unprintable characters such as tab, just send the message to the class e.g., Character tab.
+The character a. In Pharo strings are composed of characters, a character starts with a $. For unprintable characters such as tab, just send the message to the class e.g., `Character tab`.
 
 ## Binary message
 A binary message is a [message](#message) composed of special character(s) where two objects are involved (the [receiver](#receiver) and one argument), which is the reason it is call binary. This is mostly used for arithmetic, comparison, and logical operations. For example, `+` is a binary message involving the receiver and the argument in parameter.
 
 ## Bootstrap
+According to [wikipedia](https://en.wikipedia.org/wiki/Bootstrapping),
+
+> "Bootstrapping usually refers to a self-starting process that is supposed to proceed without external input."
+
+In the case of Pharo, [images](#image) are bootstrapped from the sources. Anyone can download the sources and create its own custom Pharo image. The Pharo [continuous integration server](https://ci.inria.fr/pharo-ci-jenkins2/job/Test%20pending%20pull%20request%20and%20branch%20Pipeline/) launch the bootstrap process each time a pull-request is merged into [pharo repository](https://github.com/pharo-project/pharo).
+This seems to be a natural process but one has to know that until Pharo 7.0, images were not bootstrapped. This means that, each version of Pharo was in fact a copy of the previous image with some additional changes.
 
 ## Browser
 The browser designate the tool for browsing and editing packages, classes and methods. In Pharo 6.1 and greater, the browser is Calypso.
