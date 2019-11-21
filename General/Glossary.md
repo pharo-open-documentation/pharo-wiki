@@ -14,7 +14,7 @@ According to [wikipedia](https://en.wikipedia.org/wiki/Bootstrapping),
 
 > "Bootstrapping usually refers to a self-starting process that is supposed to proceed without external input."
 
-In the case of Pharo, [images](#image) are bootstrapped from the sources by the [continuous integration server](https://ci.inria.fr/pharo-ci-jenkins2/job/Test%20pending%20pull%20request%20and%20branch%20Pipeline/) each time a pull-request is merged on [pharo repository](https://github.com/pharo-project/pharo).
+In the case of Pharo, [images](#image) are bootstrapped from the sources by the [continuous integration server](https://ci.inria.fr/pharo-ci-jenkins2/job/Test%20pending%20pull%20request%20and%20branch%20Pipeline/) each time a pull-request is merged into [pharo repository](https://github.com/pharo-project/pharo).
 This seems to be a natural process but one has to know that until Pharo 7.0, images were not bootstrapped.
 This means that, each version of Pharo was in fact a copy of the previous image with some additional changes.
 
