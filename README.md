@@ -12,7 +12,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [External projects](#external-projects)
   - [Data exchange](#data-exchange)
 - [Migration guidelines](#migration-guidelines)
-- [External ressources](#external-ressources)
+- [External resources](#external-resources)
 
 ## Beginners
 
@@ -76,7 +76,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Migrating Streams from Pharo 6.1 to Pharo 7.0](Migration/MigrationToPharo7.md)
 
 
-## External ressources
+## External resources
 - [Contributing to Pharo](https://github.com/pharo-project/pharo/wiki/Contribute-a-fix-to-Pharo) (External link) - Official tutorial on how to contribute to Pharo using Iceberg.
 - [Magritte3 Wiki](https://github.com/seandenigris/Magritte/wiki) - Wiki related to Magritte3.
 - [Sean's wiki about pharo](https://github.com/seandenigris/pharo/wiki) - The wiki of Sean P. DeNigris related to Pharo.
