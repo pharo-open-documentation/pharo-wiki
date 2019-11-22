@@ -32,7 +32,7 @@ The changesfile logs all source code modifications (especially all thechanges yo
 The class-side of a class refers to its meta-class. This meta-class contain methods that can be send to the class directly.
 For example, `#x:y:` method (which create an instance of `Point` with arbitrary x and y coordinates) is held by the meta-class of `Point`.
 
-In Pharo, both `Class` and `MetaClass` understand `#classSide` method.
+In Pharo, both `Class` and `Metaclass` understand `#classSide` method.
 For example:
 
 ```Smalltalk
@@ -50,7 +50,7 @@ Class>>#classSide
 ```
 
 ```Smalltalk
-MetaClass>>#classSide
+Metaclass>>#classSide
   ^ self
 ```
 
@@ -92,6 +92,30 @@ The *Inspector* is a Pharo tool which allows one to inspect objects, see their c
 ## Instance
 
 ## Instance-side
+The instance-side of a meta-class refers to its class. This class contains methods that can be sent to its instances.
+For example, `#x` method (which returns the x coordinate of a point) is held by the class `Point`.
+
+In Pharo, both `Class` and `Metaclass` understand `#instanceSide` method.
+For example:
+
+```Smalltalk
+Point instanceSide. "Point"
+Point class instanceSide. "Point"
+Point includesSelector: #x. "true"
+Point class includesSelector: #x. "false"
+```
+
+The best way to understand what is the instance-side is to have a look at `#instanceSide` methods implementations:
+
+```Smalltalk
+Class>>#instanceSide
+	^ self
+```
+
+```Smalltalk
+Metaclass>>#instanceSide
+  ^ self soleInstance
+```
 
 ## Instance variable
 See [slot](#slot).
