@@ -32,7 +32,7 @@ The changesfile logs all source code modifications (especially all thechanges yo
 The class-side of a class refers to its meta-class. This meta-class contain methods that can be send to the class directly.
 For example, `#x:y:` method (which create an instance of `Point` with arbitrary x and y coordinates) is held by the meta-class of `Point`.
 
-In Pharo, both `Class` and `MetaClass` understand `#classSide` method.
+In Pharo, both `Class` and `Metaclass` understand `#classSide` method.
 For example:
 
 ```Smalltalk
@@ -50,7 +50,7 @@ Class>>#classSide
 ```
 
 ```Smalltalk
-MetaClass>>#classSide
+Metaclass>>#classSide
   ^ self
 ```
 
