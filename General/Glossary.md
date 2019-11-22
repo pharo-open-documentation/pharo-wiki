@@ -113,7 +113,7 @@ Class>>#instanceSide
 ```
 
 ```Smalltalk
-MetaClass>>#instanceSide
+Metaclass>>#instanceSide
   ^ self soleInstance
 ```
 
