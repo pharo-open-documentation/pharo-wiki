@@ -93,6 +93,9 @@ The *Inspector* is a Pharo tool which allows one to inspect objects, see their c
 
 ## Instance-side
 
+## Instance variable
+See [slot](#slot).
+
 ## Keyword message
 A keyword message is a [message](#message) where two or more objects are involved (the [receiver](#receiver) and the arguments). A message is composed of alphanumeric characters. The arugments are injected inside the message selector and must be proceeded by a colon (`:`). For example, `between:and:` is a keyword message with a receiver and two arguments. It can be used like this: `13 between: 12 and: 14`.
 
