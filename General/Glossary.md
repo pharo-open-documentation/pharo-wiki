@@ -115,6 +115,9 @@ Three kinds of messages exists: [unary messages](#unary-message), [binary messag
 ## Object
 
 ## Playground / Workspace
+The playground / workspace designate a code editor allowing one to run Smalltalk code that is not contained in a method.
+This tool is useful to run small scripts that can be thrown after the execution.
+If one need to write a script that needs to be kept for a long time, it is better to right it as a class-method with the `<script>` pragma.
 
 ## Polymorphism
 
