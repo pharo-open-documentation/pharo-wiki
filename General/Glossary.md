@@ -141,7 +141,10 @@ Three kinds of messages exists: [unary messages](#unary-message), [binary messag
 
 ## Object
 
-## Playground / Workspace
+## Playground
+The playground / workspace designate a code editor allowing one to run Smalltalk code that is not contained in a method.
+This tool is useful to run small scripts that can be thrown after the execution.
+If one need to write a script that needs to be kept for a long time, it is better to right it as a class-method with the `<script>` pragma.
 
 ## Polymorphism
 
@@ -212,3 +215,6 @@ See [virtual machine](#virtual-machine).
 
 ## Virtual Machine
 The virtual machine of Pharo is the execution engine. It takes Pharo bytcode that is generated each time user compiles a piece of code, converts it to machine code and executes it. The VM is different for each platform running Pharo (windows, OSX, linux, arm, 32/64bits) and allows the other part of pharo to be platform independant.
+
+## Workspace
+Workspace is the previous name of the [Playground](#playground).
