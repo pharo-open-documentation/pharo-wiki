@@ -92,6 +92,30 @@ The *Inspector* is a Pharo tool which allows one to inspect objects, see their c
 ## Instance
 
 ## Instance-side
+The instance-side of a meta-class refers to its class. This class contain methods that can be send to its instances.
+For example, `#x` method (which returns the x coordinate of a point) is held by the class `Point`.
+
+In Pharo, both `Class` and `MetaClass` understand `#instanceSide` method.
+For example:
+
+```Smalltalk
+Point instanceSide. "Point"
+Point class instanceSide. "Point"
+Point includesSelector: #x. "true"
+Point class includesSelector: #x. "false"
+```
+
+The best way to understand what is the instance-side is to have a look at `#instanceSide` methods implementations:
+
+```Smalltalk
+Class>>#instanceSide
+	^ self
+```
+
+```Smalltalk
+MetaClass>>#instanceSide
+  ^ self soleInstance
+```
 
 ## Keyword message
 A keyword message is a [message](#message) where two or more objects are involved (the [receiver](#receiver) and the arguments). A message is composed of alphanumeric characters. The arugments are injected inside the message selector and must be proceeded by a colon (`:`). For example, `between:and:` is a keyword message with a receiver and two arguments. It can be used like this: `13 between: 12 and: 14`.
