@@ -92,7 +92,7 @@ The *Inspector* is a Pharo tool which allows one to inspect objects, see their c
 ## Instance
 
 ## Instance-side
-The instance-side of a meta-class refers to its class. This class contain methods that can be send to its instances.
+The instance-side of a meta-class refers to its class. This class contains methods that can be sent to its instances.
 For example, `#x` method (which returns the x coordinate of a point) is held by the class `Point`.
 
 In Pharo, both `Class` and `MetaClass` understand `#instanceSide` method.
