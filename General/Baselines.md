@@ -385,16 +385,8 @@ baseline: spec
 				group: 'Example' with: #('MyProject-Examples');
 				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
 ```
-#### To load a given group
-To load a given group you should use the load: directive as follows
 
-```
-Metacello new
-  baseline: 'MyProject';
-  repository: 'github://User/MyProject/src';
-  load: 'Tests'.
-```
-
+> To load a project with a given group, you can check the section [loading groups](#loading-groups).
 
 #### The default group
 
