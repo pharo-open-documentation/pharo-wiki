@@ -387,6 +387,8 @@ baseline: spec
 				group: 'All' with: #('Model' 'Tests' 'Gui' 'Example')
 ```
 
+> To load a project with a given group, you can check the section [loading groups](#loading-groups).
+
 #### The default group
 
 Each baseline has a default group named `'default'`. This group includes all the packages and the dependencies declared in the baseline.
