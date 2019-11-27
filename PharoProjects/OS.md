@@ -14,6 +14,14 @@ LibC uniqueInstance
 	system: 'echo "foo" >> /tmp/foo.txt'
 ```
 
+To retrieve the output of a command directly in Pharo, use `#resultOfCommand:`
+
+```Smalltalk
+LibC uniqueInstance
+	resultOfCommand: 'echo "foo"'. "'foo
+'"
+```
+
 ## Write environment variable
 The environment behaves similarly to a dictionary when it comes to write a variable.
 
