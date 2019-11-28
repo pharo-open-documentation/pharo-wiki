@@ -93,7 +93,7 @@ The *Inspector* is a Pharo tool which allows one to inspect objects, see their c
 An instance is a concrete realisation of a class.
 One can send [messages](#message) to instance.
 These messages correspond to methods defined by the class related to the instance.
-All instances of a class share the behaviour (methods) and structure (variables) defined by the class but two instances can hold different data in their variables.
+All instances of a class share the behaviour (methods) and structure ([slots](#slot)) defined by the class but two instances can hold different data in their [slots](#slot).
 
 ## Instance-side
 The instance-side of a meta-class refers to its class. This class contains methods that can be sent to its instances.
