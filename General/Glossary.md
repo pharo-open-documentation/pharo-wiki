@@ -90,6 +90,10 @@ For a given selector in the system, implementors are classes that have a method 
 The *Inspector* is a Pharo tool which allows one to inspect objects, see their current state, interact with them and display specific informations depending on the object. It offers multiple views and it uses a finder as a navigation. One particular feature is that you can use the evaluator tab to enter code, and evaluating it results in opening another pane to the right.
 
 ## Instance
+An instance is a concrete realisation of a class.
+One can send [messages](#message) to instance.
+These messages correspond to methods defined by the class related to the instance.
+All instances of a class share the behaviour (methods) defined by the class but two instances can hold different data.
 
 ## Instance-side
 The instance-side of a meta-class refers to its class. This class contains methods that can be sent to its instances.
@@ -140,6 +144,7 @@ Three kinds of messages exists: [unary messages](#unary-message), [binary messag
 *Monticello* is a distributed versioning system for [Squeak](#squeak) and Pharo code. It was the main versionning system until Pharo 6. It is now recommanded to use [Iceberg](#iceberg).
 
 ## Object
+The word object is used to refer to a particular [instance](#instance) of a [class](#class). "Object" and "instance" words are synonyms.
 
 ## Playground
 The playground / workspace designate a code editor allowing one to run Smalltalk code that is not contained in a method.
