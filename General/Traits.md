@@ -197,7 +197,7 @@ Two kinds of *conflicts* can happen with methods implemented on Traits.
 2. Two traits implementing the same method are used. In that case, if the method is called it will raise an error `traitConflict`.
 
 A way to solve both cases is to use method aliasing and to remove the conflicting method:
-```
+```Smalltalk
 Object subclass: #MyObjectUsingTraitByAliasingMethod
 	uses: TTraitToBeUsed @ { #methodAlias -> #conflictingMethod } - { #conflictingMethod }
 	slots: {  }
