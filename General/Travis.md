@@ -1,6 +1,7 @@
-Your repository should have two extra hidden files.
+Your repository should have two extra hidden files: .travis.yml and .smalltalk.ston.
+In addition you may want to have a .coveralls configuration to support automatic coverage computation.
 
-.travis.yml
+#.travis.yml
 
 ```
 language: smalltalk
@@ -15,6 +16,7 @@ smalltalk:
   - Pharo64-7.0
 ```
 
+#.smalltalk.ston
 .smalltalk.ston where you specify the baseline of your project and the packages containing the tests
 
 ```
