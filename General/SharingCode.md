@@ -22,7 +22,7 @@ Since Iceberg and git are a big subject, further documentation can be [found her
 
 ### Monticello 
 
-Monticello is a distributed, optimistic, concurrent, versioning system for Pharo code. It is a tool specific to some [Smalltalk](#Glossary.md#smalltalk) implementations such as Pharo, Squeak and Cuis.
+Monticello is a distributed, optimistic, concurrent, versioning system for Pharo code. It is a tool specific to some [Smalltalk](Glossary.md#smalltalk) implementations such as Pharo, Squeak and Cuis.
 
 Since Pharo 7 it is recommanded to use Iceberg over Monticello since mantenance is centered around Iceberg and git is much more used worldwide than Monticello.
 
