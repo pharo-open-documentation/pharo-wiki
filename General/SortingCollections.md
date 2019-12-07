@@ -29,6 +29,7 @@ Those two methods also have an equivalent without argument, `#sort` and `#sorted
 The API described here will sort a collection at one point but new elements added to the collection will not be sorted. If you wish to keep a collection sorted, you should use `SortedCollection` as explained in the next section.
 
 > Warning: If not absolutely needed, one should not use `SortedCollection` because it might impact performances of your software when adding and removing items to the collection.
+
 ### Keep a collection sorted
 
 In case you want to keep a collection sorted, you should use a `SortedCollection`. This collection is configured with a sort block or sort function and will sort all new elements added to the collection.
@@ -44,11 +45,18 @@ You can transform a collection into sorted collection using `#asSortedCollection
 You can also instantiate yourself the sorted collection:
 
 ```Smalltalk
-(SortedCollection sortBlock: #yourself ascending)
+(SortedCollection sortUsing: #yourself ascending)
 	addAll: #(1 2 4 7 3 6 4);
 	yourself "a SortedCollection(1 2 3 4 4 6 7)"
 ```
 
+```Smalltalk
+(SortedCollection sortBlock: [ :a :b | a < b ])
+	addAll: #(1 2 4 7 3 6 4);
+	yourself "a SortedCollection(1 2 3 4 4 6 7)"
+```
+
+> Note: #sortUsing: was introduced in Pharo 8. In previous versions it is possible to use #sortBlock: for both sort block and sort functions.
 
 ## Sort functions
 
