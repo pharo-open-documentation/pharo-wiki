@@ -33,3 +33,11 @@ SmalltalkCISpec {
   }
 }
 ```
+
+If you have a coveralls account you can add a .coveralls.yml file with the coveralls token of your project.
+
+
+```
+service_name: travis-pro
+repo_token: twxvbgLWXzoj3syZg3eaYfBZxCKEbensg
+```
