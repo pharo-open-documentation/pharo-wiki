@@ -52,7 +52,7 @@ If you need to integrate images in your entry, add them next to the Markdown fil
 
 Once the page is created you need to add it to the [README.md](README.md) in the right section.
 
-> Note: If you have some content to start a page but don't have the time nor the time to finish it, it is advised to propose a pull request with the content you have and to open issues with the missing sections pointing to the concerned page.
+> Note: If you have contents to start a page but don't have the time nor the knowledge to finish it, it is advised to propose a pull request with the content you have and to open issues with the missing sections pointing to the concerned page.
 
 An entry in the README can also have a one short sentense explaining the purpose of the page.
 
