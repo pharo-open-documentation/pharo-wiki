@@ -21,6 +21,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 ## General
 
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies
+- [How to setup a travis build](General/Travis.md) - How to have automated build on travis
 - [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages
 - [Traits](General/Traits.md) - Structure to build classes via composition
