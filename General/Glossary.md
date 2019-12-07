@@ -128,6 +128,8 @@ See [slot](#slot).
 A keyword message is a [message](#message) where two or more objects are involved (the [receiver](#receiver) and the arguments). A message is composed of alphanumeric characters. The arugments are injected inside the message selector and must be proceeded by a colon (`:`). For example, `between:and:` is a keyword message with a receiver and two arguments. It can be used like this: `13 between: 12 and: 14`.
 
 ## Late binding
+*Late binding* (or *dynamic binding*) is a general mechanism in which methods or function been called, or message been send are [looked up](#lookup) at runtime. This is opposed to *early binding* that does the lookup at compilation and that fixes all types of variables at that time.
+More concretely, this means that in Pharo, when you send a [messag](#message) to an object, the lookup of the method to execute will be done during the execution. This simplifies the use of reflectivity since the user can invoke new methods without recompiling the whole application.
 
 ## Lookup
 Method lookup is the name of the technique Pharo uses to find the method to execute when an object receive a [message](#message). It proceeds as follows: When a message is sent, methods in the [receiver](#receiver)'s class are searched for a matching method. If no match is found, the superclass is searched, and so on up the superclass chain. In the end if no method is found, the object call the method [`#doesNotUnderstand:`](#doesnotunderstand) with the message as parameter.
