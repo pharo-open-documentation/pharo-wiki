@@ -30,6 +30,8 @@ Trait named: #TNameOfMyTrait
 	package: 'MyPackage'
 ```
 
+This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`.
+
 Concrete example:
 
 ```Smalltalk
@@ -39,13 +41,11 @@ Trait named: #FamixTWithEnumValues
 	category: 'Famix-Traits-EnumValue'
 ```
 
-This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`.
-
 > Calypso provides a menu entry to create traits. To access it, right-click on the classes list (with no class or trait selected) and select "New trait".
 
 Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits except if for methods overriden by the class.
 
-Tu use your Trait you just need to declare it in the class declaration as parameter of the `#uses:` keyword. 
+To use your Trait you just need to declare it in the class declaration as parameter of the `#uses:` keyword. 
 
 ```Smalltalk
 MySuperClass subclass: #MyClass
