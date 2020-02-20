@@ -41,6 +41,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Exceptions](General/Exceptions.md)
 - [Sorting collections](General/SortingCollections.md)
 - [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool.
+- [Tweaking big images](General/TweakingBigImages.md) - Tips to make large pharo images more responsive.
 
 ## Pharo projects
 
