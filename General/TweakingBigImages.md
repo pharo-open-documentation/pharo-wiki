@@ -4,6 +4,11 @@ Pharo is special in the sense that the language and IDE are mixed. This mean tha
 In some cases we might end-up Pharo images having a large memory consumption (aka Big Images). 
 The goal of this page is to sum up some tweaking that can be done on Pharo images to improve the performances on such images. 
 
+* [Fast dragging](#fast-dragging)
+* [Disable taskbar previews](#disable-taskbar-previews)
+* [Tune Garbage Collection](#tune-garbage-collection)
+* [Disable Quality Assistant plugin](#disable-quality-assistant-plugin)
+
 ## Fast dragging
 
 While dragging windows in Pharo an animation happens. This animation is not performant and can make the dragging of windows slow in large images.
@@ -25,7 +30,7 @@ It is possible to disable it:
 TaskbarMorph showWindowPreview: false
 ```
 
-### Tune Garbage Collection 
+## Tune Garbage Collection 
 
 Pharo is a language with a memory management using garbage collection. 
 When objects are created, memory is allocated to them. Once in a while, the memory is cleaned and the "garbage collector" free the memory of objects that are not been used anymore.
@@ -96,6 +101,16 @@ By tweaking those parameters, algorithm that took 9min30 before are now taking l
 Thanks to [Eliot Miranda](http://www.mirandabanda.org/cogblog/microbio/) and [Clément Bera](https://clementbera.wordpress.com/) for the explanations.
 
 For more information: [https://clementbera.wordpress.com/2017/03/12/tuning-the-pharo-garbage-collector](https://clementbera.wordpress.com/2017/03/12/tuning-the-pharo-garbage-collector)
+
+## Disable Quality Assistant plugin
+
+The code browser in Pharo has a plugin to display code critics. This plugin can take some time to compute the rules in case of large images. It is possible to disable it:
+
+```Smalltalk
+ClyCriticBrowserPlugin disable
+```
+
+
 
 
 
