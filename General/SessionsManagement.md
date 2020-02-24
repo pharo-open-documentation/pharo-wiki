@@ -4,6 +4,7 @@
  * [Quick start](#quick-start)
  * [Register a class to the session manager](#register-a-class-to-the-session-manager)
  * [Start-up, Shut-down and Saving actions](#start-up--shut-down-and-saving-actions)
+ * [Checking the start-up and shut-down list](#checking-the-start-up-and-shut-down-list)
 
 ## Description
 
@@ -60,11 +61,13 @@ It is possible to further refine the priorities using categories.
 The SessionManager has categories. `User` category one is one of them. Categories have priority between each others.
 By default the system comes with those categories (sorted by priority from the highest to the lowest one):
 
-- System (`#registerSystemClassNamed:[atPriority:]`)
-- Network (`#registerNetworkClassNamed:[atPriority:]`)
-- Graphical User Interface (`#registerUserGUINamed:[atPriority:]`)
-- Tools (`#registerToolClassNamed:[atPriority:]`)
-- User (`#registerUserClassNamed:[atPriority:]`)
+- System (`#registerSystemClassNamed:[atPriority:]`): Manages system related modules such as FFI, Files, OSEnvironment, ...
+- Network (`#registerNetworkClassNamed:[atPriority:]`): Manages network related modules such as Zinc or git.
+- Graphical User Interface (`#registerUserGUINamed:[atPriority:]`): Manages GUI related modules such as events, sensors, morphic, ...
+- Tools (`#registerToolClassNamed:[atPriority:]`): Manages the tools of Pharo IDE such as Code browser, Spotter, Inspector, ...
+- User (`#registerUserClassNamed:[atPriority:]`): For the users to register their projects most of the time.
+
+> Most of the time, users should use the `User` category. Use the other ones only if you know what you are doing.
 
 It is possible to create a new category:
 
@@ -72,6 +75,8 @@ It is possible to create a new category:
 SessionManager default createCategory: aCategoryName.
 SessionManager default createCategory: aCategoryName after: anotherCategoryName.
 ```
+
+> It is not recommanded to register a new category before the System, Network or GUI ones. If you do, be sure of what you are doing.
 
 Then one can register classes in you new custom category:
 
@@ -113,14 +118,15 @@ MyClass class>>shutDown: isImageQuitting
 ```
 
 
+## Checking the start-up and shut-down list
 
+When manipulating sessions, it is sometime interesting to check the current start-up and shut-down lists.
 
+It is possible to do this this way:
 
+```Smalltalk
+SessionManager default startupList.
+SessionManager default shutdownList.
+```
 
-
-
-
-
-
-
-
+The results of those methods will be sorted by priority.
