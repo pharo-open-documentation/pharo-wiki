@@ -4,6 +4,8 @@ Wiki for the Pharo programming language and development environment.
 
 The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](CONTRIBUTION.md).
 
+> Looking for a list of awesome projects? Check-out [awesome-pharo](https://github.com/pharo-open-documentation/awesome-pharo), a curated list of awesome Pharo projects.
+
 ## Contents
 - [Contents](#contents)
 - [Beginners](#beginners)
