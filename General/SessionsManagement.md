@@ -19,22 +19,22 @@ You need to do those actions in a `#startUp:` method and `#shutDown:` method on 
 
 ```Smalltalk
 MyClass class>>startUp: isImageStarting
-		isImageStarting
-			ifTrue: [ MyVariable := FileLocator home asFileReference ]
+	isImageStarting
+		ifTrue: [ MyVariable := FileLocator home asFileReference ]
 ```
 
 ```Smalltalk
 MyClass class>>shutDown: isImageQuitting
-		isImageQuitting
-			ifTrue: [ MyVarible := nil ]
+	isImageQuitting
+		ifTrue: [ MyVarible := nil ]
 ```
 
 Then you need to register the class in the `SessionManager` of Pharo. This is usually done in the `#initialize` method (class-side).
 
 ```Smalltalk
 MyClass class>>initialize
-  SessionManager default registerUserClassNamed: self name.
-  self startUp: true. "Here we execute it to set up the value while loading the project."
+	SessionManager default registerUserClassNamed: self name.
+	self startUp: true. "Here we execute it to set up the value while loading the project."
 ```
 
 ## Register a class to the session manager
@@ -45,14 +45,14 @@ The simplest way to do that is to add this in the class initialization method of
 
 ```Smalltalk
 MyClass class>>initialize
-    SessionManager default registerUserClassNamed: self name
+	SessionManager default registerUserClassNamed: self name
 ```
   
 Sometimes, the order of execution of start-up/shut-down actions might matter. To manage this, it is possible to set a priority.
   
 ```Smalltalk
 MyClass class>>initialize
-SessionManager default registerUserClassNamed: self name atPriority: 60
+	SessionManager default registerUserClassNamed: self name atPriority: 60
 ```
 Registered handlers with lower priority will be executed first.
 The actions registered using `#registerUserClassNamed:[atPriority:]` will have a low priority in the startup/shutdown list.
