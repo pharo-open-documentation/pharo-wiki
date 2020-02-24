@@ -110,6 +110,42 @@ The code browser in Pharo has a plugin to display code critics. This plugin can 
 ClyCriticBrowserPlugin disable
 ```
 
+## Disable Spotter plugins
 
+Pharo's spotter has many plugins to search for and display results of mny kind.
 
+Some of those searchs can be long to compute in big images. It is possible to disable the extensions that do not interest us.
 
+You can find the list of extensions executing:
+
+```Smalltalk
+GTSpotter spotterExtendingMethods
+```
+
+Then you caqn disable an extension. For example if you have poor network you can disable the extension looking for projects in the Pharo catalog.
+
+```Smalltalk
+GTSpotterExtensionSettings disabledExtensions add: 'GTSpotter_spotterCatalogProjectsFor'
+```
+
+The name of the extension to disable should be of this form: `ClassContainingTheExtension_nameOfTheMethodWithoutLastSemicolon`.
+
+In case of images with a lot of code, it is possible that many projects extend the world menu. In this case the world menu plugin can be long to search. You can diable it this way:
+
+```Smalltalk
+GTSpotterExtensionSettings disabledExtensions add: 'GTSpotter_spotterWorldMenuFor'
+```
+
+The extensions to disable will most probably depend on what fills the size of your image. Look through the list and estimate what can take timefor you and what do not interest you. 
+
+## Disable Epicea
+
+When you compile code, all the changes are persisted in files by the **Epicea** tool. This allows one to revert/replay changes and to get back lost changes in case an image crash. 
+
+Disabling Epicea can speed up the work in large images:
+
+```Smalltalk
+EpMonitor reset
+````
+
+> WARNING: Disabling Epicea will remove the possibility to replay changes in case your image crash. Disable it only if necessary!
