@@ -1,8 +1,8 @@
 # Tweaking big images
 
-Pharo is special in the sense that the language and IDE are mixed. This mean that your application runs into the IDE.
-In some cases we might end-up Pharo images having a large memory consumption (aka Big Images). 
-The goal of this page is to sum up some tweaking that can be done on Pharo images to improve the performances on such images. 
+Pharo is special in the sense that the language and IDE are mixed. It means that your application runs together with the IDE.
+In some cases, it leads to Pharo images consuming a large amount of memory (aka Big Images). 
+The goal of this page is to sum up some tweaking that can be done on Pharo images to improve the performances of such images. 
 
 * [Fast dragging](#fast-dragging)
 * [Disable taskbar previews](#disable-taskbar-previews)
@@ -11,19 +11,19 @@ The goal of this page is to sum up some tweaking that can be done on Pharo image
 
 ## Fast dragging
 
-While dragging windows in Pharo an animation happens. This animation is not performant and can make the dragging of windows slow in large images.
+While dragging windows in Pharo, an animation is run. This animation is not performant and can make the dragging of windows slow in large images.
 
-It is possible to workaround this problem by enabling a "fast dragging" option:
+As a workaround, it is possible to solve this problem by enabling a "fast dragging" option:
 
 ```Smalltalk
 UITheme currentSettings fastDragging: true
 ```
 
-This option is reset when we change the theme Pharo and should thus be executed each time you update the theme.
+> Remark: This option is reset when one change the theme Pharo. Thus, you should execute this code snippet each time you update the theme.
 
 ## Disable taskbar previews
 
-While going oven the taskbar of Pharo, previews of the images are displayed. This feature can be really slow on big images. 
+While going over the taskbar of Pharo, previews of the images are displayed. This feature can be really slow on big images. 
 It is possible to disable it:
 
 ```Smalltalk
@@ -32,22 +32,22 @@ TaskbarMorph showWindowPreview: false
 
 ## Tune Garbage Collection 
 
-Pharo is a language with a memory management using garbage collection. 
-When objects are created, memory is allocated to them. Once in a while, the memory is cleaned and the "garbage collector" free the memory of objects that are not been used anymore.
+Pharo is a language using a [garbage collector](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) for its memory management. 
+When objects are created, memory is allocated for them. Once in a while, the memory is cleaned and the garbage collector frees the memory of objects that are not used anymore.
 
-This process can be customized via multiple parameters. To understand the impact of those parameters we explain here how the garbage collection works.
+This process can be customized via multiple parameters. To understand the impact of those parameters we explain here how garbage collection works in Pharo.
 
-Pharo memory (aka heap) is divided into multiple spaces:
+Because most objects usage stops quickly after their instantiation (we say they have a short life-time), Pharo memory (aka "the heap") is divided into multiple spaces:
 - The "Old space" contains objects that survived multiples garbage collections (GC). When it is filled, new memory segments are allocated to the old space.
-- The "New Space" contains recenttly created objects. 
+- The "New Space" contains recently created objects. 
 
 The "New Space" is divided into 3 sub spaces:
 - The "Eden" containing the newest objects created (taking 5/7 of the new space)
 - Two survivors spaces (1/7 of the new space each) contains the object that survived some garbage collection already
 
 The Garbage Collector execute two kind of cleanings:
-- The scavenge happens after the Eden is filled at a certain ratio and will clean the Eden. When objects from the eden are still referenced, they are moved to the survivors. There are two survivors: past survivor space and future survivor space (past space and future space for short). Past and future space swap after each scavenge, which empties eden and past space, copying survivors into future space, tenuring overflow to old space and then making future space the new past space. When the survivor space is fill at more than 90%, the survivors are moved to the old space.
-- The full GC happens when the heap grow past a certain ratio. It will go through the old space and clean the old objects.
+- The **scavenge** happens when the Eden is filled at a certain ratio and will clean the Eden. When objects from the eden are still referenced, they are moved to the survivors. There are two kinds of survivors: past survivor space and future survivor space (past space and future space for short). Past and future space swap after each scavenge, which empties eden and past space, copying survivors into future space, tenuring overflow to old space and then making future space the new past space. When the survivor space is fill at more than 90%, the survivors are moved to the old space.
+- The **full garbage collect** (aka full GC) happens when the heap grow past a certain ratio. It will go through the old space and clean the old objects.
 
 We can customize multiple parameters.
 
@@ -91,10 +91,10 @@ If you use a really high ratio such as 200.0+, no full GC will happen.
 Smalltalk vm parameterAt: 55 put: 0.7
 ```
 
-Note that those 3 last parameters are currently reset during image startup. 
-In order to maintain them, you can use startup actions. See [Session management documentation](SessionsManagement.md).
+> Note: Those 3 last parameters are reset during image startup. 
+> In order to maintain them, you can use startup actions. See [Session management documentation](SessionsManagement.md).
 
-This might change in the future (https://github.com/OpenSmalltalk/opensmalltalk-vm/issues/477).
+> This might change in the future (https://github.com/OpenSmalltalk/opensmalltalk-vm/issues/477).
 
 By tweaking those parameters, algorithm that took 9min30 before are now taking less than 5min with images of 1.3Go.
 
@@ -109,7 +109,6 @@ The code browser in Pharo has a plugin to display code critics. This plugin can 
 ```Smalltalk
 ClyCriticBrowserPlugin disable
 ```
-
 
 
 
