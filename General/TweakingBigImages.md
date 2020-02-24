@@ -8,6 +8,8 @@ The goal of this page is to sum up some tweaking that can be done on Pharo image
 * [Disable taskbar previews](#disable-taskbar-previews)
 * [Tune Garbage Collection](#tune-garbage-collection)
 * [Disable Quality Assistant plugin](#disable-quality-assistant-plugin)
+* [Disable Spotter plugins](#disable-spotter-plugins)
+* [Disable Epicea](#disable-epicea)
 
 ## Fast dragging
 
