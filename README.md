@@ -43,6 +43,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Exceptions](General/Exceptions.md)
 - [Sorting collections](General/SortingCollections.md)
 - [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool.
+- [Sessions management](General/SessionsManagement.md) - Documentation on setting up start-up and shut-down actions in Pharo.
 
 ## Pharo projects
 
