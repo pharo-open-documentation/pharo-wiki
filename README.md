@@ -45,6 +45,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool.
 - [Tweaking big images](General/TweakingBigImages.md) - Tips to make large pharo images more responsive.
 - [Sessions management](General/SessionsManagement.md) - Documentation on setting up start-up and shut-down actions in Pharo.
+- [Image file format](General/ImageFileFormat.md) - Documentation about binary format of Pharo images.
 
 ## Pharo projects
 
