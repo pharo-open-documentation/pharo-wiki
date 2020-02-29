@@ -7,6 +7,7 @@ This page exists for the sake of discoverability of Pharo community.
 **We do not take any responsibility for content published in these external resources as we have no control on it.**
 
 - [https://astares.blogspot.com](https://astares.blogspot.com) - Blog related to Pharo in general.
+- [https://blog.sebastiansastre.co](https://blog.sebastiansastre.co) - Blog related to Pharo in general.
 - [https://clementbera.wordpress.com](https://clementbera.wordpress.com) - Blog related to the Pharo virtual machine and its development.
 - [https://endormitoire.wordpress.com/2016/10/03/freewill-in-progress-4/](https://endormitoire.wordpress.com/2016/10/03/freewill-in-progress-4/) - Blog related to Pharo in general.
 - [https://fuhrmanator.github.io](https://fuhrmanator.github.io) - Blog related to Moose and Pharo in general but not only.
