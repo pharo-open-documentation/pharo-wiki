@@ -17,9 +17,9 @@ Two major components of the Smalltalk-80 system can be distinguished: the virtua
 
 1. The virtual image consists of all of the objects in the system, including Smalltalk source code objects, compiler objects, and bytecode compiled method objects. It is platform independent.
 1. The virtual machine is the engine that runs the image. It consists of a machine language (or microcode or bytecode) routines that give dynamics to the objects in the virtual image. It is a platform dependent machine code executable that can be decomposed into: 
-    * *Bytecode execution engine* - to interpret or JIT compile each bytecode into machine code and execute it;  
+    * *Bytecode execution engine* - to interpret or JIT (Just In Time) compile each bytecode into machine code and execute it;  
     * *Object engine* - to provide memory management of objects;   
-    * *Primitives* - to provide AOT compiled machine code for accelerated execution and interface to platform dependent operating system routines."
+    * *Primitives* - to provide AOT (Ahead Of Time) compiled machine code for accelerated execution and interface to platform dependent operating system routines."
 
 
 The system implementer's task is to create a virtual machine. A virtual image can then be loaded into the virtual machine and the pharo system becomes an interactive entity.
@@ -170,6 +170,10 @@ Debugging the VM through the simulator (video)
 * https://clementbera.wordpress.com/2018/03/07/sista-vm-screencast/
 
 * http://www.mirandabanda.org/cogblog/2008/11/14/mechanised-modifications-and-miscellaneous-measurements/
+
+## multi-user transactional image
+magma object representation by Chris Muller. 
+* https://wiki.squeak.org/squeak/2665.
 
 # UFFI
 * https://users.dcc.uchile.cl/~rsalgado/uffi-fourth-draft.pdf
