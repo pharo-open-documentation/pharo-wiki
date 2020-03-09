@@ -59,7 +59,8 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Rich text](PharoProjects/RichText.md)
 - [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.<!-- - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
 
-
+## Pharo and OpenSmalltalk Virtual Machine
+- [Pharo VM documentation map](PharoVirtualMachine/pharo-vm-map.md) - 
 
 ## External projects
 ### Data exchange
