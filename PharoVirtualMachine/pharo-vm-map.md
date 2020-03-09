@@ -40,6 +40,9 @@ http://www.mirandabanda.org/bluebook/
 A tour of the squeak object engine show a good overview, but is a bit more outdated:
 http://stephane.ducasse.free.fr/FreeBooks/CollectiveNBlueBook/Rowledge-Final.pdf
 
+Bytecode and Virtual Machines:
+http://scg.unibe.ch/download/lectures/cc2011/09BytecodeVirtualMachines.pptx.pdf
+
 An overview of all the the changes brough to opensmalltalk/pharo VM:
 https://www.researchgate.net/publication/328509577_Two_Decades_of_Smalltalk_VM_Development_Live_VM_Development_through_Simulation_Tools
 
@@ -64,7 +67,7 @@ Source methods written by programmers are represented in the system as instances
 
 Source methods are translated by the system's *compiler* into sequences of instructions. The instructions are called bytecodes.
 
-* https://hal.inria.fr/hal-00862411/document
+* Towards a flexible Pharo Compiler: https://hal.inria.fr/hal-00862411/document
 * https://rmod.inria.fr/archives/events/2011DIS/Slides/Opal/OpalCompiler.pdf
 * https://clementbera.wordpress.com/2013/03/22/toward-a-zero-bugs-interpreter-compiler/
 * https://clementbera.wordpress.com/2013/05/28/modular-compilation-with-opal/
@@ -80,6 +83,7 @@ The original smalltalk interpreter understands 256 bytecode instructions that fa
 * https://marianopeck.blog/2011/05/21/introduction-to-smalltalk-bytecodes/
 * https://clementbera.wordpress.com/2013/04/21/byte-code-to-source-code-mappin/
 * https://clementbera.wordpress.com/2013/09/23/squeakv3plusclosure-bytecode-set/
+* A bytecode set for adaptive optimizations: https://hal.inria.fr/hal-01088801/document
 
 ## compiled method:
 The compiler creates an instance of *CompiledMethod* to hold the bytecode translation of a source method. 
