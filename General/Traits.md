@@ -38,7 +38,7 @@ Concrete example:
 Trait named: #FamixTWithEnumValues
 	uses: {}
 	slots: {}
-	category: 'Famix-Traits-EnumValue'
+	package: 'Famix-Traits-EnumValue'
 ```
 
 > Calypso provides a menu entry to create traits. To access it, right-click on the classes list (with no class or trait selected) and select "New trait".
@@ -101,14 +101,14 @@ Examples:
 Trait named: #MDLWithConfigurableRightPanel
 	uses: {}
 	slots: { #panelComponent. #toolbar }
-	category: 'MaterialDesignLite-Extensions'
+	package: 'MaterialDesignLite-Extensions'
 ```
 
 ```Smalltalk
 Trait named: #FamixTWithEnumValues
 	uses: {}
 	slots: { #enumValues => FMMany type: #FamixTEnumValue opposite: #parentEnum }
-	category: 'Famix-Traits-EnumValue'
+	package: 'Famix-Traits-EnumValue'
 ```
 
 ## Traits initialization
@@ -178,7 +178,7 @@ Traits are composable, this mean that you can have Traits using other traits. It
 ```Smalltalk
 Trait named: TMyComposedTrait
 	uses: TMyFirstTrait + TMySecondTrait
-	category: 'MyPackage'
+	package: 'MyPackage'
 ```
 
 Example:
@@ -186,7 +186,7 @@ Example:
 ```Smalltalk
 Trait named: #EpTEventVisitor
 	uses: EpTCodeChangeVisitor
-	category: 'Epicea-Visitors'
+	package: 'Epicea-Visitors'
 ```
 ## Conflicts
 
