@@ -38,10 +38,12 @@ Concrete example:
 Trait named: #FamixTWithEnumValues
 	uses: {}
 	slots: {}
-	category: 'Famix-Traits-EnumValue'
+	package: 'Famix-Traits-EnumValue'
 ```
 
 > Calypso provides a menu entry to create traits. To access it, right-click on the classes list (with no class or trait selected) and select "New trait".
+
+> **Warning**: In Pharo < 8, the message #named:uses:slots:package: should be replaced by #named:uses:slots:category:.  
 
 Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits except if for methods overriden by the class.
 
@@ -101,14 +103,14 @@ Examples:
 Trait named: #MDLWithConfigurableRightPanel
 	uses: {}
 	slots: { #panelComponent. #toolbar }
-	category: 'MaterialDesignLite-Extensions'
+	package: 'MaterialDesignLite-Extensions'
 ```
 
 ```Smalltalk
 Trait named: #FamixTWithEnumValues
 	uses: {}
 	slots: { #enumValues => FMMany type: #FamixTEnumValue opposite: #parentEnum }
-	category: 'Famix-Traits-EnumValue'
+	package: 'Famix-Traits-EnumValue'
 ```
 
 ## Traits initialization
@@ -178,7 +180,7 @@ Traits are composable, this mean that you can have Traits using other traits. It
 ```Smalltalk
 Trait named: TMyComposedTrait
 	uses: TMyFirstTrait + TMySecondTrait
-	category: 'MyPackage'
+	package: 'MyPackage'
 ```
 
 Example:
@@ -186,7 +188,7 @@ Example:
 ```Smalltalk
 Trait named: #EpTEventVisitor
 	uses: EpTCodeChangeVisitor
-	category: 'Epicea-Visitors'
+	package: 'Epicea-Visitors'
 ```
 ## Conflicts
 
