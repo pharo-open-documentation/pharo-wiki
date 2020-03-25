@@ -5,7 +5,6 @@ Profiling a program is the act of measuring, for example, the time or space it t
   * [Programmatically open a Time Profiler](#programmatically-open-a-time-profiler)
   * [Utility methods on blocks to profile](#utility-methods-on-blocks-to-profile)
   * [Interactively open a Time Profiler](#interactively-open-a-time-profiler)
-- [Virtual Machine Execution Time Profiling](#virtual-machine-execution-time-profiling)
 - [Space Profiling](#space-profiling)
 
 ## Time Profiling
@@ -51,9 +50,6 @@ You can access a UI for the time profiler tool via the menu bar.
 Result: type your code in the top box and click "Profile it".
 
 ![image](Profiling_Image_TimeProfilerToolUI.png)
-
-## Virtual Machine Execution Time Profiling
-> TODO
 
 ## Space Profiling
 Imagine you want to know how much instances of the classes Point and TextMorph there are in the system, and how much space they occupy. **Inspect**:

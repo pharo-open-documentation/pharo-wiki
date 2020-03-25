@@ -9,12 +9,11 @@
   * [Clean your image before deployment](#clean-your-image-before-deployment)
   * [Sources obfuscation](#sources-obfuscation)
   * [Change the logo and window title of the application](#change-the-logo-and-window-title-of-the-application)
-  * [Sign your application on Windows and OSX](#sign-your-application-on-windows-and-osx)
   * [Deploy a Seaside application with Nginx](#deploy-a-seaside-application-with-nginx)
 
 ## Cruiser
-
-
+Cruiser is a tool to package Pharo applications. The idea is to quickly convert an application in a development environment to a production one.
+[https://github.com/VincentBlondeau/Cruiser](https://github.com/VincentBlondeau/Cruiser)
 
 
 ## Clean your image before deployment
@@ -163,7 +162,7 @@ This section works with the previous section aswell. We recommand to:
 
 ### Force omission of startup preferences
 
-At launch Pharo try to load preferences. Since the user can execute Smalltalk code via those proferences, we recommand to disable the preference mechanism with this code:
+At launch Pharo try to load preferences. Since the user can execute Smalltalk code via those preferences, we recommand to disable the preference mechanism with this code:
 
 ```Smalltalk
 PharoCommandLineHandler forcePreferencesOmission: true
@@ -326,10 +325,6 @@ DisplayScreen setWindowTitle: 'MyApplication'.
 
 DisplayScreen hostWindowIcon: (FileLocator imageDirectory / 'testLogo.ico') asFileReference fullName.
 ```
-
-## Sign your application on Windows and OSX
-
-> TODO
 
 ## Deploy a Seaside application
 

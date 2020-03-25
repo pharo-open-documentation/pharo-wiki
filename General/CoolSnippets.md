@@ -8,6 +8,8 @@ This file contains snippets of code that can be useful sometimes.
 - [Browse all available icons](#browse-all-available-icons)
 - [Rename programatically methods](#rename-programatically-methods)
 - [Get all senders/implementors of a selector](#get-all-sendersimplementors-of-a-selector)
+- [Find dependencies on a package](#find-dependencies-on-a-package)
+- [Embed an image (picture) into Pharo](#embed-an-image-picture-into-pharo)
 
 ## Download a file with a progress bar
 
@@ -151,4 +153,33 @@ To get all `CompiledMethod`s implementing a method having a selector, simply cal
 
 ```
 #yourself implementors
+```
+
+## Find dependencies on a package
+
+In Pharo it is easy to find the dependencies of one package through the `Dependency Analyzer`, but there is not tool to browse the dependencies *on* a single package. 
+
+It is possible to do it programatically via this snippet:
+
+```Smalltalk
+report := DADependencyChecker new computeImageDependencies. "This might take some time but it will run in background"
+report knownDependantsOf: 'Epicea' "Replace Epicia by the name of your package."
+```
+
+## Embed an image (picture) into Pharo
+If you want to use an image into Pharo, you will need to import it
+```Smalltalk
+ImageReadWriter formFromFileNamed: 'test.png'
+```
+and probably to store it into the image for further reuse. It is achieved by encoding the image into a base 64 String. Then, the String can be stored in a method.
+```Smalltalk
+(Base64MimeConverter mimeEncode: 'test.png' asFileReference binaryReadStream) contents
+```
+Let's say we stored the image base64 String in `Foo>>#image`. To materialize a Form from this image, you can do:
+```Smalltalk
+Form fromBinaryStream: Foo image base64Decoded asByteArray readStream
+```
+Here is a shortcut available since Pharo 8.0:
+```Smalltalk
+Form fromBase64String: Foo image
 ```

@@ -30,22 +30,24 @@ Trait named: #TNameOfMyTrait
 	package: 'MyPackage'
 ```
 
+This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`.
+
 Concrete example:
 
 ```Smalltalk
 Trait named: #FamixTWithEnumValues
 	uses: {}
 	slots: {}
-	category: 'Famix-Traits-EnumValue'
+	package: 'Famix-Traits-EnumValue'
 ```
-
-This will create a new Trait called `TNameOfMyTrait` stored in `MyPackage`.
 
 > Calypso provides a menu entry to create traits. To access it, right-click on the classes list (with no class or trait selected) and select "New trait".
 
+> **Warning**: In Pharo < 8, the message #named:uses:slots:package: should be replaced by #named:uses:slots:category:.  
+
 Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits except if for methods overriden by the class.
 
-Tu use your Trait you just need to declare it in the class declaration as parameter of the `#uses:` keyword. 
+To use your Trait you just need to declare it in the class declaration as parameter of the `#uses:` keyword. 
 
 ```Smalltalk
 MySuperClass subclass: #MyClass
@@ -101,14 +103,14 @@ Examples:
 Trait named: #MDLWithConfigurableRightPanel
 	uses: {}
 	slots: { #panelComponent. #toolbar }
-	category: 'MaterialDesignLite-Extensions'
+	package: 'MaterialDesignLite-Extensions'
 ```
 
 ```Smalltalk
 Trait named: #FamixTWithEnumValues
 	uses: {}
 	slots: { #enumValues => FMMany type: #FamixTEnumValue opposite: #parentEnum }
-	category: 'Famix-Traits-EnumValue'
+	package: 'Famix-Traits-EnumValue'
 ```
 
 ## Traits initialization
@@ -152,18 +154,20 @@ In some case it is needed to reject an instance variable of a Trait. It can be a
 
 ```
 Object subclass: #MyObjectUsingTraitByRejectingInstVar
-	uses: TTraitToBeUsed -- #instVarNameToRemove
+	uses: TTraitToBeUsed asTraitComposition -- #instVarNameToRemove
 	slots: {  }
 	classVariables: {  }
 	package: 'TestTraitAliasing'
 ```
+
+> `#asTraitComposition` needs to sent to the trait because `#--` message is not understood by trait but by trait composition.
 
 ### Alias some instance variables received from the trait
 It is possible to alias some instance variables received from a trait. If, for example you alias `#aliasedInstVar` with `#instVarAlias` as shown below, your class will hold both `#instVarAlias` and `#aliasedInstVar`.
 
 ```
 Object subclass: #MyObjectUsingTraitByAliasingInstVar
-	uses: (TTraitToBeUsed aliasSelector: { #instVarAlias -> #aliasedInstVar })
+	uses: (TTraitToBeUsed >> { #instVarAlias -> #aliasedInstVar })
 	slots: {  }
 	classVariables: {  }
 	package: 'TestTraitAliasing'
@@ -176,7 +180,7 @@ Traits are composable, this mean that you can have Traits using other traits. It
 ```Smalltalk
 Trait named: TMyComposedTrait
 	uses: TMyFirstTrait + TMySecondTrait
-	category: 'MyPackage'
+	package: 'MyPackage'
 ```
 
 Example:
@@ -184,7 +188,7 @@ Example:
 ```Smalltalk
 Trait named: #EpTEventVisitor
 	uses: EpTCodeChangeVisitor
-	category: 'Epicea-Visitors'
+	package: 'Epicea-Visitors'
 ```
 ## Conflicts
 
@@ -195,7 +199,7 @@ Two kinds of *conflicts* can happen with methods implemented on Traits.
 2. Two traits implementing the same method are used. In that case, if the method is called it will raise an error `traitConflict`.
 
 A way to solve both cases is to use method aliasing and to remove the conflicting method:
-```
+```Smalltalk
 Object subclass: #MyObjectUsingTraitByAliasingMethod
 	uses: TTraitToBeUsed @ { #methodAlias -> #conflictingMethod } - { #conflictingMethod }
 	slots: {  }

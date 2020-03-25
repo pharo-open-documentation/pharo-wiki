@@ -14,12 +14,31 @@ LibC uniqueInstance
 	system: 'echo "foo" >> /tmp/foo.txt'
 ```
 
-## Write environment variable
+To retrieve the output of a command directly in Pharo, use `#resultOfCommand:`
+
 ```Smalltalk
-Smalltalk os environment setEnv: 'FOO' value: 'bar'
+LibC uniqueInstance
+	resultOfCommand: 'echo "foo"'. "'foo
+'"
 ```
 
-## Read environment variable
+## Write environment variable
+The environment behaves similarly to a dictionary when it comes to write a variable.
+
 ```Smalltalk
-Smalltalk os environment getEnv: 'FOO'
+Smalltalk os environment at: 'FOO' put: 'bar'.
+Smalltalk os environment at: 'FOO' ifAbsentPut: 'bar'
 ```
+
+> Note: Before Pharo 7, `#setEnv:value:` message was used. This message is part of the low-level API and should not be used directly.
+
+## Read environment variable
+As for writing a variable, environment provide an API similar to `Dictionary` to read a variable.
+
+```Smalltalk
+Smalltalk os environment at: 'FOO'.
+Smalltalk os environment at: 'FOO' ifAbsent: [ 'Nope :-(' ].
+Smalltalk os environment at: 'FOO' ifPresent: [ :value | "Do something interesting." ]
+```
+
+> Note: Before Pharo 7, #getEnv: message was used. This message is now deprecated and should not be used.

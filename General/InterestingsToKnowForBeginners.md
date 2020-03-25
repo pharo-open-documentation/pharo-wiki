@@ -4,6 +4,16 @@ This page will expose different things that might be interesting to know for beg
 
 The goal is to ease the use of Pharo for beginners.
 
+- [API](#api)
+- [Evaluatable objects (Blocks and Symbols)](#evaluatable-objects--blocks-and-symbols-)
+- [Tools](#tools)
+  * [Calypso System Browser](#calypso)
+- [Flags](#flags)
+- [Useful pragmas](#useful-pragmas)
+  * [Modify IDE](#modify-ide)
+  * [Influence execution of methods](#influence-execution-of-methods)
+  * [Influence Debugger](#influence-debugger)
+
 ## API
 
 The Pharo API is extensive. In this section we will explain various methods existing in Pharo that have proven to be useful in our experience.
@@ -17,8 +27,6 @@ String concatenation can be costly because it will create a new string instance 
 
 String streamContents: [ :aStream | aStream << 'This is a '<< 'strong concatenation ' << 'that is ' << ' ' << ' efficient' ]
 ```
-
-> TODO
 
 ## Evaluatable objects (Blocks and Symbols)
 Pharo's Blocks and Symbols have an interesting property: they are polymorphic through `#value:` and `#cull:` methods.
@@ -55,11 +63,19 @@ The second way is shorter and often more readable.
 
 ## Tools
 
-> TODO
+### Calypso (System browser)
 
-### Dependency Analyzer
-
-> TODO
+- Display the differences between two methods
+	* Click on a method
+	* Hold down the `SHIFT` key
+	* Click on the second method
+	* Click on the tab Diff to see the differences
+	
+- Editing multiple methods side by side
+	* Click on a method
+	* Hold down the `CTRL` key
+	* Click on all the methods you want to edit. 
+	* Tabs are displayed with the source code of the methods selected.
 
 ## Flags
 
@@ -101,3 +117,21 @@ Pragmas allow one to tag methods. They are similar to Java's annotations. Some p
 ### Influence execution of methods
 
 - `<expectedFailure>` for instance-side methods of subclasses of `TestCase`, will make the test green when it is failing. But, althrough we expect that the test fails, a success of the test (i.e. not assertion missed) will show as a failure.
+
+### Influence Debugger
+- `<debuggerCompleteToSender>` allows one to tell the debugger to open itself on the method that sends the message corresponging to the method holding `<debuggerCompleteToSender>` pragma.
+
+For example, let us consider these two methods:
+```st
+foo
+	<debuggerCompleteToSender>
+	Error signal: 'foo'
+```
+
+```st
+fooCaller
+	self foo
+```
+
+Because of the `<debuggerCompleteToSender>`, when `#fooCaller` is executed, the debugger will show `#fooCaller` method source code.
+If the pragma was not there, the debugger would show `#foo` method source code.
