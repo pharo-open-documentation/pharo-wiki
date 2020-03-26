@@ -17,8 +17,22 @@ Pharo offers a lot of ways to navigate into the code, and most of those are used
 
 When reading code we often need to open an entity or to check who is using an entity. To do that, Pharo has different commands:
 * **Browse** (`CMD/CTRL + b`): This command will open a new system browser on the class you are currently focusing
-* **Senders** (`CMD/CTRL + n`): This command will open a message browser with all the methods calling the method/symbol you are currently focusing. 
-* **Implementors** (`CMD/CTRL + m`):  This command will open a message browser with all the methods whose name is the name of the method/symbol you are currently focusing. 
+* **Senders/References** (`CMD/CTRL + n`): This command will open a message browser with all the methods calling the method/symbol you are currently focusing, or, in the case where you are focusing a class, the references to this class. 
+* **Implementors** (`CMD/CTRL + m`):  This command will open a message browser with all the methods whose name is the name of the method/symbol you are currently focusing, or, in the case where you are focusing a class, the references to this class like `browse`. 
+
+Alternatively, it is possible to navigate the code using the mouse and the keyboard. In most text editors of Pharo you can use the shortcut `CMD + (Shift +) click` on OSX or `Alt + (Shift +) right click` on Windows/Linux to browse senders, implementors, classes and references. 
+
+Using `CMD + click` on OSX or `Alt + right click` on Windows/Linux allows one to:
+- Browse the implementors when you click on a method.
+- Browse the class when you click on a class.
+- Browse the class or implementors of a method represented by a symbol when you click on a symbol. 
+
+Using `CMD + (Shift +) click` on OSX or `Alt + (Shift +) right click` on Windows/Linux allows one to:
+- Browse the senders when you click on a method.
+- Browse the references to a class when you click on a class.
+- Browse the references to a class or senders of a method represented by a symbol when you click on a symbol. 
+
+> Warning: The click shortcuts on symbols are only working starting from Pharo 9. In previous version, it will browse the ByteSymbol class. 
 
 ### Method source with it
 
