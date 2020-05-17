@@ -53,7 +53,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 <!-- - [How to deal with files](PharoProjects/Files.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
 <!-- - [Objects serialization](PharoProjects/ObjectsSerialization.md) - Lists possibilities to serialize your objects on disk. ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
-- [Announcer](PharoProjects/Announcer.md)
+- [Announcer](PharoProjects/Announcer.md) - Implementation of the observer design pattern built-in Pharo.
 - [Basic interactions with OS](PharoProjects/OS.md)
 - [Cursor](PharoProjects/Cursor.md)
 - [Dynamic variables](PharoProjects/DynamicVariables.md)
