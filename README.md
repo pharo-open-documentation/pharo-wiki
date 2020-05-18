@@ -30,20 +30,20 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git.
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages.
 - [Traits](General/Traits.md) - Structure to build classes via composition.
-- [How to deploy a pharo application](General/DeployYourPharoApplication.md)
-- [Some cool snippets in Pharo](General/CoolSnippets.md)
+- [How to deploy a pharo application](General/DeployYourPharoApplication.md) - A guide to deploy a Pharo application.
+- [Some cool snippets in Pharo](General/CoolSnippets.md) - A cook book to answer common needs of a Pharo developer. 
 - [How to setup a travis build](General/Travis.md) - How to have automated build on travis
 - [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user.
 - [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute.
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu.
 - [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties.
-- [Coding conventions](General/CodingConventions.md)
+- [Coding conventions](General/CodingConventions.md) - A list of convention to follow when writing Pharo code.
 - [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
-- [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md)
-- [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md)
-- [Iceberg on Windows workaround](General/IcebergOnWindows.md)
-- [Exceptions](General/Exceptions.md)
-- [Sorting collections](General/SortingCollections.md)
+- [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md) - Getting Pharo to run on Windows 10 Subsystem for Linux.
+- [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) - Guide to help you configure Pharo to support Chinese, Japanese, and Korean characters.
+- [Iceberg on Windows workaround](General/IcebergOnWindows.md) - Troubleshooting for some issues appearing when using Iceberg on Windows.
+- [Exceptions](General/Exceptions.md) - How Pharo's exceptions work and explanations on how to use them.
+- [Sorting collections](General/SortingCollections.md) - How to sort collections with Pharo's built-in API.
 - [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool.
 - [Tweaking big images](General/TweakingBigImages.md) - Tips to make large pharo images more responsive.
 - [Sessions management](General/SessionsManagement.md) - Documentation on setting up start-up and shut-down actions in Pharo.
