@@ -138,6 +138,7 @@ For that, the pragmas can answer diverse messages to get their context. For exam
 - `#method` : Returns the CompiledMethod in which the pragmas is.
 - `#arguments` : Returns the arguments of the pragmas.
 - `#argumentAt:` : Returns the value of the n-th argument of the pragma instance.
+- `#argumentNamed:`: Returns the value of the arguemnts following a subpart of the pragma selector. This is available since Pharo 8.
 - `#selector` : Returns the pragma selector.
 - `#methodClass` : Returns the class in which the method containing the pragma is.
 
@@ -162,6 +163,12 @@ String
                     << ': ';
                     << pragma method comment;
                     lf ] ]
+```
+
+Here is an example on how to use `#argumentNamed:`:
+
+```Smalltalk
+(PragmaCollector filter: [:prg | prg selector = #'loaderNamed:priority:' and: [ (prg argumentNamed: #priority) > 0 ] ]) reset collected
 ```
 
 ## Examples of pragma usage
