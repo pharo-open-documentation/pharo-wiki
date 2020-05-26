@@ -289,4 +289,3 @@ As an example, let us focus on the text selection preferences. We have the prima
 ## Credits
 Thomas Dupriez.  
 This page is based on chapter 5 of the [Deep Into Pharo book](http://books.pharo.org/deep-into-pharo/): The Settings Framework  
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
