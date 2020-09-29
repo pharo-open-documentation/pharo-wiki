@@ -1,7 +1,7 @@
 # Getting Pharo runnning from the command line
 
-Here are some simple steps to get pharo ready from the command line. The script 
-presupposes that you have a bin folder in your home directory. 
+Here are some simple steps to get Pharo ready from the command line. The script 
+assumes that you have a bin folder in your home directory. 
 
 The following script downloads the stable vm version of Pharo 80. Check the web page [https://get.pharo.org/64/](https://get.pharo.org/64/)
 to get the possible choices. 
@@ -20,7 +20,7 @@ Once installed you can execute pharo as follows:
 ./pharo-ui Pharo8.image 
 ```
 
-If you do not want that pharo pops-up a user interface you can invoke it as follows: 
+If you do not want Pharo displaying a user interface as a pop-up, you can invoke it as follows: 
 
 ```bash
 ./pharo Pharo8.image 
