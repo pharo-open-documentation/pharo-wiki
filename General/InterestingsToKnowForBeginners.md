@@ -23,9 +23,9 @@ The Pharo API is extensive. In this section we will explain various methods exis
 String concatenation can be costly because it will create a new string instance and copy the content of the two strings at each concatenation. To make it more efficient, Pharo includes a method to create a String via a stream:
 
 ```Smalltalk
-'This is a ', 'strong concatenation ' , 'that is not really' , ' ' , ' efficient'.
+'This is a ', 'string concatenation ' , 'that is not really' , ' ' , ' efficient'.
 
-String streamContents: [ :aStream | aStream << 'This is a '<< 'strong concatenation ' << 'that is ' << ' ' << ' efficient' ]
+String streamContents: [ :aStream | aStream << 'This is a '<< 'string concatenation ' << 'that is ' << ' ' << ' efficient' ]
 ```
 
 ## Evaluatable objects (Blocks and Symbols)
@@ -43,7 +43,7 @@ For example, the two code snippets below are equivalent:
 
 They both return the class of an object.
 
-This means that for methods taking a one-argument block as a parameter, this block can be replaced by a symbol. The effect is that the unary method named by the symbol will be executed with the object as receiver.
+This means that for methods taking a one-argument block as a parameter, this block can be replaced by a symbol. The effect is that the unary method named by the symbol will be executed with the object as the receiver.
 
 The difference between `#value:` and `#cull:` is that `#value:` requires a parameter when `#cull:` can work with or without a parameter.
 
@@ -89,7 +89,7 @@ Commonly used flags are:
 - `#toCheck` to mark code that should be checked later.
 - `#pharoX` to mark code present for compatibility with `X` being the version of Pharo.
 
-Flags will not modify the execution of a method. It is just a way to tag it.
+Flags will not modify the execution of a method. Flags are just used to tag methods.
 
 For example, the method below will return `42` if executed as if there was no call to `#flag:` method.
 
@@ -110,16 +110,16 @@ Pragmas allow one to tag methods. They are similar to Java's annotations. Some p
 - `<script>` for class-side methods, adds a button next to the method name in the IDE. This button, when clicked, executes the method.
 - `<script: 'Smalltalk code to run'>` is similar to `<script>` but the button executes the Smalltalk code held by the string provided as parameter to the pragma.
 - `<sampleInstance>` for class-side methods, adds a button next to the method name in the IDE. When clicked, the method is executed and an inspector is opened on its result.
-- `<worldMenu>` for class-side methods, add a menu entry in the Pharo menu. The method with this pragma should take a builder as parameter. You can browse the senders of the `worldMenu` pragma to find the API.
-- `<systemsettings>` for class-side methods, add an entry in the Pharo settings. The method with this pragma should take a builder as parameter. You can browse the senders of the `systemsettings` pragma to find the API.
+- `<worldMenu>` for class-side methods, add a menu entry in the Pharo menu. The method with this pragma should take a builder as a parameter. You can browse the senders of the `worldMenu` pragma to find the API.
+- `<systemsettings>` for class-side methods, add an entry in the Pharo settings. The method with this pragma should take a builder as a parameter. You can browse the senders of the `systemsettings` pragma to find the API.
 - `<haltOrBreakpointForTesting>` should be used in methods using breakpoints that should not be listed in the Breakpoint browser. For example, it can be used in examples using breakpoints to highlight a feature of the example.
 
 ### Influence execution of methods
 
-- `<expectedFailure>` for instance-side methods of subclasses of `TestCase`, will make the test green when it is failing. But, althrough we expect that the test fails, a success of the test (i.e. not assertion missed) will show as a failure.
+- `<expectedFailure>` for instance-side methods of subclasses of `TestCase`, will make the test green when it is failing. But, although we expect that the test will fail, a success of the test (i.e. not assertion missed) will show as a failure.
 
 ### Influence Debugger
-- `<debuggerCompleteToSender>` allows one to tell the debugger to open itself on the method that sends the message corresponging to the method holding `<debuggerCompleteToSender>` pragma.
+- `<debuggerCompleteToSender>` allows one to tell the debugger to open itself on the method that sends the message corresponding to the method holding the `<debuggerCompleteToSender>` pragma.
 
 For example, let us consider these two methods:
 ```st
