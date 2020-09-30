@@ -2,15 +2,15 @@
 
 Pharo is full of implicit coding conventions. 
 
-This page aims to document all those conventions to help newcomers to write Pharo code following the community's idioms.
+This page aims to document all those conventions to help newcomers write Pharo code as per the community's idioms.
 
 ## Tests conventions
 
-Pharo has some conventions when it comes to tests. This section covers them.
+Pharo has some conventions when it comes to tests. This section covers those.
 
 **Package name**
 
-It is common to store tests in a separated package rather than in the package of the tested classes.
+It is preferred to store tests in a separate package rather than in the package of the tested classes.
 The name of this package should be `NameOfOriginalPackage-Tests`.
 
 For example, if one wants to add tests to `Material-Design-Lite-Core`, the tests should be in a package called `Material-Design-Lite-Core-Tests`.
@@ -23,7 +23,7 @@ In the case of unit tests, the name of the class should be `MyClassTest`. For ex
 
 **Method name**
 
-Test method names in Pharo need to be prefixed with `test`. This is the way the test framework recognize them as test methods. 
+Test method names in Pharo need to be prefixed with `test`. This is the way the test framework recognizes them as test methods. 
 
 In case of a unit test on a method of the tested class, the name should be prefixed by `test` followed by the name of the method to test.
 
