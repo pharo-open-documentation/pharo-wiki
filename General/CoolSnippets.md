@@ -47,7 +47,7 @@ TimeProfiler spyOn: [ testSuite run ]
 ```
 
 ## Automatic transformation of Pharo's methods source code
-During software maintenance, being able to transform automatically source code can be handy. It can be done easily in Pharo using the built-in code rewriting engine.
+During software maintenance, being able to transform source code automatically can be handy. It can be done easily in Pharo using the built-in code rewriting engine.
 
 For example, let's say that we want to replace the occurences of `#symbolToReplace` symbol with occurences of `#replacedSymbol` in the following method:
 
@@ -126,7 +126,7 @@ class methods
 > Be careful, this will also rename the senders of those methods and if you have two methods of the same name in the image, it might badly rename some. Use this only on methods with unique names.
 
 ## Get all senders/implementors of a selector
-The selector of a method is kind of the equivalent of the signature of a method or function in other programming language.
+The selector of a method is kind of the equivalent of the signature of a method or function in other programming languages.
 However, since Pharo is dynamically typed, this selector is only the name of the method, without the parameters.
 For example, the selector of the method below is `#name:`
 
@@ -157,7 +157,7 @@ To get all `CompiledMethod`s implementing a method having a selector, simply cal
 
 ## Find dependencies on a package
 
-In Pharo it is easy to find the dependencies of one package through the `Dependency Analyzer`, but there is not tool to browse the dependencies *on* a single package. 
+In Pharo it is easy to find the dependencies of one package through the `Dependency Analyzer`, but there is no tool to browse the dependencies *on* a single package. 
 
 It is possible to do it programatically via this snippet:
 
@@ -167,15 +167,15 @@ report knownDependantsOf: 'Epicea' "Replace Epicia by the name of your package."
 ```
 
 ## Embed an image (picture) into Pharo
-If you want to use an image into Pharo, you will need to import it
+If you want to add an image into Pharo, you will need to import it
 ```Smalltalk
 ImageReadWriter formFromFileNamed: 'test.png'
 ```
-and probably to store it into the image for further reuse. It is achieved by encoding the image into a base 64 String. Then, the String can be stored in a method.
+and you may store it into the image for further reuse. This is achieved by encoding the image into a base 64 String. Then, the String can be stored in a method.
 ```Smalltalk
 (Base64MimeConverter mimeEncode: 'test.png' asFileReference binaryReadStream) contents
 ```
-Let's say we stored the image base64 String in `Foo>>#image`. To materialize a Form from this image, you can do:
+Let's say we store the image base64 String in `Foo>>#image`. To materialize a Form from this image, you can do:
 ```Smalltalk
 Form fromBinaryStream: Foo image base64Decoded asByteArray readStream
 ```
