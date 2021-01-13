@@ -259,7 +259,7 @@ To remove the option to open Halos around the Morphs of Pharo you can execute:
 Morph halosEnabled: false
 ```
 
-### Disable Debuggeur
+### Disable Debugger
 
 #### Pharo 8
 
