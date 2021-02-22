@@ -41,6 +41,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
 - [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md) - Getting Pharo to run on Windows 10 Subsystem for Linux.
 - [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) - Guide to help you configure Pharo to support Chinese, Japanese, and Korean characters.
+- [Using CJK input methods](General/CJKInputMethod.md) - Guide to help you configure Pharo to support CJK input method.
 - [Iceberg on Windows workaround](General/IcebergOnWindows.md) - Troubleshooting for some issues appearing when using Iceberg on Windows.
 - [Exceptions](General/Exceptions.md) - How Pharo's exceptions work and explanations on how to use them.
 - [Sorting collections](General/SortingCollections.md) - How to sort collections with Pharo's built-in API.
