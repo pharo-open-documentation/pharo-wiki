@@ -112,7 +112,7 @@ The first thing that you probably have noticed already is that most of our metho
 
 ![Pharo System Browser, new variable added to class](SettingUp_AddingVariable.png)
 
-If we have a variable, we need to assure access to it, by making *value* and *value: anInteger* methods. They will allowe putting some integer as a new value (*value: anInteger*) and retrieving the current value (*value*).
+If we have a variable, we need to assure access to it, by making *value* and *value: anInteger* methods. They will allow putting some integer as a new value (*value: anInteger*) and retrieving the current value (*value*).
 
 
 ```GitHub
