@@ -43,7 +43,7 @@ Trait named: #FamixTWithEnumValues
 
 > Calypso provides a menu entry to create traits. To access it, right-click on the classes list (with no class or trait selected) and select "New trait".
 
-> **Warning**: In Pharo < 8, the message #named:uses:slots:package: should be replaced by #named:uses:slots:category:.  
+> **Warning**: In Pharo < 8, the message `#named:uses:slots:package:` should be replaced by `#named:uses:slots:category:`.  
 
 Then you add a new method to the Trait, just as you would implement a method in a class. All classes using this trait will be able to use methods created in the Traits except if for methods overriden by the class.
 
