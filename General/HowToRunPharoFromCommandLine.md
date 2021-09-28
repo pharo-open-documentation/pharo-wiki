@@ -1,4 +1,4 @@
-# Getting Pharo runnning from the command line
+# Getting Pharo running from the command line
 
 Here are some simple steps to get Pharo ready from the command line. The script 
 assumes that you have a bin folder in your home directory. 
