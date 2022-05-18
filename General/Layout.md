@@ -1,12 +1,12 @@
-Row layout example :
+Row layout :
+
 Français :
+
 Ce layout affiche les submorphs d’un morph aligner horizontalement.
 Par défaut, l'affichage des submorphs se fait dans le coin en haut à gauche du morph.
 
 Avec ce layout, les submorphs d'un morph sont afficher dans un tableau. Ce tableau associe un submorph à une cellule.
 La taille d'une cellule sur l'axe Y est de la taille en Y du conteneur. Alors que la taille en X d'une cellule est la taille du submorph contenu dans cette cellule.
-
-
 
 Ensuite, on peut modifier certaines variables pour modifier l'affichage d'un morph. Ces variables sont :
 - cellPositioning
@@ -145,7 +145,7 @@ m1 addMorph: m3.
 m1 openInWorld.
 ```
 
-Table Layout Example :
+Table Layout :
 
 The layout process:
 For computing the new layout for the children of any morph, we start with an initial rectangle which is provided as a reference.
@@ -408,7 +408,7 @@ m1 addMorph: m3.
 m1 openInWorld.
  ```
 
-Proportionnal layout
+Proportionnal layout :
 
 Français:
 
