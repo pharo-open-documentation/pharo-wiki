@@ -1,4 +1,4 @@
-# Pharo wiki 
+# Pharo wiki
 
 Wiki for the [Pharo](https://pharo.org/features) programming language and development environment.
 
@@ -31,11 +31,12 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages.
 - [Traits](General/Traits.md) - Structure to build classes via composition.
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) - A guide to deploy a Pharo application.
-- [Some cool snippets in Pharo](General/CoolSnippets.md) - A cook book to answer common needs of a Pharo developer. 
+- [Some cool snippets in Pharo](General/CoolSnippets.md) - A cook book to answer common needs of a Pharo developer.
 - [How to setup a travis build](General/Travis.md) - How to have automated build on travis
 - [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user.
 - [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute.
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu.
+- [Layout][General/Layout.md] - Documentation of the layout of pharo
 - [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties.
 - [Coding conventions](General/CodingConventions.md) - A list of convention to follow when writing Pharo code.
 - [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
@@ -64,7 +65,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.<!-- - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
 
 ## Pharo and OpenSmalltalk Virtual Machine
-- [Pharo VM documentation map](PharoVirtualMachine/pharo-vm-map.md) - 
+- [Pharo VM documentation map](PharoVirtualMachine/pharo-vm-map.md) -
 
 ## External projects
 ### Data exchange
