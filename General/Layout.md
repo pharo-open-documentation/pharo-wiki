@@ -1,30 +1,6 @@
-Row layout :
+# Layout
 
-Français :
-
-Ce layout affiche les submorphs d’un morph aligner horizontalement.
-Par défaut, l'affichage des submorphs se fait dans le coin en haut à gauche du morph.
-
-Avec ce layout, les submorphs d'un morph sont afficher dans un tableau. Ce tableau associe un submorph à une cellule.
-La taille d'une cellule sur l'axe Y est de la taille en Y du conteneur. Alors que la taille en X d'une cellule est la taille du submorph contenu dans cette cellule.
-
-Ensuite, on peut modifier certaines variables pour modifier l'affichage d'un morph. Ces variables sont :
-- cellPositioning
-- cellInset
-- extent
-- hResizing
-- vResizing
-
-La variable en question est cellPositioning qui peut prendre comme valeur : center, bottomLeft, topLeft, topRight, bottomRight.
-Elle modifie la façon dont les submorphs sont affichés.
-On peut varier l’écart de pixel entre les cellules avec la variable : cellInset.
-
-On peut faire varier la taille des morphs avec les variables hResizing (horizontale) et vResizing (vertical). Les valeurs possibles sont : shrinkWrap, spaceFill, rigid.
-- shrinkWrap adapte la taille du morph a celui de ces submorphs.
-- rigid ne modifie pas la taille du morph
-- spaceFill rempli l'espace disponible de la cellule du morph
-
-English :
+## Row layout :
 
 This layout display the submorphs of a morph horizontally aligned.
 By default, the submorphs display start at the topLeft corner of the morph.
@@ -145,7 +121,7 @@ m1 addMorph: m3.
 m1 openInWorld.
 ```
 
-Table Layout :
+## Table Layout :
 
 The layout process:
 For computing the new layout for the children of any morph, we start with an initial rectangle which is provided as a reference.
@@ -340,15 +316,7 @@ m1 addMorph: m3.
 m1 openInWorld.
 ```
 
-Stack Layout :
-
-Français :
-
-Dépile les submorphs au centre du morph par défaut.
-Attention, si le dernier submorph dépilé est plus grand que les autres, on ne pourra pas voir les autres submorphs.  
-Le paramètre cellPositioning permet de positionner spécifiquement l’origin d’où est tracé les morph. Par exemple : si cellPositioning est topRight, tous les morph seront empilé sur le coin en haut a droite
-
-English:
+## Stack Layout :
 
 Unstack the submorphs at the center of the morph in default.
 It could be a problem if the last submorph unstack was bigger than the other submorph, because the last one was display on the other.
@@ -408,18 +376,7 @@ m1 addMorph: m3.
 m1 openInWorld.
  ```
 
-Proportionnal layout :
-
-Français:
-
-Ce layout permet de modifier la taille relative d’un submorph quand on change la taille de son conteneur.
-Pour cela il faut lui donner la frame dans laquelle sera afficher le submorph.
-Cette frame est un pourcentage du morph.
-Par exemple, si on donne une frame de (0 @ 0 corner: 0.5 @ 0.5) a un submorph, il occupera 1/4 du Morph.
-Et donc quand on agrandira le morph, le morph s'agrandira aussi pour toujours occuper 25% du morph.
-L'affichage du submorph se fait toujours dans le coin en haut à gauche du morph.
-
-English:
+## Proportionnal layout :
 
 Allow to modify the relative size of a submorph when the size of the container change.
 The goal was to change proportionnaly to the size of the morph.
@@ -502,7 +459,6 @@ Example 5: Proportional layout with scrollbar
 	window openInWorld.
 ```
 
-Annexe :
+## Annexe :
 
-Pas de taille minimale particulière.
 No minimal size in particular
