@@ -36,7 +36,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user.
 - [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute.
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu.
-- [Layout](General/Layout.md) - Documentation of the layout of pharo
+- [Layout](General/Layout.md) - Documentation about the layout management in the Morphic Library of pharo.
 - [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties.
 - [Coding conventions](General/CodingConventions.md) - A list of convention to follow when writing Pharo code.
 - [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
