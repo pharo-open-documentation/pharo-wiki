@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
         with:
-          smalltalk-version: Pharo64-10
+          smalltalk-image: Pharo64-10
       - run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 15
@@ -94,7 +94,7 @@ Last but not least, we have the actions to execute:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
         with:
-          smalltalk-version: Pharo64-10
+          smalltalk-image: Pharo64-10
       - run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 15
@@ -220,16 +220,99 @@ If you enabled your repository in coveralls ([https://coveralls.io/repos/new](ht
 
 For more informations check: [SmalltalkCI guide on coverage](https://github.com/hpi-swa/smalltalkCI/blob/master/docs/COVERAGE.md).
 
-For more informations on SmalltalkCI in general check: [SmalltalkCI documentation]([SmalltalkCI](https://github.com/hpi-swa/smalltalkCI)).
+For more informations on SmalltalkCI in general check: [SmalltalkCI documentation](https://github.com/hpi-swa/smalltalkCI).
 
+## Testing multiple versions of Pharo at once
 
+It is rare to have a project working only on one version of Pharo. Thus, it is often useful to have our workflows run on multiple versions. 
+
+This can be archieved this way:
+
+```yml
+```yml
+name: CI
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11 ]
+    name: ${{ matrix.smalltalk }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
+        shell: bash
+        timeout-minutes: 15
+```
+
+Here we declared a matrix with multiple versions of Pharo as axes:
+
+```yml
+    strategy:
+      matrix:
+        smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11 ]
+```
+
+Each axe will use the name of the Pharo version as name:
+
+```yml
+    name: ${{ matrix.smalltalk }}
+```
+
+But this could also be another name such as:
+
+```yml
+    name: MyProject-${{ matrix.smalltalk }}
+```
+
+Then the builds would be: `MyProject-Pharo64-9.0`, `MyProject-Pharo64-10` and `MyProject-Pharo64-11`.
+
+The names will then be used to display the different builds on Github:
+
+![Screenshot of matrix](GithubActions_matrix.png)
+
+The list of possible Pharo versions are:
+- Pharo64-alpha
+- Pharo64-stable
+- Pharo64-11
+- Pharo64-10
+- Pharo64-9.0
+- Pharo64-8.0
+- Pharo64-7.0
+- Pharo64-6.1
+- Pharo32-6.0 		
+- Pharo32-alpha 		
+- Pharo32-stable 		
+- Pharo32-11 		
+- Pharo32-10 		
+- Pharo32-9.0 		
+- Pharo32-8.0 		
+- Pharo32-7.0 		
+- Pharo32-6.1 		
+- Pharo32-6.0 		
+- Pharo32-5.0 		
+- Pharo32-4.0 		
+- Pharo32-3.0
+
+> Note: This list is from February 2023. More versions will be added in the future
 
 
 
 TODO:
 
-- Simple testing 
-- SmalltalkCI options
+- Customs pharo scripts in SmalltalkCI
 - Plusieurs Pharo
 - Branches/PR/Releases/cron
 - Multiple OS
@@ -237,5 +320,4 @@ TODO:
 - Continuous releases 
 - Releases 
 - Add to Pharo Launcher
-- Coverage
 - Thanking 
