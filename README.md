@@ -27,6 +27,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 ## General
 
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies.
+- [Setup your CI through github actions](General/GithubActions.md) - Setup your CI via GitHub actions for your Pharo projects.
 - [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git.
 - [Extension methods](General/Extensions.md) - How to extend existing classes in your packages.
 - [Traits](General/Traits.md) - Structure to build classes via composition.
