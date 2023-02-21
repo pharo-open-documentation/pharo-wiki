@@ -61,7 +61,7 @@ Let's see a little what is happening here.
 The #name parameter allows one to give a name to the workflow. This is useful because you might have more than one workflow for your project. 
 For example:
 
-[Example of different workflows](GitHubActions_workflows.png)
+![Example of different workflows](GitHubActions_workflows.png)
 
 In this image we can see a CI that has 3 differents workflows:
 - CI
