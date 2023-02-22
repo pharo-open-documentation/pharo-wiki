@@ -6,15 +6,19 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 > Looking for a list of awesome projects? Check-out [awesome-pharo](https://github.com/pharo-open-documentation/awesome-pharo), a curated list of awesome Pharo projects.
 
-## Contents
-- [Contents](#contents)
-- [Beginners](#beginners)
-- [General](#general)
-- [Pharo projects](#pharo-projects)
-- [External projects](#external-projects)
-  - [Data exchange](#data-exchange)
-- [Migration guidelines](#migration-guidelines)
-- [External resources](#external-resources)
+- [Pharo wiki](#pharo-wiki)
+  * [Beginners](#beginners)
+  * [General](#general)
+    + [Infrastructure](#infrastructure)
+    + [Pharo Language](#pharo-language)
+    + [Pharo Tooling](#pharo-tooling)
+  * [Pharo projects](#pharo-projects)
+  * [Pharo and OpenSmalltalk Virtual Machine](#pharo-and-opensmalltalk-virtual-machine)
+  * [External projects](#external-projects)
+    + [Data exchange](#data-exchange)
+    + [Data structures](#data-structures)
+  * [Migration guidelines](#migration-guidelines)
+  * [External resources](#external-resources)
 
 ## Beginners
 
@@ -26,31 +30,39 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 
 ## General
 
+### Infrastructure
+
 - [How to deal with baselines](General/Baselines.md) - Configure your project and its dependencies.
 - [Setup your CI through github actions](General/GithubActions.md) - Setup your CI via GitHub actions for your Pharo projects.
 - [Pharo code export formats](General/ExportFormats.md) - Explanations about code formats used to export code to VCS such as git.
-- [Extension methods](General/Extensions.md) - How to extend existing classes in your packages.
-- [Traits](General/Traits.md) - Structure to build classes via composition.
 - [How to deploy a pharo application](General/DeployYourPharoApplication.md) - A guide to deploy a Pharo application.
-- [Some cool snippets in Pharo](General/CoolSnippets.md) - A cook book to answer common needs of a Pharo developer.
-- [How to setup a travis build](General/Travis.md) - How to have automated build on travis
-- [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user.
-- [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute.
-- [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu.
-- [Layout](General/Layout.md) - Documentation about the layout management in the Morphic Library of pharo.
-- [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties.
-- [Coding conventions](General/CodingConventions.md) - A list of convention to follow when writing Pharo code.
-- [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
 - [Windows 10 Subsystem For Linux (WSL)](General/Windows10SubsystemForLinux.md) - Getting Pharo to run on Windows 10 Subsystem for Linux.
 - [Using CJK (Chinese, Japanese, and Korean) characters](General/CJKCharacter.md) - Guide to help you configure Pharo to support Chinese, Japanese, and Korean characters.
 - [Using CJK input methods](General/CJKInputMethod.md) - Guide to help you configure Pharo to support CJK input method.
-- [Iceberg on Windows workaround](General/IcebergOnWindows.md) - Troubleshooting for some issues appearing when using Iceberg on Windows.
+- [Tweaking big images](General/TweakingBigImages.md) - Tips to make large pharo images more responsive.
+- [Image file format](General/ImageFileFormat.md) - Documentation about binary format of Pharo images.
+- [How to setup a travis build](General/Travis.md) - How to have automated build on travis
+
+### Pharo Language
+
+- [Extension methods](General/Extensions.md) - How to extend existing classes in your packages.
+- [Traits](General/Traits.md) - Structure to build classes via composition.
+- [Some cool snippets in Pharo](General/CoolSnippets.md) - A cook book to answer common needs of a Pharo developer.
+- [Progress bar](General/ProgressBar.md) - Display a progress bar to give feedback to the user.
+- [Morphic Layouts](General/Layout.md) - Documentation about the layout management in the Morphic Library of pharo.
+- [Pragmas](General/Pragmas.md) - A guide on Pragmas, annotations to compiled methods to add additional properties.
+- [Coding conventions](General/CodingConventions.md) - A list of convention to follow when writing Pharo code.
 - [Exceptions](General/Exceptions.md) - How Pharo's exceptions work and explanations on how to use them.
 - [Sorting collections](General/SortingCollections.md) - How to sort collections with Pharo's built-in API.
-- [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool.
-- [Tweaking big images](General/TweakingBigImages.md) - Tips to make large pharo images more responsive.
 - [Sessions management](General/SessionsManagement.md) - Documentation on setting up start-up and shut-down actions in Pharo.
-- [Image file format](General/ImageFileFormat.md) - Documentation about binary format of Pharo images.
+
+### Pharo Tooling
+
+- [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
+- [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute.
+- [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu.
+- [Iceberg on Windows workaround](General/IcebergOnWindows.md) - Troubleshooting for some issues appearing when using Iceberg on Windows.
+- [Refactoring](General/Refactorings.md) - Documentation on the usage of Pharo refactoring's tool.
 - [Settings](General/Settings.md) - How to use Pharo's settings system to define your own settings.
 
 ## Pharo projects
