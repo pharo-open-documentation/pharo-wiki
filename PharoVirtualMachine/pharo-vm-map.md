@@ -31,7 +31,7 @@ The various link of the opensmalltalk/pharo VM implementation given in this chap
 
 
 Main lecture: Smalltalk - 80. The language and its implementation:
-[http://sdmeta.gforge.inria.fr/FreeBooks/BlueBook/Bluebook.pdf](http://stephane.ducasse.free.fr/FreeBooks/BlueBook/Bluebook.pdf)
+[http://stephane.ducasse.free.fr/FreeBooks/BlueBook/Bluebook.pdf](http://stephane.ducasse.free.fr/FreeBooks/BlueBook/Bluebook.pdf)
 
 Especially, the part that are related to the VM: pages 541 to pages 691
 A web format can be found here:
@@ -60,7 +60,7 @@ Tips on debugging the VM:
 
 # Compiler, bytecodes and compiled method
 ## introduction
-[https://marianopeck.blog/2011/04/30/smalltalk-reflective-model/](https://marianopeck.wordpress.com/2011/04/30/smalltalk-reflective-model/)
+[https://marianopeck.wordpress.com/2011/04/30/smalltalk-reflective-model/](https://marianopeck.wordpress.com/2011/04/30/smalltalk-reflective-model/)
 ## compiler - Opal
 Source methods written by programmers are represented in the system as instances of *String*. The Strings contain sequences of characters that conform to the pharo syntax.
 
@@ -75,11 +75,10 @@ Source methods are translated by the system's *compiler* into sequences of instr
 * http://forum.world.st/Squeak-Compiler-evaluate-3-4-Pharo-equivalent-td5086475.html
 * http://forum.world.st/evaluate-with-bindings-td5071919.html
 
-
 ## bytecode:
 The original smalltalk interpreter understands 256 bytecode instructions that fall into five categories: pushes, stores, sends, returns, and jumps. Since more than 256 instructions for the interpreter are needed, some of the bytecodes take extensions. An extension is one or two bytes following the bytecode that further specify the instruction. An extension is not an instruction on its own, it is only a part of an instruction. 
 
-* [https://marianopeck.blog/2011/05/21/introduction-to-smalltalk-bytecodes/](https://marianopeck.wordpress.com/2011/05/21/introduction-to-smalltalk-bytecodes/)
+* [https://marianopeck.wordpress.com/2011/05/21/introduction-to-smalltalk-bytecodes/](https://marianopeck.wordpress.com/2011/05/21/introduction-to-smalltalk-bytecodes/)
 * https://clementbera.wordpress.com/2013/04/21/byte-code-to-source-code-mappin/
 * https://clementbera.wordpress.com/2013/09/23/squeakv3plusclosure-bytecode-set/
 * A bytecode set for adaptive optimizations: https://hal.inria.fr/hal-01088801/document
@@ -87,20 +86,14 @@ The original smalltalk interpreter understands 256 bytecode instructions that fa
 ## compiled method:
 The compiler creates an instance of *CompiledMethod* to hold the bytecode translation of a source method. 
 
-* [https://marianopeck.blog/2011/05/14/playing-with-compiledmethod/](https://marianopeck.wordpress.com/2011/05/14/playing-with-compiledmethod/)
-* [https://marianopeck.blog/2011/06/03/primitives-pragmas-literals-and-their-relation-to-compiledmethods/](https://marianopeck.wordpress.com/2011/06/03/primitives-pragmas-literals-and-their-relation-to-compiledmethods/)
+* [https://marianopeck.wordpress.com/2011/05/14/playing-with-compiledmethod/](https://marianopeck.wordpress.com/2011/05/14/playing-with-compiledmethod/)
+* [https://marianopeck.wordpress.com/2011/06/03/primitives-pragmas-literals-and-their-relation-to-compiledmethods/](https://marianopeck.wordpress.com/2011/06/03/primitives-pragmas-literals-and-their-relation-to-compiledmethods/)
 * https://clementbera.wordpress.com/2013/07/29/smalltalk-method-and-block-models/
 * http://www.mirandabanda.org/cogblog/2008/06/17/bluebook-compiledmethods-having-our-cake-and-eating-it-too/
-* https://marianopeck.blog/2011/07/06/named-primitives/
-
-
-
+* [https://marianopeck.wordpress.com/2011/07/06/named-primitives/](https://marianopeck.wordpress.com/2011/07/06/named-primitives/)
 
 ## class format:
-[https://marianopeck.blog/2011/05/07/class-formats-and-compiledmethod-uniqueness/](https://marianopeck.wordpress.com/2011/05/07/class-formats-and-compiledmethod-uniqueness/)
-
-
-
+[https://marianopeck.wordpress.com/2011/05/07/class-formats-and-compiledmethod-uniqueness/](https://marianopeck.wordpress.com/2011/05/07/class-formats-and-compiledmethod-uniqueness/)
 
 # stack interperter
 The original smalltalk system wat a stack-oriented interpreter. A big part of the system still contain its source code, which is enhanced with Just In Time  (JIT) in recent version.
@@ -147,7 +140,7 @@ http://www.mirandabanda.org/bluebook/bluebook_chapter26.html#TheObjectMemory26
 
 ### in Opensmalltalk/Pharo
 
-* [https://marianopeck.blog/2011/10/26/memory-addresses-and-immediate-objects/](https://marianopeck.wordpress.com/2011/10/26/memory-addresses-and-immediate-objects/)
+* [https://marianopeck.wordpress.com/2011/10/26/memory-addresses-and-immediate-objects/](https://marianopeck.wordpress.com/2011/10/26/memory-addresses-and-immediate-objects/)
 * http://www.mirandabanda.org/cogblog/2013/09/05/a-spur-gear-for-cog/
 * https://clementbera.wordpress.com/2014/01/16/spurs-new-object-format/
 * https://clementbera.wordpress.com/2014/02/06/7-points-summary-of-the-spur-memory-manager/
