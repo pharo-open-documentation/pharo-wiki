@@ -668,13 +668,125 @@ And we notice the new parameter in the SmalltalkCi command:
 
 Having multiple workflows can have other usage that we will exlpore in the next sections
 
+## Continuous releases
+
+Until now, we are using Github actions to test our project. But it is not the only thing we can do here. 
+We could also save the result of some builds to be able to download them and use them with our project directly setup.
+
+In this section, we will see how to save the result of the builds of our master branch in a github release.
+
+To do that, we can first remove the master branch from the targets of our test workflow becaure we will handle the master branch in another workflow.
+
+```yml
+on:
+  push:
+    branches:
+      - '**'
+      - '!master'
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+```
+
+Then we will create another workflow called `.github/workflows/continuous.yml`.
+
+```yml
+name: continuous
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_NAME: MyProject-${{ matrix.smalltalk }}
+    strategy:
+      matrix:
+        smalltalk: [ Pharo64-10, Pharo64-11 ]
+    name: ${{ matrix.smalltalk }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-version: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
+        shell: bash
+        timeout-minutes: 15
+        
+      # Here we zip the result of the build to be able to keep the artefacts
+      - name: package
+        run: |
+          mv /home/runner/.smalltalkCI/_builds/* .
+          mv TravisCI.image $PROJECT_NAME.image
+          mv TravisCI.changes $PROJECT_NAME.changes
+          echo ${${{ matrix.smalltalk }}} | sed -e 's/.*\-//g ; s/\..*//g ; s/$/0/' > pharo.version
+          zip -r $PROJECT_NAME.zip $PROJECT_NAME.image $PROJECT_NAME.changes *.sources pharo.version
+          ls
+        
+      #Save the artefact of the build under "continuous" tag
+      - name: Update release
+        uses: johnwbyrd/update-release@v1.0.0
+        with:
+          release: 'continuous'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ${{ env.PROJECT_NAME }}.zip
+```
+
+This workflow starts like what we have seen until now. It checkout our project, install smalltalkCI and runs it. 
+But it also adds three steps to the process. 
+
+The first step is to give a name to our project. We will use that name to name our build artifact:
+
+```yml
+    env:
+      PROJECT_NAME: MyProject-${{ matrix.smalltalk }}
+```
+
+In the second step, we rename the image produced by SmalltalkCI. We generate a version file that is useful in tools such as the `PharoLauncher`. And we zip the files in the archive to save.
+
+```yml
+      # Here we zip the result of the build to be able to keep the artefacts
+      - name: package
+        run: |
+          mv /home/runner/.smalltalkCI/_builds/* .
+          mv TravisCI.image $PROJECT_NAME.image
+          mv TravisCI.changes $PROJECT_NAME.changes
+          echo ${${{ matrix.smalltalk }}} | sed -e 's/.*\-//g ; s/\..*//g ; s/$/0/' > pharo.version
+          zip -r $PROJECT_NAME.zip $PROJECT_NAME.image $PROJECT_NAME.changes *.sources pharo.version
+          ls
+```
+
+The last step is to publish the artifact in the continuous tag. For that we are using the action `johnwbyrd/update-release@v1.0.0`.
+
+```yml
+      #Save the artefact of the build under "continuous" tag
+      - name: Update release
+        uses: johnwbyrd/update-release@v1.0.0
+        with:
+          release: 'continuous'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: ${{ env.PROJECT_NAME }}.zip
+```
+
+> Note: The name of the continuous release can be changed
+
+Once this is done, each commit on master will result on updating the assets of the `contunious` release on github to save the latest one.
+
+![Screenshot of contunious release](GithubActions_continuous.png)
+
+
 
 
 
 TODO:
-- Continuous releases 
 - Releases 
 - GitBridge
+- Complete example
 - Add to Pharo Launcher
 - External links
 - Thanking 
