@@ -2,7 +2,6 @@ name: Broken links
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  FILES: find . -name *.md
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the development branch
@@ -16,6 +15,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FILES: find . -name "*.md"
     steps:
     - uses: actions/checkout@v3
     - name: test
