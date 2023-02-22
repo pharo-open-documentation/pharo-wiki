@@ -453,16 +453,109 @@ To distinguish the builds, we use the Pharo version and the OS name to name our 
 
 ![Screenshot of ci matrix](GithubActions_os.png)
 
+You can find more information on the available OS here: [https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners)
 
+## Manage the workflow target (branchs, PR, ...)
 
+In our simple example at the beginning, we were launching the CI on the master branch, but it is not the only option.
+
+### Target branches
+
+It is possible to target multiple branches at once. For example:
+
+```yml
+on:
+  push:
+    branches:
+      - 'master'
+      - 'development'
+      - 'feature/**
+```
+
+This will launch your workflow for every commit on `master`, `development` or any branch starting by `feature/`. 
+
+You can also target all branches doing:
+
+```yml
+on:
+  push:
+    branches:
+      - '**'
+```
+
+And in case you want to execute it on all branches except some you can use:
+
+```yml
+on:
+  push:
+    branches:
+      - '**'
+      - '!doc/**'
+```
+
+This templace will launch the CI for every commit on any branch except the ones starting by `doc/`.
+
+### Target pull requests
+
+It is also possible to target PR made to your project like this:
+
+```yml
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+```
+
+Note that this can be done in addition of other targets:
+
+```yml
+on:
+  push:
+    branches:
+      - '**'
+      - '!master'
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+```
+
+### Target releases
+
+It is also sometimes useful to have a workflow targeting releases. We'll exploit that later in this documentation.
+In that case you can use:
+
+```yml
+on:
+  release:
+    types: [created, edited]
+```
+
+### Target scheduled workflow
+
+In some cases, it might be useful to target the workflow on specific times. 
+For example, it happens that some projects are "meta project". Their goal is to load a bunch of other project. In that case, it's rare that a commit is made direcly in them.
+But we want to run the CI on a regular basis to be sure our project still works. In that case we can use a cron to schedule the workflow:
+
+```yml
+on:
+  push:
+    branches:
+      - 'master'
+  schedule:
+    - cron:  '0 0 * * *'
+```
+
+Some utils will help you to configure the parameter of this target such as [Crontab.guru](https://crontab.guru/).
+
+### Other targets
+
+Github actions have way more options that the options presented here. The most useful ones were presented here, but you can find more information in [Github documentation](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on)
 
 
 
 TODO:
-
-- Branches/PR/Releases/cron
 - Multiple workflows
 - Continuous releases 
 - Releases 
+- GitBridge
 - Add to Pharo Launcher
+- External links
 - Thanking 
