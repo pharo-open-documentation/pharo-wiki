@@ -12,11 +12,9 @@ on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
-obs:
+jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - uses: docker://dkhamsing/awesome_bot:latest
