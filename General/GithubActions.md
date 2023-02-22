@@ -230,7 +230,6 @@ It is rare to have a project working only on one version of Pharo. Thus, it is o
 This can be archieved this way:
 
 ```yml
-```yml
 name: CI
 
 env:
@@ -303,13 +302,67 @@ The list of possible Pharo versions are:
 
 > Note: This list is from February 2023. More versions will be added in the future
 
+### Testing on multiple OS
+
+Usually, our Pharo project are not influence by the OS on whitch it runs. But in some cases, it can be important to test on multiple OS.
+
+This can be archieved this way: 
+
+```yml
+name: CI
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ macos-latest, windows-latest, ubuntu-latest]
+        smalltalk: [ Pharo64-9.0, Pharo64-10]
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
+        shell: bash
+        timeout-minutes: 15
+```
+
+As we can see here:
+
+```yml
+        os: [ macos-latest, windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+```
+
+We declare that our project will be run on the latest macos, windows and ubuntu to covers the 3 major OS. 
+
+To distinguish the builds, we use the Pharo version and the OS name to name our builds:
+
+```yml
+    name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
+```
+
+![Screenshot of ci matrix](GithubActions_os.png)
+
+
+
+
 
 
 TODO:
 
 - Customs pharo scripts in SmalltalkCI
 - Branches/PR/Releases/cron
-- Multiple OS
 - Multiple workflows
 - Continuous releases 
 - Releases 
