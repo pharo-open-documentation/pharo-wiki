@@ -928,9 +928,73 @@ And the second is to add a parameter to the checkout action of your workflow fil
 Once those steps are setup, your tests should be able to run and fetch resources from your git repository without trouble.
 For more information you can look at the [documentation of GitBridge](https://github.com/jecisc/GitBridge).
 
+## Add your build artifacts to PharoLauncher
+
+[Pharo launcher](https://pharo-project.github.io/pharo-launcher//) is a great tool to manage Pharo images and here we are going to explain how to be able to get images of your project from it. 
+
+> Note: In order to do this, you will need to have a continuous release and/or a release workflow setup as we explained earlier in this documentation.
+
+Pharo launcher comes with a default set of sources to fetch Pharo images. It also allows one to add its own sources, and we will show here how to add your project as one of your own source.
+
+It is doable thanks to the `mysources.list` of pharo-launcher file located in the `PhLUserTemplateSources sourcesFile` folder. If present, this file defines additional template sources beyond the official list of templates. At this time, there is no UI to add them.
+
+To find the right folder:
+
+* Open the Pharo Launcher
+* Open a Playground (Ctrl + O, Ctrl + W)
+* Execute `PhLUserTemplateSources sourcesFile`
+
+You can now edit `mysources.list` in this folder to add the images of your project you wish to have in your Pharo launcher.
+
+Here is how to add images from your continuous release:
+
+```st
+[
+	PhLTemplateSource {
+		#type : #URLGroup,
+		#name : 'MyProject',
+		#templates : [
+			PhLTemplateSource {
+				#type : #URL,
+				#name : 'MyProject Pharo 10 - master',
+				#url : 'https://github.com/MY_USERNAME/MY_PROJET_NAME/releases/download/continuous/MyProject-Pharo64-10.zip'
+			},
+			PhLTemplateSource {
+				#type : #URL,
+				#name : 'MyProject 11 - master',
+				#url : 'https://github.com/MY_USERNAME/MY_PROJET_NAME/releases/download/continuous/MyProject-Pharo64-11.zip'
+			}
+		]
+	}
+]
+```
+
+And here is how to add images from a specific release, lets say `v1.4.3`:
+
+```st
+[
+	PhLTemplateSource {
+		#type : #URLGroup,
+		#name : 'MyProject',
+		#templates : [
+			PhLTemplateSource {
+				#type : #URL,
+				#name : 'MyProject Pharo 10 - v1.4.3',
+				#url : 'https://github.com/MY_USERNAME/MY_PROJET_NAME/releases/download/v1.4.3/MyProject-Pharo64-10.zip'
+			},
+			PhLTemplateSource {
+				#type : #URL,
+				#name : 'MyProject Pharo 11 - v1.4.3',
+				#url : 'https://github.com/MY_USERNAME/MY_PROJET_NAME/releases/download/v1.4.3/MyProject-Pharo64-11.zip'
+			}
+		]
+	}
+]
+```
+
+You can then adapt those sources to what you need. Once it is done, you can click on the `New` button of the launcher and see a new source named `MyProject`.
 
 
 TODO:
-- Add to Pharo Launcher
 - External links
 - Thanking 
