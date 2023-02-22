@@ -1,0 +1,24 @@
+name: Broken links
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the development branch
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+obs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: docker://dkhamsing/awesome_bot:latest
+      with:
+        args: --white-list travis-ci,127.0.0.1,smalltalkhub.com/mc --allow-dupe --allow-redirect --skip-save-results `find . -name "*.md"`
