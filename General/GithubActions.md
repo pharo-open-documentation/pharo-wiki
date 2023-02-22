@@ -855,11 +855,82 @@ This action will add the files matching the $files: property to the assets of th
 
 ![Screenshot of releases](GithubActions_releases.png)
 
+## Depending on resouces of your repository with GitBridge
+
+It happens in some project that we need resources to do some tests. In the past, it was common to save those resources as a string or a byte array directly in a method of the project.
+This makes can have multiple drawbacks like making the management of the project harder, droping Pharo's performances in code management, no real versionning of those resources…
+
+Now that we can store our projects on git, an alternative is possible: Save your resources in your git repository and use file references in Pharo to access them.
+
+To help with that, the project [GitBridge](https://github.com/jecisc/GitBridge) was created. 
+This project helps one to access resources from the git repository and informations from git directly from the Pharo image.
+
+This project can be added as a dependency of your project with this spec:
+
+```Smalltalk
+    spec
+    	baseline: 'GitBridge'
+    	with: [ spec repository: 'github://jecisc/GitBridge:v1.x.x/src' ]
+```
+
+In order to create a GitBridge to your project, you first need to subclass `GitBridge` and to store your bridge in a package of your project.
+
+```Smalltalk
+GitBridge subclass: #MyProjectBridge
+	slots: {  }
+	classVariables: {  }
+	package: 'MyProject'
+```
+
+This new bridge needs a class initialization like this one:
+
+```Smalltalk
+MyProjectBridge class>>initialize
+	SessionManager default registerSystemClassNamed: self name
+```
+
+This will allow the bridge to reset some cache at the image startup.
+
+Now that your bridge is created, if it finds an Iceberg repository, associated to its local clone, containing the package in which the bridge is defined, you will be able to use the bridge to access some resources.
+
+For example you can get a file reference to the git folder like this:
+
+```Smalltalk
+MyProjectBridge root
+```
+
+And this allows you to access your test resouces.
+
+Once your project is using `GitBridge`, you just need to be sure of two things in order for the CI to work. 
+The first is to have the option `#registerInIceberg` to true in your smalltalkCI configuration.
+
+```ston
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'MyProject',
+      #directory : 'src',
+      #registerInIceberg : true
+    }
+  ]
+}
+```
+
+And the second is to add a parameter to the checkout action of your workflow file in order to fetch the full history of git:
+
+```yml
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+```
+
+Once those steps are setup, your tests should be able to run and fetch resources from your git repository without trouble.
+For more information you can look at the [documentation of GitBridge](https://github.com/jecisc/GitBridge).
+
 
 
 TODO:
-- GitBridge
-- Complete example
 - Add to Pharo Launcher
 - External links
 - Thanking 
