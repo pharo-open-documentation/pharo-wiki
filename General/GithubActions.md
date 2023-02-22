@@ -13,7 +13,7 @@ This guide will get you through the process to setup your own integration.
     + [Code Coverage](#code-coverage)
     + [Using custom scripts](#using-custom-scripts)
   * [Testing multiple versions of Pharo at once](#testing-multiple-versions-of-pharo-at-once)
-    + [Testing on multiple OS](#testing-on-multiple-os)
+  * [Testing on multiple OS](#testing-on-multiple-os)
   * [Manage the workflow target (branchs, PR, ...)](#manage-the-workflow-target--branchs--pr---)
     + [Target branches](#target-branches)
     + [Target pull requests](#target-pull-requests)
@@ -423,7 +423,7 @@ The list of possible Pharo versions are:
 
 > Note: This list is from February 2023. More versions will be added in the future
 
-### Testing on multiple OS
+## Testing on multiple OS
 
 Usually, our Pharo project are not influence by the OS on whitch it runs. But in some cases, it can be important to test on multiple OS.
 
