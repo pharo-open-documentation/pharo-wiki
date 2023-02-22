@@ -15,10 +15,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FILES: find . -name "*.md"
     steps:
     - uses: actions/checkout@v3
+    - name: Get files
+      run: |
+        echo "FILES=$(find . -name "*.md")" >> $GITHUB_ENV
     - name: test
       run: |
         echo $FILES
