@@ -994,7 +994,11 @@ And here is how to add images from a specific release, lets say `v1.4.3`:
 
 You can then adapt those sources to what you need. Once it is done, you can click on the `New` button of the launcher and see a new source named `MyProject`.
 
+## External ressources
 
-TODO:
-- External links
-- Thanking 
+Here are some resources on github actions and Pharo:
+- [https://badetitou.fr/misc/2020/11/30/Testing-pharo-with-github-actions/](https://badetitou.fr/misc/2020/11/30/Testing-pharo-with-github-actions/)
+- [https://badetitou.fr/misc/2022/10/27/test-your-moose-code-using-ci/](https://badetitou.fr/misc/2022/10/27/test-your-moose-code-using-ci/)
+- [https://modularmoose.org/2021/07/19/automatic-metamodel-documentation-generation.html](https://modularmoose.org/2021/07/19/automatic-metamodel-documentation-generation.html)
+
+Do not hesitate to do a PR to add more resources ;)
