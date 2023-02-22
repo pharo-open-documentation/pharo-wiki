@@ -5,6 +5,28 @@ But Travis becoming a pay to use service, the community created some tooling to 
 
 This guide will get you through the process to setup your own integration.
 
+- [Setting up your continuous integration via Github Actions](#setting-up-your-continuous-integration-via-github-actions)
+  * [Simple case: Run tests on master branch](#simple-case--run-tests-on-master-branch)
+  * [SmalltalkCI options](#smalltalkci-options)
+    + [Load spec options](#load-spec-options)
+    + [Testing options](#testing-options)
+    + [Code Coverage](#code-coverage)
+    + [Using custom scripts](#using-custom-scripts)
+  * [Testing multiple versions of Pharo at once](#testing-multiple-versions-of-pharo-at-once)
+    + [Testing on multiple OS](#testing-on-multiple-os)
+  * [Manage the workflow target (branchs, PR, ...)](#manage-the-workflow-target--branchs--pr---)
+    + [Target branches](#target-branches)
+    + [Target pull requests](#target-pull-requests)
+    + [Target releases](#target-releases)
+    + [Target scheduled workflow](#target-scheduled-workflow)
+    + [Other targets](#other-targets)
+  * [Managing multiple workflows and SmalltalkCI configurations](#managing-multiple-workflows-and-smalltalkci-configurations)
+  * [Continuous releases](#continuous-releases)
+  * [Save releases artifacts](#save-releases-artifacts)
+  * [Depending on resouces of your repository with GitBridge](#depending-on-resouces-of-your-repository-with-gitbridge)
+  * [Add your build artifacts to PharoLauncher](#add-your-build-artifacts-to-pharolauncher)
+  * [External ressources](#external-ressources)
+
 ## Simple case: Run tests on master branch
 
 Let's start simple! This section will explain how to setup a workflow to launch the tests of the project on every commit done on master branch.
