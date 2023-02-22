@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: test
       run: |
-        echo ${{ FILES }}
+        echo $FILES
         ls
     - uses: docker://dkhamsing/awesome_bot:latest
       with:
