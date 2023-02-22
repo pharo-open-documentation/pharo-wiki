@@ -20,14 +20,6 @@ jobs:
     - name: Get files
       run: |
         FILES2= $(find . -name "*.md")
-        echo $FILES2
-        echo "FILES<<EOF" >> $GITHUB_ENV
-        echo $FILES2 >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
-    - name: test
-      run: |
-        echo $FILES
-        ls
     - uses: docker://dkhamsing/awesome_bot:latest
       with:
         args: --white-list travis-ci,127.0.0.1,smalltalkhub.com/mc --allow-dupe --allow-redirect --skip-save-results ${{ env.FILES }}
