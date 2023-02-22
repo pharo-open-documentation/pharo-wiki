@@ -11,6 +11,7 @@ The goals of the project are to provide:
 - tips on possible workflow on Pharo using all the strength of the environment;
 - references to external libraries;
 - migration guides between differents versions of Pharo.
+
 The project should be easy to contribute to (with a github account the user should just have to edit a file on the github interface to contribute)
 
 To be easy to contribute, this project is written in Markdown and hosted on github. Anyone with a github account can easily provide a Pull Request. (See [Contribution guide](CONTRIBUTION.md))
