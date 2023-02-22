@@ -131,6 +131,7 @@ SCIMetacelloLoadSpec {
   #platforms : [ #squeak, #pharo, #gemstone ],        // Define compatible platforms
   #usernameEnvVar : 'GITHUB_USER',                    // Environment variable containing the username used for authentication
   #passwordEnvVar : 'GITHUB_TOKEN',                   // Environment variable containing the password used for authentication
+  #registerInIceberg : true                           // Pharo Only | Register the tested repository in Iceberg (false by default)
 }
 ```
 ### Testing options
@@ -284,27 +285,21 @@ The names will then be used to display the different builds on Github:
 ![Screenshot of matrix](GithubActions_matrix.png)
 
 The list of possible Pharo versions are:
-- Pharo64-alpha
-- Pharo64-stable
-- Pharo64-11
-- Pharo64-10
-- Pharo64-9.0
-- Pharo64-8.0
-- Pharo64-7.0
-- Pharo64-6.1
-- Pharo32-6.0 		
-- Pharo32-alpha 		
-- Pharo32-stable 		
-- Pharo32-11 		
-- Pharo32-10 		
-- Pharo32-9.0 		
-- Pharo32-8.0 		
-- Pharo32-7.0 		
-- Pharo32-6.1 		
-- Pharo32-6.0 		
-- Pharo32-5.0 		
-- Pharo32-4.0 		
-- Pharo32-3.0
+
+| 64bits           | 32bits           |
+| ---------------- | ---------------- |
+| `Pharo64-alpha`  | `Pharo32-alpha`  |
+| `Pharo64-stable` | `Pharo32-stable` |
+| `Pharo64-11`     | `Pharo32-11`     |
+| `Pharo64-10`     | `Pharo32-10`     |
+| `Pharo64-9.0`    | `Pharo32-9.0`    |
+| `Pharo64-8.0`    | `Pharo32-8.0`    |
+| `Pharo64-7.0`    | `Pharo32-7.0`    |
+| `Pharo64-6.1`    | `Pharo32-6.1`    |
+| `Pharo64-6.0`    | `Pharo32-6.0`    |
+|                  | `Pharo32-5.0`    |
+|                  | `Pharo32-4.0`    |
+|                  | `Pharo32-3.0`    |
 
 > Note: This list is from February 2023. More versions will be added in the future
 
@@ -313,7 +308,6 @@ The list of possible Pharo versions are:
 TODO:
 
 - Customs pharo scripts in SmalltalkCI
-- Plusieurs Pharo
 - Branches/PR/Releases/cron
 - Multiple OS
 - Multiple workflows
