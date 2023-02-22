@@ -18,6 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: test
+      run: |
+        echo ${${{ FILES }}}
+        ls
     - uses: docker://dkhamsing/awesome_bot:latest
       with:
-        args: --white-list travis-ci,127.0.0.1,smalltalkhub.com/mc --allow-dupe --allow-redirect --skip-save-results ${{ FILES }}
+        args: --white-list travis-ci,127.0.0.1,smalltalkhub.com/mc --allow-dupe --allow-redirect --skip-save-results $FILES
