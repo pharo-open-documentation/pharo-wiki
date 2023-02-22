@@ -517,6 +517,8 @@ on:
     types: [assigned, opened, synchronize, reopened]
 ```
 
+Here the workflow runs on every pull requests and every commit of any branch except `master`.
+
 ### Target releases
 
 It is also sometimes useful to have a workflow targeting releases. We'll exploit that later in this documentation.
@@ -549,10 +551,127 @@ Some utils will help you to configure the parameter of this target such as [Cron
 
 Github actions have way more options that the options presented here. The most useful ones were presented here, but you can find more information in [Github documentation](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on)
 
+## Managing multiple workflows and SmalltalkCI configurations
+
+Until now, we managed only one workflow file, but it is possible to manage multiple of them.
+
+To demonstrate this, let's imagine that our project has two groups in his configuration.
+A first group loads the core of the project and is the default group of our baseline. 
+A second group loads the full projets with additional features. 
+
+We would now like to have two workflows:
+- A first workflow launched on all branches and PR to test the core in Pharo 9, 10 and 11
+- A second workflow launched on master branch and PR to test the full project in Pharo 11
+
+The first step is to get two smalltalkCI configuration.
+
+A first one will be the default `.smalltalk.ston`.
+
+```ston
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'MyProject',
+      #directory : 'src'
+    }
+  ]
+}
+```
+
+And a second one loads the group `all` and is named `.smalltalkFull.ston`.
+
+```ston
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'MyProject',
+      #directory : 'src',
+      #load : [ 'all' ]
+    }
+  ]
+}
+```
+
+Now that we have our two configurations, we can create our two workflow files. 
+
+The first one is close to what we have seen until here in this documentation:
+
+```yml
+name: CI Core
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11 ]
+    name: ${{ matrix.smalltalk }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
+        shell: bash
+        timeout-minutes: 15
+```
+
+In the second we will change the targets and we will give one more parameter to the smalltalkCI launch command to specify the path to our specific smalltalk configuration.
+
+```yml
+name: CI Full
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.smalltalk }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-image: Pharo64-11
+      - run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalkFull.ston
+        shell: bash
+        timeout-minutes: 15
+```
+
+We can see in those file that we have two different names to be able to identify which workflow is running. 
+And we notice the new parameter in the SmalltalkCi command:
+
+```yml
+      - run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalkFull.ston
+        shell: bash
+        timeout-minutes: 15
+```
+
+> Note: If we wanted to run on the same targets with two smalltalkCI configuration, we could also have used another matrix axis to avoid the need of two workflows
+
+Having multiple workflows can have other usage that we will exlpore in the next sections
+
+
 
 
 TODO:
-- Multiple workflows
 - Continuous releases 
 - Releases 
 - GitBridge
