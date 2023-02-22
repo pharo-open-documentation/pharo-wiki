@@ -221,6 +221,105 @@ If you enabled your repository in coveralls ([https://coveralls.io/repos/new](ht
 
 For more informations check: [SmalltalkCI guide on coverage](https://github.com/hpi-swa/smalltalkCI/blob/master/docs/COVERAGE.md).
 
+### Using custom scripts
+
+SmalltalkCI offers some hooks to be able to run some Pharo scripts at different moments of the project loading and testing.
+Four hooks are availables:
+- `preLoading` : Executed before loading the project
+- `postLoading` : Executed after loading the project
+- `preTesting` : Executed before testing the project
+- `postTesting` : Executed after testing the project
+
+Those parameters can take 3 different parameters. 
+
+The first one is a single script:
+
+```ston
+SmalltalkCISpec {
+  #preLoading : 'scripts/preLoading.st',
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Myproject',
+      #directory : 'src'
+    }
+  ]
+}
+```
+
+The second one is a collection of scripts:
+
+```ston
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Myproject',
+      #directory : 'src'
+    }
+  ],
+  #postLoading : [
+    'scripts/postLoading1.st',
+    'scripts/postLoading2.st'
+  ]
+}
+```
+
+And the third one is an instance of SCICustomScript that allows to run script only on certain platforms:
+
+```ston
+SmalltalkCISpec {
+  #preLoading : 'scripts/preLoading.st',
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Myproject',
+      #directory : 'src'
+    }
+  ],
+  #postLoading : [
+    SCICustomScript {
+      #path : 'scripts/postLoadingSqueak.st',
+      #platforms : [ #squeak ]
+    },
+    SCICustomScript {
+      #path : 'scripts/postLoadingPharo.st',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
+```
+
+Here is a full example:
+
+```ston
+SmalltalkCISpec {
+  #preLoading : 'scripts/preLoading.st',
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Myproject',
+      #directory : 'src'
+    }
+  ],
+  #postLoading : [
+    'scripts/postLoading1.st',
+    'scripts/postLoading2.st'
+  ],
+  #preTesting : SCICustomScript {
+    #path : 'scripts/preTesting.st',
+    #platforms : [ #squeak, #pharo, #gemstone ]
+  },
+  #testing : ...,
+  #postTesting : [
+    SCICustomScript {
+      #path : 'scripts/postTestingSqueak.st',
+      #platforms : [ #squeak ]
+    },
+    SCICustomScript {
+      #path : 'scripts/postTestingPharo.st',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
+```
+
 For more informations on SmalltalkCI in general check: [SmalltalkCI documentation](https://github.com/hpi-swa/smalltalkCI).
 
 ## Testing multiple versions of Pharo at once
@@ -361,7 +460,6 @@ To distinguish the builds, we use the Pharo version and the OS name to name our 
 
 TODO:
 
-- Customs pharo scripts in SmalltalkCI
 - Branches/PR/Releases/cron
 - Multiple workflows
 - Continuous releases 
