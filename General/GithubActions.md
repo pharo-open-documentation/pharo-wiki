@@ -779,12 +779,85 @@ Once this is done, each commit on master will result on updating the assets of t
 
 ![Screenshot of contunious release](GithubActions_continuous.png)
 
+## Save releases artifacts
 
+We have seen how to save the last artifact of a branch in a `continuous` release, but another case needs to be taken into account: the real releases.
+
+It is useful when we release a project to save a Pharo image of this project with the version of the release.
+
+This can be done with a new workflow file that will target realeses:
+
+```yml
+name: Release
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  release:
+    types: [created, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_NAME: MyProject-${{ matrix.smalltalk }}
+    strategy:
+      matrix:
+        smalltalk: [ Pharo64-10, Pharo64-11 ]
+    name: ${{ matrix.smalltalk }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-version: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }}
+        shell: bash
+        timeout-minutes: 15
+        
+      # Here we zip the result of the build to be able to keep the artefacts
+      - name: package
+        run: |
+          mv /home/runner/.smalltalkCI/_builds/* .
+          mv TravisCI.image $PROJECT_NAME.image
+          mv TravisCI.changes $PROJECT_NAME.changes
+          echo ${${{ matrix.smalltalk }}} | sed -e 's/.*\-//g ; s/\..*//g ; s/$/0/' > pharo.version
+          zip -r $PROJECT_NAME.zip $PROJECT_NAME.image $PROJECT_NAME.changes *.sources pharo.version
+          ls
+        
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ env.PROJECT_NAME }}.zip
+```
+
+This file looks a lot like the one we wrote in the previous section.
+
+I few changes are to be noted. The is the name of the workflow to identify it easily in the Actions tab of Github.
+The second is the target to build only on releases.
+
+```yml
+on:
+  release:
+    types: [created, edited]
+```
+
+And the last change is the action used after creating our Pharo archive.
+
+```yml
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ env.PROJECT_NAME }}.zip
+```
+
+This action will add the files matching the $files: property to the assets of the release.
+
+![Screenshot of releases](GithubActions_releases.png)
 
 
 
 TODO:
-- Releases 
 - GitBridge
 - Complete example
 - Add to Pharo Launcher
