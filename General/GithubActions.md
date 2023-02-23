@@ -67,6 +67,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
@@ -108,11 +110,21 @@ Then we have:
 
 With this, the workflow will run in the latest version of Ubuntu.
 
+
+```yml
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+This step adds en environment variable needed by smalltalkCI.
+
 Last but not least, we have the actions to execute:
+
 ```yml
     steps:
       - uses: actions/checkout@v2
 ```
+
 Using the "checkout" action to checkout the project on the CI worker.  
 
 ```yml
@@ -120,6 +132,7 @@ Using the "checkout" action to checkout the project on the CI worker.
         with:
           smalltalk-image: Pharo64-10
 ```
+
 Using the "setup-SmalltalkCI" action to prepare the setup.
 
 ```yml
@@ -127,6 +140,7 @@ Using the "setup-SmalltalkCI" action to prepare the setup.
         shell: bash
         timeout-minutes: 15
 ```
+
 Loads the project and executes the tests of the project with a 15min timeout.  
 
 This timeout can be increased in case your project tests are longer.  
@@ -366,6 +380,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11 ]
@@ -447,6 +463,8 @@ jobs:
         smalltalk: [ Pharo64-9.0, Pharo64-10]
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
@@ -643,6 +661,8 @@ jobs:
       matrix:
         smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11 ]
     name: ${{ matrix.smalltalk }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
@@ -669,6 +689,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: ${{ matrix.smalltalk }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
@@ -733,6 +755,8 @@ jobs:
       matrix:
         smalltalk: [ Pharo64-10, Pharo64-11 ]
     name: ${{ matrix.smalltalk }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
@@ -823,6 +847,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PROJECT_NAME: MyProject-${{ matrix.smalltalk }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         smalltalk: [ Pharo64-10, Pharo64-11 ]
