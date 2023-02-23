@@ -1,9 +1,9 @@
-# Setting up your continuous integration via Github Actions
+# Setting up your continuous integration via GitHub Actions
 
-Previously, the Pharo community was heavily relying on Travis CI for continuous integration of projects hosted on GitHub.
-But Travis becoming a pay to use service, the community created some tooling to manage the CI via Github Actions. 
+Previously, the Pharo community was heavily relying on Travis CI for the continuous integration of projects hosted on GitHub.
+But Travis becoming pay-to-use service, the community created some tooling to manage the CI via GitHub Actions. 
 
-This guide will get you through the process to setup your own integration.
+This guide will get you through the process to set up your own integration.
 
 > Note: In order to do anything for the CI of your project, you will need a `Baseline` to manage its dependencies. If it is not the case yet, you can check the [guide on baselines](Baselines.md).
 
@@ -25,16 +25,16 @@ This guide will get you through the process to setup your own integration.
   * [Managing multiple workflows and SmalltalkCI configurations](#managing-multiple-workflows-and-smalltalkci-configurations)
   * [Continuous releases](#continuous-releases)
   * [Save releases artifacts](#save-releases-artifacts)
-  * [Depending on resouces of your repository with GitBridge](#depending-on-resouces-of-your-repository-with-gitbridge)
+  * [Depending on resources of your repository with GitBridge](#depending-on-resouces-of-your-repository-with-gitbridge)
   * [Add your build artifacts to PharoLauncher](#add-your-build-artifacts-to-pharolauncher)
   * [External ressources](#external-ressources)
 
-## Simple case: Run tests on master branch
+## Simple case: Run tests on the master branch
 
-Let's start simple! This section will explain how to setup a workflow to launch the tests of the project on every commit done on master branch.
+Let's start simple! This section will explain how to set up a workflow to launch the tests of the project on every commit done on the master branch.
 
 To load our Pharo project in the CI and execute the tests, we'll use [SmalltalkCI](https://github.com/hpi-swa/smalltalkCI).
-This project needs a configuration file to fetch informations on your project. This file should be at the root of your project under the name of `.smalltalk.ston`. 
+This project needs a configuration file to fetch information on your project. This file should be at the root of your project under the name of `.smalltalk.ston`. 
 
 Here is the most simple configuration:
 
@@ -53,8 +53,8 @@ This configuration tells smalltalkCI two things:
 - The baseline to use to load the project is BaselineOf`MyProject`
 - The sources of the project are in /src
 
-Now that smalltalkCI configuration file is created, we just need to define your github workflow file.
-This file should be located in `.github/workflows/` folder. Lets call ours `testing.yml`.
+Now that smalltalkCI configuration file is created, we just need to define your GitHub workflow file.
+This file should be located in `.github/workflows/` folder. Let's call ours `testing.yml`.
 
 ```yml
 name: CI
@@ -77,14 +77,14 @@ jobs:
         timeout-minutes: 15
 ```
 
-Let's see a little what is happening here. 
+Let's see a little about what is happening here. 
 
 The #name parameter allows one to give a name to the workflow. This is useful because you might have more than one workflow for your project. 
 For example:
 
 ![Example of different workflows](GitHubActions_workflows.png)
 
-In this image we can see a CI that has 3 differents workflows:
+In this image, we can see a CI that has 3 different workflows:
 - CI
 - continuous
 - Release
@@ -98,7 +98,7 @@ on:
       - 'master'
 ```
 
-This is used to define when the workflow should enter in action. In our case, we want it when we `push` on `master` branch.
+This is used to define when the workflow should enter into action. In our case, we want it when we `push` on `master` branch.
 
 Then we have:
 
@@ -106,7 +106,7 @@ Then we have:
     runs-on: ubuntu-latest
 ```
 
-With this, the workflow will run in the latest version of ubuntu.
+With this, the workflow will run in the latest version of Ubuntu.
 
 Last but not least, we have the actions to execute:
 ```yml
@@ -127,11 +127,11 @@ Using the "setup-SmalltalkCI" action to prepare the setup.
         shell: bash
         timeout-minutes: 15
 ```
-Loads the project and execute the tests the project with a 15min timeout.  
+Loads the project and executes the tests of the project with a 15min timeout.  
 
 This timeout can be increased in case your project tests are longer.  
 
-Once you commit these two files, your project has a working CI !  
+Once you commit these two files, your project will have a working CI !  
 Each time you commit to master, a new build should happen.  
 You will be able to see the resulting build in the `Actions` tab in your project.
 
@@ -139,11 +139,11 @@ You will be able to see the resulting build in the `Actions` tab in your project
 
 We have seen in the previous section that [SmalltalkCI](https://github.com/hpi-swa/smalltalkCI) relies on a configuration file. 
 We did a simple one to start, but there are more options available. We will cover them in this section.  
-The full and up to date list is available in the [SmalltalkCI's README file](https://github.com/hpi-swa/smalltalkCI/blob/master/README.md).
+The full and up-to-date list is available in the [SmalltalkCI's README file](https://github.com/hpi-swa/smalltalkCI/blob/master/README.md).
 
 ### Load spec options
 
-In the previous example we declared a load spec with a baseline and a code directory. But it is also possible to add more options:
+In the previous example, we declared a loading spec with a baseline and a code directory. But it is also possible to add more options:
 
 ```ston
 SCIMetacelloLoadSpec {
@@ -242,16 +242,16 @@ SmalltalkCISpec {
 ```
 
 This configuration will execute all the tests loaded by the `BaselineOfMyProject` and build the coverage of all packages starting by `MyProject-` for [Coveralls](https://coveralls.io/).
-If you enabled your repository in coveralls ([https://coveralls.io/repos/new](https://coveralls.io/repos/new)), the results will be uploaded automatically.
+If you enabled your repository in coveralls ([https://coveralls.io/repos/new](https://coveralls.io/repos/new)), the results would be uploaded automatically.
 
 ![Coveralls screenshot](GithubActions_coveralls.png)
 
-For more informations check: [SmalltalkCI guide on coverage](https://github.com/hpi-swa/smalltalkCI/blob/master/docs/COVERAGE.md).
+For more information, check: [SmalltalkCI guide on coverage](https://github.com/hpi-swa/smalltalkCI/blob/master/docs/COVERAGE.md).
 
 ### Using custom scripts
 
 SmalltalkCI offers some hooks to be able to run some Pharo scripts at different moments of the project loading and testing.
-Four hooks are availables:
+Four hooks are available:
 - `preLoading` : Executed before loading the project
 - `postLoading` : Executed after loading the project
 - `preTesting` : Executed before testing the project
@@ -290,7 +290,7 @@ SmalltalkCISpec {
 }
 ```
 
-And the third one is an instance of SCICustomScript that allows to run script only on certain platforms:
+And the third one is an instance of SCICustomScript that allows running script only on certain platforms:
 
 ```ston
 SmalltalkCISpec {
@@ -353,7 +353,7 @@ For more informations on SmalltalkCI in general check: [SmalltalkCI documentatio
 
 It is rare to have a project working only on one version of Pharo. Thus, it is often useful to have our workflows run on multiple versions. 
 
-This can be archieved this way:
+This can be achieved this way:
 
 ```yml
 name: CI
@@ -394,7 +394,7 @@ Each axe will use the name of the Pharo version as name:
     name: ${{ matrix.smalltalk }}
 ```
 
-But this could also be another name such as:
+But this could also be another name, such as:
 
 ```yml
     name: MyProject-${{ matrix.smalltalk }}
@@ -427,9 +427,9 @@ The list of possible Pharo versions are:
 
 ## Testing on multiple OS
 
-Usually, our Pharo project are not influence by the OS on whitch it runs. But in some cases, it can be important to test on multiple OS.
+Usually, our Pharo projects are not influenced by the OS on which it runs. But in some cases, it can be important to test on multiple OS.
 
-This can be archieved this way: 
+This can be achieved this way: 
 
 ```yml
 name: CI
@@ -493,7 +493,7 @@ on:
       - 'feature/**
 ```
 
-This will launch your workflow for every commit on `master`, `development` or any branch starting by `feature/`. 
+This will launch your workflow for every commit on `master`, `development` or any branch starting with `feature/`. 
 
 You can also target all branches in two ways. The first is by not specifying any:  
 
@@ -511,7 +511,7 @@ on:
 ```
 
 This second way of declaring "all branches" is useful when you want to execute your workflow on all branches except some of them.
-In that case you can use:
+In that case, you can use:
 
 ```yml
 on:
@@ -521,7 +521,7 @@ on:
       - '!doc/**'
 ```
 
-This templace will launch the CI for every commit on any branch except the ones starting by `doc/`.
+This template will launch the CI for every commit on any branch except the ones starting with `doc/`.
 
 ### Target pull requests
 
@@ -540,7 +540,7 @@ on:
 ```
 
 
-Note that this can be done in addition of other targets:
+Note that this can be done by addition of other targets:
 
 ```yml
 on:
@@ -552,7 +552,7 @@ on:
     types: [assigned, opened, synchronize, reopened]
 ```
 
-Here the workflow runs on every pull requests and every commit of any branch except `master`.
+Here the workflow runs on every pull request and every commit of any branch except `master`.
 
 ### Target releases
 
@@ -567,9 +567,9 @@ on:
 
 ### Target scheduled workflow
 
-In some cases, it might be useful to target the workflow on specific times. 
-For example, it happens that some projects are "meta project". Their goal is to load a bunch of other project. In that case, it's rare that a commit is made direcly in them.
-But we want to run the CI on a regular basis to be sure our project still works. In that case we can use a cron to schedule the workflow:
+In some cases, it might be useful to target the workflow at specific times. 
+For example, it happens that some projects are "meta project". Their goal is to load a bunch of other projects. In that case, it's rare that a commit is made direcly in them.
+But we want to run the CI on a regular basis to be sure our project still works. In that case, we can use a cron to schedule the workflow:
 
 ```yml
 on:
@@ -584,21 +584,21 @@ Some utils will help you to configure the parameter of this target such as [Cron
 
 ### Other targets
 
-Github actions have way more options that the options presented here. The most useful ones were presented here, but you can find more information in [Github documentation](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on)
+GitHub actions have way more options than the options presented here. The most useful ones were presented here, but you can find more information in [Github documentation](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on)
 
 ## Managing multiple workflows and SmalltalkCI configurations
 
 Until now, we managed only one workflow file, but it is possible to manage multiple of them.
 
-To demonstrate this, let's imagine that our project has two groups in his configuration.
-A first group loads the core of the project and is the default group of our baseline. 
-A second group loads the full projets with additional features. 
+To demonstrate this, let's imagine that our project has two groups in its configuration.
+The first group loads the core of the project and is the default group of our baseline. 
+A second group loads the full projects with additional features. 
 
 We would now like to have two workflows:
 - A first workflow launched on all branches and PR to test the core in Pharo 9, 10 and 11
 - A second workflow launched on master branch and PR to test the full project in Pharo 11
 
-The first step is to get two smalltalkCI configuration.
+The first step is to get two smalltalkCI configurations.
 
 A first one will be the default `.smalltalk.ston`.
 
@@ -653,7 +653,7 @@ jobs:
         timeout-minutes: 15
 ```
 
-In the second we change the targets and we give one more parameter to the smalltalkCI launch command to specify the path to our specific smalltalk configuration.
+In the second, we change the targets, and we give one more parameter to the smalltalkCI launch command to specify the path to our specific Smalltalk configuration.
 
 ```yml
 name: CI Full
@@ -690,19 +690,19 @@ The second workflow file is named `CI full` uses `smalltalkFull.ston` explicitly
         timeout-minutes: 15
 ```
 
-> Note: If we wanted to run on the same targets with two smalltalkCI configuration, we could also have used another matrix axis and avoid needing of different workflows.  
+> Note: If we wanted to run on the same targets with two smalltalkCI configurations, we could also have used another matrix axis and avoid needing of different workflows.  
 
 Having multiple workflows can have other usages that we explore in the next sections.
 
 ## Continuous releases
 
-Until now, we use Github actions to test our project.  
+Until now, we have used Github actions to test our project.  
 But Github Actions has more features.  
 For instance, we are able to realease our projects.  
 
 In this section, we see how to save the result of the builds of our master branch in a github release.
 
-To do that, we can first remove the master branch from the targets of our test workflow becaure we will handle the master branch in another workflow.
+To do that, we can first remove the master branch from the targets of our test workflow because we will handle the master branch in another workflow.
 
 ```yml
 on:
@@ -761,7 +761,7 @@ jobs:
           files: ${{ env.PROJECT_NAME }}.zip
 ```
 
-This workflow starts like what we have seen until now. It checkout our project, install smalltalkCI and runs it. 
+This workflow starts to like what we have seen until now. It checkout our project, install smalltalkCI and runs it. 
 But it also adds three steps to the process. 
 
 The first step is to give a name to our project. We will use that name to name our build artifact:
@@ -799,7 +799,7 @@ The last step is to publish the artifact in the continuous tag. For that we are 
 
 > Note: The name of the continuous release can be changed
 
-Once this is done, each commit on master will result on updating the assets of the `continuous` release on github to save the latest one.
+Once this is done, each commit on master will result in updating the assets of the `continuous` release on GitHub to save the latest one.
 
 ![Screenshot of continuous release](GithubActions_continuous.png)
 
@@ -809,7 +809,7 @@ We have seen how to save the last artifact of a branch in a `continuous` release
 
 It is useful when we release a project to save a Pharo image of this project with the version of the release.
 
-This can be done with a new workflow file that will target realeses:
+This can be done with a new workflow file that will target releases:
 
 ```yml
 name: Release
@@ -854,7 +854,7 @@ jobs:
 
 This file looks a lot like the one we wrote in the previous section.
 
-I few changes are to be noted. The is the name of the workflow to identify it easily in the Actions tab of Github.
+A few changes are to be noted. The is the name of the workflow to identify it easily in the Actions tab of Github.
 The second is the target to build only on releases.
 
 ```yml
@@ -876,15 +876,15 @@ This action will add the files matching the $files: property to the assets of th
 
 ![Screenshot of releases](GithubActions_releases.png)
 
-## Depending on resouces of your repository with GitBridge
+## Depending on the resouces of your repository with GitBridge
 
-It happens in some project that we need resources to do some tests. In the past, it was common to save those resources as a string or a byte array directly in a method of the project.
-This makes can have multiple drawbacks like making the management of the project harder, droping Pharo's performances in code management, no real versionning of those resources…
+It happens in some projects that we need resources to do some tests. In the past, it was common to save those resources as a string or a byte array directly in a method of the project.
+This makes can have multiple drawbacks like making the management of the project harder, dropping Pharo's performances in code management, no real versioning of those resources…
 
 Now that we can store our projects on git, an alternative is possible: Save your resources in your git repository and use file references in Pharo to access them.
 
 To help with that, the project [GitBridge](https://github.com/jecisc/GitBridge) was created. 
-This project helps one to access resources from the git repository and informations from git directly from the Pharo image.
+This project helps one to access resources from the git repository and information from git directly from the Pharo image.
 
 This project can be added as a dependency of your project with this spec:
 
@@ -912,15 +912,15 @@ MyProjectBridge class>>initialize
 
 This will allow the bridge to reset some cache at the image startup.
 
-Now that your bridge is created, if it finds an Iceberg repository, associated to its local clone, containing the package in which the bridge is defined, you will be able to use the bridge to access some resources.
+Now that your bridge is created, if it finds an Iceberg repository associated with its local clone containing the package in which the bridge is defined, you will be able to use the bridge to access some resources.
 
-For example you can get a file reference to the git folder like this:
+For example, you can get a file reference to the git folder like this:
 
 ```Smalltalk
 MyProjectBridge root
 ```
 
-And this allows you to access your test resouces.
+And this allows you to access your test resources.
 
 Once your project is using `GitBridge`, you just need to be sure of two things in order for the CI to work. 
 The first is to have the option `#registerInIceberg` to true in your smalltalkCI configuration.
@@ -946,12 +946,12 @@ And the second is to add a parameter to the checkout action of your workflow fil
         fetch-depth: '0'
 ```
 
-Once those steps are setup, your tests should be able to run and fetch resources from your git repository without trouble.
-For more information you can look at the [documentation of GitBridge](https://github.com/jecisc/GitBridge).
+Once those steps are set up, your tests should be able to run and fetch resources from your git repository without trouble.
+For more information, you can look at the [documentation of GitBridge](https://github.com/jecisc/GitBridge).
 
 ## Add your build artifacts to PharoLauncher
 
-[Pharo launcher](https://pharo-project.github.io/pharo-launcher//) is a great tool to manage Pharo images and here we are going to explain how to be able to get images of your project from it. 
+[Pharo launcher](https://pharo-project.github.io/pharo-launcher//) is a great tool to manage Pharo images, and here we are going to explain how to be able to get images of your project from it. 
 
 > Note: In order to do this, you will need to have a continuous release and/or a release workflow setup as we explained earlier in this documentation.
 
@@ -1017,7 +1017,7 @@ You can then adapt those sources to what you need. Once it is done, you can clic
 
 ## External ressources
 
-Here are some resources on github actions and Pharo:
+Here are some resources on GitHub actions and Pharo:
 - [https://badetitou.fr/misc/2020/11/30/Testing-pharo-with-github-actions/](https://badetitou.fr/misc/2020/11/30/Testing-pharo-with-github-actions/)
 - [https://badetitou.fr/misc/2022/10/27/test-your-moose-code-using-ci/](https://badetitou.fr/misc/2022/10/27/test-your-moose-code-using-ci/)
 - [https://modularmoose.org/2021/07/19/automatic-metamodel-documentation-generation.html](https://modularmoose.org/2021/07/19/automatic-metamodel-documentation-generation.html)
