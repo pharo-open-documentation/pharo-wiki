@@ -493,13 +493,23 @@ on:
 
 This will launch your workflow for every commit on `master`, `development` or any branch starting by `feature/`. 
 
-You can also target all branches by not specifying any:  
+You can also target all branches in two ways. The first is by not specifying any:  
 
 ```yml
 on: [ push ]
 ```
 
-And in case you want to execute it on all branches except some you can use:
+The second is to use `'**'`:
+
+```yml
+on:
+  push:
+    branches:
+      - '**'
+```
+
+This second way of declaring "all branches" is useful when you want to execute your workflow on all branches except some of them.
+In that case you can use:
 
 ```yml
 on:
@@ -646,7 +656,12 @@ In the second we change the targets and we give one more parameter to the smallt
 ```yml
 name: CI Full
 
-on: [ push, pull_request ]
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
 
 jobs:
   build:
@@ -701,9 +716,6 @@ Then we will create another workflow called `.github/workflows/continuous.yml`.
 
 ```yml
 name: continuous
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   push:
@@ -785,9 +797,9 @@ The last step is to publish the artifact in the continuous tag. For that we are 
 
 > Note: The name of the continuous release can be changed
 
-Once this is done, each commit on master will result on updating the assets of the `contunious` release on github to save the latest one.
+Once this is done, each commit on master will result on updating the assets of the `continuous` release on github to save the latest one.
 
-![Screenshot of contunious release](GithubActions_continuous.png)
+![Screenshot of continuous release](GithubActions_continuous.png)
 
 ## Save releases artifacts
 
@@ -799,9 +811,6 @@ This can be done with a new workflow file that will target realeses:
 
 ```yml
 name: Release
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   release:
