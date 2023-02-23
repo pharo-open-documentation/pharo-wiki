@@ -48,17 +48,14 @@ SmalltalkCISpec {
 ```
 
 This configuration tells smalltalkCI two things:
+- The baseline to use to load the project is BaselineOf`MyProject`
 - The sources of the project are in /src
-- The baseline to use to load the project is BaselineOfMyProject
 
 Now that smalltalkCI configuration file is created, we just need to define your github workflow file.
 This file should be located in `.github/workflows/` folder. Lets call ours `testing.yml`.
 
 ```yml
 name: CI
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   push:
@@ -90,7 +87,7 @@ In this image we can see a CI that has 3 differents workflows:
 - continuous
 - Release
 
-Then we have 
+Then we have:  
 
 ```yml
 on:
@@ -99,7 +96,7 @@ on:
       - 'master'
 ```
 
-This is used to define when the workflow should enter in action. In our case, we want it when we push on master branch.
+This is used to define when the workflow should enter in action. In our case, we want it when we `push` on `master` branch.
 
 Then we have:
 
@@ -107,34 +104,40 @@ Then we have:
     runs-on: ubuntu-latest
 ```
 
-With this, the workflow will run in the latest version of ubuntu
+With this, the workflow will run in the latest version of ubuntu.
 
 Last but not least, we have the actions to execute:
-
 ```yml
     steps:
       - uses: actions/checkout@v2
+```
+Using the "checkout" action to checkout the project on the CI worker.  
+
+```yml
       - uses: hpi-swa/setup-smalltalkCI@v1
         with:
           smalltalk-image: Pharo64-10
+```
+Using the "setup-SmalltalkCI" action to prepare the setup.
+
+```yml
       - run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 15
 ```
+Loads the project and execute the tests the project with a 15min timeout.  
 
-This includes 3 steps:
-- Using the "checkout" action to checkout the project on the CI slave
-- Setup Smalltalk CI
-- Run the loading of the project and the testing with a 15min timeout
+This timeout can be increased in case your project tests are longer.  
 
-This timeout can be increased in case your project tests are longer
-
-Once you commit this, your project have a working CI and each time you commit to master, a new build should happen.
+Once you commit these two files, your project has a working CI !  
+Each time you commit to master, a new build should happen.  
+You will be able to see the resulting build in the `Actions` tab in your project.
 
 ## SmalltalkCI options
 
 We have seen in the previous section that [SmalltalkCI](https://github.com/hpi-swa/smalltalkCI) relies on a configuration file. 
-We did a simple one to start, but there are more options available. We will cover them in this section.
+We did a simple one to start, but there are more options available. We will cover them in this section.  
+The full and up to date list is available in the [SmalltalkCI's README file](https://github.com/hpi-swa/smalltalkCI/blob/master/README.md).
 
 ### Load spec options
 
@@ -353,9 +356,6 @@ This can be archieved this way:
 ```yml
 name: CI
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 on:
   push:
     branches:
@@ -432,9 +432,6 @@ This can be archieved this way:
 ```yml
 name: CI
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 on:
   push:
     branches:
@@ -479,7 +476,7 @@ You can find more information on the available OS here: [https://docs.github.com
 
 ## Manage the workflow target (branchs, PR, ...)
 
-In our simple example at the beginning, we were launching the CI on the master branch, but it is not the only option.
+In our simple example at the beginning, we were launching the CI on the master branch, but you will often need to execute the CI on multiple branches.
 
 ### Target branches
 
@@ -496,13 +493,10 @@ on:
 
 This will launch your workflow for every commit on `master`, `development` or any branch starting by `feature/`. 
 
-You can also target all branches doing:
+You can also target all branches by not specifying any:  
 
 ```yml
-on:
-  push:
-    branches:
-      - '**'
+on: [ push ]
 ```
 
 And in case you want to execute it on all branches except some you can use:
@@ -519,13 +513,20 @@ This templace will launch the CI for every commit on any branch except the ones 
 
 ### Target pull requests
 
-It is also possible to target PR made to your project like this:
+It is also possible to target others kinds of events.
+Particularly pull requests made to your project:
 
+```yml
+on: [ push, pull_request ]
+```
+
+And be even more precise on the kinds of PR that should execute a workflow:  
 ```yml
 on:
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 ```
+
 
 Note that this can be done in addition of other targets:
 
@@ -621,15 +622,7 @@ The first one is close to what we have seen until here in this documentation:
 ```yml
 name: CI Core
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-on:
-  push:
-    branches:
-      - '**'
-  pull_request:
-    types: [assigned, opened, synchronize, reopened]
+on: [ push, pull_request ]
 
 jobs:
   build:
@@ -648,20 +641,12 @@ jobs:
         timeout-minutes: 15
 ```
 
-In the second we will change the targets and we will give one more parameter to the smalltalkCI launch command to specify the path to our specific smalltalk configuration.
+In the second we change the targets and we give one more parameter to the smalltalkCI launch command to specify the path to our specific smalltalk configuration.
 
 ```yml
 name: CI Full
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-on:
-  push:
-    branches:
-      - 'master'
-  pull_request:
-    types: [assigned, opened, synchronize, reopened]
+on: [ push, pull_request ]
 
 jobs:
   build:
@@ -677,8 +662,10 @@ jobs:
         timeout-minutes: 15
 ```
 
-We can see in those file that we have two different names to be able to identify which workflow is running. 
-And we notice the new parameter in the SmalltalkCi command:
+Each file uses a different configuration file.
+The first workflow file is named `CI` uses the default file `smalltalk.ston` implicitly.
+The second workflow file is named `CI full` uses `smalltalkFull.ston` explicitly.
+
 
 ```yml
       - run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalkFull.ston
@@ -686,16 +673,17 @@ And we notice the new parameter in the SmalltalkCi command:
         timeout-minutes: 15
 ```
 
-> Note: If we wanted to run on the same targets with two smalltalkCI configuration, we could also have used another matrix axis to avoid the need of two workflows
+> Note: If we wanted to run on the same targets with two smalltalkCI configuration, we could also have used another matrix axis and avoid needing of different workflows.  
 
-Having multiple workflows can have other usage that we will exlpore in the next sections
+Having multiple workflows can have other usages that we explore in the next sections.
 
 ## Continuous releases
 
-Until now, we are using Github actions to test our project. But it is not the only thing we can do here. 
-We could also save the result of some builds to be able to download them and use them with our project directly setup.
+Until now, we use Github actions to test our project.  
+But Github Actions has more features.  
+For instance, we are able to realease our projects.  
 
-In this section, we will see how to save the result of the builds of our master branch in a github release.
+In this section, we see how to save the result of the builds of our master branch in a github release.
 
 To do that, we can first remove the master branch from the targets of our test workflow becaure we will handle the master branch in another workflow.
 
