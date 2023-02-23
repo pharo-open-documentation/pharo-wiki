@@ -5,6 +5,8 @@ But Travis becoming a pay to use service, the community created some tooling to 
 
 This guide will get you through the process to setup your own integration.
 
+> Note: In order to do anything for the CI of your project, you will need a `Baseline` to manage its dependencies. If it is not the case yet, you can check the [guide on baselines](Baselines.md).
+
 - [Setting up your continuous integration via Github Actions](#setting-up-your-continuous-integration-via-github-actions)
   * [Simple case: Run tests on master branch](#simple-case--run-tests-on-master-branch)
   * [SmalltalkCI options](#smalltalkci-options)
