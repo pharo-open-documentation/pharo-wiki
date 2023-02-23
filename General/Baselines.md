@@ -16,6 +16,7 @@ This documentation explains how to write a baseline and how to load the project 
 		- [Define packages forming your project](#define-packages-forming-your-project)
 		- [Define external dependencies](#define-external-dependencies)
 			- [To other remote git projects](#to-other-remote-git-projects)
+				- [Depend on a subset of a git project](#depend-on-a-subset-of-a-git-project)
 				- [Depends on the same project with different groups](#depends-on-the-same-project-with-different-groups)
 			- [To a local git project](#to-a-local-git-project)
 			- [To smalltalkhub projects](#to-smalltalkhub-projects)
@@ -175,7 +176,11 @@ spec
 	with: [ spec repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src']
 ```
 
-This snippet can also be customized to load only a specific group of the dependency like this:
+##### Depend on a subset of a git project
+
+Some projects can defines `groups` in their baselines. They are subsets of the project that can be loaded independently.
+The previous snippet can also be customized to load only a specific group of the dependency like this:
+
 
 ```Smalltalk
 spec
