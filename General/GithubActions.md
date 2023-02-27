@@ -712,7 +712,34 @@ The second workflow file is named `CI full` uses `smalltalkFull.ston` explicitly
         timeout-minutes: 15
 ```
 
-> Note: If we wanted to run on the same targets with two smalltalkCI configurations, we could also have used another matrix axis and avoid needing of different workflows.  
+> Note: If we wanted to run on the same targets with two smalltalkCI configurations, we could also have used another matrix axis and avoid needing of different workflows.
+
+Example:
+
+```yml
+name: CI
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    strategy:
+      matrix:
+        smalltalk: [ Pharo64-9.0, Pharo64-10, Pharo64-11 ]
+        config: [ .smalltalk.ston, .smalltalkFull.ston ]
+    name: ${{ matrix.smalltalk }} - ${{ matrix.config }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hpi-swa/setup-smalltalkCI@v1
+        with:
+          smalltalk-image: ${{ matrix.smalltalk }}
+      - run: smalltalkci -s ${{ matrix.smalltalk }} ${{ matrix.config }}
+        shell: bash
+        timeout-minutes: 15
+```
 
 Having multiple workflows can have other usages that we explore in the next sections.
 
