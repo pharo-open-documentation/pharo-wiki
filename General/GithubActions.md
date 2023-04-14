@@ -162,7 +162,7 @@ In the previous example, we declared a loading spec with a baseline and a code d
 ```ston
 SCIMetacelloLoadSpec {
   #baseline : 'MyProject',                            // Define MC Baseline
-  #directory : 'src',                                 // Path to packages
+  #directory : 'src',                                 // Path to packages, if packages are on root do not use #directory : '', just don't add this option
   #failOn : [ #OCUndeclaredVariableWarning ],         // Fail build on provided list of Warnings
   #ignoreImage : true,                                // If true, Metacello will force a load of a package, overriding a previously existing one
   #load : [ 'default' ],                              // Define some specific groups to load
