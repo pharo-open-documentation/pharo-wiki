@@ -8,7 +8,7 @@ This guide will get you through the process to set up your own integration.
 > Note: In order to do anything for the CI of your project, you will need a `Baseline` to manage its dependencies. If it is not the case yet, you can check the [guide on baselines](Baselines.md).
 
 - [Setting up your continuous integration via Github Actions](#setting-up-your-continuous-integration-via-github-actions)
-  * [Simple case: Run tests on master branch](#simple-case--run-tests-on-master-branch)
+  * [Simple case: Run tests on master branch](#simple-case-run-tests-on-the-master-branch)
   * [SmalltalkCI options](#smalltalkci-options)
     + [Load spec options](#load-spec-options)
     + [Testing options](#testing-options)
@@ -16,7 +16,7 @@ This guide will get you through the process to set up your own integration.
     + [Using custom scripts](#using-custom-scripts)
   * [Testing multiple versions of Pharo at once](#testing-multiple-versions-of-pharo-at-once)
   * [Testing on multiple OS](#testing-on-multiple-os)
-  * [Manage the workflow target (branchs, PR, ...)](#manage-the-workflow-target--branchs--pr---)
+  * [Manage the workflow target (branchs, PR, ...)](#manage-the-workflow-target-branchs-pr-)
     + [Target branches](#target-branches)
     + [Target pull requests](#target-pull-requests)
     + [Target releases](#target-releases)
@@ -25,7 +25,7 @@ This guide will get you through the process to set up your own integration.
   * [Managing multiple workflows and SmalltalkCI configurations](#managing-multiple-workflows-and-smalltalkci-configurations)
   * [Continuous releases](#continuous-releases)
   * [Save releases artifacts](#save-releases-artifacts)
-  * [Depending on resources of your repository with GitBridge](#depending-on-resouces-of-your-repository-with-gitbridge)
+  * [Depending on resources of your repository with GitBridge](#depending-on-the-resources-of-your-repository-with-gitbridge)
   * [Add your build artifacts to PharoLauncher](#add-your-build-artifacts-to-pharolauncher)
   * [External ressources](#external-ressources)
 
@@ -928,7 +928,7 @@ This action will add the files matching the $files: property to the assets of th
 
 ![Screenshot of releases](GithubActions_releases.png)
 
-## Depending on the resouces of your repository with GitBridge
+## Depending on the resources of your repository with GitBridge
 
 It happens in some projects that we need resources to do some tests. In the past, it was common to save those resources as a string or a byte array directly in a method of the project.
 This makes can have multiple drawbacks like making the management of the project harder, dropping Pharo's performances in code management, no real versioning of those resources…
