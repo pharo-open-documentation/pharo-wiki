@@ -146,6 +146,21 @@ Object subclass: #MyObjectUsingTraitByAliasingMethod
 	package: 'TestTraitAliasing'
 ```
 
+Here is a simple example. Consider a situation when a trait `TLocated` implements a method `moveTo:` that defines the movement of an object to a given cell. The user of this trait needs to implement the post-movement operation. Usually, this would be done by overriding the `moveTo:` method and calling `super moveTo: aCell` in the first line of the new implementation. However, the super calls can not be used with traits as they install methods directly into the code of their users. The simple workaround would be to create an allias `basicMoveTo:` for the trait method and then call it from the new `moveTo:` method implemented by the user class:
+
+```st
+TLocated >> moveTo: aCell
+    "Define the movement"
+
+Object subclass: #Antelope
+    uses: TLocated @ { #basicMoveTo: -> #moveTo: }
+    ...
+
+Antelope >> moveTo: aCell
+    self basicMoveTo: aCell.
+    "Do some post-movement actions"
+```
+
 ## Customize instance variables received from a (stateful) Trait
 When a class uses a trait, it is possible for it to reject or alias some instance variables.
 
