@@ -1,5 +1,7 @@
 # Inspector
 
+*Written based on Pharo 12.0.0 - Build information: Pharo-12.0.0+build.710.sha9e02d19b14a8ecb9cbd45d6ba0166d3b92202c3c (64 Bit)*
+
 The Inspector is a tool that is used to look at an object. In Pharo, inspecting an object means opening this tool. It allows to navigate the object structure and look at the state of the variables, but can show other information.
 
 You can inspect the result of an execution by selecting the code and using the shortcut`Cmd/ctrl + i` or `right-clic + "Do & inspect it"`. This will execute the code and open an inspector on the result. 

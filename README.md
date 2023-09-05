@@ -59,6 +59,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 ### Pharo Tooling
 
 - [Playground](General/Playground.md) - Documentation on the usage of Pharo's playground.
+- [Inspector](General/Inspector.md) - Documentation on the usage of Pharo's inspector.
 - [Profiling](General/Profiling.md) - Measure the time and space your program takes to execute.
 - [Menubar and World menu](General/MenuBar.md) - A guide to configure and customize Pharo's menubar and world menu.
 - [Iceberg on Windows workaround](General/IcebergOnWindows.md) - Troubleshooting for some issues appearing when using Iceberg on Windows.
