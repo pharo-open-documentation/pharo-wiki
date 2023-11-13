@@ -164,11 +164,11 @@ This snippet should be configured with:
   - `bitbucket` for bitbucket
   - `gitlab` for gitlab
   - `git` for others (and {url} is thus mandatory)
-- `{url}`: base url to the git host. Mandatory when prefix `git` is used.
+- `{url}`: Base url to the git host. Mandatory when prefix `git` is used, not needed for other prefixes
 - `{owner}`: Name of the user or organization hosting the project
 - `{projectName}`: Name of the project
 - `{version}`: This parameter is optional (defaults to master). It can be the name of a branch, a tag like `'v1.2.0'` or `'v1.x.x'`, or a the SHA of a commit
-- `{subfolder}`: This parameter is optional in case the code is not at the root of the project. It should point to the sub-folder containing the code.
+- `{subfolder}`: This parameter is optional in case the code is not at the root of the project. It should point to the sub-folder containing the code
 
 Example:
 
