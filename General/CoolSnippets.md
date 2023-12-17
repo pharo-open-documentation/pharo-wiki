@@ -97,9 +97,9 @@ To get a specific icon, use `#iconNamed:` method as follow:
 Smalltalk ui icons iconNamed: #arrowUp
 ```
 
-## Rename programatically methods
+## Rename methods programatically
 
-In this section we'll present a snippet of code to rename all the methods of a class containing a substring to replace it by another substring. 
+In this section we will present a code snippet to rename all methods of a class by replacing one substring with another. First, we find all methods of a given class with names that contain a substring `A`, then we rename those methods to replace `A` with another substring `B`.
 
 ```Smalltalk
 "Class in which we want to rename the methods"
@@ -123,7 +123,7 @@ class methods
 			permutation: permutationMap) execute ]
 ```
 
-> Be careful, this will also rename the senders of those methods and if you have two methods of the same name in the image, it might badly rename some. Use this only on methods with unique names.
+> Be careful, this will also rename the senders of those methods and if you have two methods with the same name in the image, it might badly rename some of them. Use this only on methods with unique names.
 
 ## Get all senders/implementors of a selector
 The selector of a method is kind of the equivalent of the signature of a method or function in other programming languages.
