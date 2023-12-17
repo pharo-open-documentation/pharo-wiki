@@ -40,7 +40,7 @@ If you need to change the value of the variable for the execution of a specific 
 
 ```Smalltalk
 MyVariable value: MyNewObject during: [
-	self doAnActionS=UsingTheVariable.
+	self doAnActionUsingTheVariable.
 ]
 ```
 
