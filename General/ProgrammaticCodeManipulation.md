@@ -1,8 +1,18 @@
 # Programmatic Code Manipulation
 
-In this article, we will present some code snippets that demonstrate how we can manipulate the source code (packages, classes, methods, variables, traits, pragmas, etc.) programmatically, without using the SystemBrowser. Those techniques can be very useful for reflective operations, code generation, testing, etc.
+In this article, we will present some code snippets that demonstrate how we can manipulate the source code (packages, classes, methods, variables, traits, etc.) programmatically, without using the SystemBrowser. Those techniques can be very useful for reflective operations, code generation, testing, etc.
+
+This article explains only those operations that **modify** the code. We will write a separate article on **querrying code** (looking for method senders, class references, pragma usages, etc.).
 
 ## Packages
+
+### Creating a new package
+
+### Removing a package
+
+### Creating a package without installing it
+
+_(how to create an instance of a package without installing it into the image? - e.g., for testing)_
 
 ## Classes
 
@@ -15,6 +25,10 @@ builder := Object << #MyClass	slots: { };	package: 'MyPackage'.	class := bui
 ```
 
 The first statement will return an instance of `FluidClassBuilder`. The second statement will build the class, install it into the image, and assign it to the variable. If `MyPackage` does not exist, it will be created.
+
+### Creating an anonymous class
+
+### Removing a class
 
 ## Methods
 
@@ -41,3 +55,21 @@ Author
     useAuthor: 'Dummy Name'
     during: [ MyClass compile: sourceCode ].
 ```
+
+### Removing a method from a class
+
+## Variables
+
+## Traits
+
+### Adding trait to a class
+
+### Removing trait from a class
+
+### Creating a new trait
+
+### Adding methods to a trait
+
+## Useful links
+
+- A toolkit to generate Pharo code: <https://github.com/juliendelplanque/PharoCodeGenerator>
