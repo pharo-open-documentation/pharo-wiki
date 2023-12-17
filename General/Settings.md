@@ -34,11 +34,11 @@ The advantages of using the settings framework of Pharo are:
 ## The Settings Browser
 
 The Settings Browser can be opened from the Pharo menu like this:  
-![Open the Settings Browser](./Settings_Image_OpenSettingsBrowser.png)  
+![Open the Settings Browser](img/Settings_Image_OpenSettingsBrowser.png)  
 *You can also open it by evaluating: `SettingBrowser open`*
 
 The Settings Browser looks like this (The "Appearance" group of settings is expanded):  
-![The Settings Browser](./Settings_Image_SettingsBrowser.png)
+![The Settings Browser](img/Settings_Image_SettingsBrowser.png)
 
 ## Declaring a Setting
 
@@ -73,7 +73,7 @@ MyApplication class>>mySettingSettingsOn: aBuilder
 		parent: nil.
 ```
 4. Tada!
-![MySetting](./Settings_Image_MySetting.png)
+![MySetting](img/Settings_Image_MySetting.png)
 
 
 ### WARNING!: Default value of a setting
@@ -123,13 +123,13 @@ The settings are arranged as a tree. Some nodes show a value that can be changed
 (aBuilder setting: #mySetting)
 ```  
 Result:  
-![MySetting](./Settings_Image_MySettingSettingNode.png)
+![MySetting](img/Settings_Image_MySettingSettingNode.png)
 - Declaring a group node:  
 ```Smalltalk
 (aBuilder group: #mySetting)
 ```  
 Result:  
-![MySetting group node](./Settings_Image_MySettingGroupNode.png)
+![MySetting group node](img/Settings_Image_MySettingGroupNode.png)
 
 #### Where is the variable this setting affects? (target:)
 - If the setting is a **class variable**, the **target** of this setting is the class on which the variable is defined. Example:
@@ -158,7 +158,7 @@ To declare a setting node as a children of another, set its parent property to t
 parent: #mySettingGroup
 ```  
 Result:  
-![Another setting node as parent](./Settings_Image_Parent.png)
+![Another setting node as parent](img/Settings_Image_Parent.png)
 
 
 ### Other Features
@@ -208,7 +208,7 @@ RBConfigurableFormatter class>>settingsOn: aBuilder
 				label: 'Indent string' translated]
 ```  
 Result:  
-![Nested Declaration Result](./Settings_Image_NestedDeclarationsResult.png)
+![Nested Declaration Result](img/Settings_Image_NestedDeclarationsResult.png)
 
 #### Providing more precise value domains
 By default, the possible value set of a preference is not restricted and is given by the actual type of the preference. For example, for a color preference, the widget allows you to choose whatever color. For a number, the widget allows the user to enter any number. But in some cases, only a particular set of values is desired. There are two ways to do this:
@@ -230,7 +230,7 @@ screenMarginSettingOn: aBuilder
 		range:(-5 to: 100).
 ```  
 Result:  
-![Range Setting](./Settings_Image_RangeSetting.png)
+![Range Setting](img/Settings_Image_RangeSetting.png)
 
 ##### Declaring a list of possible values
 1. use `pickOne:` as the type of setting, instead of `setting:` or `group:`
@@ -246,7 +246,7 @@ windowPositionStrategySettingsOn: aBuilder
 		domainValues: #(#'Reverse Stagger' #Cascade #Standard)
 ```  
 Result:  
-![List of Possible Values](./Settings_Image_ListOfPossibleValues.png)
+![List of Possible Values](img/Settings_Image_ListOfPossibleValues.png)
 
 For `domainValues:`, you can provide a list of **associations** instead of a list of values. In the Settings Browser, the user will select a value among the keys of these associations, but the setting variable will actually be set to the value corresponding to the selected key, not to the key itself.
 
@@ -268,7 +268,7 @@ domainValues: (UITheme allThemeClasses collect: [:c | c themeName -> c])
 Imagine that you want to launch an external configuration tool or that you want to allow one to configure the system or a particular package with the help of a script. In such a case you can declare a *launcher*. A launcher is shown with a label as a regular setting except that no value is to be entered for it. Instead, a button labelled *Launch* is integrated in the Settings Browser and clicking on it launch an associated script.
 
 Illustration: 
-![Launching a Script](./Settings_Image_LaunchingAScript.png)
+![Launching a Script](img/Settings_Image_LaunchingAScript.png)
 
 *More information in section 5.6 "Launching a script" of the [Deep Into Pharo book](http://books.pharo.org/deep-into-pharo/).*
 

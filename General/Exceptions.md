@@ -43,10 +43,10 @@ potentiallyProblematicMethod
 ```
 
 If you execute this code, the following window opens:
-![Image](./Exceptions_Image_ExamplePreDebugger.png)
+![Image](img/Exceptions_Image_ExamplePreDebugger.png)
 
 And if you click on "Debug", a debugger opens to help you understand why your application signalled an exception.
-![Image](./Exceptions_Image_ExampleDebugger.png)
+![Image](img/Exceptions_Image_ExampleDebugger.png)
 
 ### Handling exceptions
 **Syntax:**  
@@ -73,7 +73,7 @@ solidMethod
 
 Now when `solidMethod` is executed, it either returns the result of `self potentiallyProblematicMethod` if no `Error` is signalled, or it displays a pop-up and returns 42 if an `Error` is signalled.
 
-![Image](./Exceptions_Image_InformationPopUp.png)
+![Image](img/Exceptions_Image_InformationPopUp.png)
 
 When an exception is signalled, it walks the call stack (from the current method to its caller, then the caller of the caller, etc...) until it finds a handler that can handle it. If no handler is found, a debugger is opened.
 
@@ -81,7 +81,7 @@ When an exception is signalled, it walks the call stack (from the current method
 `Error` is not the only kind of exception that can be signalled, there are a lot more! The following picture shows a few examples.
 
 
-![Image](./Exceptions_Image_ExceptionSample.png)
+![Image](img/Exceptions_Image_ExceptionSample.png)
 
 An issue with writing handlers for generic exception types like `Error` is that these handlers will not only handle errors your application signals (which is fine), but they will also handle errors signalled by the libraries you use, or code that your application uses but that is not a part of it. This is potentially dangerous, as your application may not be doing the right thing for these errors.
 
@@ -130,7 +130,7 @@ or: `protectedBlock on: anExceptionClass do: [:ex | ex return: aValue ]`
 This is the standard behavior of handler blocks. If an exception is caught, this handler returns an alternative value for the protected block (the execution continues as if the protected block has returned that value).
 
 Here is a picture of the context stack (a.k.a. call stack) explaining this operation.
-![Image](Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment1_return.png)
+![Image](img/Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment1_return.png)
 
 ### Retry
 **Syntax:**  
@@ -141,7 +141,7 @@ or: `protectedBlock on: anExceptionClass do: [:ex | ex retry: aBlock ]`
 Re-execute the protected block (if using `#retry`), or replace the protected block with a different block and then re-execute it (if using `#retryUsing:`).
 
 Here is a picture of the context stack (a.k.a. call stack) explaining this operation.
-![Image](Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment2_retry.png)
+![Image](img/Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment2_retry.png)
 
 ### Resume
 **Syntax:**  
@@ -153,7 +153,7 @@ Resume the execution of the protected block just after the call to #signal. The 
 
 
 Here is a picture of the context stack (a.k.a. call stack) explaining this operation.
-![Image](Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment3_resume.png)
+![Image](img/Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment3_resume.png)
 
 ### Pass
 **Syntax:**  
@@ -173,7 +173,7 @@ Like `ex pass`, but if another handler later calls `#resume` on the exception, t
 If multiple `#outer` are executed on the same exception, they will form a sort of stack of positions to go back to, in case `#resume` is called multiple times on the exception.
 
 Here is a picture of the context stack (a.k.a. call stack) explaining this operation.
-![Image](Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment4_outer.png)
+![Image](img/Exceptions_Image_WhatCanYouDoWithAnExceptionYouCaught_fragment4_outer.png)
 
 ### Resignal
 **Syntax:**  
@@ -186,7 +186,7 @@ This can be used to catch generic exceptions and re-signal them as application-s
 ## A deeper look at the exception mechanism
 
 The following image gives a graphical view of what happens when an exception is signalled, and the different situations that can arise.
-![Image](Exceptions_Image_WhatHappensWhenAnExceptionIsSignalled.png)
+![Image](img/Exceptions_Image_WhatHappensWhenAnExceptionIsSignalled.png)
 
 ## Credits
 Parts of this page are based on the **Handling Exceptions** chapter of the [Deep Into Pharo book](http://files.pharo.org/books-pdfs/deep-into-pharo/2013-DeepIntoPharo-EN.pdf).  

@@ -2,7 +2,7 @@
 
 Pharo's default font settings for code (Source Code Pro) and UI (Source Sans Pro) are unable to handle [CJK characters](https://en.wikipedia.org/wiki/CJK_characters), this page explains how to display them properly in Pharo.
 
-![Preview string for chinese characters under Source Code Pro](CJKCharacter_Screenshot_1.png)
+![Preview string for chinese characters under Source Code Pro](img/CJKCharacter_Screenshot_1.png)
 
 Operating systems may come with fonts that support those characters but they are usually not monospaced which is not good for displaying code. If one need to display CJK characters in Pharo, it is recommended to install a monospace font which also covers CJK characters. Some of them are [`Noto Sans Mono CJK`](https://www.google.com/get/noto/) , `Microsoft YaHei Mono`, [`WenQuanYi Zen Hei Mono`](http://wenq.org).
 
@@ -10,7 +10,7 @@ Note one must enable the option `Update fonts at startup` first and restart Phar
 1. Select menu `Pharo` -> `Settings` to show the `Settings Browser`.
 2. Enable `Appearance` -> `Use Free type...` -> `Update fonts at startup`, this can be disabled later after one changes the fonts.
 
-![Preview string for chinese characters under Microsoft YaHei Mono](CJKCharacter_Screenshot_2.png)
+![Preview string for chinese characters under Microsoft YaHei Mono](img/CJKCharacter_Screenshot_2.png)
 
 Note that on Windows 10, one may need to manually copy font files to `C:\Windows\Fonts\`.
 

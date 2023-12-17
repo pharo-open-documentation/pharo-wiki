@@ -28,7 +28,7 @@ We modify the display of the submorph with several attribut :
 
 Example 1 : Row layout with two morphs
 
-![alt text](layout_screenshot/RowLayoutExampleWithTwoMorph.png)
+![alt text](img/layout_screenshot/RowLayoutExampleWithTwoMorph.png)
 ```st
 | m1 m2 m3|
 m1 := Morph new layoutPolicy: RowLayout new; yourself.
@@ -40,7 +40,7 @@ m1 openInWorld.`
 ```
 Example 2 : Row layout with three morphs
 
-![alt text](layout_screenshot/RowLayoutExampleWithThreeMorph.png)
+![alt text](img/layout_screenshot/RowLayoutExampleWithThreeMorph.png)
 ```st
 | m1 m2 m3 m4|
 m1 := Morph new layoutPolicy: RowLayout new; yourself.
@@ -54,7 +54,7 @@ m1 openInWorld.
 ```
 Example 3 : Row layout with two morphs with cellPositioning : bottomLeft
 
-![alt text](layout_screenshot/RowLayoutExampleWithTwoMorphCellPositionBottomLeft.png)
+![alt text](img/layout_screenshot/RowLayoutExampleWithTwoMorphCellPositionBottomLeft.png)
 ```st
 | m1 m2 m3|
 m1 := Morph new color: Color blue; layoutPolicy: RowLayout new;extent: (200@200);cellPositioning: #bottomLeft; yourself.
@@ -66,7 +66,7 @@ m1 openInWorld .
 ```
 Example 4 : Row layout with two morphs with cellPositioning : center
 
-![alt text](layout_screenshot/RowLayoutExampleWithTwoMorphCellPositionCenter.png)
+![alt text](img/layout_screenshot/RowLayoutExampleWithTwoMorphCellPositionCenter.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new color: Color blue; layoutPolicy: RowLayout new; extent: (200@200); cellPositioning: #center; yourself.
@@ -79,7 +79,7 @@ m1 openInWorld .
 
 Exemple 5 : Row layout example with two morphs with cellPositioning : topLeft
 
-![alt text](layout_screenshot/RowLayoutExampleWithTwoMorphCellPositionTopLeft.png)
+![alt text](img/layout_screenshot/RowLayoutExampleWithTwoMorphCellPositionTopLeft.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new color: Color blue; layoutPolicy: RowLayout new; extent: (200@200); cellPositioning: #topLeft; yourself.
@@ -92,7 +92,7 @@ m1 openInWorld .
 
 Exemple 6 : Row layout with hResizing and vResizing : spaceFill
 
-![alt text](layout_screenshot/RowLayoutwithvResizingAndhResizingAtSpacefillForOneMorph.png)
+![alt text](img/layout_screenshot/RowLayoutwithvResizingAndhResizingAtSpacefillForOneMorph.png)
 ```st
 | m1 m2 m3|
 m1 := Morph new layoutPolicy: RowLayout new; yourself.
@@ -109,7 +109,7 @@ m1 openInWorld.
 
 Exemple 7 : Row layout with hResizing and vResizing : shrinkWrap
 
-![alt text](layout_screenshot/RowLayoutwithvResizingAndhResizingAtshrinkWrap.png)
+![alt text](img/layout_screenshot/RowLayoutwithvResizingAndhResizingAtshrinkWrap.png)
 ```st
 | m1 m2 m3|
 m1 := Morph new layoutPolicy: RowLayout new; yourself.
@@ -169,7 +169,7 @@ Distribute morphs in row/column:
 
 Example 1 : Table layout with two morphs
 
-![alt text](layout_screenshot/TableLayoutExampleWithTwoMorph.png)
+![alt text](img/layout_screenshot/TableLayoutExampleWithTwoMorph.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new layoutPolicy: TableLayout new; yourself.
@@ -182,7 +182,7 @@ m1 openInWorld.
 
 Example 2 : Table layout with three morphs
 
-![alt text](layout_screenshot/TableLayoutExampleWithThreeMorph.png)
+![alt text](img/layout_screenshot/TableLayoutExampleWithThreeMorph.png)
 ```st
 |m1 m2 m3 m4|
 m1 := Morph new layoutPolicy: TableLayout new; yourself.
@@ -197,7 +197,7 @@ m1 openInWorld.
 
 Exemple 3 : Table layout with two morphs with cellPositioning : center
 
-![alt text](layout_screenshot/TableLayoutExampleWithTwoMorphWithCenteringMorph.png)
+![alt text](img/layout_screenshot/TableLayoutExampleWithTwoMorphWithCenteringMorph.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new color: Color blue; layoutPolicy: TableLayout new; extent: (200@200); cellPositioning: #center; yourself.
@@ -210,7 +210,7 @@ m1 openInWorld.
 
 Exemple 4 : Table layout with two morphs with cellPositioning : topLeft
 
-![alt text](layout_screenshot/TableLayoutExampleWithTwoMorphWithTopLeftMorph.png)
+![alt text](img/layout_screenshot/TableLayoutExampleWithTwoMorphWithTopLeftMorph.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new color: Color blue; layoutPolicy: TableLayout new; extent: (200@200); cellPositioning: #topRight; yourself.
@@ -223,7 +223,7 @@ m1 openInWorld.
 
 Exemple 5 : Table layout with two morphs with cellPositioning : topRight
 
-![alt text](layout_screenshot/TableLayoutExampleWithTwoMorphWithTopRightMorph.png)
+![alt text](img/layout_screenshot/TableLayoutExampleWithTwoMorphWithTopRightMorph.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new color: Color blue; layoutPolicy: TableLayout new; extent: (200@200); cellPositioning: #topLeft; yourself.
@@ -236,7 +236,7 @@ m1 openInWorld.
 
 Exemple 6 : Table layout with vResizing and hResizing : shrinkWrap.
 
-![alt text](layout_screenshot/TableLayoutWithverticalandHorizontalShrinkwrapResizing.png)
+![alt text](img/layout_screenshot/TableLayoutWithverticalandHorizontalShrinkwrapResizing.png)
 ```st
 | m1 m2 m3 m4|
 m1 := Morph new layoutPolicy: TableLayout new; yourself.
@@ -255,7 +255,7 @@ m1 openInWorld.
 
 Exemple 7 : Table layout with vResizing and hResizing : spaceFill
 
-![alt text](layout_screenshot/TableLayoutWithVResizingAndhResizingAsSpacefill.png)
+![alt text](img/layout_screenshot/TableLayoutWithVResizingAndhResizingAsSpacefill.png)
 ```st
 | m1 m2 m3|
 m1 := Morph new layoutPolicy: TableLayout new; yourself.
@@ -272,7 +272,7 @@ m1 openInWorld.
 
 Exemple 8 : Table layout with wrapCentering : center
 
-![alt text](layout_screenshot/TableLayoutWithWrapCenteringCenter.png)
+![alt text](img/layout_screenshot/TableLayoutWithWrapCenteringCenter.png)
 ```st
 | m1 m2 m3 |
 m1 := Morph new layoutPolicy: TableLayout new; yourself.
@@ -288,7 +288,7 @@ m1 openInWorld.
 
 Exemple 9 : Table layout with wrapCentering : bottomRight
 
-![alt text](layout_screenshot/TableLayoutWithWrapCenteringbottomRight.png)
+![alt text](img/layout_screenshot/TableLayoutWithWrapCenteringbottomRight.png)
 ```st
 | m1 m2 m3 |
 m1 := Morph new layoutPolicy: TableLayout new; yourself.
@@ -304,7 +304,7 @@ m1 openInWorld.
 
 Exemple 10 : Table layout with wrapCentering : topLeft
 
-![alt text](layout_screenshot/TableLayoutWithWrapCenteringtopLeft.png)
+![alt text](img/layout_screenshot/TableLayoutWithWrapCenteringtopLeft.png)
 ```st
 | m1 m2 m3 |
 m1 := Morph new layoutPolicy: TableLayout new; yourself.
@@ -329,7 +329,7 @@ cellPositioning set the point of reference to display morph. For example, if the
 
 Example 1 : Stack layout with two morphs with lower morph extent
 
-![alt text](layout_screenshot/StackLayoutExampleWithTwoMorphWithLowerMorphExtent.png)
+![alt text](img/layout_screenshot/StackLayoutExampleWithTwoMorphWithLowerMorphExtent.png)
  ```st
 |m1 m2 m3|
 m1 := Morph new layoutPolicy: StackLayout new; yourself.
@@ -342,7 +342,7 @@ m1 openInWorld.
 
 Example 2 : Stack layout with two morphs with upper morph extent
 
-![alt text](layout_screenshot/StackLayoutExampleWithTwoMorphWithUpperMorphExtent.png)
+![alt text](img/layout_screenshot/StackLayoutExampleWithTwoMorphWithUpperMorphExtent.png)
  ```st
 |m1 m2 m3|
 m1 := Morph new layoutPolicy: StackLayout new ; yourself.
@@ -354,7 +354,7 @@ m1 openInWorld.
  ```
 Exemple 3 : Stack layout with two morphs with cellPositioning : topRight
 
-![alt text](layout_screenshot/StackLayoutExampleWithTwoMorphCellPositioningTopRight.png)
+![alt text](img/layout_screenshot/StackLayoutExampleWithTwoMorphCellPositioningTopRight.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new layoutPolicy: StackLayout new; cellPositioning: #topRight; yourself.
@@ -367,7 +367,7 @@ m1 openInWorld.
 
 Exemple 4 :  Stack layout with two morphs with cellPositioning : bottomRight
 
-![alt text](layout_screenshot/StackLayoutExampleWithTwoMorphCellPositioningBottomRight.png)
+![alt text](img/layout_screenshot/StackLayoutExampleWithTwoMorphCellPositioningBottomRight.png)
 ```st
 |m1 m2 m3|
 m1 := Morph new layoutPolicy: StackLayout new; cellPositioning: #bottomRight; yourself.
@@ -389,7 +389,7 @@ And if we resize the container, the size of the submorph will be resize proporti
 
 Exemple 1 : Proportionnal layout with 25% of the morph area.
 
-![alt text](layout_screenshot/ProportionnalLayoutWithLeftTop50perX50perY.png)
+![alt text](img/layout_screenshot/ProportionnalLayoutWithLeftTop50perX50perY.png)
 ```st
 |frame sub|
 m1 :=SystemWindow new.
@@ -402,7 +402,7 @@ m1 openInWorld.
 ```
 Exemple 2 : Proportionnal layout with 50% of the morph area.
 
-![alt text](layout_screenshot/ProportionnalLayoutWithLeftTop50perY.png)
+![alt text](img/layout_screenshot/ProportionnalLayoutWithLeftTop50perY.png)
 ```st
 |frame sub|
 m1 :=SystemWindow new.
@@ -415,7 +415,7 @@ m1 openInWorld.
 ```
 Example 3 : Proportionnal layout with 100% of the morph area.
 
-![alt text](layout_screenshot/ProportionnalLayoutExampleWithSystemWIndowWithFulllWindow.png)
+![alt text](img/layout_screenshot/ProportionnalLayoutExampleWithSystemWIndowWithFulllWindow.png)
 ```st
 |frame sub|
 m1 :=SystemWindow new.
@@ -428,7 +428,7 @@ m1 openInWorld.
 ```
 Example 4 : Proportionnal layout with 2 Morph, each Morph was display on 50% of the morph area.
 
-![alt text](layout_screenshot/ProportionnalLayoutExampleWithSystemWIndowWithTwoMorph.png)
+![alt text](img/layout_screenshot/ProportionnalLayoutExampleWithSystemWIndowWithTwoMorph.png)
 ```st
 |frame sub|
 m1 := SystemWindow new.
@@ -445,7 +445,7 @@ m1 openInWorld.
 ```
 
 Example 5: Proportional layout with scrollbar
-![alt text](layout_screenshot/ProportionnalLayoutWithScrollBar.png)
+![alt text](img/layout_screenshot/ProportionnalLayoutWithScrollBar.png)
 ```st
 | window scrollPane pasteUpMorph |
 	window := Morph new layoutPolicy: ProportionalLayout new.

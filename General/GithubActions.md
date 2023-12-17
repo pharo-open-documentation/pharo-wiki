@@ -84,7 +84,7 @@ Let's see a little about what is happening here.
 The #name parameter allows one to give a name to the workflow. This is useful because you might have more than one workflow for your project. 
 For example:
 
-![Example of different workflows](GitHubActions_workflows.png)
+![Example of different workflows](img/GitHubActions_workflows.png)
 
 In this image, we can see a CI that has 3 different workflows:
 - CI
@@ -258,7 +258,7 @@ SmalltalkCISpec {
 This configuration will execute all the tests loaded by the `BaselineOfMyProject` and build the coverage of all packages starting by `MyProject-` for [Coveralls](https://coveralls.io/).
 If you enabled your repository in coveralls ([https://coveralls.io/repos/new](https://coveralls.io/repos/new)), the results would be uploaded automatically.
 
-![Coveralls screenshot](GithubActions_coveralls.png)
+![Coveralls screenshot](img/GithubActions_coveralls.png)
 
 For more information, check: [SmalltalkCI guide on coverage](https://github.com/hpi-swa/smalltalkCI/blob/master/docs/COVERAGE.md).
 
@@ -420,7 +420,7 @@ Then the builds would be: `MyProject-Pharo64-9.0`, `MyProject-Pharo64-10` and `M
 
 The names will then be used to display the different builds on Github:
 
-![Screenshot of matrix](GithubActions_matrix.png)
+![Screenshot of matrix](img/GithubActions_matrix.png)
 
 The list of possible Pharo versions are:
 
@@ -490,7 +490,7 @@ To distinguish the builds, we use the Pharo version and the OS name to name our 
     name: ${{ matrix.smalltalk }} on ${{ matrix.os }}
 ```
 
-![Screenshot of ci matrix](GithubActions_os.png)
+![Screenshot of ci matrix](img/GithubActions_os.png)
 
 You can find more information on the available OS here: [https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners)
 
@@ -852,7 +852,7 @@ The last step is to publish the artifact in the continuous tag. For that we are 
 
 Once this is done, each commit on master will result in updating the assets of the `continuous` release on GitHub to save the latest one.
 
-![Screenshot of continuous release](GithubActions_continuous.png)
+![Screenshot of continuous release](img/GithubActions_continuous.png)
 
 ## Save releases artifacts
 
@@ -926,7 +926,7 @@ And the last change is the action used after creating our Pharo archive.
 
 This action will add the files matching the $files: property to the assets of the release.
 
-![Screenshot of releases](GithubActions_releases.png)
+![Screenshot of releases](img/GithubActions_releases.png)
 
 ## Depending on the resources of your repository with GitBridge
 

@@ -11,12 +11,12 @@ The  [🐥 Learn Keyboard Shortcuts \[W1-Live D\]](https://www.youtube.com/watch
 
 By inspecting `1/3` we get the following inspector :
 
-![Raw tab](Inspector_raw_tab.png)
+![Raw tab](img/Inspector_raw_tab.png)
 
 
 ## A first look at the inspector
 
-![Raw tab areas](Inspector_raw_tab_areas.png)
+![Raw tab areas](img/Inspector_raw_tab_areas.png)
 
 The tree framed areas in the next pictures are :
 1. This text starts with the **class** of the inspected object. Here we have an instance of Fraction.
@@ -28,7 +28,7 @@ By clicking on an instance variable you can also open a new inspector pane.
 This is recursive : if you click on more variables, more pane will open. By default only the last two panes are visible at any time. You can use the small rectangles at the bottom of the window to navigate in the opened pane. You can also choose how many panes and showing at the same times and which one. 
 
 Here is a small demonstration :
-![Navigating in the inspector](Inspector_pane_navigation.gif)
+![Navigating in the inspector](img/Inspector_pane_navigation.gif)
 
 3. This last area is the evaluator. In this area you can write expression and evaluate them like you would do it in the playground. In a given evaluator, `self` is referring to the inspected object. This can be seen in the raw view above the evaluator showing the value of the `self` variable.
 
@@ -37,28 +37,28 @@ Here is a small demonstration :
 Each inspector pane has the following toolbar :
 
 
-![Raw tab areas](Inspector_pane_toolbar.png)
+![Raw tab areas](img/Inspector_pane_toolbar.png)
 
 - The **last button** allows one to open a browser on the class of the inspected object. It can be used to check for available methods to use in the evaluator
 - The **green glasses** button opens another inspector window on the current object
 - The **circling arrows** button allow to refresh the crurent view of the object. Fields of an object are not updated live, so if the object is modified from elsewhere, the new values will only show if the refresh button is used.
 - The **triangle button** is related to object-centric debugging. It allows one to put breakpoints on state access (read and/or write) of a specific object.The following animation shows how to put a breakpoint on writing an instance variable, the `Breakpoints` tab listing breakpoints on the current object and how to deactivate one :
 
-![Breakpoints](Inspector_breakpoints.gif)
+![Breakpoints](img/Inspector_breakpoints.gif)
 
 ## The Meta tab : searching for methods and class hierarchy
 The `Meta` tab is the last one that is available on most objects.
 On the left it shows the class hierarchy of the current object's class and on the right the methods available. Clicking on parent classes in the hierarchy will show methods implemented in this class on the right. Selecting a method will display its source code at the bottom of the tab.
 
 
-![Meta tab](Inspector_meta_tab.png)
+![Meta tab](img/Inspector_meta_tab.png)
 
 ## Creating custom tabs
 
 If you used the inspector a bit, you might have noticed that some objects have additional tabs showing up in the inspector.
 For example both Floats and Integer have their first tabs showing different representations of the numbers :
 
-![Inspecting numbers](Inspector_numbers_tabs.png)
+![Inspecting numbers](img/Inspector_numbers_tabs.png)
 
 Another example is the `FileReference` class. When a file reference is inspected, according to the type of the file, different tab show up with relevant information.
 
@@ -85,7 +85,7 @@ The content of the tab is returned by the method. Here we are creating a text pr
 
 This gives us the following result :
 
-![First element tab](Inspector_expension_first_element.png)
+![First element tab](img/Inspector_expension_first_element.png)
 We notice that our new tab is in second position. This is because in `Collection<<inspectionItems:` (the method defining the Items tab) the order parameter is 0.
 
 ### Adding a tab with a table and conditions on when to display it
@@ -114,7 +114,7 @@ OrderedCollection << inspectionMultipliedByTwo
 	^ presenter
 ```
 If we inspect a collection of numbers we get the following tab :
-![Mutliplied by 2 tab](Inspector_expension_multiplied_by_two.png)
+![Mutliplied by 2 tab](img/Inspector_expension_multiplied_by_two.png)
 
 However if the collection contains elements that are not numbers, the tab crashes and looks like a red rectangle. By defining a method with the name `<name of the method defining the tab>Context:` we can specify when we want to activate a given tab.
 For example :
@@ -141,7 +141,7 @@ OrderedCollection << inspectionIMaxValue
 OrderedCollection << inspectionIMaxValueContext: aContext
 	^ aContext active: self containsOnlyIntegers.
 ```
-![Inspect max value tab](Inspector_expension_max.png)
+![Inspect max value tab](img/Inspector_expension_max.png)
 
 However as we can see above, the self in the evaluator does not match the self in the max value which is confusing so we will hide the evaluator.
 
@@ -151,7 +151,7 @@ OrderedCollection << inspectionIMaxValueContext: aContext
 	^ aContext active: self containsOnlyIntegers.
 ```
 By reinspecting the same collection we get :
-![Removing the evaluator](Inspector_expension_max_without_evaluator.png)
+![Removing the evaluator](img/Inspector_expension_max_without_evaluator.png)
 
 ### How to add Roassal charts ?
 As said above, Roassal, allow one to build visualisations.
@@ -174,6 +174,6 @@ OrderedCollection << inspectionIntegerHistogramContext: aContext
 	aContext withoutEvaluator.
 ```
 By inspecting `{ 1 . 1 . 3 . 2 . 5 . 2. 2 . 1. 9. 3 . 2. 2. 5 . 7 . 7 . 8  } asOrderedCollection` we get :
-![Histogram tab](Inspector_expension_histogram.png)
+![Histogram tab](img/Inspector_expension_histogram.png)
 
 

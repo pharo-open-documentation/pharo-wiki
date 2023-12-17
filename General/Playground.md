@@ -23,7 +23,7 @@ Playground is a tool that is most often used for typing Pharo expressions and ex
 
 You can open Playground with the shortcut `cmd/ctrl + o + w` or using the menu entry from the menubar: 
 
-![open playground from the image](Playground_open_from_image.png)
+![open playground from the image](img/Playground_open_from_image.png)
 
 ## Basic usage
 The Playground can be used to quickly execute Pharo code. You can write something and then do operations on the code, such as:
@@ -31,23 +31,23 @@ The Playground can be used to quickly execute Pharo code. You can write somethin
 ### Do it 
 Shortcut: `cmd/ctrl + d` It Executes the code/expression
 
-![Do it command on playground](Playground_do_it.png)
+![Do it command on playground](img/Playground_do_it.png)
 
 ### Print it
 Shortcut: `cmd/ctrl + p` It Compiles the expression, executes it, sends the message `printString` to the result and displays the resulting string.
 
-![Print it command on playground](Playground_print_it.png)
-![Print it result on playground](Playground_print_result.png)
+![Print it command on playground](img/Playground_print_it.png)
+![Print it result on playground](img/Playground_print_result.png)
 
 ### Do it and go
 Shortcut: `cmd/ctrl + g` It executes the code and opens a navigable inspector on the side of the playground. It allows us to browse the object structure.
 
-![Do it and go on the playground](Playground_do_it_and_go.png)
+![Do it and go on the playground](img/Playground_do_it_and_go.png)
 
 ### Inspect it
 Shortcut: `cmd/ctrl + i` It executes the code and opens a navigable inspector outside of the playground. It allows us to browse the object structure.
 
-![Inspect on Time now](Playground_inspect_on_Time_now.png)
+![Inspect on Time now](img/Playground_inspect_on_Time_now.png)
 
 > The title tells us that `11:55:11.561177 am` is an instance of the class `Time`. The top panel allows us to browse the instance variables of an object and their values. The bottom panel can be used to write expressions to send messages to the object. 
 
@@ -56,7 +56,7 @@ Shortcut: `cmd/ctrl + shift + i` It opens a minimal inspector on the result of t
 ### Debug it
 Shortcut: `cmd/ctrl + shift + d` It opens a debugger on the code with the context at the start of the snippet.
 
-![Debug it on Time now](Playground_debug_it.png)
+![Debug it on Time now](img/Playground_debug_it.png)
 
 >The Debugger is a tool that not only lets you inspect the run-time stack of your program when an error is raised, but it also enables you to interact with all of the objects in your application, including the source code. In many cases you can modify your source code from the debugger and continue executing. The debugger is especially effective as a tool to support test-first development in tandem with SUnit.
 
@@ -67,7 +67,7 @@ Offers several options provided by System Browser, such as browsing the source c
 
 You can also use the playground for typing any text that you would like to remember, such as to-do lists or instructions for anyone who will use your image.
 
-![Text on the playground](Playground_with_only_text.png)
+![Text on the playground](img/Playground_with_only_text.png)
 
 ## Some Advices
 ### Doing vs. Printing
@@ -75,7 +75,7 @@ The difference between these two actions is visual. try to execute something lik
 
 Now try to do it with Print it, the same will happen but you will now see the result printed on the side:
 
-![Print the sum using the playground](Playground_print_sum.png)
+![Print the sum using the playground](img/Playground_print_sum.png)
 
 That could be useful if you want to understand the result value.
 
@@ -83,7 +83,7 @@ That could be useful if you want to understand the result value.
 
 In this section, we will cover some advanced usages of the Playground. 
 
-![Overview of the Playground](Playground_overview.png)
+![Overview of the Playground](img/Playground_overview.png)
 
 The previous figure highlights different parts of the playground and we will refer to these in this explanation.
 
@@ -156,7 +156,7 @@ We have seen in the previous sections that it is possible to get back the conten
 
 As explained before, when using the playground and naming playgrounds, the content is stored in local files. In order to share the playgrounds through different images, they need to use the same folders to store their content. Two settings are available for that and can be found in the setting browser under `Tools` -> `Glamourous Toolkit`. 
 
-![Settings around the playground](Playground_settings.png)
+![Settings around the playground](img/Playground_settings.png)
 
 The two interesting settings are:
 

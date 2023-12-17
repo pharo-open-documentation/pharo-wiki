@@ -15,7 +15,7 @@ TimeProfiler spyOn: [ SimpleGridExample new open ]
 ```
 Result: a breakdown of the methods in which the program spent time.
 
-![image](Profiling_Image_TimeProfilerFromCommandLine.png)
+![image](img/Profiling_Image_TimeProfilerFromCommandLine.png)
 
 > If your block execution time is too fast (~ < 3ms), the time profiler will not display any result.
 
@@ -34,7 +34,7 @@ If `SimpleGridExample new open` is the program you want to profile, **inspect** 
 
 Result: the number of times the profiler was able to run the program per second.
 
-![image](Profiling_Image_Bench.png)
+![image](img/Profiling_Image_Bench.png)
 
 You can also check the execution time of a set of instructions by inspecting or printing the result of the `timeToRun` method on blocks like this:
 
@@ -45,11 +45,11 @@ You can also check the execution time of a set of instructions by inspecting or 
 ### Interactively open a Time Profiler
 You can access a UI for the time profiler tool via the menu bar.
 
-![image](Profiling_Image_TimeProfilerMenuItem.png)
+![image](img/Profiling_Image_TimeProfilerMenuItem.png)
 
 Result: type your code in the top box and click "Profile it".
 
-![image](Profiling_Image_TimeProfilerToolUI.png)
+![image](img/Profiling_Image_TimeProfilerToolUI.png)
 
 ## Space Profiling
 Imagine you want to know how much instances of the classes Point and TextMorph there are in the system, and how much space they occupy. **Inspect**:
@@ -59,4 +59,4 @@ Imagine you want to know how much instances of the classes Point and TextMorph t
 ```
 Result:
 
-![image](Profiling_Image_SpaceTally.png)
+![image](img/Profiling_Image_SpaceTally.png)

@@ -34,15 +34,15 @@ Here is more detailed information about adding an extension method via Pharo's t
 
 In the Pharo versions based on Nautilus system browser, extension methods are created when we categorize methods on a protocol beginning by a `*`.
 
-![Add an extension method via Nautilus 1](Extensions_Image_NautilusAddExtension1.png?raw=true "Add an extension method via Nautilus 1")
+![Add an extension method via Nautilus 1](img/Extensions_Image_NautilusAddExtension1.png?raw=true "Add an extension method via Nautilus 1")
 
-![Add an extension method via Nautilus 2](Extensions_Image_NautilusAddExtension2.png?raw=true "Add an extension method via Nautilus 2")
+![Add an extension method via Nautilus 2](img/Extensions_Image_NautilusAddExtension2.png?raw=true "Add an extension method via Nautilus 2")
 
 ### Define an extension method since Pharo 7
 
 Since Pharo 7 the default system browser is Calypso. To add an extension method in Calypso you need to use the "Move to package" menu entry.
 
-![Add an extension method via Calypso](Extensions_Image_CalypsoAddExtension.png?raw=true "Add an extension method via Calypso")
+![Add an extension method via Calypso](img/Extensions_Image_CalypsoAddExtension.png?raw=true "Add an extension method via Calypso")
 
 If you already have extensions in this package, you can also select the package in the list of extending packages in the protocol pane before adding a method.
 
@@ -63,11 +63,11 @@ There are two ways to find which methods are extensions where they are located:
 
 ### In versions prior to Pharo 7
 
-![See an extension method via Nautilus](Extensions_Image_NautilusSeeExtensions.png?raw=true "See an extension method via Nautilus")
+![See an extension method via Nautilus](img/Extensions_Image_NautilusSeeExtensions.png?raw=true "See an extension method via Nautilus")
 
 ### Since Pharo 7
 
-![See an extension method via Calypso](Extensions_Image_CalypsoSeeExtensions.png?raw=true "See an extension method via Calypso")
+![See an extension method via Calypso](img/Extensions_Image_CalypsoSeeExtensions.png?raw=true "See an extension method via Calypso")
 
 ### Find extensions programmatically
 

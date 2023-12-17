@@ -3,8 +3,9 @@ The Pharo community uses specific vocabulary to designate object oriented concep
 
 This page aims to provide disambiguation for the words belonging to this vocabulary.
 
-## $a 
-The character a. In Pharo strings are composed of characters, a character starts with a $. For unprintable characters such as tab, just send the message to the class e.g., `Character tab`.
+## \$a
+
+The character a. In Pharo strings are composed of characters, a character starts with a `$`. For unprintable characters such as tab, just send the message to the class e.g., `Character tab`.
 
 ## Binary message
 A binary message is a [message](#message) composed of special character(s) where two objects are involved (the [receiver](#receiver) and one argument), which is the reason it is call binary. This is mostly used for arithmetic, comparison, and logical operations. For example, `+` is a binary message involving the receiver and the argument in parameter.

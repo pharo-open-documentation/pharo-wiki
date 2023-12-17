@@ -10,7 +10,7 @@ This page will document some aspects of those features.
   * [Add a sub menu](#add-a-sub-menu)
 - [Change the menu](#change-the-menu)
 
-![MenuBar_Image_WhatIsMenuBarAndWorldMenu.png](./MenuBar_Image_WhatIsMenuBarAndWorldMenu.png)
+![](img/MenuBar_Image_WhatIsMenuBarAndWorldMenu.png)
 
 ## Disable the Menubar/WorldMenu
 

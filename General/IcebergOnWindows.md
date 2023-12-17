@@ -18,11 +18,11 @@ If you are simply using a standalone Pharo [download](http://pharo.org/download/
 
 In Pharo Launcher, in the bottom right corner you can see a button ‘open settings’ — click on it.
 
-![alt text](https://github.com/myroslavarm/pharo-wiki/blob/patch-1/General/win_2.png)
+![alt text](img/win_2.png)
 
 In the settings, if you expand the ‘Pharo Launcher’ tab you can see the following options:
 
-![alt text](https://github.com/myroslavarm/pharo-wiki/blob/patch-1/General/win_3.png)
+![alt text](img/win_3.png)
 
 In the first, third and fourth options, change directories without disrupting the dependencies (images in ‘images’, template sources one folder up, etc). When you change the paths, the upper right corner of each of the text boxes will be yellow, which means unsaved changes (that is also the logic inside Pharo). You have to position your cursor in each of the text boxes and press (ctrl+s) to save the changes.
 
@@ -47,7 +47,7 @@ Metacello new
 
 With Tonel loaded, if you go to Iceberg repositories and right-click on the specific repository, you can go to ‘extra’ category and click on ‘convert repository sources to tonel’ button. It will migrate the code for you.
 
-![alt text](https://github.com/myroslavarm/pharo-wiki/blob/patch-1/General/win_4.png)
+![alt text](img/win_4.png)
 
 > Note: this option is only possible if the repository isn’t already in the Tonel format. So if your problem is cloning the Pharo fork (Pharo repo is partially Tonel, partially Filetree), then the only option that will actually solve it, is  shortening the path.
 
