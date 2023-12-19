@@ -26,6 +26,41 @@ builder := Object << #MyClass	slots: { };	package: 'MyPackage'.	class := bui
 
 The first statement will return an instance of `FluidClassBuilder`. The second statement will build the class, install it into the image, and assign it to the variable. If `MyPackage` does not exist, it will be created.
 
+### Creating a new class without installing it
+
+Here is an example of how you can create a new class without installing it into the system. You can do that by sending `build` message instead of `install` as in the previous example.
+
+```st
+builder := OrderedCollection << #MyCollection.myCollectionClass := builder build.myCollectionClass compile: 'generate: aNumber    "Generate aNumber random integers"    | rand |    rand := Random new.    aNumber timesRepeat: [ self add: (rand nextInteger: 100) ]'.	myCollection := myCollectionClass new.myCollection generate: 4. "a MyCollection(60 5 40 11)"
+```
+
+This way, we can create two classes that have a same name but do different things. In the example below, we create two classes named `Dog`. One class defines method `bark` to return the string `'Woof, woof!'` (English barking), the other one - `'Ouaf, ouaf !'` (French barking). As you can see below, the instances of those classes do different things. The classes are different but the class names are the same.
+
+```st
+dogClass1 := (Object << #Dog) build.dogClass2 := (Object << #Dog) build.dogClass1 compile: 'bark    "Bark in English"    ^ ''Woof, woof!'''.dogClass2 compile: 'bark    "Bark in French"    ^ ''Ouaf, ouaf !'''.dog1 := dogClass1 new.dog2 := dogClass2 new.dog1 bark. "'Woof, woof!'"dog2 bark.  "'Ouaf, ouaf !'"
+
+dog1 class = dog2 class. "false"dog1 class name = dog2 class name. "true"
+```
+
+**Be careful!** In Pharo 11, if the class named `Dog` already exists in the system, your new classes will also have the methods that the system class defines. However, the new methods will override the system ones in your new class.
+
+For example, if there already was a class Dog in your image defined as follows:
+
+```st
+Object << #Dog    slots: {};    package: 'MyPackage'
+    
+Dog >> printOn: aStream    aStream nextPutAll: 'I am a dog!'.
+
+Dog >> bark    "Bark in Ukrainian"    ^ 'Гав, гав!'
+```
+
+You can still define the local class as in the example above. In this case, your new class will understand the method `printOn:` from the system class and will define a new method `bark`:
+
+```st
+dog1. "I am a dog"
+dog1 bark. "Woof, woof!"
+```
+
 ### Creating an anonymous class
 
 ### Removing a class
