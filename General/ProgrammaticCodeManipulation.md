@@ -8,6 +8,16 @@ This article explains only those operations that **modify** the code. We will wr
 
 ### Creating a new package
 
+```st
+package := self packageOrganizer ensurePackage: 'PackageName'.
+```
+
+In Playground, you can use any object or class instead of `self`:
+
+```st
+package := Object packageOrganizer ensurePackage: 'PackageName'.
+```
+
 ### Removing a package
 
 ```st
