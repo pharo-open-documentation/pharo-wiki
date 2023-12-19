@@ -1,4 +1,4 @@
-# Programmatic Code Manipulation
+# Programmatic Code Manipulation (Pharo 11)
 
 In this article, we will present some code snippets that demonstrate how we can manipulate the source code (packages, classes, methods, variables, traits, etc.) programmatically, without using the SystemBrowser. Those techniques can be very useful for reflective operations, code generation, testing, etc.
 
@@ -9,6 +9,12 @@ This article explains only those operations that **modify** the code. We will wr
 ### Creating a new package
 
 ### Removing a package
+
+```st
+package removeFromSystem.
+```
+
+**Be careful!** In Pharo 11 and earlier, this will not properly remove classes from the system. So make sure to remove all classes before you remove the package.
 
 ### Creating a package without installing it
 
@@ -65,6 +71,12 @@ dog1 bark. "Woof, woof!"
 
 ### Removing a class
 
+This will also remove all methods of the class.
+
+```st
+class removeFromSystem.
+```
+
 ## Methods
 
 ### Adding a method to a class
@@ -92,6 +104,10 @@ Author
 ```
 
 ### Removing a method from a class
+
+```st
+method removeFromSystem.
+```
 
 ## Variables
 
