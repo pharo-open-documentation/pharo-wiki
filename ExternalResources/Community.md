@@ -17,3 +17,4 @@ This page exists for the sake of discoverability of Pharo community.
 - [https://medium.com/@juliendelplanque](https://medium.com/@juliendelplanque) - Blog related to Pharo in general.
 - [http://www.mirandabanda.org/cogblog/](http://www.mirandabanda.org/cogblog/) - Blog for open-smalltalk-vm.
 - [https://thiscontext.com](https://thiscontext.com) - Blog related to caffeine, a smalltalk vm in Javascript and other smalltalk topics.
+- [https://80738163270632.blogspot.com/] - Blog related to Pharo in general.

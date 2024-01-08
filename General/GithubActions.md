@@ -1072,6 +1072,6 @@ You can then adapt those sources to what you need. Once it is done, you can clic
 Here are some resources on GitHub actions and Pharo:
 - [https://badetitou.fr/blog/2020-11-30-Testing_pharo_with_github_actions](https://badetitou.fr/blog/2020-11-30-Testing_pharo_with_github_actions/)
 - [https://badetitou.fr/blog/2022-10-28-test-your-moose-code-using-ci](https://badetitou.fr/blog/2022-10-28-test-your-moose-code-using-ci)
-- [https://modularmoose.org/2021/07/19/automatic-metamodel-documentation-generation.html](https://modularmoose.org/2021/07/19/automatic-metamodel-documentation-generation.html)
+- [https://modularmoose.org/posts/2021-07-19-automatic-metamodel-documentation-generation](https://modularmoose.org/posts/2021-07-19-automatic-metamodel-documentation-generation)
 
 Do not hesitate to do a PR to add more resources ;)
