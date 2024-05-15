@@ -93,14 +93,22 @@ Tonel got multiple versions over the years, each tweaking the export format:
 - version 2.0: this version ensure that in the metadatas the keys are symbols and the values are strings. This change happened in order to be compatible with Gemstone. Note that this format was never used as a default export format of Pharo
 - version 3.0: this version has the changes of the 2.0 but it also adds the properties `package` and `tag` to replace the `category` property for class definitions. This is to remove same ambiguity in the class definitions. The `category` property is kept by default for backward compatibility, but the TonelWriter can be configured to not export this property. This format can also be improved to export more metadata. For example, it is planned to export a property `deprecatedAliases` to manage some class deprecations in the future.
 
-If you want to change you export format and convert all the files of a repository at once to avoid to have multiple PR with format changes you can use this script and commit the resulting files:
+If you want to change your export format and convert all the files of a repository at once to avoid to have multiple PR with format changes you can use the following script.
+
+**NOTE: you must ensure all your project packages are loaded in the image (check in the Repository | Packages window, and right click load any that aren't).**
 
 ```st
-| projectName |
+| projectName repository |
 projectName := 'ProjectNameInIceberg'.
 repository := IceRepository repositories detect: [ :repo | repo name = projectName ].
 repository workingCopy packages do: [ :pkg |
 IceLibgitTonelWriter forInternalStoreFileOut: pkg latestVersion mcVersion on: repository ]
+```
+
+Once you have run this script, use the "Repository, Project | Extra | Open in native file browser" menu option to open an OS terminal and then run:
+```
+git commit -a -m "Update tonel formal to V3"
+git push
 ```
 
 Since Pharo 12, it is also possible to indicate in a Tonel project which version of Tonel to use to export some code. The file to update is the `.properties` file that is in the source folder and it should look like this:
