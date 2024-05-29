@@ -94,8 +94,7 @@ Tonel got multiple versions over the years, each tweaking the export format:
 - version 3.0: this version has the changes of the 2.0 but it also adds the properties `package` and `tag` to replace the `category` property for class definitions. This is to remove same ambiguity in the class definitions. The `category` property is kept by default for backward compatibility, but the TonelWriter can be configured to not export this property. This format can also be improved to export more metadata. For example, it is planned to export a property `deprecatedAliases` to manage some class deprecations in the future.
 
 If you want to change your export format and convert all the files of a repository at once to avoid to have multiple PR with format changes you can use the following script.
-
-**NOTE: you must ensure all your project packages are loaded in the image (check in the Repository | Packages window, and right click load any that aren't).**
+Take a Pharo 12 or Pharo 13 images and run the following script. It will convert all the loaded packages in your image so you may load extra packages to prepare such operation. 
 
 ```st
 | projectName repository |
@@ -104,6 +103,8 @@ repository := IceRepository repositories detect: [ :repo | repo name = projectNa
 repository workingCopy packages do: [ :pkg |
 IceLibgitTonelWriter forInternalStoreFileOut: pkg latestVersion mcVersion on: repository ]
 ```
+
+**NOTE: you must ensure all your project packages are loaded in the image (check in the Repository | Packages window, and right click load any that aren't).**
 
 Once you have run this script, use the "Repository, Project | Extra | Open in native file browser" menu option to open an OS terminal and then run:
 ```
