@@ -102,7 +102,10 @@ Pragma allNamed: #applicationParameterOptional: from: MyConfiguration to: MyAbst
 
 ### Collect pragmas in the image
 
-The second way to collect the pragmas to handle them is to use the PragmaCollector. This class can be configured with a query and will return all the pragmas matching the query.
+You can also use the Pragma class to collect pramgas in the entire image by using:
+- `allNamed: aSymbol `
+  
+A second, now less reccomended way to collect pragmas, is to use the PragmaCollector. This class can be configured with a query and will return all the pragmas matching the query.
 
 To configure the PragmaCollector we need to send implement a filter block. If we want to collect the `primitive:` pragmas:
 
