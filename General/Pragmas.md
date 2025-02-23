@@ -188,4 +188,4 @@ Some pragmas are interesting to know in Pharo IDE. You can find information on t
 
 ## See also
 
-- [Pragmas: Literal Messages as Powerful Method Annotations](https://rmod.inria.fr/archives/papers/Duca16a-Pragmas-IWST.pdf)
+- [Pragmas: Literal Messages as Powerful Method Annotations](https://rmod-files.lille.inria.fr/Team/Texts/Papers/Duca16a-Pragmas-IWST.pdf)
