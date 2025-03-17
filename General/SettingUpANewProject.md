@@ -25,6 +25,7 @@ Open the list of `Official distributions` in the left panel and double-click on 
 
 ## Step 2. Create a package and a class
 
+!! ( In Pharo 13 or more latest version, we have "**slots: { #variable }**" instead of "**instanceVariableNames: 'variable'**" )
 
 Let us make our first package. In your newly made image in Pharo Launcher, in the top menu bar choose *Tools* then *System Browser*.
 
