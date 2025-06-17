@@ -1,7 +1,7 @@
 # Setting up Travis Continuous Integration
 
 > IMPORTANT NOTE: Since Travis is becoming a pay to use service, it is possible that this documentation will not be updated anymore.
-> [A page on how to use Github Actions](General/GithubActions.md) in order to have a continuous integration is already available on this wiki.
+> [A page on how to use Github Actions](GithubActions.md) in order to have a continuous integration is already available on this wiki.
 
 Your repository should have two extra hidden files: `.travis.yml` and `.smalltalk.ston`.
 In addition, you may want to have a `.coveralls` configuration to support automatic coverage computation.
