@@ -135,7 +135,7 @@ Here is a picture of the context stack (a.k.a. call stack) explaining this opera
 ### Retry
 **Syntax:**  
 `protectedBlock on: anExceptionClass do: [:ex | ex retry ]`  
-or: `protectedBlock on: anExceptionClass do: [:ex | ex retry: aBlock ]`  
+or: `protectedBlock on: anExceptionClass do: [:ex | ex retryUsing: aBlock ]`  
 
 **Synopsis:**  
 Re-execute the protected block (if using `#retry`), or replace the protected block with a different block and then re-execute it (if using `#retryUsing:`).
