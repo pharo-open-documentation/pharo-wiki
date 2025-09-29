@@ -48,7 +48,7 @@ If we want to follow the [TDD (test driven development)](https://fr.wikipedia.or
 
 ![Pharo System Browser, new Test class created](SettingUp_TestClass.png)
 
-Next what we need to do is create some tests. We do this by clicking on out test class, choosing a protocol in second from the right part of the Browser, and implementing a test. 
+Next what we need to do is create some tests. We do this by clicking on our test class, choosing a protocol in second from the right part of the Browser, and implementing a test. 
 
 In case there are no protocols to choose from (this happens in cases when we are making our first test), then we need to add a new one. This is done by pressing a right click on *instance side*, going to New protocol option and picking a protocol you need (in our case tests).
 
