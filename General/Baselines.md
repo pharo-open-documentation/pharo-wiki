@@ -12,6 +12,7 @@ Adding a baseline to a project has some advantages:
 This documentation explains how to write a baseline and how to load the project described by this baseline.
 
 - [Baselines](#baselines)
+	- [Quick start: loading a project](#quick-start-loading-a-project)
 	- [How to define Baselines](#how-to-define-baselines)
 		- [Define packages forming your project](#define-packages-forming-your-project)
 		- [Define external dependencies](#define-external-dependencies)
@@ -19,10 +20,11 @@ This documentation explains how to write a baseline and how to load the project 
 				- [Depend on a subset of a git project](#depend-on-a-subset-of-a-git-project)
 				- [Depends on the same project with different groups](#depends-on-the-same-project-with-different-groups)
 			- [To a local git project](#to-a-local-git-project)
-			- [To smalltalkhub projects](#to-smalltalkhub-projects)
+		- [Import names from a dependency](#import-names-from-a-dependency)
 		- [Groups](#groups)
 			- [The default group](#the-default-group)
 		- [Pre/post load actions](#prepost-load-actions)
+			- [Pre/post load actions scoped to a dependency](#prepost-load-actions-scoped-to-a-dependency)
 		- [Loads different packages depending on the Pharo version](#loads-different-packages-depending-on-the-pharo-version)
 		- [Define custom attributes](#define-custom-attributes)
 		- [Loading types](#loading-types)
@@ -34,7 +36,6 @@ This documentation explains how to write a baseline and how to load the project 
 			- [Project managed with Git](#project-managed-with-git)
 				- [Project from github/gitlab/bitbucket](#project-from-githubgitlabbitbucket)
 				- [Project from local repository](#project-from-local-repository)
-			- [Project managed with Smalltalkhub](#project-managed-with-smalltalkhub)
 			- [Project without repository](#project-without-repository)
 			- [Loading groups](#loading-groups)
 			- [Conflict, Upgrade and Downgrade resolution](#conflict-upgrade-and-downgrade-resolution)
@@ -46,7 +47,29 @@ This documentation explains how to write a baseline and how to load the project 
 		- [Metacello fetch feature](#metacello-fetch-feature)
 		- [Metacello record feature](#metacello-record-feature)
 		- [Metacello listing feature](#metacello-listing-feature)
+		- [Metacello silently feature](#metacello-silently-feature)
 	- [See also](#see-also)
+	- [Deprecated Configuration usage](#deprecated-configuration-usage)
+		- [Depend on a configuration](#depend-on-a-configuration)
+		- [Depend on a configuration with `#configuration:with:`](#depend-on-a-configuration-with-configurationwith)
+		- [Load a project from a configuration](#load-a-project-from-a-configuration)
+		- [Conflicts between SmalltalkHub and git versions](#conflicts-between-smalltalkhub-and-git-versions)
+
+## Quick start: loading a project
+
+If a project provides a baseline, you can load it from the playground with only two options: the name of the baseline and the repository where the project is hosted.
+
+```Smalltalk
+Metacello new
+	baseline: 'MaterialDesignLite';
+	repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src';
+	load
+```
+
+- `baseline:` is the name of the baseline without the `BaselineOf` prefix. Here it loads `BaselineOfMaterialDesignLite`.
+- `repository:` is the location of the project in the form `github://{owner}/{projectName}:{version}/{subfolder}`. The version and subfolder are optional. The version can be: nothing (loads master branch), a branch name, a tag/release or a commit SHA.
+
+This loads the default group of the project. To load only some groups, use `load:`, or to handle conflicts, warnings or other options, see [How to load a git project using its baseline](#how-to-load-a-git-project-using-its-baseline).
 
 ## How to define Baselines
 
@@ -281,51 +304,14 @@ spec
 	with: [ spec repository: 'gitlocal://full/path/to/repository' ]
 ```
 
-#### To smalltalkhub projects
+### Import names from a dependency
 
-Depending on a [Smalltalkhub](http://smalltalkhub.com) project is done via `#project:with`.
+When a package requires a name that is not defined in your baseline but is provided by one of your dependencies, you can tell Metacello to import that name from the dependency with `#import:` or `#import:provides:`.
 
-```Smalltalk
-spec
-	project: '{DependencyName}'
-	with: [ spec
-		className: #ConfigurationOf{ConfigurationName};
-		versionString: #'{Version}';
-		repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main/' ]
-```
-
-The snippet should be configured with:
-
-- `{DependencyName}`: It can be anything from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
-- `{ConfigurationName}`: It is the name of the configuration you wish to reference
-- `{Version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
-- `{owner}`: Name of the team or user hosting the project
-- `{repositoryName}`: Name of the repository on SmalltalkHub
+- `spec import: 'Sample'` allows the dependency `'Sample'` to provide any of the required names that are not defined in your baseline.
+- `spec import: 'Sample' provides: #('Sample Core')` only allows the dependency `'Sample'` to provide the listed names.
 
 Example:
-
-```Smalltalk
-spec
-	project: 'Magritte3'
-	with: [ spec
-		className: #ConfigurationOfMagritte3;
-		versionString: #'release3';
-		repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
-```
-
-As for git-hosted repositories, you can ask for a specific group:
-
-```Smalltalk
-spec
-	project: 'Magritte3'
-	with: [ spec
-		className: #ConfigurationOfMagritte3;
-		versionString: #'release3';
-		loads: #('Seaside');
-		repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
-```
-
-You can now use the dependency names to add the project as a dependency of your packages.
 
 ```Smalltalk
 baseline: spec
@@ -334,27 +320,20 @@ baseline: spec
 		for: #common
 		do: [
 			"Dependencies"
-			self magritte3: spec.
+			spec
+				baseline: 'Sample' with: [ spec repository: 'github://dalehenrich/sample:master/repository' ];
+				baseline: 'Example' with: [ spec repository: 'github://dalehenrich/example:master/repository' ].
+			spec import: 'Sample' provides: #('Sample Core').
+			spec import: 'Example' provides: #('Example Core').
 
 			"Packages"
 			spec
-				package: 'MyProject';
-				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'Magritte3') ];
-				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
-				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+				package: 'MyProject' with: [ spec requires: #('Sample Core' 'Example Core') ] ]
 ```
 
-```Smalltalk
-magritte3: spec
-	spec
-		project: 'Magritte3'
-		with: [ spec
-			className: #ConfigurationOfMagritte3;
-			versionString: #'release3';
-			loads: #('Seaside');
-			repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
-```
+Metacello inserts the imported names at the position of the dependency in the load order. Each imported name is loaded from the dependency only, without loading its whole default group.
+
+> `#import:` and `#import:provides:` can only be used with baseline dependencies, not with `#project:with:` dependencies.
 
 ### Groups
 
@@ -478,6 +457,51 @@ postload: loader package: packageSpec
 	Transcript crLog: 'Project loaded!'
 ```
 
+#### Pre/post load actions scoped to a dependency
+
+The hooks can also be attached to a dependency instead of the whole project. Declare them in the second parameter block of `#baseline:with:`, next to the repository of the dependency:
+
+- The pre-load hook is executed after the baseline of the dependency is loaded and before its code is loaded.
+- The post-load hook is executed after the code of the dependency is loaded.
+
+Those hooks are only executed when the dependency is actually loaded. If the group being loaded does not include the dependency, its hooks are not executed.
+
+Example:
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Dependencies"
+			spec
+				baseline: 'MaterialDesignLite'
+				with: [ spec
+					repository: 'github://DuneSt/MaterialDesignLite:v1.x.x/src';
+					preLoadDoIt: #'preloadMaterialDesignLite:package:';
+					postLoadDoIt: #'postloadMaterialDesignLite:package:' ].
+
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLite') ] ]
+```
+
+The hook methods take the same optional parameters as the project-level hooks:
+
+```Smalltalk
+preloadMaterialDesignLite: loader package: packageSpec
+
+	Transcript crLog: 'MaterialDesignLite is about to be loaded'
+```
+
+```Smalltalk
+postloadMaterialDesignLite: loader package: packageSpec
+
+	Transcript crLog: 'MaterialDesignLite is loaded'
+```
+
 ### Loads different packages depending on the Pharo version
 
 It might be useful to load some packages in specific Pharo versions only. For example, if we have a compatibility package for Pharo 6, we do not want to load it in Pharo 7.
@@ -596,8 +620,8 @@ baseline: spec
 					self osSubprocess: spec.
 					spec package: 'MyProject' with: [ spec requires: #('OSSubprocess') ] ];
 				for: #'Windows' do: [
-					self processWrapper: spec.
-					spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
+					self osWinSubprocess: spec.
+					spec package: 'MyProject' with: [ spec requires: #('OSWinSubprocess') ] ]
 ```
 
 ```Smalltalk
@@ -608,13 +632,10 @@ osSubprocess: spec
 ```
 
 ```Smalltalk
-processWrapper: spec
-	spec 
-		configuration: 'ProcessWrapper'
-		with: [
-			spec
-				versionString: '1.2';
-				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
+osWinSubprocess: spec
+	spec
+		baseline: 'OSWinSubprocess'
+		with: [ spec repository: 'github://pharo-contributions/OSWinSubprocess:v1.1/src' ]
 ```
 
 ### Loading types
@@ -659,7 +680,7 @@ baseline: spec
 			spec
 				package: 'MyProject';
 				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
-				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions' 'Magritte3') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'MaterialDesignLiteExtensions') ];
 				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests' 'MaterialDesignLite' "We load the version containing MDL tests for our tests only") ];
 				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ].
 
@@ -690,8 +711,8 @@ baseline: spec
 
 			spec
 				for: #'Windows' do: [
-					self processWrapper: spec.
-					spec package: 'MyProject' with: [ spec requires: #('ProcessWrapper') ] ]
+					self osWinSubprocess: spec.
+					spec package: 'MyProject' with: [ spec requires: #('OSWinSubprocess') ] ]
 ```
 
 ```Smalltalk
@@ -709,18 +730,6 @@ materialDesignLite: spec
 
 ```Smalltalk
 "dependencies"
-magritte3: spec
-	spec
-		project: 'Magritte3'
-		with: [ spec
-			className: #ConfigurationOfMagritte3;
-			versionString: #'release3';
-			loads: #('Seaside');
-			repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
-```
-
-```Smalltalk
-"dependencies"
 osSubprocess: spec
 	spec
 		baseline: 'OSSubprocess'
@@ -728,14 +737,10 @@ osSubprocess: spec
 ```
 
 ```Smalltalk
-"dependencies"
-processWrapper: spec
+osWinSubprocess: spec
 	spec
-		configuration: 'ProcessWrapper'
-		with: [
-			spec
-				versionString: '1.2';
-				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
+		baseline: 'OSWinSubprocess'
+		with: [ spec repository: 'github://pharo-contributions/OSWinSubprocess:v1.1/src' ]
 ```
 
 ```Smalltalk
@@ -791,7 +796,7 @@ Note the three steps:
 2. Configure it (declare the repository of the project, specify the version, the baseline, optional options...)
 3. Launch the loading
 
-To configure the request, some options are necessary and some are optional. We cover in the next two sub sections how to configure the loading of a project hosted via Monticello and git, and then we detail optional parameters.
+To configure the request, some options are necessary and some are optional. We cover in the next two sub sections how to configure the loading of a project hosted on git, and then we detail optional parameters. Projects stored on SmalltalkHub or SqueakSource are covered in [Deprecated Configuration usage](#deprecated-configuration-usage).
 
 #### Project managed with Git
 
@@ -884,45 +889,6 @@ Metacello new
 	load
 ```
 
-#### Project managed with Smalltalkhub
-
-To load a project from Smalltalkhub you need to execute an expression like this:
-
-```Smalltalk
-Metacello new
-	repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main';
-	configuration: {configurationName};
-	version: {version};
-	load
-```
-
-This command has two parameters:
-
-- `owner`: Name of the team or user hosting the project
-- `repositoryName`: Name of the repository on SmalltalkHub
-- `configurationName` is the name of the configuration to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
-- `{version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
-
-Example:
-
-```Smalltalk
-Metacello new
-	repository: 'http://smalltalkhub.com/mc/Seaside/Seaside31/main';
-	configuration: 'Seaside3';
-	version: #stable;
-	load
-```
-
-You can also use `Metacello>>smalltalkhubUser:project:`:
-
-```Smalltalk
-Metacello new
-	smalltalkhubUser: 'Seaside' project: 'Seaside31';
-	configuration: 'Seaside3';
-	version: #stable;
-	load
-```
-
 #### Project without repository
 
 It is possible to use Metacello without specifying any repository. This can be useful for defining all project dependencies in a baseline and then loading them with Metacello.
@@ -990,18 +956,6 @@ Metacello new
 	onUpgrade: [ :ex | ex useIncoming ];
 	onDowngrade: [ :ex | ex useLoaded ];
 	ignoreImage;
-	load
-```
-
-Here is a last example of conflict management. The Pharo community was previously on a version control system called Monticello. Most of the community has now migrated to GitHub. Some of the projects exist on Smalltalkhub (managed with Monticello) and on GitHub. It's not unusual to have conflict between the two.
-
-Here is a little script that loads the version managed with git when the project name is the same:
-
-```Smalltalk
-Metacello new
-	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
-	baseline: 'MaterialDesignLite';
-	onConflict: [ :ex :a :b | a projectName = b projectName ifTrue: [ a projectSpec isBaselineOfProjectSpec ifTrue: [ ex useLoaded ] ifFalse: [ ex useIncoming ] ] ifFalse: [ ex resume ] ];
 	load
 ```
 
@@ -1168,7 +1122,171 @@ Metacello registry
 
 This command needs to be inspected to see the list.
 
+### Metacello silently feature
+
+By default, Metacello shows progress bars while it fetches and loads a project. The `silently` option disables them, which can speed up loading.
+
+Example:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'v1.x.x' path: 'src';
+	baseline: 'MaterialDesignLite';
+	silently;
+	load
+```
+
+> The speed-up from `silently` is only noticeable since Pharo 14.
+
 ## See also
 
 - Deep into pharo: [Chapter 9, Managing Projects with Metacello](http://files.pharo.org/books-pdfs/deep-into-pharo/2013-DeepIntoPharo-EN.pdf)
 - [Metacello documentation](https://github.com/Metacello/metacello/tree/master/docs)
+
+## Deprecated Configuration usage
+
+Configurations (`ConfigurationOf...` classes) were used to store code outside of GitHub, for example on [SmalltalkHub](http://smalltalkhub.com) or SqueakSource. Their support was dropped in Pharo 13.
+
+This section is only kept to load old code in old versions of Pharo. For new projects, use a baseline hosted on git as described in the rest of this page.
+
+### Depend on a configuration
+
+Depending on a [Smalltalkhub](http://smalltalkhub.com) project is done via `#project:with`.
+
+```Smalltalk
+spec
+	project: '{DependencyName}'
+	with: [ spec
+		className: #ConfigurationOf{ConfigurationName};
+		versionString: #'{Version}';
+		repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main/' ]
+```
+
+The snippet should be configured with:
+
+- `{DependencyName}`: It can be anything from your packages, groups and other dependencies names. It will be used to define dependency to this project in your packages/groups
+- `{ConfigurationName}`: It is the name of the configuration you wish to reference
+- `{Version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+- `{owner}`: Name of the team or user hosting the project
+- `{repositoryName}`: Name of the repository on SmalltalkHub
+
+Example:
+
+```Smalltalk
+spec
+	project: 'Magritte3'
+	with: [ spec
+		className: #ConfigurationOfMagritte3;
+		versionString: #'release3';
+		repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+```
+
+As for git-hosted repositories, you can ask for a specific group:
+
+```Smalltalk
+spec
+	project: 'Magritte3'
+	with: [ spec
+		className: #ConfigurationOfMagritte3;
+		versionString: #'release3';
+		loads: #('Seaside');
+		repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+```
+
+You can now use the dependency names to add the project as a dependency of your packages.
+
+```Smalltalk
+baseline: spec
+	<baseline>
+	spec
+		for: #common
+		do: [
+			"Dependencies"
+			self magritte3: spec.
+
+			"Packages"
+			spec
+				package: 'MyProject';
+				package: 'MyProject-Tests' with: [ spec requires: #('MyProject') ];
+				package: 'MyProject-Gui' with: [ spec requires: #('MyProject' 'Magritte3') ];
+				package: 'MyProject-Gui-Tests' with: [ spec requires: #('MyProject-Tests') ];
+				package: 'MyProject-Examples' with: [ spec requires: #('MyProject-Gui') ] ].
+```
+
+```Smalltalk
+magritte3: spec
+	spec
+		project: 'Magritte3'
+		with: [ spec
+			className: #ConfigurationOfMagritte3;
+			versionString: #'release3';
+			loads: #('Seaside');
+			repository: 'http://smalltalkhub.com/mc/Magritte/Magritte3/main/' ]
+```
+
+### Depend on a configuration with `#configuration:with:`
+
+A configuration can also be declared with `#configuration:with:`:
+
+```Smalltalk
+processWrapper: spec
+	spec 
+		configuration: 'ProcessWrapper'
+		with: [
+			spec
+				versionString: '1.2';
+				repository: 'http://smalltalkhub.com/mc/hernan/ProcessWrapper/main' ]
+```
+
+### Load a project from a configuration
+
+To load a project from Smalltalkhub you need to execute an expression like this:
+
+```Smalltalk
+Metacello new
+	repository: 'http://smalltalkhub.com/mc/{owner}/{repositoryName}/main';
+	configuration: {configurationName};
+	version: {version};
+	load
+```
+
+This command has two parameters:
+
+- `owner`: Name of the team or user hosting the project
+- `repositoryName`: Name of the repository on SmalltalkHub
+- `configurationName` is the name of the configuration to load. For example to load the `MaterialDesignLite` project, the baseline name is `MaterialDesignLite` to load the project with `BaselineOfMaterialDesignLite`.
+- `{version}`: Name of the version you wish to reference. It can be something like `'development'`, `'stable'`, `'release1'`, `'1.2.6'`, `'1.0-baseline'`, etc.
+
+Example:
+
+```Smalltalk
+Metacello new
+	repository: 'http://smalltalkhub.com/mc/Seaside/Seaside31/main';
+	configuration: 'Seaside3';
+	version: #stable;
+	load
+```
+
+You can also use `Metacello>>smalltalkhubUser:project:`:
+
+```Smalltalk
+Metacello new
+	smalltalkhubUser: 'Seaside' project: 'Seaside31';
+	configuration: 'Seaside3';
+	version: #stable;
+	load
+```
+
+### Conflicts between SmalltalkHub and git versions
+
+Here is a last example of conflict management. The Pharo community was previously on a version control system called Monticello. Most of the community has now migrated to GitHub. Some of the projects exist on Smalltalkhub (managed with Monticello) and on GitHub. It's not unusual to have conflict between the two.
+
+Here is a little script that loads the version managed with git when the project name is the same:
+
+```Smalltalk
+Metacello new
+	githubUser: 'DuneSt' project: 'MaterialDesignLite' commitish: 'master' path: 'src';
+	baseline: 'MaterialDesignLite';
+	onConflict: [ :ex :a :b | a projectName = b projectName ifTrue: [ a projectSpec isBaselineOfProjectSpec ifTrue: [ ex useLoaded ] ifFalse: [ ex useIncoming ] ] ifFalse: [ ex resume ] ];
+	load
+```
