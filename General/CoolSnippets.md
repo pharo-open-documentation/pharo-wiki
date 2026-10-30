@@ -8,6 +8,7 @@ This file contains snippets of code that can be useful sometimes.
 - [Browse all available icons](#browse-all-available-icons)
 - [Rename programatically methods](#rename-programatically-methods)
 - [Get all senders/implementors of a selector](#get-all-sendersimplementors-of-a-selector)
+- [Get all classes accessing a variable in a hierarchy](#get-all-classes-accessing-a-variable-in-a-hierarchy)
 - [Find dependencies on a package](#find-dependencies-on-a-package)
 - [Embed an image (picture) into Pharo](#embed-an-image-picture-into-pharo)
 
@@ -153,6 +154,29 @@ To get all `CompiledMethod`s implementing a method having a selector, simply cal
 
 ```
 #yourself implementors
+```
+
+## Get all classes accessing a variable in a hierarchy
+
+Pharo can list methods that read or write an instance variable for a given class, but not for a whole class hierarchy in one step. The following snippet collects every `CompiledMethod` class in the hierarchy that uses a variable with a given name (reads, writes, or both):
+
+```Smalltalk
+origin := AbstractWidgetPresenter.
+variableName := #borderColor.
+((origin withAllSubclasses select: [ :class | class slots anySatisfy: [ :e | e name = variableName ] ])
+	flatCollect: [ :class |
+		(class slots detect: [ :e | e name = variableName ]) usingMethods collect: #methodClass ])
+as: Set
+```
+
+Replace `origin` with the root of the hierarchy you are interested in and `variableName` with the name of the slot.
+
+To restrict the search to a single class instead of the full hierarchy, use:
+
+```Smalltalk
+origin := AbstractWidgetPresenter.
+variableName := #borderColor.
+(origin slots detect: [ :e | e name = variableName ]) usingMethods collect: #methodClass as: Set
 ```
 
 ## Find dependencies on a package
