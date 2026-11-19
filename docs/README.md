@@ -16,7 +16,6 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
   * [Pharo and OpenSmalltalk Virtual Machine](#pharo-and-opensmalltalk-virtual-machine)
   * [External projects](#external-projects)
     + [Data exchange](#data-exchange)
-    + [Data structures](#data-structures)
   * [Migration guidelines](#migration-guidelines)
   * [External resources](#external-resources)
 

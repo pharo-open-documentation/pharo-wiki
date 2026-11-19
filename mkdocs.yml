@@ -9,6 +9,17 @@ edit_uri: edit/master/
 docs_dir: docs
 site_dir: site
 
+# Pages that the README keeps commented out (work in progress). They stay reachable by URL but are not in the navigation.
+not_in_nav: |
+  /ExternalProjects/DataStructures/DataFrame.md
+  /ExternalProjects/Export/Arff.md
+  /ExternalProjects/Export/ESCP.md
+  /ExternalProjects/Export/HTML.md
+  /ExternalProjects/Export/XML.md
+  /General/Files.md
+  /PharoProjects/Metalinks.md
+  /PharoProjects/ObjectsSerialization.md
+
 theme:
   name: material
   language: en
@@ -36,6 +47,8 @@ markdown_extensions:
   - attr_list
   - toc:
       permalink: true
+      separator: "-"
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
   - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true

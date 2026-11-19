@@ -24,7 +24,7 @@ The browser is the tool for browsing and editing packages, classes and methods. 
 In the context of a method-call the candidates are the potential classes in the system that can receive the call. This list is computed from a static analysis of the source code.
 
 ## Changes (file)
-The changesfile logs all source code modifications (especially all the changes you did while programming) since the [sources file](#sources) was generated. This facilitates a per-method history for diffs or reverting. It means that even if you did not manage to save the image file on a crash or you just forgot to, you can recover your changes from this file. A changes file is always coupled with an image file. They work as a pair.
+The changesfile logs all source code modifications (especially all the changes you did while programming) since the [sources file](#sources-file) was generated. This facilitates a per-method history for diffs or reverting. It means that even if you did not manage to save the image file on a crash or you just forgot to, you can recover your changes from this file. A changes file is always coupled with an image file. They work as a pair.
 
 > Note: Since Pharo 5, a project called Epicea implementing a new logging system has been introduced in the system. The long term goal of Epicea is to replace the changes file, but this objective has not been reached yet.
 
@@ -146,7 +146,7 @@ Three kinds of messages exists: [unary messages](#unary-message), [binary messag
 *Monticello* is a distributed versioning system for [Squeak](#squeak) and Pharo code. It was the main versioning system until Pharo 6. It is now recommended to use [Iceberg](#iceberg).
 
 ## Object
-The word object is used to refer to a particular [instance](#instance) of a [class](#class). "Object" and "instance" words are synonyms.
+The word object is used to refer to a particular [instance](#instance) of a class. "Object" and "instance" words are synonyms.
 
 ## Playground
 The playground / workspace designate a code editor allowing one to run Smalltalk code that is not contained in a method.

@@ -9,7 +9,7 @@
   * [Clean your image before deployment](#clean-your-image-before-deployment)
   * [Sources obfuscation](#sources-obfuscation)
   * [Change the logo and window title of the application](#change-the-logo-and-window-title-of-the-application)
-  * [Deploy a Seaside application with Nginx](#deploy-a-seaside-application-with-nginx)
+  * [Deploy a Seaside application with Nginx](#deploy-with-a-ngnix-server)
 
 ## Cruiser
 Cruiser is a tool to package Pharo applications. The idea is to quickly convert an application in a development environment to a production one.

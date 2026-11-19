@@ -3,7 +3,7 @@
  * [Description](#description)
  * [Quick start](#quick-start)
  * [Register a class to the session manager](#register-a-class-to-the-session-manager)
- * [Start-up, Shut-down and Saving actions](#start-up--shut-down-and-saving-actions)
+ * [Start-up, Shut-down and Saving actions](#start-up-shut-down-and-saving-actions)
  * [Checking the start-up and shut-down list](#checking-the-start-up-and-shut-down-list)
 
 ## Description

@@ -4,9 +4,9 @@ This file contains snippets of code that can be useful sometimes.
 
 - [Download a file with a progress bar](#download-a-file-with-a-progress-bar)
 - [Bench and profile a project from the tests](#bench-and-profile-a-project-from-the-tests)
-- [Automatic transformation of Pharo's methods source code](#automatic-transformation-of-pharo-s-methods-source-code)
+- [Automatic transformation of Pharo's methods source code](#automatic-transformation-of-pharos-methods-source-code)
 - [Browse all available icons](#browse-all-available-icons)
-- [Rename programatically methods](#rename-programatically-methods)
+- [Rename programatically methods](#rename-methods-programatically)
 - [Get all senders/implementors of a selector](#get-all-sendersimplementors-of-a-selector)
 - [Find dependencies on a package](#find-dependencies-on-a-package)
 - [Embed an image (picture) into Pharo](#embed-an-image-picture-into-pharo)
