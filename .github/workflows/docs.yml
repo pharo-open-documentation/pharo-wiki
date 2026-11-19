@@ -20,4 +20,4 @@ jobs:
       - name: Install MkDocs
         run: pip install -r requirements-docs.txt
       - name: Build the site in strict mode
-        run: mkdocs build --strict
+        run: zensical build --strict
