@@ -1,0 +1,124 @@
+site_name: Pharo wiki
+site_description: Wiki for the Pharo programming language and development environment.
+site_url: https://pharo-open-documentation.github.io/pharo-wiki/
+repo_name: pharo-open-documentation/pharo-wiki
+repo_url: https://github.com/pharo-open-documentation/pharo-wiki
+edit_uri: edit/master/
+
+# The pages live in docs/. Symlinks at the root keep the old paths (General/..., README.md, ...) working on GitHub.
+docs_dir: docs
+site_dir: site
+
+# Pages that the README keeps commented out (work in progress). They stay reachable by URL but are not in the navigation.
+not_in_nav: |
+  /ExternalProjects/DataStructures/DataFrame.md
+  /ExternalProjects/Export/Arff.md
+  /ExternalProjects/Export/ESCP.md
+  /ExternalProjects/Export/HTML.md
+  /ExternalProjects/Export/XML.md
+  /General/Files.md
+  /PharoProjects/Metalinks.md
+  /PharoProjects/ObjectsSerialization.md
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+      separator: "-"
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+
+nav:
+  - Home: README.md
+  - Beginners:
+      - General/SettingUpANewProject.md
+      - General/MustKnowForBeginners.md
+      - General/InterestingsToKnowForBeginners.md
+      - General/HowToRunPharoFromCommandLine.md
+      - General/Glossary.md
+  - General:
+      - Infrastructure:
+          - General/Baselines.md
+          - General/GithubActions.md
+          - General/ExportFormats.md
+          - General/DeployYourPharoApplication.md
+          - General/Windows10SubsystemForLinux.md
+          - General/CJKCharacter.md
+          - General/CJKInputMethod.md
+          - General/TweakingBigImages.md
+          - General/ImageFileFormat.md
+          - General/Travis.md
+      - Pharo language:
+          - General/Extensions.md
+          - General/Traits.md
+          - General/CoolSnippets.md
+          - General/ProgressBar.md
+          - General/Layout.md
+          - General/Pragmas.md
+          - General/CodingConventions.md
+          - General/Exceptions.md
+          - General/SortingCollections.md
+          - General/SessionsManagement.md
+      - Pharo tooling:
+          - General/Playground.md
+          - General/Profiling.md
+          - General/MenuBar.md
+          - General/IcebergOnWindows.md
+          - General/Inspector.md
+          - General/Refactorings.md
+          - General/Settings.md
+  - Pharo projects:
+      - PharoProjects/Announcer.md
+      - PharoProjects/OS.md
+      - PharoProjects/Cursor.md
+      - PharoProjects/DynamicVariables.md
+      - PharoProjects/Numbers.md
+      - PharoProjects/RichText.md
+      - PharoProjects/WebBrowser.md
+  - Pharo and OpenSmalltalk VM:
+      - PharoVirtualMachine/pharo-vm-map.md
+  - External projects:
+      - Data exchange:
+          - ExternalProjects/Export/CSV.md
+          - ExternalProjects/Export/JSON.md
+  - Migration guidelines:
+      - Migration/MigrationToPharo7.md
+  - External resources:
+      - ExternalResources/Community.md
+  - Project:
+      - MANIFEST.md
+      - CONTRIBUTION.md

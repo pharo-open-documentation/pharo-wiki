@@ -75,7 +75,7 @@ Metacello new
 	load
 ```
 
-### Parse JSON
+### Parse JSON {#parse-json-1}
 
 - From `String`:
 ```Smalltalk
@@ -95,7 +95,7 @@ readStream := '{ "foo" : 42.0 }' readStream.
 		(NeoJSONReader on: readStream) next ] "a Dictionary('foo'->42.0 )"
 ```
 
-### Generate JSON
+### Generate JSON {#generate-json-1}
 Let `jsonObject` be defined as:
 ```Smalltalk
 jsonObject := Dictionary new

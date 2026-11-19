@@ -9,7 +9,7 @@ This mechanism is the **Exception** mechanism.
 
 - [Exceptions](#exceptions)
   * [Basic Uses](#basic-uses)
-    + [Signaling an exception](#signaling-an-exception)
+    + [Signaling an exception](#signalling-an-exception)
     + [Handling exceptions](#handling-exceptions)
     + [Creating your own exceptions](#creating-your-own-exceptions)
     + [Ensure](#ensure)

@@ -5,9 +5,9 @@ This page will expose different things that might be interesting to know for beg
 The goal is to ease the use of Pharo for beginners.
 
 - [API](#api)
-- [Evaluatable objects (Blocks and Symbols)](#evaluatable-objects--blocks-and-symbols-)
+- [Evaluatable objects (Blocks and Symbols)](#evaluatable-objects-blocks-and-symbols)
 - [Tools](#tools)
-  * [Calypso System Browser](#calypso)
+  * [Calypso System Browser](#calypso-system-browser)
 - [Flags](#flags)
 - [Useful pragmas](#useful-pragmas)
   * [Modify IDE](#modify-ide)
