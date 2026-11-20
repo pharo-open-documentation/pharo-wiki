@@ -14,7 +14,7 @@ The goals of the project are to provide:
 
 The project should be easy to contribute to (with a github account the user should just have to edit a file on the github interface to contribute)
 
-To be easy to contribute, this project is written in Markdown and hosted on github. Anyone with a github account can easily provide a Pull Request. (See [Contribution guide](CONTRIBUTION.md))
+To be easy to contribute, this project is written in Markdown and hosted on github. Anyone with a github account can easily provide a Pull Request. (See [Contribution guide](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/README.md))
 
 To achieve these goals, the project is divided into the following sections:
 
@@ -33,4 +33,4 @@ As long as they fit the goals of the wiki, the entries of this project can be:
 
 If you want to contribute but you are not sure your contribution fits the goals of the project, do not hesitate to open an issue to ask the maintainers for advice.
 
-If you wish to contribute, you should read the [contribution guide](CONTRIBUTION.md).
+If you wish to contribute, you should read the [contribution guide](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/README.md).

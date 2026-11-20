@@ -2,7 +2,7 @@
 
 Wiki for the [Pharo](https://pharo.org/features) programming language and development environment.
 
-The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](CONTRIBUTION.md).
+The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/README.md).
 
 > Looking for a list of awesome projects? Check-out [awesome-pharo](https://github.com/pharo-open-documentation/awesome-pharo), a curated list of awesome Pharo projects.
 
