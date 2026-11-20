@@ -1,11 +1,20 @@
 name: Documentation
 
-# Builds the site on every pull request so that broken links and anchors fail before merge. The build runs in strict mode, so any MkDocs warning fails the job.
+# Builds the site on every pull request so that broken links and anchors fail before merge. The build runs in strict mode, so any warning fails the job.
+# Pushes to master also deploy the site to GitHub Pages. Pages must use "GitHub Actions" as its source.
 on:
   push:
     branches:
       - master
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -17,7 +26,27 @@ jobs:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: requirements-docs.txt
-      - name: Install MkDocs
+      - name: Install Zensical
         run: pip install -r requirements-docs.txt
       - name: Build the site in strict mode
         run: zensical build --strict
+      - name: Upload the site for Pages
+        if: github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
