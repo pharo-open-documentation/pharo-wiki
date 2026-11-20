@@ -23,6 +23,7 @@ not_in_nav: |
 theme:
   name: material
   language: en
+  favicon: assets/favicon.png
   features:
     - navigation.sections
     - navigation.top
