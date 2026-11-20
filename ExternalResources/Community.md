@@ -1,0 +1,1 @@
+../docs/ExternalResources/Community.md

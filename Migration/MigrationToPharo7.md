@@ -1,0 +1,1 @@
+../docs/Migration/MigrationToPharo7.md

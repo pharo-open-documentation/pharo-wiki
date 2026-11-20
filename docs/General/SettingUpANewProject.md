@@ -159,7 +159,7 @@ After you have added all the methods, go to your test class and run your tests. 
 
 ## Step 5. Create a baseline and a Metacello script
 
-Baselines allow us to manage dependencies and specify how the repository should be loaded. We can use `Metacello` object to load the project that has a baseline defined for it. In this tutorial we will only show an example of creating a baseline for our simple `Counter` project. For more information on baselines, please read this excellent [Baselines](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Baselines.md) guide on Pharo Wiki.
+Baselines allow us to manage dependencies and specify how the repository should be loaded. We can use `Metacello` object to load the project that has a baseline defined for it. In this tutorial we will only show an example of creating a baseline for our simple `Counter` project. For more information on baselines, please read this excellent [Baselines](https://pharo-open-documentation.github.io/pharo-wiki/General/Baselines/) guide on Pharo Wiki.
 
 Start by creating a package called `BaselineOf<YourProjectName>` and the class with the same name which is the subclass of `BaselineOf`. In our case, both package and class are called `BaselineOfCounter`.
 

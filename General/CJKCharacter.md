@@ -1,0 +1,1 @@
+../docs/General/CJKCharacter.md
