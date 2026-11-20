@@ -4,12 +4,6 @@ Pharo is special in the sense that the language and IDE are mixed. It means that
 In some cases, it leads to Pharo images consuming a large amount of memory (aka Big Images). 
 The goal of this page is to sum up some tweaking that can be done on Pharo images to improve the performances of such images. 
 
-* [Fast dragging](#fast-dragging)
-* [Disable taskbar previews](#disable-taskbar-previews)
-* [Tune Garbage Collection](#tune-garbage-collection)
-* [Disable Quality Assistant plugin](#disable-quality-assistant-plugin)
-* [Disable Spotter plugins](#disable-spotter-plugins)
-* [Disable Epicea](#disable-epicea)
 
 ## Fast dragging
 

@@ -3,8 +3,6 @@ Pharo image is a binary file containing a snapshot of the runtime.
 However, there is only a little documentation about its structure (how information is encoded as bytes).
 This page is an early work to document the binary format of Pharo images.
 
-- [Determinate the format of an image](#determinate-the-format-of-an-image)
-- [Image format accross Pharo versions](#image-format-accross-pharo-versions)
 
 ## Determinate the format of an image
 Each image has a format. The format can be retrieved by reading the 4 first bytes of an image file.

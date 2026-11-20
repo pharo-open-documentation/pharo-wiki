@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Pharo wiki
 
 Wiki for the [Pharo](https://pharo.org/features) programming language and development environment.
@@ -5,19 +10,6 @@ Wiki for the [Pharo](https://pharo.org/features) programming language and develo
 The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribution guidelines in the [Contribution guide](https://github.com/pharo-open-documentation/pharo-wiki/blob/master/README.md).
 
 > Looking for a list of awesome projects? Check-out [awesome-pharo](https://github.com/pharo-open-documentation/awesome-pharo), a curated list of awesome Pharo projects.
-
-- [Pharo wiki](#pharo-wiki)
-  * [Beginners](#beginners)
-  * [General](#general)
-    + [Infrastructure](#infrastructure)
-    + [Pharo Language](#pharo-language)
-    + [Pharo Tooling](#pharo-tooling)
-  * [Pharo projects](#pharo-projects)
-  * [Pharo and OpenSmalltalk Virtual Machine](#pharo-and-opensmalltalk-virtual-machine)
-  * [External projects](#external-projects)
-    + [Data exchange](#data-exchange)
-  * [Migration guidelines](#migration-guidelines)
-  * [External resources](#external-resources)
 
 ## Beginners
 
@@ -75,10 +67,9 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Dynamic variables](PharoProjects/DynamicVariables.md)
 - [Numbers](PharoProjects/Numbers.md)
 - [Rich text](PharoProjects/RichText.md)
-- [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.<!-- - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
-
-## Pharo and OpenSmalltalk Virtual Machine
-- [Pharo VM documentation map](PharoVirtualMachine/pharo-vm-map.md) -
+- [WebBrowser](PharoProjects/WebBrowser.md) - A project to open a link in the default web browser.
+- [Pharo and OpenSmalltalk VM documentation map](PharoVirtualMachine/pharo-vm-map.md)
+<!-- - [Metalinks](PharoProjects/Metalinks.md) ![TODO](https://img.shields.io/badge/Progress-TODO-red.svg?style=flat) -->
 
 ## External projects
 ### Data exchange

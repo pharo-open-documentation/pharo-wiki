@@ -6,19 +6,6 @@ In order to be able to save some source code in readable files, Pharo includes s
 
 This page will present formats from the most recommended for new projects to the less recommended.
 
-- [Comparisons](#comparisons)
-  * [Overview](#overview)
-  * [Supported Pharo versions](#supported-pharo-versions)
-- [Tonel](#tonel)
-  * [Tonel Pros and Cons](#tonel-pros-and-cons)
-  * [Tonel supported Pharo versions](#tonel-supported-pharo-versions)
-  * [Tonel versions](#tonel-versions)
-- [FileTree metadata less](#filetree-metadata-less)
-  * [FileTree metadata less Pros and Cons](#filetree-metadata-less-pros-and-cons)
-  * [FileTree metadata less supported Pharo versions](#filetree-metadata-less-supported-pharo-versions)
-- [FileTree metadata full](#filetree-metadata-full)
-  * [FileTree metadata full Pros and Cons](#filetree-metadata-full-pros-and-cons)
-  * [FileTree metadata full supported Pharo versions](#filetree-metadata-full-supported-pharo-versions)
 
 
 ## Comparisons

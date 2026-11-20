@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Pharo wiki manifest
 
 This file will explain the goals of this project and define its boundaries. 

@@ -8,9 +8,6 @@ As written on the wikipedia page, it aims to address the following problems:
 
 This page provide a quick tutorial to get started with them.
 
-- [Getting started](#getting-started)
-- [Defining new kind of Announcement](#defining-new-kind-of-announcement)
-- [Using announcer for your subject object](#using-announcer-for-your-subject-object)
 
 ## Getting started
 The `Announcer` class implements a mechanism to:

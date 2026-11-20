@@ -24,24 +24,37 @@ theme:
   name: material
   language: en
   favicon: assets/favicon.png
+  logo: assets/logo.png
+  font:
+    text: Zen Maru Gothic
+    code: JetBrains Mono
   features:
     - navigation.sections
+    - navigation.tabs
     - navigation.top
     - navigation.indexes
     - search.suggest
     - search.highlight
     - content.action.edit
+    - content.code.copy
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: blue
+      accent: blue
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: blue
+      accent: light blue
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
   - admonition
@@ -66,12 +79,14 @@ plugins:
 nav:
   - Home: README.md
   - Beginners:
+      - Overview: sections/beginners.md
       - General/SettingUpANewProject.md
       - General/MustKnowForBeginners.md
       - General/InterestingsToKnowForBeginners.md
       - General/HowToRunPharoFromCommandLine.md
       - General/Glossary.md
   - General:
+      - Overview: sections/general.md
       - Infrastructure:
           - General/Baselines.md
           - General/GithubActions.md
@@ -103,6 +118,7 @@ nav:
           - General/Refactorings.md
           - General/Settings.md
   - Pharo projects:
+      - Overview: sections/pharo-projects.md
       - PharoProjects/Announcer.md
       - PharoProjects/OS.md
       - PharoProjects/Cursor.md
@@ -110,9 +126,9 @@ nav:
       - PharoProjects/Numbers.md
       - PharoProjects/RichText.md
       - PharoProjects/WebBrowser.md
-  - Pharo and OpenSmalltalk VM:
       - PharoVirtualMachine/pharo-vm-map.md
   - External projects:
+      - Overview: sections/external-projects.md
       - Data exchange:
           - ExternalProjects/Export/CSV.md
           - ExternalProjects/Export/JSON.md

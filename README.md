@@ -34,7 +34,7 @@ If you wish to add the new entry yourself, see section [Add a new page](#add-a-n
 The entries structure is free but we still have some conventions. 
 
 * Documentation on external projects should mostly contains small example, comparaisons between multiple projects, links to official documentations and repositories. We can accept documentation on the external projects in case there is none by the official maintainer.
-* Long entries should begin with a table of content. We recommand [https://ecotrust-canada.github.io/markdown-toc/](https://ecotrust-canada.github.io/markdown-toc/).
+* Long entries do not need a table of contents. The website builds one automatically in its right-hand column.
 * References to external/decentralized documentation should be in a *See also* section at the end of the entry.
 * Smalltalk code snippets should use *tabulation* for source code indentation.
 * Smalltalk code snippets should be highlighted using this format:

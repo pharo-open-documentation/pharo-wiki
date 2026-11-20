@@ -1,9 +1,6 @@
 # Basic interactions with the OS
 This page describes basic interactions with the OS. The code snippet below should be working on all OS and are built-in: you do not need to install an external project to use them.
 
-- [Execute shell command](#execute-shell-command)
-- [Write environment variable](#write-environment-variable)
-- [Read environment variable](#read-environment-variable)
 
 ## Execute shell command
 The following code execute a shell command and returns an integer which is the return code of the executed command.

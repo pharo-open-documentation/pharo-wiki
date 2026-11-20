@@ -6,31 +6,6 @@ The advantages of using the settings framework of Pharo are:
 - It is easy to add settings to an already existing application. A setting is basically just a class variable (or an instance variable of a singleton object) whose value can be set from the Settings Browser.
 - No dependency. Your application does not depend on the **Pharo Settings Framework**, and the Pharo Settings Framework does not depend on your application.
 
-## Table of Contents
-
-* [The Settings Browser](#the-settings-browser)
-* [Declaring a Setting](#declaring-a-setting)
-	+ [As quick as possible](#as-quick-as-possible)
-	+ [WARNING!: Default value of a setting](#warning-default-value-of-a-setting)
-	+ [Elements of a Setting Declaration](#elements-of-a-setting-declaration)
-		- [Id of the setting (#mySetting)](#id-of-the-setting-mysetting)
-		- [Is it a setting or a group node? (setting:)](#is-it-a-setting-or-a-group-node-setting)
-		- [Where is the variable this setting affects? (target:)](#where-is-the-variable-this-setting-affects-target)
-		- [Label and Description (label: description:)](#label-and-description-label-description)
-		- [Parent (parent:)](#parent-parent)
-	+ [Other Features](#other-features)
-		- [Ordering settings](#ordering-settings)
-		- [Declaring optional settings](#declaring-optional-settings)
-		- [Declaring a tree of settings in one method](#declaring-a-tree-of-settings-in-one-method)
-		- [Providing more precise value domains](#providing-more-precise-value-domains)
-			* [Declaring a range setting](#declaring-a-range-setting)
-			* [Declaring a list of possible values](#declaring-a-list-of-possible-values)
-		- [Launching a script](#launching-a-script)
-		- [Start-up actions management](#start-up-actions-management)
-		- [Extending the Settings Browser](#extending-the-settings-browser)
-* [Credits](#credits)
-
-
 ## The Settings Browser
 
 The Settings Browser can be opened from the Pharo menu like this:  

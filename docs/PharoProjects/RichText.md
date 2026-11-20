@@ -2,12 +2,6 @@
 
 `Text` object models rich text. That is to say text that can be stylised with **bold**, *italics*, colors, different fonts and a few other things. The class `Text` is one of the really ancient classes in smalltalk.
 
-- [Quickstart](#quickstart)
-- [TextEmphasis](#textemphasis)
-- [Colors](#colors)
-- [Different fonts](#different-fonts)
-- [Clickable text](#clickable-text)
-- [Inline images](#inline-images)
 
 ## Quickstart
 Here is a quick example illustrating how attributes can be added to `Text` object to create rich text in Pharo:

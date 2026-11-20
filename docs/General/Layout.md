@@ -2,12 +2,6 @@
 
 The Morphic Library of Pharo is a low level UI framework. This page aims at describing how to layout morphes together.
 
-- [Mohpic's Layouts](#mohpics-layouts)
-  * [Row layout](#row-layout)
-  * [Table Layout](#table-layout)
-  * [Stack Layout](#stack-layout)
-  * [Proportionnal layout](#proportionnal-layout)
-  * [Annexe](#annexe)
 
 
 ## Row layout

@@ -3,15 +3,6 @@ Currently, Pharo provides two main frameworks to handle the [JSON format](https:
 
 This page briefly present these two frameworks and expose their differences to help users to choose the one fitting their needs.
 
-- [STONJSON](#stonjson)
-  * [Parse JSON](#parse-json)
-  * [Generate JSON](#generate-json)
-- [NeoJSON](#neojson)
-  * [Install](#install)
-  * [Parse JSON](#parse-json-1)
-  * [Generate JSON](#generate-json-1)
-- [STONJSON v.s. NeoJSON](#stonjson-vs-neojson)
-- [JSON Schema](#json-schema)
 
 ## STONJSON
 STONJSON is the built-in JSON parser available in default Pharo images. It is part of the STON package and its development takes place in Pharo's [github repository](https://github.com/pharo-project/pharo).

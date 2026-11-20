@@ -1,7 +1,5 @@
 # Iceberg on Windows Workaround
 
-- [Make path to the Pharo Image shorter](#make-path-to-the-pharo-image-shorter)
-- [Convert the repository to the Tonel format](#convert-the-repository-to-the-tonel-format)
 
 Long file names in Windows raise the error message  “Failed to stat file ‘filename’: The filename or extension is too long”.
 

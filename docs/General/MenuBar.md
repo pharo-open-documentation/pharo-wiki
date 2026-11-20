@@ -4,11 +4,6 @@ In Pharo, to open tools or execute actions a Menubar (At the top of the screen) 
 
 This page will document some aspects of those features. 
 
-- [Disable the Menubar/WorldMenu](#disable-the-menubarworldmenu)
-- [Add your own entries](#add-your-own-entries)
-  * [Add a simple entry](#add-a-simple-entry)
-  * [Add a sub menu](#add-a-sub-menu)
-- [Change the menu](#change-the-menu)
 
 ![MenuBar_Image_WhatIsMenuBarAndWorldMenu.png](./MenuBar_Image_WhatIsMenuBarAndWorldMenu.png)
 

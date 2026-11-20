@@ -1,22 +1,5 @@
 # Playground
 
-- [Basic usage](#basic-usage)
-  * [Do it](#do-it)
-  * [Print it](#print-it)
-  * [Do it and go](#do-it-and-go)
-  * [Inspect it](#inspect-it)
-  * [Basic inspect it](#basic-inspect-it)
-  * [Debug it](#debug-it)
-  * [Profile it](#profile-it)
-  * [Code search](#code-search)
-- [Some Advices](#some-advices)
-  * [Doing vs. Printing](#doing-vs-printing)
-- [Advance usage](#advance-usage)
-  * [Variables bindings](#variables-bindings)
-  * [Remote publishing](#remote-publishing)
-  * [Get back previous playground contents](#get-back-previous-playground-contents)
-  * [Give a name to a playground to get it back](#give-a-name-to-a-playground-to-get-it-back)
-  * [Sharing playgrounds content in multiple local images](#sharing-playgrounds-content-in-multiple-local-images)
 
 
 Playground is a tool that is most often used for typing Pharo expressions and executing them but it can be used as a scratchpad area where fragments of Pharo code can be entered, stored, edited and evaluated.

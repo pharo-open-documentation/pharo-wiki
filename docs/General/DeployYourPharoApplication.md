@@ -4,12 +4,6 @@
 
 **This guide is first written for Pharo 7. Some parts will not work in Pharo 6 and earlier.**
 
-- [How to deploy a Pharo application](#how-to-deploy-a-pharo-application)
-  * [Cruiser: A tool for app deployment?](#cruiser)
-  * [Clean your image before deployment](#clean-your-image-before-deployment)
-  * [Sources obfuscation](#sources-obfuscation)
-  * [Change the logo and window title of the application](#change-the-logo-and-window-title-of-the-application)
-  * [Deploy a Seaside application with Nginx](#deploy-with-a-ngnix-server)
 
 ## Cruiser
 Cruiser is a tool to package Pharo applications. The idea is to quickly convert an application in a development environment to a production one.

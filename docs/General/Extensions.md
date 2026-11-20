@@ -1,16 +1,5 @@
 # Extensions
 
-- [Extensions](#extensions)
-  - [Use of Extension methods](#use-of-extension-methods)
-  - [Add a new extension method](#add-a-new-extension-method)
-    - [Define an extension method in versions prior to Pharo 7](#define-an-extension-method-in-versions-prior-to-pharo-7)
-    - [Define an extension method since Pharo 7](#define-an-extension-method-since-pharo-7)
-    - [Define an extension method programmatically](#define-an-extension-method-programmatically)
-  - [Find methods currently extending a class](#find-methods-currently-extending-a-class)
-    - [In versions prior to Pharo 7](#in-versions-prior-to-pharo-7)
-    - [Since Pharo 7](#since-pharo-7)
-    - [Find extensions programmatically](#find-extensions-programmatically)
-  - [Package loading order is important](#package-loading-order-is-important)
 
 Pharo includes a system of extension methods. This feature allows the developer to add behavior (but not state) to existing objects in Pharo. 
 

@@ -7,22 +7,6 @@ In languages like C, the solution is to have operations that fail return a speci
 Modern programming languages, including Pharo, offer a dedicated exception-handling mechanism that greatly simplifies the way in which exceptional situations are signaled and handled.
 This mechanism is the **Exception** mechanism.
 
-- [Exceptions](#exceptions)
-  * [Basic Uses](#basic-uses)
-    + [Signaling an exception](#signalling-an-exception)
-    + [Handling exceptions](#handling-exceptions)
-    + [Creating your own exceptions](#creating-your-own-exceptions)
-    + [Ensure](#ensure)
-    + [IfCurtailed](#ifcurtailed)
-  * [Advanced Uses](#advanced-uses)
-    + [Return](#return)
-    + [Retry](#retry)
-    + [Resume](#resume)
-    + [Pass](#pass)
-    + [Outer](#outer)
-    + [Resignal](#resignal)
-  * [A deeper look at the exception mechanism](#a-deeper-look-at-the-exception-mechanism)
-  * [Credits](#credits)
 
 ## Basic Uses
 

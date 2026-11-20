@@ -1,11 +1,6 @@
 # Profiling
 Profiling a program is the act of measuring, for example, the time or space it takes to execute.
 
-- [Time Profiling](#time-profiling)
-  * [Programmatically open a Time Profiler](#programmatically-open-a-time-profiler)
-  * [Utility methods on blocks to profile](#utility-methods-on-blocks-to-profile)
-  * [Interactively open a Time Profiler](#interactively-open-a-time-profiler)
-- [Space Profiling](#space-profiling)
 
 ## Time Profiling
 ### Programmatically open a Time Profiler

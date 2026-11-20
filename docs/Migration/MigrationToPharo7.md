@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Migration from Pharo 6.1 to Pharo 7.0 guideline
 
 ## Pharo 7 file streams guideline

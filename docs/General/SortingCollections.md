@@ -2,11 +2,6 @@
 
 A common requirement in software engineering is to sort collections. This page provides information on how to sort collections in Pharo.
 
-- [Sorting API](#sorting-api)
-  * [Sort a collection](#sort-a-collection)
-  * [Keep a collection sorted](#keep-a-collection-sorted)
-- [Sort functions](#sort-functions)
-- [Sorting via a block](#sorting-via-a-block)
 
 ## Sorting API
 

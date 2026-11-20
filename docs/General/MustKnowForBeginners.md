@@ -3,11 +3,6 @@
 This page includes knowledge about thing the Pharo community think important to know as a Pharo beginner.
 
 
-- [Navigate into the code](#navigate-into-the-code)
-  * [Browse, Senders and Implementors](#browse-senders-and-implementors)
-  * [Method source with it](#method-source-with-it)
-- [Interrupt the Pharo process](#interrupt-the-pharo-process)
-- [Debugging facilities](#debugging-facilities)
 
 ## Navigate into the code
 
