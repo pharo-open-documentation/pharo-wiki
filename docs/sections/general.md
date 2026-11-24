@@ -14,6 +14,7 @@ Pages on Pharo's mechanisms, tools and workflows.
 - [Tweaking big images](../General/TweakingBigImages.md)
 - [Image file format](../General/ImageFileFormat.md)
 - [How to setup a Travis build](../General/Travis.md)
+- [Pharo graphical stack](../General/GraphicalStack.md)
 
 ## Pharo language
 

@@ -62,6 +62,8 @@ If you need to integrate images in your entry, add them next to the Markdown fil
 
 Once the page is created you need to add it to the [docs/README.md](docs/README.md) in the right section, and to the `nav` of `mkdocs.yml` so that it appears on the website.
 
+A new page does not need a symlink at the root of the repository. Root symlinks only keep the old GitHub paths of existing pages working, see [Why the root symlinks exist](#why-the-root-symlinks-exist).
+
 > Note: If you have contents to start a page but don't have the time or the knowledge to finish it, it is advised to propose a pull request with the content you have already. Then, one can open issues with the missing sections pointing to the concerned page.
 
 An entry in docs/README.md can also have a one short sentense explaining the purpose of the page.

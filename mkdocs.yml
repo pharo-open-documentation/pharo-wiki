@@ -98,6 +98,7 @@ nav:
           - General/TweakingBigImages.md
           - General/ImageFileFormat.md
           - General/Travis.md
+          - General/GraphicalStack.md
       - Pharo language:
           - General/Extensions.md
           - General/Traits.md
