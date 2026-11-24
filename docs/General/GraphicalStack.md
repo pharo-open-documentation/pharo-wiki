@@ -27,7 +27,7 @@ Some projects are shared by both stacks (OSWindow, SDL, Spec, Roassal). They are
 
 ![Layers of the Pharo graphical stack, from native libraries at the bottom to Spec at the top](GraphicalStack_Image_Layers.svg)
 
-Roassal, RoassalExporters, Telescope and Telescope-Bloc are left out of the picture to keep it readable. See their sections below.
+Roassal, Telescope and Telescope-Bloc are left out of the picture to keep it readable. See their sections below.
 
 ## Summary by project
 
@@ -41,7 +41,7 @@ Roassal, RoassalExporters, Telescope and Telescope-Bloc are left out of the pict
 | Cairo | Morphic | Bindings in Athens-Cairo | In Pharo 15 | Cairo C library |
 | Morphic | Morphic | Yes | All versions | Pharo core |
 | OSWindow | Shared | Yes | In Pharo 15 | SDL2 |
-| Roassal | Morphic | Yes | In Pharo 15, Pharo 14 release | Geometry, NumericScales, RoassalLayouts, RTree |
+| Roassal | Morphic | Yes | In Pharo 15, Pharo 14 release | RoassalLayouts |
 | Rubric | Morphic | Yes | In Pharo 15 | Morphic |
 | SDL2 | Shared | Yes (OSWindow-SDL2) | In Pharo 15 | SDL2 library |
 | SDL3 | Bloc | No | Loaded manually, see [SDL](#sdl) | SDL3 library |
@@ -74,7 +74,6 @@ Balloon is the canvas of the Morphic stack: the 2D drawing engine Morphic render
 It fills and strokes paths (curves, lines, polygons), applies transforms and clips drawings to rectangles.
 Its classes are in the image, in package `FormCanvas-Core`, tag `FormCanvas-Core-BalloonEngine` (for example `BalloonEngine`, `BalloonBuffer`, `BalloonFillData`).
 Athens was built with it as one of its two backends, the other being Cairo (see [Athens](#athens)).
-Which parts of it need VM primitives still has to be confirmed (see [To verify](#to-verify)).
 
 ### Cairo
 
@@ -106,11 +105,11 @@ It is shared by the Morphic and the Bloc stacks.
 Roassal is a visualization engine.
 You build a figure from shapes (boxes, circles, lines, labels), place them with layouts (grid, tree, force-based), and make them interactive (tooltips, drag, zoom).
 It is used for charts, graphs and diagrams, for example in the Moose platform.
-Its main packages (`Roassal-*`, `RTree`) are in Pharo 15 and it is named as a separate project in the Pharo 14 release announcement.
+Its main packages (`Roassal-*`) are in Pharo 15 and it is named as a separate project in the Pharo 14 release announcement.
 It is developed in [pharo-graphics/Roassal](https://github.com/pharo-graphics/Roassal).
 
 - Load when not in the image: `Metacello new baseline: 'Roassal'; repository: 'github://pharo-graphics/Roassal:master/src'; load`.
-- Depends on: RTree, NumericScales and [RoassalLayouts](#roassallayouts) (used by the `Roassal` package), and optionally Bloc (`Roassal-Bloc`), Athens-SVG (`Roassal-SVG`) and OSSubprocess (`Roassal-GraphViz`).
+- Depends on: RoassalLayouts (used by the `Roassal` package), and optionally Bloc (`Roassal-Bloc`), Athens-SVG (`Roassal-SVG`) and OSSubprocess (`Roassal-GraphViz`).
 
 ### Rubric
 
@@ -132,7 +131,7 @@ Spec is a framework to describe user interfaces.
 You compose presenters (a text field, a list, a button, a window), connect them with blocks, and open them in an application (`SpApplication`).
 The presenters draw nothing: a backend (adapter) turns them into the widgets of a toolkit, so the same interface can later be opened with another toolkit.
 It is in Pharo 15.
-Its Morphic backend is the default, and it is part of the Pharo image.
+Its Morphic backend, Spec-Morphic, is the default, and it is part of the Pharo image.
 Its Toplo backend is [Spec-Toplo](#spec-toplo), which belongs to the Bloc stack.
 Spec is developed in [pharo-spec/Spec](https://github.com/pharo-spec/Spec).
 
@@ -252,7 +251,7 @@ It is in development.
 
 | Pharo version | What is in the image | How to get the rest |
 | --- | --- | --- |
-| Pharo 15 (checked) | Morphic, Athens, Rubric, Spec, Roassal, RTree, OSWindow and SDL2 | Metacello for Bloc, Album, Toplo, Spec-Toplo, Alexandrie, NumericScales, RoassalExporters |
+| Pharo 15 (checked) | Morphic, Athens, Rubric, Spec, Roassal, OSWindow and SDL2 | Metacello for Bloc, Album, Toplo, Spec-Toplo, Alexandrie |
 | Pharo 14 (release announcement) | Morphic and SDL updates, Spec and Roassal named as separate projects included in each release | Bloc stack with Metacello, and SDL3 as described above |
 | Earlier versions | Not checked | Check the release notes of the version |
 
@@ -264,10 +263,9 @@ Bloc, Toplo, Album and Spec-Toplo can be loaded in Pharo 14, but they are not in
 Morphic stack
   Morphic (Pharo core)
     Rubric
-    Spec (Morphic backend)
+    Spec-Morphic --> Morphic, Spec
     Athens --> Cairo (Athens-Cairo)
-    Roassal --> RTree, NumericScales, RoassalLayouts
-      RoassalExporters --> Roassal, OSSubprocess, Units
+    Roassal --> RoassalLayouts
   OSWindow --> SDL2
 
 Bloc stack
@@ -281,7 +279,6 @@ Bloc stack
     Alexandrie-Cairo, Alexandrie-FreeType, Alexandrie-Harfbuzz --> Cairo, FreeType, HarfBuzz (C libraries, provided by the VM)
     SDL3 host (BlocHost-OSWindow-SDL3) --> PharoSDL3 --> SDL3
 ```
-
 
 ## See also
 
