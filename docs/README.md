@@ -33,6 +33,7 @@ The goals of the wiki are explained in the [Manifest](MANIFEST.md) and contribut
 - [Tweaking big images](General/TweakingBigImages.md) - Tips to make large pharo images more responsive.
 - [Image file format](General/ImageFileFormat.md) - Documentation about binary format of Pharo images.
 - [How to setup a travis build](General/Travis.md) - How to have automated build on travis
+- [Pharo graphical stack](General/GraphicalStack.md) - What each graphical project (Morphic, Athens, Spec, Roassal, Bloc, Toplo, Album, Alexandrie, SDL) does, in which Pharo version it is, how to load it and what it depends on
 
 ### Pharo Language
 
